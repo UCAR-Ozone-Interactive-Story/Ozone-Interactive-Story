@@ -1,13 +1,15 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './navbar/navbar';
+import { Frame } from './frame/frame';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar],
+  standalone: true,
+  imports: [RouterOutlet, Navbar, Frame],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss']
 })
 export class App {
-  protected readonly title = signal('your-angular-project');
+  protected readonly title = signal('Ozone Interactive Story');
 }

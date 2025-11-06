@@ -1,0 +1,35 @@
+:host {
+    display: block;
+    padding: 1rem;
+}
+
+.frames {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6e6e6; /* light gray background for the frame area */
+    padding: 2vh;
+    border-radius: 8px;
+    min-height: 85vh;
+}
+
+.frame-panel {
+    flex: 1 1 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 520px;
+    background: #bfbfbf;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.num {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #222;
+    user-select: none;
+}

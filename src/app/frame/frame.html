@@ -1,0 +1,17 @@
+<div class="frames">
+    <div *ngIf="selectedFrame() === 1"
+             class="frame-panel active"
+             (click)="select(1)"
+             role="button"
+             aria-label="Frame 1">
+        <div class="num">1</div>
+    </div>
+
+    <div *ngIf="selectedFrame() === 2"
+             class="frame-panel active"
+             (click)="select(2)"
+             role="button"
+             aria-label="Frame 2">
+        <div class="num">2</div>
+    </div>
+</div>
