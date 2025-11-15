@@ -1,17 +1,16 @@
-<div class="frames">
-    <div *ngIf="selectedFrame() === 1"
-             class="frame-panel active"
-             (click)="select(1)"
-             role="button"
-             aria-label="Frame 1">
-        <div class="num">1</div>
-    </div>
-
-    <div *ngIf="selectedFrame() === 2"
-             class="frame-panel active"
-             (click)="select(2)"
-             role="button"
-             aria-label="Frame 2">
-        <div class="num">2</div>
-    </div>
-</div>
+<!-- Landing Page (Frame 1) -->
+<div *ngIf="selectedFrame() === 1" class="landing-container">
+    <h1 class="title">Ozone Interactive Story</h1>
+  
+    <button class="start-btn" (click)="startStory()">
+      Start
+    </button>
+  </div>
+  
+  <!-- Frame 2 (only shows when unlocked) -->
+  <div *ngIf="selectedFrame() === 2 && frameUnlocked()[2]"
+       class="frame-actual-content">
+    <h1>Frame 2 Content</h1>
+    <p>This is the next part of your app.</p>
+  </div>
+  

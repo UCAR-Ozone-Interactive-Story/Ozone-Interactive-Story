@@ -1,35 +1,33 @@
-:host {
-    display: block;
-    padding: 1rem;
-}
-
-.frames {
+.landing-container {
+    height: 100vh;
+    width: 100%;
+    background-color: #1e88e5;
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #e6e6e6; /* light gray background for the frame area */
-    padding: 2vh;
-    border-radius: 8px;
-    min-height: 85vh;
+    color: white;
 }
 
-.frame-panel {
-    flex: 1 1 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 520px;
-    background: #bfbfbf;
+.title {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.start-btn {
+    padding: 15px 30px;
+    font-size: 1.4rem;
+    border: none;
     border-radius: 8px;
     cursor: pointer;
-    opacity: 0.7;
-    transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+    background: white;
+    color: #1e88e5;
+    font-weight: bold;
 }
 
-.num {
-    font-size: 6rem;
-    font-weight: 700;
-    color: #222;
-    user-select: none;
+.frame-actual-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
 }

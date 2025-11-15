@@ -1,4 +1,23 @@
 import { signal } from '@angular/core';
 
-// Application-level shared signal to track which frame is active (1 or 2)
+// type for lock object
+export type FrameUnlockMap = {
+  [key: number]: boolean;   // <-- THIS fixes the error
+};
+
+// which frame is selected
 export const selectedFrame = signal<number>(1);
+
+// lock state for each frame
+export const frameUnlocked = signal<FrameUnlockMap>({
+  1: true,
+  2: false
+});
+
+// function to unlock a frame
+export function unlockFrame(n: number) {
+  frameUnlocked.update(value => ({
+    ...value,
+    [n]: true
+  }));
+}
