@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { selectedFrame } from './frame.state';
+import { selectedFrame, frameUnlocked, unlockFrame } from './frame.state';
 
 @Component({
   selector: 'app-frame',
@@ -10,11 +10,23 @@ import { selectedFrame } from './frame.state';
   styleUrls: ['./frame.scss'],
 })
 export class Frame {
-  // expose the signal so template can read current selection
-  readonly selectedFrame = selectedFrame;
 
-  // convenience method to change selection from within the frame
+  readonly selectedFrame = selectedFrame;
+  readonly frameUnlocked = frameUnlocked;
+
+  // change selection only if unlocked
   select(n: number) {
-    selectedFrame.set(n);
+    if (this.frameUnlocked()[n]) {
+      selectedFrame.set(n);
+    } else {
+      console.warn("Frame " + n + " is locked.");
+    }
+  }
+
+  // START button action
+  startStory() {
+    unlockFrame(2);       // unlock frame 2
+    selectedFrame.set(2); // navigate to frame 2
   }
 }
+
