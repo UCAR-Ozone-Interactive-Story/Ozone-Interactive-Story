@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { selectedFrame, frameUnlocked, unlockFrame } from './frame.state';
+import { TranslateModule } from "@ngx-translate/core";
+import { LanguageDropdownComponent } from '../language-dropdown/language-dropdown.component';
 
 @Component({
   selector: 'app-frame',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule, LanguageDropdownComponent],
   templateUrl: './frame.html',
   styleUrls: ['./frame.scss'],
 })

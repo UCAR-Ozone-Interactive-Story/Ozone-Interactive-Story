@@ -1,9 +1,11 @@
 <!-- Landing Page (Frame 1) -->
 <div *ngIf="selectedFrame() === 1" class="landing-container">
-    <h1 class="title">Ozone Interactive Story</h1>
-  
+    <h1 class="title">{{ 'START_PAGE.TITLE' | translate }}</h1>
+
+    <app-language-dropdown></app-language-dropdown>
+    
     <button class="start-btn" (click)="startStory()">
-      Start
+      {{ 'START_PAGE.START' | translate }}
     </button>
   </div>
   
