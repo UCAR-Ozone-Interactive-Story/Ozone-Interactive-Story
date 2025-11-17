@@ -1,12 +1,12 @@
 <nav class="bottom-nav" role="navigation" aria-label="App navigation">
    <div class="menu">
       <button class="menu-button" (click)="toggle()" aria-expanded="{{open}}">
-         Screens
+         {{ 'NAVIGATION.SCREENS' | translate }}
       </button>
 
       <div class="menu-panel" *ngIf="open">
-         <button class="item" (click)="go(1)">Screen 1</button>
-         <button class="item" (click)="go(2)">Screen 2</button>
+         <button class="item" (click)="go(1)">{{ 'NAVIGATION.SCREEN' | translate }} 1</button>
+         <button class="item" (click)="go(2)">{{ 'NAVIGATION.SCREEN' | translate }} 2</button>
       </div>
    </div>
 </nav>

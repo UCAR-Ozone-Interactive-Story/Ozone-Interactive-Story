@@ -1,0 +1,13 @@
+{
+    "START_PAGE": {
+        "START": "Comenzar",
+        "TITLE": "Pruebas de Historias Interactivas de Ozone"
+    },
+    "NAVIGATION": {
+        "SCREENS": "Pantallas",
+        "SCREEN": "Pantalla"
+    },
+    "SETTINGS": {
+        "LANGUAGE": "Idioma"
+    }
+}
