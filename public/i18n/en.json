@@ -1,13 +1,17 @@
 {
-    "START_PAGE": {
-        "START": "Start",
-        "TITLE": "Ozone Interactive Story Testing"
-    },
-    "NAVIGATION": {
-        "SCREENS": "Screens",
-        "SCREEN": "Screen"
-    },
-    "SETTINGS": {
-        "LANGUAGE": "Language"
-    }
+  "START_PAGE": {
+    "START": "Start",
+    "TITLE": "Ozone Interactive Story Testing"
+  },
+  "NAVIGATION": {
+    "SCREENS": "Screens",
+    "SCREEN": "Screen"
+  },
+  "SETTINGS": {
+    "LANGUAGE": "Language"
+  },
+  "SLIDES": {
+    "EXAMPLE": "Example Slide",
+    "EXAMPLE_2": "Other example"
+  }
 }

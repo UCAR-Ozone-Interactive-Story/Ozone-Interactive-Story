@@ -1,8 +1,7 @@
-
-import { Component } from '@angular/core';
+import { Component, input, Input, output, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { selectedFrame } from '../frame/frame.state';
-import { TranslateService, TranslateModule } from "@ngx-translate/core";
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { SlideData } from '../slides';
 
 @Component({
   selector: 'app-navbar',
@@ -10,18 +9,22 @@ import { TranslateService, TranslateModule } from "@ngx-translate/core";
   imports: [CommonModule, TranslateModule],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
-  providers: [TranslateService]
+  providers: [TranslateService],
 })
 export class Navbar {
-  readonly selectedFrame = selectedFrame;
+  slides = input.required<SlideData[]>();
+  currentSlide = input.required<SlideData>();
+  go = output<SlideData>();
+
   open = false;
 
   toggle() {
     this.open = !this.open;
   }
 
-  go(n: number) {
-    selectedFrame.set(n);
+  try_navigate(slide: SlideData) {
+    if (!slide.visited) return;
     this.open = false;
+    this.go.emit(slide);
   }
 }

@@ -1,0 +1,5 @@
+<!-- if we ever want a header, we put it here --->
+
+<ng-container [ngComponentOutlet]="currentSlide().component"></ng-container>
+
+<app-navbar [slides]="ALL_SLIDES" [currentSlide]="currentSlide()" (go)="go($event)"></app-navbar>
