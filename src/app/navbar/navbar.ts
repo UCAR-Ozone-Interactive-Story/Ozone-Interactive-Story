@@ -20,6 +20,16 @@ export class Navbar {
     this.open = !this.open;
   }
 
+  goBack() {
+    selectedFrame.update(n => Math.max(n - 1, 1));
+    this.open = false;
+  }
+
+  goForward() {
+    selectedFrame.update(n => n + 1);
+    this.open = false;
+  }
+
   go(n: number) {
     selectedFrame.set(n);
     this.open = false;
