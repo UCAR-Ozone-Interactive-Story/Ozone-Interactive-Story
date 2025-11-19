@@ -4,9 +4,9 @@
          {{ 'NAVIGATION.SCREENS' | translate }}
       </button>
 
-      <div class="menu-panel" *ngIf="open">
-         <button class="item" (click)="go(1)">{{ 'NAVIGATION.SCREEN' | translate }} 1</button>
-         <button class="item" (click)="go(2)">{{ 'NAVIGATION.SCREEN' | translate }} 2</button>
+      <div class="menu-panel" *ngIf="open" id="menu-panel">
+         <button class="item" (click)="go(1)" *ngIf="buttonVisible(1)">{{ 'NAVIGATION.SCREEN' | translate }} 1</button>
+         <button class="item" (click)="go(2)" *ngIf="buttonVisible(2)">{{ 'NAVIGATION.SCREEN' | translate }} 2</button>
       </div>
    </div>
 </nav>
