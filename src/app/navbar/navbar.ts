@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { selectedFrame } from '../frame/frame.state';
+import { selectedFrame, frameUnlocked } from '../frame/frame.state';
 import { TranslateService, TranslateModule } from "@ngx-translate/core";
 
 @Component({
@@ -20,12 +20,20 @@ export class Navbar {
     this.open = !this.open;
   }
 
+  // for back button
   goBack() {
     selectedFrame.update(n => Math.max(n - 1, 1));
     this.open = false;
   }
 
+  //for forward button
   goForward() {
+    // must check that next slide is unlocked
+    const current = selectedFrame();
+    const next = current + 1;
+    const unlocked = frameUnlocked();
+    // check if next frame is unlocked before advancing
+    if (!unlocked[next]) return;
     selectedFrame.update(n => n + 1);
     this.open = false;
   }
