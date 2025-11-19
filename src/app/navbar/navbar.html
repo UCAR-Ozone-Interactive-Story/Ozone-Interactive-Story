@@ -6,6 +6,7 @@
       <button class="menu-button" (click)="toggle()" aria-expanded="{{open}}">
          {{ 'NAVIGATION.SCREENS' | translate }}
       </button>
+      <div class="counter">{{selectedFrame()}}</div>
       <button class="right-arrow" (click)="goForward()" aria-label="{{ 'NAVIGATION.FORWARD' | translate }}">
          &#8594;
       </button>
