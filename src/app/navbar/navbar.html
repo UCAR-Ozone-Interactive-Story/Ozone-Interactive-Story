@@ -1,7 +1,13 @@
 <nav class="bottom-nav" role="navigation" aria-label="App navigation">
    <div class="menu">
+      <button class="left-arrow" (click)="goBack()" aria-label="{{ 'NAVIGATION.BACK' | translate }}">
+         &#8592;
+      </button>
       <button class="menu-button" (click)="toggle()" aria-expanded="{{open}}">
          {{ 'NAVIGATION.SCREENS' | translate }}
+      </button>
+      <button class="right-arrow" (click)="goForward()" aria-label="{{ 'NAVIGATION.FORWARD' | translate }}">
+         &#8594;
       </button>
 
       <div class="menu-panel" *ngIf="open" id="menu-panel">
