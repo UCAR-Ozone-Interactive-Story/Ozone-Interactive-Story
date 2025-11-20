@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { selectedFrame, frameUnlocked } from '../frame/frame.state';
 import { TranslateService, TranslateModule } from "@ngx-translate/core";
-import { frameUnlocked } from '../frame/frame.state';
 
 @Component({
   selector: 'app-navbar',
