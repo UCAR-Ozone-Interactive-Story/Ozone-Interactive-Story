@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dialog-box {
+  background: rgba(255, 255, 255, 0.95);
+  border: 4px solid #2c3e50;
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  min-height: 120px;
+  box-shadow: 0 8px 0 rgba(0,0,0,0.2); /* "Gamey" pop-out look */
+  cursor: pointer;
+  user-select: none;
+}
+
+.name-tag {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  background: #ff6b6b;
+  color: white;
+  font-weight: bold;
+  padding: 4px 16px;
+  border-radius: 20px;
+  border: 2px solid #2c3e50;
+  font-size: 1.1rem;
+}
+
+.text-content {
+  font-family: 'Verdana', sans-serif; /* Readable font for kids */
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+
+.cursor {
+  color: #ff6b6b;
+  animation: blink 1s infinite;
+  margin-left: 8px;
+}
+.cursor.hidden { opacity: 0; }
+
+@keyframes blink { 50% { opacity: 0; } }

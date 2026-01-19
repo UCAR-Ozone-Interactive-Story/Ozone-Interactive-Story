@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { LanguageDropdownComponent } from '../language-dropdown/language-dropdown.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { LanguageDropdownComponent } from './language-dropdown/language-dropdown';
 
 @Component({
-  selector: 'app-start-page',
+  selector: 'app-home',
   imports: [LanguageDropdownComponent, TranslateModule, RouterModule],
-  templateUrl: './start-page.html',
-  styleUrl: './start-page.scss',
+  templateUrl: './home.html',
+  styleUrl: './home.scss',
 })
-export class StartPage {}
+export class Home {}

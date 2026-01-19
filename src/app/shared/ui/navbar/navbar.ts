@@ -1,7 +1,8 @@
-import { Component, input, Input, output, Signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { SlideData } from '../slides';
+import { StoryService } from '@core/story.service';
+import { Scene } from '@core/scene';
 
 @Component({
   selector: 'app-navbar',
@@ -12,9 +13,7 @@ import { SlideData } from '../slides';
   providers: [TranslateService],
 })
 export class Navbar {
-  slides = input.required<SlideData[]>();
-  currentSlide = input.required<SlideData>();
-  go = output<SlideData>();
+  story = inject(StoryService);
 
   open = false;
 
@@ -22,9 +21,7 @@ export class Navbar {
     this.open = !this.open;
   }
 
-  try_navigate(slide: SlideData) {
-    if (!slide.visited) return;
-    this.open = false;
-    this.go.emit(slide);
+  navigate(scene: Scene) {
+    this.story.jumpTo(scene.id);
   }
 }

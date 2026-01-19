@@ -5,8 +5,8 @@
     </button>
 
     <div class="menu-panel" *ngIf="open">
-      @for (slide of slides(); track slide.id) {
-        <button class="item" [disabled]="!slide.visited" (click)="try_navigate(slide)">{{ slide.i18n_key | translate }}</button>
+      @for (scene of story.allScenes(); track scene.id) {
+        <button class="item" (click)="navigate(scene)">{{ scene.i18n | translate }}</button>
       }
     </div>
   </div>

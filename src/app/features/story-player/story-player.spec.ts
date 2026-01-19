@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlayPage } from './play-page';
+import { StoryPlayer } from './story-player';
 
-describe('PlayPage', () => {
-  let component: PlayPage;
-  let fixture: ComponentFixture<PlayPage>;
+describe('StoryPlayer', () => {
+  let component: StoryPlayer;
+  let fixture: ComponentFixture<StoryPlayer>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PlayPage]
+      imports: [StoryPlayer]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PlayPage);
+    fixture = TestBed.createComponent(StoryPlayer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

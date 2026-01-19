@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { StartPage } from './start-page/start-page';
-import { PlayPage } from './play-page/play-page';
+import { Home } from './features/home/home';
+import { StoryPlayer } from './features/story-player/story-player';
 
 export const routes: Routes = [
   {
     path: '',
-    component: StartPage,
+    component: Home,
   },
   {
     path: 'play',
-    component: PlayPage,
-  },
+    component: StoryPlayer
+  }
 ];

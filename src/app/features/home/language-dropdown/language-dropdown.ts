@@ -14,7 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
     TranslateModule
   ],
   providers: [TranslateService],
-  templateUrl: './language-dropdown.component.html'
+  templateUrl: './language-dropdown.html'
 })
 export class LanguageDropdownComponent implements OnInit {
   languages = [
@@ -33,11 +33,11 @@ export class LanguageDropdownComponent implements OnInit {
     // Only access localStorage in the browser
     if (isPlatformBrowser(this.platformId)) {
       const storedLang = localStorage.getItem('lang');
-      this.selectedLang = storedLang || this.translate.currentLang || this.translate.defaultLang || 'en';
+      this.selectedLang = storedLang || this.translate.getCurrentLang() || this.translate.getFallbackLang() || 'en';
       this.translate.use(this.selectedLang);
     } else {
       // SSR fallback
-      this.selectedLang = this.translate.currentLang || this.translate.defaultLang || 'en';
+      this.selectedLang = this.translate.getCurrentLang() || this.translate.getFallbackLang() || 'en';
     }
   }
 
