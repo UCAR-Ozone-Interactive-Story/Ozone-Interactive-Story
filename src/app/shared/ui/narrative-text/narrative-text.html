@@ -1,9 +1,7 @@
 <div class="dialog-box" (click)="advance()">
   @if (character(); as name) {
-    <div class="name-tag">{{ name }}</div>
+  <div class="name-tag">{{ name }}</div>
   }
 
-  <p class="text-content">
-    {{ displayedText() }}<span class="cursor" [class.hidden]="!isComplete()">▼</span>
-  </p>
+  <p class="text-content">{{ displayedText() }}</p>
 </div>
