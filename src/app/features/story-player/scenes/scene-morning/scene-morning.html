@@ -1,6 +1,6 @@
 <div class="container">
   <app-narrative-text
-    [text]="'On a warm summer morning in the city, people are waking up and getting ready for their day. The Sun is already shining brightly.
-  '"
+    [text]="'SCENES.MORNING.TEXT_1' | translate"
+    (completed)="story.nextScene()"
   />
 </div>

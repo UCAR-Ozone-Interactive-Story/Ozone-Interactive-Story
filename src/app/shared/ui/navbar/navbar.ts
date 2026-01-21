@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { StoryService } from '@core/story.service';
 import { Scene } from '@core/scene';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, RouterModule],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
   providers: [TranslateService],

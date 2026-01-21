@@ -1,7 +1,11 @@
-<h1 class="title">{{ 'START_PAGE.TITLE' | translate }}</h1>
+<div class="container">
+  <div class="column">
+    <h1 class="title">{{ 'START_PAGE.TITLE' | translate }}</h1>
 
-<app-language-dropdown></app-language-dropdown>
+    <app-language-dropdown></app-language-dropdown>
 
-<button class="start-btn" routerLink="play" skipLocationChange="true">
-  {{ 'START_PAGE.START' | translate }}
-</button>
+    <button class="start-btn" routerLink="play" skipLocationChange="true">
+      {{ 'START_PAGE.START' | translate }}
+    </button>
+  </div>
+</div>

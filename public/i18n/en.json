@@ -4,14 +4,21 @@
     "TITLE": "Ozone Interactive Story Testing"
   },
   "NAVIGATION": {
-    "SCREENS": "Screens",
+    "HOME": "Home",
+    "SCREENS": "Scene Select",
     "SCREEN": "Screen"
   },
   "SETTINGS": {
     "LANGUAGE": "Language"
   },
-  "SLIDES": {
-    "EXAMPLE": "Example Slide",
-    "EXAMPLE_2": "Other example"
+  "SCENES": {
+    "MORNING": {
+      "TITLE": "Morning",
+      "TEXT_1": "On a warm summer morning in the city, people are waking up and getting ready for their day. The Sun is already shining brightly. CLICK TO CONTINUE!"
+    },
+    "VEHICLE_TYPES": {
+      "TITLE": "Vehicle Types",
+      "TEXT_1": "People use many different types of vehicles to get to where they are going. What kind of vehicles might people use? Cars, buses, motorcycles, scooters, and bicycles... Most of these vehicles [Factory + Car] burn gasoline or natural gas, called fossil fuels, to make them go."
+    }
   }
 }

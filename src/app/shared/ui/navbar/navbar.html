@@ -1,13 +1,14 @@
 <nav class="bottom-nav" role="navigation" aria-label="App navigation">
   <div class="menu">
-    <button class="menu-button" (click)="toggle()" aria-expanded="{{open}}">
-      {{ 'NAVIGATION.SCREENS' | translate }}
-    </button>
+    <button class="menu-button" routerLink="/">{{ 'NAVIGATION.HOME' | translate }}</button>
+    <button class="menu-button" (click)="toggle()">{{ 'NAVIGATION.SCREENS' | translate }}</button>
 
-    <div class="menu-panel" *ngIf="open">
-      @for (scene of story.allScenes(); track scene.id) {
-        <button class="item" (click)="navigate(scene)">{{ scene.i18n | translate }}</button>
-      }
-    </div>
+    @if (open) {
+      <div class="menu-panel">
+        @for (scene of story.scenes(); track scene.id) {
+          <button class="item" (click)="navigate(scene)">{{ scene.i18n_title | translate }}</button>
+        }
+      </div>
+    }
   </div>
 </nav>

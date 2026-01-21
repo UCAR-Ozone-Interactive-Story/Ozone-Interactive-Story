@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { StoryService } from '../../core/story.service';
-import { Navbar } from '../../shared/ui/navbar/navbar';
 import { NgComponentOutlet } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { StoryService } from '@core/story.service';
+import { Navbar } from '@shared/ui/navbar/navbar';
 
 @Component({
   selector: 'app-story-player',
@@ -9,6 +9,10 @@ import { NgComponentOutlet } from '@angular/common';
   templateUrl: './story-player.html',
   styleUrl: './story-player.scss',
 })
-export class StoryPlayer {
+export class StoryPlayer implements OnInit {
   service = inject(StoryService);
+
+  ngOnInit(): void {
+    this.service.jumpTo('morning')
+  }
 }
