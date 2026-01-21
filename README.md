@@ -12,6 +12,15 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+## Project Layout
+
+Inside `src/app`, there are 3 folders which contain the majority of our code:
+- `core`: for core modules, services, interfaces, etc. used throughout the app. Should contain no UI code in here.
+- `features`: for page components, such as the home page, play page, and scene definitions. Should loosely correspond to the associated routes in `src/app/app.routes.ts`. Any one-time components such as the language dropdown can live within the hierarchy here.
+- `shared`: for reusable components like text, buttons, etc. which are independent of the page they're on; also could include custom pipes directives, etc. if we need them
+
+In `tsconfig.json`, there are paths which define `@core`, `@features`, and `@shared` which should be used when importing modules between the folders (e.g. don't `import ../../../../core/story.service.ts`, use `import @core/story.service.ts`)
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
