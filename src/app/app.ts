@@ -1,25 +1,27 @@
 import { Component, signal, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from './navbar/navbar';
-import { Frame } from './frame/frame';
 import { isPlatformBrowser } from '@angular/common';
-import { TranslateService, TranslatePipe, TranslateDirective } from "@ngx-translate/core";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Navbar, Frame],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
-  providers: [TranslateService]
+  providers: [TranslateService],
 })
 export class App {
   protected readonly title = signal('Ozone Interactive Story');
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private translate: TranslateService) {
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private translate: TranslateService,
+  ) {
     if (isPlatformBrowser(this.platformId)) {
       const savedLang = localStorage.getItem('lang') || 'en';
-      translate.setDefaultLang('en');   // default fallback
-      translate.use(savedLang);         // use persisted or default
+      this.translate.setFallbackLang('en'); // default fallback
+      this.translate.use(savedLang); // use persisted or default
     }
   }
 }
