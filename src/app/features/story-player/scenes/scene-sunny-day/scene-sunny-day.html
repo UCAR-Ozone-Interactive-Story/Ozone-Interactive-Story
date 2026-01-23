@@ -1,10 +1,10 @@
 <div class="container">
-  <app-background>
+  <app-layer-wrapper>
     <app-sky-grass bg-layer></app-sky-grass>
     <app-clouds></app-clouds>
     <app-narrative-text
-    [text]="'SCENES.SUNNY_DAY.TEXT_1' | translate"
-    (completed)="story.nextScene()"
-  />
-  </app-background>
+      [text]="'SCENES.SUNNY_DAY.TEXT_1' | translate"
+      (completed)="story.nextScene()"
+    />
+  </app-layer-wrapper>
 </div>
