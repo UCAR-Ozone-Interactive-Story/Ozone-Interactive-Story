@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
+import { StoryService } from '@core/story.service';
 
 @Component({
   selector: 'app-scene-vehicle-types',
@@ -8,4 +9,6 @@ import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
   templateUrl: './scene-vehicle-types.html',
   styleUrl: './scene-vehicle-types.scss',
 })
-export class SceneVehicleTypes {}
+export class SceneVehicleTypes {
+  story = inject(StoryService);
+}

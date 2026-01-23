@@ -2,6 +2,7 @@ import { computed, Injectable, OnDestroy, OnInit, signal, WritableSignal } from 
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
 import { Scene } from './scene';
+import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/scene-sunny-day';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -23,6 +24,11 @@ export class StoryService implements OnInit, OnDestroy {
       i18n_title: 'SCENES.VEHICLE_TYPES.TITLE',
       component: SceneVehicleTypes,
     },
+    {
+      id: 'sunny-day',
+      i18n_title: 'SCENES.SUNNY_DAY.TITLE',
+      component: SceneSunnyDay
+    }
   ];
 
   private currentIndex = signal(0);
