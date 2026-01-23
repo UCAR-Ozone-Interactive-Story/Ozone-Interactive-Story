@@ -19,6 +19,10 @@
     "VEHICLE_TYPES": {
       "TITLE": "Vehicle Types",
       "TEXT_1": "People use many different types of vehicles to get to where they are going. What kind of vehicles might people use? Cars, buses, motorcycles, scooters, and bicycles... Most of these vehicles [Factory + Car] burn gasoline or natural gas, called fossil fuels, to make them go."
+    },
+    "SUNNY_DAY": {
+      "TITLE": "Sunny Day",
+      "TEXT_1": "But on a warm sunny day when certain types of air pollution are already in the atmosphere, something else can form."
     }
   }
 }
