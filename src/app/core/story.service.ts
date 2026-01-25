@@ -3,6 +3,7 @@ import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
 import { Scene } from './scene';
 import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/scene-sunny-day';
+import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -28,6 +29,11 @@ export class StoryService implements OnInit, OnDestroy {
       id: 'sunny-day',
       i18n_title: 'SCENES.SUNNY_DAY.TITLE',
       component: SceneSunnyDay
+    },
+    {
+      id: 'air',
+      i18n_title: 'SCENES.AIR.TITLE',
+      component: SceneAir
     }
   ];
 
