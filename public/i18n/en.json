@@ -24,9 +24,13 @@
       "TITLE": "Sunny Day",
       "TEXT_1": "But on a warm sunny day when certain types of air pollution are already in the atmosphere, something else can form."
     },
-      "AIR": {
+    "AIR": {
         "TITLE": "Air",
         "NARRATIVE": "What's in the air around us?"
+    },
+    "NEARBY_FACTORIES": {
+        "TITLE": "Nearby Factories",
+        "TEXT_1": "Nearby factories also burn fossil fuels to make electricity that we use in our homes, schools, and workplaces."
     }
   }
 }

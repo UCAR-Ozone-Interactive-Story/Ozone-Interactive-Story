@@ -4,6 +4,7 @@ import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-t
 import { Scene } from './scene';
 import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/scene-sunny-day';
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
+import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -34,14 +35,21 @@ export class StoryService implements OnInit, OnDestroy {
       id: 'air',
       i18n_title: 'SCENES.AIR.TITLE',
       component: SceneAir
-    }
+    },
+    {
+      id: 'nearby-factories',
+      i18n_title: 'SCENES.NEARBY_FACTORIES.TITLE',
+      component: SceneNearbyFactories,
+    },
   ];
 
   private currentIndex = signal(0);
   private unlockedScenes = signal(new Set<string>());
 
   currentScene = computed(() => StoryService.SCENE_DEFINITIONS[this.currentIndex()]);
-  scenes = computed(() => StoryService.SCENE_DEFINITIONS.filter(s => this.unlockedScenes().has(s.id)))
+  scenes = computed(() =>
+    StoryService.SCENE_DEFINITIONS.filter((s) => this.unlockedScenes().has(s.id)),
+  );
 
   ngOnInit(): void {
     // load from localStorage here
@@ -52,7 +60,7 @@ export class StoryService implements OnInit, OnDestroy {
 
   // move to next scene
   nextScene() {
-    console.log("nextScene")
+    console.log('nextScene');
     if (this.currentIndex() < StoryService.SCENE_DEFINITIONS.length - 1) {
       this.currentIndex.update((i) => i + 1);
       this.unlockScene(this.currentScene().id);
@@ -62,7 +70,7 @@ export class StoryService implements OnInit, OnDestroy {
   // jump to specific scene by scene id
   jumpTo(sceneId: string, unlock: boolean = true) {
     const index = StoryService.SCENE_DEFINITIONS.findIndex((s) => s.id === sceneId);
-    console.log("jumpTo: ", index)
+    console.log('jumpTo: ', index);
     if (index > -1) {
       this.currentIndex.set(index);
       if (unlock) this.unlockScene(sceneId);
@@ -71,10 +79,10 @@ export class StoryService implements OnInit, OnDestroy {
 
   unlockScene(sceneId: string) {
     const index = StoryService.SCENE_DEFINITIONS.findIndex((s) => s.id === sceneId);
-    console.log("unlock: ", index)
+    console.log('unlock: ', index);
     if (index > -1) {
-      this.unlockedScenes.update(x => new Set([...x, sceneId]));
-      console.log("now scenes: ", this.unlockedScenes())
+      this.unlockedScenes.update((x) => new Set([...x, sceneId]));
+      console.log('now scenes: ', this.unlockedScenes());
     }
   }
 }
