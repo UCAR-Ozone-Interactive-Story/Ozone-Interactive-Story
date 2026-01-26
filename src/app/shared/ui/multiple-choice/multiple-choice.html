@@ -1,0 +1,18 @@
+<div class="multiple-choice-container">
+  <h3>{{ question() }}</h3>
+  <div class="choice-grid">
+    <div
+      *ngFor="let option of options()"
+      class="choice-item"
+      [class.selected]="isSelected(option.id)"
+      [class.incorrect]="isSelected(option.id) && !option.isCorrect"
+      [class.disabled]="disabled()"
+      (click)="selectOption(option.id)"
+    >
+      <span class="choice-label">{{ option.label }}</span>
+      <span class="result-icon" *ngIf="isSelected(option.id)">
+        {{ option.isCorrect ? '✓' : '✗' }}
+      </span>
+    </div>
+  </div>
+</div>
