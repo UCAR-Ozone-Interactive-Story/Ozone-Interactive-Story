@@ -29,17 +29,22 @@ export class StoryService implements OnInit, OnDestroy {
     {
       id: 'sunny-day',
       i18n_title: 'SCENES.SUNNY_DAY.TITLE',
-      component: SceneSunnyDay
+      component: SceneSunnyDay,
     },
     {
       id: 'air',
       i18n_title: 'SCENES.AIR.TITLE',
-      component: SceneAir
+      component: SceneAir,
     },
     {
       id: 'nearby-factories',
       i18n_title: 'SCENES.NEARBY_FACTORIES.TITLE',
       component: SceneNearbyFactories,
+    },
+    {
+      id: 'gather-ingredients',
+      i18n_title: 'SCENES.GATHER_INGREDIENTS.TITLE',
+      component: SceneGatherIngredients,
     },
   ];
 
