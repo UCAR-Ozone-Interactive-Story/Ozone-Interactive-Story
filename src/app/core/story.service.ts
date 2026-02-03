@@ -5,6 +5,7 @@ import { Scene } from './scene';
 import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/scene-sunny-day';
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
+import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 
 /**
  * Provides data about story progress to any component that needs it
