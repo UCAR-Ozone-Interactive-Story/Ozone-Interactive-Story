@@ -1,5 +1,5 @@
 import { NgComponentOutlet } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { Navbar } from '@shared/ui/navbar/navbar';
 
@@ -9,10 +9,6 @@ import { Navbar } from '@shared/ui/navbar/navbar';
   templateUrl: './story-player.html',
   styleUrl: './story-player.scss',
 })
-export class StoryPlayer implements OnInit {
+export class StoryPlayer {
   service = inject(StoryService);
-
-  ngOnInit(): void {
-    this.service.jumpTo('morning')
-  }
 }
