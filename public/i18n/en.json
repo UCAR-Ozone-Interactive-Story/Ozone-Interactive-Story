@@ -6,7 +6,8 @@
   "NAVIGATION": {
     "HOME": "Home",
     "SCREENS": "Scene Select",
-    "SCREEN": "Screen"
+    "SCREEN": "Screen",
+    "RESET_STORY": "Reset Story"
   },
   "SETTINGS": {
     "LANGUAGE": "Language"
