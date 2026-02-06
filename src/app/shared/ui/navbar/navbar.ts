@@ -25,4 +25,10 @@ export class Navbar {
   navigate(scene: Scene) {
     this.story.jumpTo(scene.id);
   }
+
+  reset() {
+    console.log('[Navbar] Reset button clicked');
+    this.story.resetProgress();
+    location.reload();
+  }
 }
