@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { LanguageDropdownComponent } from './language-dropdown/language-dropdown';
+import { StoryService } from '@core/story.service';
 
 @Component({
   selector: 'app-home',
@@ -9,4 +10,12 @@ import { LanguageDropdownComponent } from './language-dropdown/language-dropdown
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {}
+export class Home {
+  private router = inject(Router);
+  private story = inject(StoryService);
+
+  play() {
+    this.story.jumpTo('morning'); // todo change this to find the first scene
+    this.router.navigate(['play']);
+  }
+}

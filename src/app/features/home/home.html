@@ -4,7 +4,7 @@
 
     <app-language-dropdown></app-language-dropdown>
 
-    <button class="start-btn" routerLink="play" skipLocationChange="true">
+    <button class="start-btn" (click)="play()">
       {{ 'START_PAGE.START' | translate }}
     </button>
   </div>

@@ -1,0 +1,132 @@
+.container {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, #87ceeb 0%, #e0f6ff 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.scene-world {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding-bottom: 100px;
+}
+
+.interactive-object {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &.active {
+    cursor: default;
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+.placeholder-art {
+  font-size: 8rem;
+  user-select: none;
+  z-index: 2;
+}
+
+.factory {
+  .placeholder-art {
+    font-size: 10rem;
+  }
+}
+
+.car {
+  .placeholder-art {
+    font-size: 6rem;
+  }
+}
+
+/* Bubble Positioning */
+.bubble-container {
+  position: relative;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  z-index: 10;
+  pointer-events: none;
+
+  /* Override internal narrative text styles for bubble use */
+  :host ::ng-deep {
+    app-narrative-text {
+      padding: 0;
+      margin: 0;
+
+      .dialog-box {
+        padding: 12px;
+        font-size: 0.9rem;
+        border-width: 2px;
+        min-height: auto;
+      }
+
+      .text-content {
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+/* Particle System */
+.particle-emitter {
+  position: relative;
+  pointer-events: none;
+  z-index: 5;
+
+  &.exhaust {
+    bottom: 20px;
+    right: -20px;
+  }
+
+  &:not(.exhaust) {
+    top: -120px;
+  }
+}
+
+.gas-cloud {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: rgba(100, 100, 100, 0.6);
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0;
+  animation: drift 3s infinite ease-out;
+
+  &.cloud-1 { animation-delay: 0s; }
+  &.cloud-2 { animation-delay: 1s; left: 15px; }
+  &.cloud-3 { animation-delay: 2s; left: -15px; }
+}
+
+@keyframes drift {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-350px) scale(3);
+    opacity: 0;
+  }
+}

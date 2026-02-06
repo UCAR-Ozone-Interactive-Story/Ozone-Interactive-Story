@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="scene-world">
+    <!-- Factory Section -->
+    <div class="interactive-object factory" (click)="activateFactory()" [class.active]="isFactoryActive()">
+      <div class="placeholder-art">
+        <img src="images/scenes/burning-fuels/factory.png" width="200"/>
+      </div>
+
+      @if (isFactoryActive()) {
+        <div class="particle-emitter">
+          <div class="gas-cloud cloud-1"></div>
+          <div class="gas-cloud cloud-2"></div>
+          <div class="gas-cloud cloud-3"></div>
+        </div>
+        <div class="bubble-container">
+          <app-narrative-text [text]="'SCENES.BURNING_FUELS.FACTORY_BUBBLE' | translate" />
+        </div>
+      }
+    </div>
+
+    <!-- Car Section -->
+    <div class="interactive-object car" (click)="activateCar()" [class.active]="isCarActive()">
+      <div class="placeholder-art">🚗</div>
+
+      @if (isCarActive()) {
+        <div class="particle-emitter exhaust">
+          <div class="gas-cloud cloud-1"></div>
+          <div class="gas-cloud cloud-2"></div>
+        </div>
+        <div class="bubble-container">
+          <app-narrative-text [text]="'SCENES.BURNING_FUELS.CAR_BUBBLE' | translate" />
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="narrative-overlay">
+    <app-narrative-text
+      [text]="'SCENES.BURNING_FUELS.TEXT_1' | translate"
+      (completed)="story.nextScene()"
+    />
+  </div>
+</div>

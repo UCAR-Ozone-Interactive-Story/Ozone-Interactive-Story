@@ -5,6 +5,7 @@ import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-t
 import { Scene } from './scene';
 import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/scene-sunny-day';
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
+import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
 import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
 
 /**
@@ -28,6 +29,11 @@ export class StoryService {
       component: SceneVehicleTypes,
     },
     {
+      id: 'nearby-factories',
+      i18n_title: 'SCENES.NEARBY_FACTORIES.TITLE',
+      component: SceneNearbyFactories,
+    },
+    {
       id: 'sunny-day',
       i18n_title: 'SCENES.SUNNY_DAY.TITLE',
       component: SceneSunnyDay
@@ -38,9 +44,9 @@ export class StoryService {
       component: SceneAir
     },
     {
-      id: 'nearby-factories',
-      i18n_title: 'SCENES.NEARBY_FACTORIES.TITLE',
-      component: SceneNearbyFactories,
+      id: 'burning-fuels',
+      i18n_title: 'SCENES.BURNING_FUELS.TITLE',
+      component: SceneBurningFuels,
     },
   ];
 
@@ -67,7 +73,6 @@ export class StoryService {
 
   // move to next scene
   nextScene() {
-    console.log('nextScene');
     if (this.currentIndex() < StoryService.SCENE_DEFINITIONS.length - 1) {
       this.currentIndex.update((i) => i + 1);
       this.unlockScene(this.currentScene().id);
@@ -78,7 +83,6 @@ export class StoryService {
   // jump to specific scene by scene id
   jumpTo(sceneId: string, unlock: boolean = true) {
     const index = StoryService.SCENE_DEFINITIONS.findIndex((s) => s.id === sceneId);
-    console.log('jumpTo: ', index);
     if (index > -1) {
       this.currentIndex.set(index);
       if (unlock) this.unlockScene(sceneId);
@@ -88,7 +92,6 @@ export class StoryService {
 
   unlockScene(sceneId: string) {
     const index = StoryService.SCENE_DEFINITIONS.findIndex((s) => s.id === sceneId);
-    console.log('unlock: ', index);
     if (index > -1) {
       this.unlockedScenes.update((x) => new Set([...x, sceneId]));
       console.log('now scenes: ', this.unlockedScenes());
