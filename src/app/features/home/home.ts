@@ -10,12 +10,4 @@ import { StoryService } from '@core/story.service';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {
-  private router = inject(Router);
-  private story = inject(StoryService);
-
-  play() {
-    this.story.jumpTo('morning'); // todo change this to find the first scene
-    this.router.navigate(['play']);
-  }
-}
+export class Home {}
