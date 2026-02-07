@@ -1,0 +1,98 @@
+.container {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, #87ceeb 0%, #e0f6ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.interactive-object {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &.active {
+    cursor: default;
+    &:hover {
+      transform: none;
+    }
+  }
+
+  img {
+    display: block;
+    height: auto;
+  }
+}
+
+.car {
+  left: 20%;
+  bottom: 20%;
+}
+
+.factory {
+  right: 15%;
+  bottom: 15%;
+}
+
+.bubble-container {
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  pointer-events: none;
+}
+
+.particle-emitter {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+
+  // car
+  &.exhaust {
+    bottom: 20%;
+    right: -10px;
+  }
+
+  // factory (lol)
+  &:not(.exhaust) {
+    top: -20px;
+    left: 50%;
+  }
+}
+
+.gas-cloud {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: rgba(100, 100, 100, 0.6);
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0;
+  animation: drift 3s infinite ease-out;
+
+  &.cloud-1 { animation-delay: 0s; }
+  &.cloud-2 { animation-delay: 1s; left: 15px; }
+  &.cloud-3 { animation-delay: 2s; left: -15px; }
+}
+
+@keyframes drift {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-200px) scale(3);
+    opacity: 0;
+  }
+}
