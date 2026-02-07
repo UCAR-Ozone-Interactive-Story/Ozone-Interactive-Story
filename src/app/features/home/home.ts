@@ -1,8 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { LanguageDropdownComponent } from './language-dropdown/language-dropdown';
-import { StoryService } from '@core/story.service';
 
 @Component({
   selector: 'app-home',
