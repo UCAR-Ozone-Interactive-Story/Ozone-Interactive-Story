@@ -65,6 +65,18 @@ export class MultipleChoice {
     }
   }
 
+  onKeydown(event: KeyboardEvent, optionId: string) {
+    if (this.disabled()) return;
+
+    // accessibility controls for using enter or space to select an option
+    const isEnter = event.key === 'Enter';
+    const isSpace = event.code === 'Space' || event.key === ' ' || event.key === 'Spacebar';
+    if (isEnter || isSpace) {
+      event.preventDefault();
+      this.selectOption(optionId);
+    }
+  }
+
   isSelected(optionId: string): boolean {
     return this.selectedOptions().has(optionId);
   }

@@ -2,6 +2,7 @@ import { Component, signal, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { StoryService } from '@core/story.service';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +18,44 @@ export class App {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private translate: TranslateService,
+    private story: StoryService,
   ) {
     if (isPlatformBrowser(this.platformId)) {
       const savedLang = localStorage.getItem('lang') || 'en';
       this.translate.setFallbackLang('en'); // default fallback
       this.translate.use(savedLang); // use persisted or default
+
+      this.initStoryProgress();
+    }
+  }
+
+  private initStoryProgress() {
+    const savedIndex = localStorage.getItem('story.currentIndex');
+    const savedUnlocked = localStorage.getItem('story.unlockedScenes');
+
+    // restore unlocked scenes FIRST
+    if (savedUnlocked) {
+      try {
+        const parsed = JSON.parse(savedUnlocked) as string[];
+        parsed.forEach(id => this.story.unlockScene(id));
+        console.log('[App] Restored unlockedScenes ->', parsed);
+      } catch (err) {
+        console.warn('[App] Failed to parse unlockedScenes', err);
+      }
+    }
+
+    // restore current scene
+    if (savedIndex !== null) {
+      const index = Number(savedIndex);
+
+      if (!Number.isNaN(index)) {
+        const scene = StoryService['SCENE_DEFINITIONS']?.[index];
+
+        if (scene) {
+          console.log('[App] Restoring current scene ->', scene.id);
+          this.story.jumpTo(scene.id, false);
+        }
+      }
     }
   }
 }

@@ -13,6 +13,9 @@ export class StoryPlayer implements OnInit {
   service = inject(StoryService);
 
   ngOnInit(): void {
-    this.service.jumpTo('morning')
+    console.log(
+      '[StoryPlayer] Loaded. Current scene ->',
+      this.service.currentScene().id
+    );
   }
 }
