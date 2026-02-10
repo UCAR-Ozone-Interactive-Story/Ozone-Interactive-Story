@@ -4,16 +4,27 @@
   background-color: #a8a8a8;
 }
 
+.smog{
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: rgba(87, 59, 15, 0.9);
+  border: 3px solid #000000;
+  display: flex;
+  transform: scale(0.5);
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  position: relative;
+}
+
 .molecule-circle {
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.9);
   border: 3px solid #007bff;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.5);
-  transition: all 0.5s ease;
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }

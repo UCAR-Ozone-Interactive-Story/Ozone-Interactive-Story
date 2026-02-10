@@ -3,20 +3,35 @@
     [text]="'SCENES.GATHER_INGREDIENTS.TEXT_1' | translate"
     (completed)="story.nextScene()"
   />
-    <app-clouds></app-clouds>
-  <div class="molecule-circle" cdkDrag>
-    <span class="molecule-label">VOC</span>
-</div>
-  <div class="molecule-circle" cdkDrag>
-    <span class="molecule-label">VOC</span>
-</div>
-  <div class="molecule-circle" cdkDrag>
-    <span class="molecule-label">VOC</span>
-</div>
-  <div class="molecule-circle" cdkDrag>
-    <span class="molecule-label">NO₂</span>
-</div>
-  <div class="molecule-circle" cdkDrag>
-    <span class="molecule-label">NO₂</span>
+
+   <div
+    class="smog "
+    cdkDropList
+    #smog="cdkDropList"
+    [cdkDropListData]="smogParticals"
+    [cdkDropListConnectedTo]="startingZoneOne"
+    (cdkDropListDropped)="drop($event)"
+   > 
+
+    @for (item of smogParticals; track item){
+        <div class="molecule-circle" cdkDrag>
+            <span class="molecule-label">{{item}}</span>
+        </div>
+    }
+    </div>
+   
+  <div
+    class="smog"
+    cdkDropList
+    #startingZoneOne="cdkDropList"
+    [cdkDropListData]="molecules1"
+    [cdkDropListConnectedTo]="smog"
+    (cdkDropListDropped)="drop($event)"
+  >
+    @for (item of molecules1; track item){
+        <div class="molecule-circle" cdkDrag>
+            <span class="molecule-label">{{item}}</span>
+        </div>
+    }
 </div>
 </div>
