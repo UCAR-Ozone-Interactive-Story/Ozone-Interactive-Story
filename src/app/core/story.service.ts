@@ -141,15 +141,13 @@ export class StoryService {
 
   resetProgress() {
     console.log('[StoryService] Resetting story progress');
-    
+
     // clear signals
     this.currentIndex.set(0);
-    this.unlockedScenes.set(new Set());
+    this.unlockedScenes.set(new Set([this.currentScene().id]));
 
     // clear storage
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('story.currentIndex');
-      localStorage.removeItem('story.unlockedScenes');
-    }
+    localStorage.removeItem('story.currentIndex');
+    localStorage.removeItem('story.unlockedScenes');
   }
 }
