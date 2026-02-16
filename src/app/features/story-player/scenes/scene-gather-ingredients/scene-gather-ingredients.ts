@@ -28,10 +28,8 @@ const sceneName = 'scene-gather-ingredients';
 export class SceneGatherIngredients {
   story = inject(StoryService);
 
-  molecules1 = ['1', '2', '3', '4'];
-  ozoneCloudContents = ['5'];
-  travelingFromOzoneCloud = [];
-  travelingFromStartingZone = [];
+  molecules1 = ['1', '2', '3', '4', '5'];
+  ozoneCloudContents = [];
   handleDragEnd(event: CdkDragEnd) {
     const position = event.dropPoint;
     let inOzoneCloud = false;
