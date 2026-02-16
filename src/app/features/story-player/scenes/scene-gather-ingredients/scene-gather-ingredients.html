@@ -4,7 +4,28 @@
     (completed)="story.nextScene()"
   />
 
-<div id="paint-cans" role="img" aria-label="3 paint cans of various colors">
+
+<div id="factory" role="img" class="image" aria-label="factory">
+    @for (item of factoryContents; track item){
+        <div class="molecule-circle"
+        cdkDrag
+        (cdkDragEnded)="handleDragEnd($event)"
+        >
+            <span class="molecule-label">{{item}}</span>
+        </div>
+    }
+</div>
+<div id="car" role="img" class="image" aria-label="car">
+    @for (item of carContents; track item){
+        <div class="molecule-circle"
+        cdkDrag
+        (cdkDragEnded)="handleDragEnd($event)"
+        >
+            <span class="molecule-label">{{item}}</span>
+        </div>
+    }
+</div>
+<div id="paint-cans" role="img" class="image" aria-label="3 paint cans of various colors">
     @for (item of paintCanContents; track item){
         <div class="molecule-circle"
         cdkDrag
@@ -14,21 +35,6 @@
         </div>
     }
 </div>
-   <div
-    class="smog "
-    id = "starting-zone"
-   > 
-
-    @for (item of molecules1; track item){
-        <div class="molecule-circle"
-        cdkDrag
-        (cdkDragEnded)="handleDragEnd($event)"
-        >
-            <span class="molecule-label">{{item}}</span>
-        </div>
-    }
-    </div>
-   
   <div
     class="smog ozone-cloud"
     title="creating ozone"

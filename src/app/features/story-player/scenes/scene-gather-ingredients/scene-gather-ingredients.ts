@@ -15,6 +15,8 @@ export class SceneGatherIngredients {
 
   molecules1 = ['1', '2', '3', '4', '5'];
   paintCanContents = ['VOC', 'VOC', 'VOC'];
+  carContents = ['VOC', 'NO₂'];
+  factoryContents = ['NO₂', 'NO₂'];
   ozoneCloudContents = [];
   handleDragEnd(event: CdkDragEnd) {
     const position = event.dropPoint;

@@ -15,20 +15,40 @@
   position: relative;
 }
 
-#paint-cans{
-    position: relative;
-    top: 15rem;
-    left: 20rem;
-    width: 13rem;
-    background-image: url("/images/paintCans.png");
+.image{
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 5;
 }
 
+#paint-cans{
+    position: relative;
+    top: -2rem;
+    left: 18rem;
+    width: 13rem;
+    background-image: url("/images/paintCans.png");
+}
+#car{
+    background-image: url("/images/scenes/burning-fuels/car.png");
+    position: relative;
+    left: 30rem;
+    top: 5rem;
+    width: 13rem;
+    height: 7rem;
+}
+
+#factory{
+    background-image: url("/images/scenes/burning-fuels/factory.png");
+    position: relative;
+    width: 13rem;
+    height: 10rem;
+    left: 5rem;
+    top: 13rem;
+}
+
 .ozone-cloud{
     position: relative;
-    bottom: 15rem;
+    bottom: 20rem;
     left: 50rem;
 }
 
