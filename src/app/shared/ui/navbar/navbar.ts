@@ -29,6 +29,5 @@ export class Navbar {
   reset() {
     console.log('[Navbar] Reset button clicked');
     this.story.resetProgress();
-    location.reload();
   }
 }
