@@ -2,13 +2,7 @@ import { Component, inject } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import {
-  CdkDrag,
-  CdkDragDrop,
-  CdkDropList,
-  transferArrayItem,
-  CdkDragEnd,
-} from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, transferArrayItem, CdkDragEnd } from '@angular/cdk/drag-drop';
 const sceneName = 'scene-gather-ingredients';
 @Component({
   selector: 'app-' + sceneName,
@@ -20,6 +14,7 @@ export class SceneGatherIngredients {
   story = inject(StoryService);
 
   molecules1 = ['1', '2', '3', '4', '5'];
+  paintCanContents = ['VOC', 'VOC', 'VOC'];
   ozoneCloudContents = [];
   handleDragEnd(event: CdkDragEnd) {
     const position = event.dropPoint;

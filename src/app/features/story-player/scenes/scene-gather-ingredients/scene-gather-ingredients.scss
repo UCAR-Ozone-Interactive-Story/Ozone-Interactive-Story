@@ -15,9 +15,20 @@
   position: relative;
 }
 
+#paint-cans{
+    position: relative;
+    top: 15rem;
+    left: 20rem;
+    width: 13rem;
+    background-image: url("/images/paintCans.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+
 .ozone-cloud{
     position: relative;
-    bottom: 5rem;
+    bottom: 15rem;
     left: 50rem;
 }
 
