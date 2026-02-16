@@ -7,24 +7,15 @@ import {
   CdkDragDrop,
   CdkDropList,
   transferArrayItem,
-  Point,
-  DragRef,
   CdkDragEnd,
 } from '@angular/cdk/drag-drop';
 const sceneName = 'scene-gather-ingredients';
 @Component({
   selector: 'app-' + sceneName,
-  imports: [NarrativeText, TranslateModule, CdkDrag, CdkDropList],
+  imports: [NarrativeText, TranslateModule, CdkDrag],
   templateUrl: './' + sceneName + '.html',
   styleUrl: './' + sceneName + '.scss',
 })
-// class CdkDropBlog extends CdkDropList {
-//     constructor(){
-//         super()
-
-//     }
-
-// }
 export class SceneGatherIngredients {
   story = inject(StoryService);
 
@@ -32,7 +23,6 @@ export class SceneGatherIngredients {
   ozoneCloudContents = [];
   handleDragEnd(event: CdkDragEnd) {
     const position = event.dropPoint;
-    let inOzoneCloud = false;
     const ozoneCloud = document.getElementById('ozone-cloud');
     event.source.getRootElement().style.visibility = 'hidden';
     const elementUnderItem = document.elementFromPoint(position.x, position.y);
