@@ -61,14 +61,8 @@ export class StoryService {
     StoryService.SCENE_DEFINITIONS.filter((s) => this.unlockedScenes().has(s.id)),
   );
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-    if (isPlatformBrowser(this.platformId)) {
-      this.loadFromStorage();
-    } else {
-      console.log('[StoryService] skipping localStorage');
-    }
+  constructor() {
+    this.loadFromStorage();
   }
 
   // move to next scene
