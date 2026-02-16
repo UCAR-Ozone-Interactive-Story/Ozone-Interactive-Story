@@ -6,15 +6,14 @@
 
    <div
     class="smog "
-    cdkDropList
-    #smog="cdkDropList"
-    [cdkDropListData]="smogParticals"
-    [cdkDropListConnectedTo]="startingZoneOne"
-    (cdkDropListDropped)="drop($event)"
+    id = "starting-zone"
    > 
 
-    @for (item of smogParticals; track item){
-        <div class="molecule-circle" cdkDrag>
+    @for (item of molecules1; track item){
+        <div class="molecule-circle"
+        cdkDrag
+        (cdkDragEnded)="handleDragEnd($event)"
+        >
             <span class="molecule-label">{{item}}</span>
         </div>
     }
@@ -22,14 +21,12 @@
    
   <div
     class="smog ozone-cloud"
-    cdkDropList
-    #startingZoneOne="cdkDropList"
-    [cdkDropListData]="molecules1"
-    [cdkDropListConnectedTo]="smog"
-    (cdkDropListDropped)="drop($event)"
+    id="ozone-cloud"
   >
-    @for (item of molecules1; track item){
-        <div class="molecule-circle" cdkDrag>
+    @for (item of ozoneCloudContents; track item){
+        <div class="molecule-circle"
+        cdkDrag
+        >
             <span class="molecule-label">{{item}}</span>
         </div>
     }
