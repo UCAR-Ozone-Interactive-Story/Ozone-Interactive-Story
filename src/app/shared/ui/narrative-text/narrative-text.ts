@@ -39,7 +39,7 @@ export class NarrativeText implements OnDestroy {
     this.isComplete.set(false);
 
     let i = 0;
-    this.timer = setInterval(() => {
+    this.timer = window.setInterval(() => {
       if (i < fullText.length) {
         this.displayedText.update(current => current + fullText.charAt(i));
         i++;

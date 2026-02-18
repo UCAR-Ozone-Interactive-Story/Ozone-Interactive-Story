@@ -1,9 +1,9 @@
 <div class="container">
-  <img src="./images/scenes/morning/temp-cityscape.png" style="width:100%; height:100%; position: absolute;">
+  <img src="./images/scenes/morning/temp-cityscape.png" style="width:100%; height:100%; position: absolute;" alt="placeholder cityscape">
   <app-narrative-text
     [text]="'SCENES.MORNING.TEXT_1' | translate"
     (completed)="story.setSceneCompleted(true)"
     [startDelay]="story.transition().textDelay"
   />
-  <img src="./images/scenes/morning/temp-sun.png" style="position: absolute; right: 0px; top: 0px; height: 40vh;">
+  <img src="./images/scenes/morning/temp-sun.png" style="position: absolute; right: 0px; top: 0px; height: 40vh;" alt="placeholder sun">
 </div>
