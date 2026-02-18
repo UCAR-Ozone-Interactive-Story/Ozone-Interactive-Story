@@ -7,7 +7,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet], // NgIf removed (using @if in template)
+  imports: [RouterOutlet], 
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   providers: [TranslateService],
