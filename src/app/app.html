@@ -1,10 +1,10 @@
-<div *ngIf="isPortrait()" class="rotate-warning">
-  <div class="rotate-content">
-    <h2>Please rotate your phone</h2>
-    <p>This experience is designed for landscape viewing.</p>
+@if (isPortrait()) {
+  <div class="rotate-warning">
+    <div class="rotate-content">
+      <h2>Please rotate your phone</h2>
+      <p>This experience is designed for landscape viewing.</p>
+    </div>
   </div>
-</div>
-  
-<div *ngIf="!isPortrait()">
+} @else {
   <router-outlet></router-outlet>
-</div>
+}

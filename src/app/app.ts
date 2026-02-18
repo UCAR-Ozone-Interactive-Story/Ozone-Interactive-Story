@@ -2,12 +2,12 @@ import { Component, signal, Inject, PLATFORM_ID, HostListener, HostBinding } fro
 import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { StoryService } from '@core/story.service';
-import { NgIf, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf],
+  imports: [RouterOutlet], 
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   providers: [TranslateService],
