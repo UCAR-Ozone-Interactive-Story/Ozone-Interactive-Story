@@ -15,20 +15,32 @@
   align-items: center;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.2);
   }
 
   &.active {
     cursor: default;
-    &:hover {
-      transform: none;
-    }
+    transform: scale(1);
   }
 
   img {
     display: block;
     height: auto;
+    animation: wobble-wobble 0.75s ease-in-out infinite alternate;
   }
+
+  &:hover img {
+    animation-play-state: paused;
+  }
+
+  &.active img {
+    animation: none;
+  }
+}
+
+@keyframes wobble-wobble {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
 }
 
 .car {
