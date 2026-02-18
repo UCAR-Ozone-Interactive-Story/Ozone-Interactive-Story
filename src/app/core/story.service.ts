@@ -52,6 +52,7 @@ export class StoryService {
 
   private currentIndex = signal(0);
   private unlockedScenes = signal(new Set<string>());
+  private sceneCompleted = signal(false);
 
   private readonly STORAGE_KEY_INDEX = 'story.currentIndex';
   private readonly STORAGE_KEY_UNLOCKED = 'story.unlockedScenes';
@@ -60,6 +61,9 @@ export class StoryService {
   scenes = computed(() =>
     StoryService.SCENE_DEFINITIONS.filter((s) => this.unlockedScenes().has(s.id)),
   );
+  isSceneCompleted = computed(() => this.sceneCompleted());
+  currentIndexValue = computed(() => this.currentIndex());
+  totalScenes = StoryService.SCENE_DEFINITIONS.length;
 
   constructor() {
     this.loadFromStorage();
@@ -70,8 +74,22 @@ export class StoryService {
     if (this.currentIndex() < StoryService.SCENE_DEFINITIONS.length - 1) {
       this.currentIndex.update((i) => i + 1);
       this.unlockScene(this.currentScene().id);
+      this.sceneCompleted.set(false);
       this.saveIndex();
     }
+  }
+
+  // move to previous scene
+  prevScene() {
+    if (this.currentIndex() > 0) {
+      this.currentIndex.update((i) => i - 1);
+      this.sceneCompleted.set(false);
+      this.saveIndex();
+    }
+  }
+
+  setSceneCompleted(completed: boolean) {
+    this.sceneCompleted.set(completed);
   }
 
   // jump to specific scene by scene id
@@ -80,6 +98,7 @@ export class StoryService {
     if (index > -1) {
       this.currentIndex.set(index);
       if (unlock) this.unlockScene(sceneId);
+      this.sceneCompleted.set(false);
       this.saveIndex();
     }
   }

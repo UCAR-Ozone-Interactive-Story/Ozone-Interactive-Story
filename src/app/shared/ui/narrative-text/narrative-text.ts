@@ -51,6 +51,7 @@ export class NarrativeText implements OnDestroy {
     this.clearTimer();
     this.displayedText.set(this.text());
     this.isComplete.set(true);
+    this.completed.emit();
   }
 
   private clearTimer() {

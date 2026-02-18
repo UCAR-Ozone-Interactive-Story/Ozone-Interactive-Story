@@ -7,7 +7,7 @@
     <app-clouds></app-clouds>
     <app-narrative-text
       [text]="'SCENES.SUNNY_DAY.TEXT_1' | translate"
-      (completed)="story.nextScene()"
+      (completed)="story.setSceneCompleted(true)"
     />
   </app-layer-wrapper>
 </div>

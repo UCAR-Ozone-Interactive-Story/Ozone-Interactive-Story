@@ -1,0 +1,15 @@
+<button
+  class="nav-button left-arrow"
+  (click)="goToPrevious()"
+  *ngIf="canGoPrevious()"
+>
+  ←
+</button>
+
+<button
+  class="nav-button right-arrow"
+  (click)="goToNext()"
+  *ngIf="canGoNext()"
+>
+  →
+</button>
