@@ -37,3 +37,21 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mobile-landscape .text-content {
+  font-size: 0.8rem !important;
+  line-height: 1.3 !important;
+}
+
+/* shrink general typography too */
+.mobile-landscape p {
+  font-size: 0.8rem !important;
+}
+
+.mobile-landscape h1 {
+  font-size: 1rem !important;
+}
+
+.mobile-landscape h2 {
+  font-size: 0.9rem !important;
+}

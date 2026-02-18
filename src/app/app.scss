@@ -188,3 +188,56 @@ main {
     margin-block: 1.5rem;
   }
 }
+
+.rotate-warning {
+  position: fixed;
+  inset: 0;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 9999;
+  padding: 24px;
+}
+
+.rotate-content {
+  max-width: 420px;
+}
+
+.rotate-content h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.rotate-content p {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  body {
+    font-size: 1.05rem;
+  }
+}
+
+:host.mobile-landscape {
+  font-size: 0.8rem;
+}
+
+/* force typography shrink across routed components */
+:host.mobile-landscape h1 {
+  font-size: 1.7rem;
+}
+
+:host.mobile-landscape h2 {
+  font-size: 1.3rem;
+}
+
+:host.mobile-landscape h3 {
+  font-size: 1.05rem;
+}
+
+:host.mobile-landscape p {
+  font-size: 0.9rem;
+}
