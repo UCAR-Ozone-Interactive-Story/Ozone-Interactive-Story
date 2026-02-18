@@ -51,6 +51,7 @@ export class StoryService {
   ];
 
   private currentIndex = signal(0);
+  private previousIndex = signal<number | null>(null);
   private unlockedScenes = signal(new Set<string>());
   private sceneCompleted = signal(false);
 
@@ -72,6 +73,7 @@ export class StoryService {
   // move to next scene
   nextScene() {
     if (this.currentIndex() < StoryService.SCENE_DEFINITIONS.length - 1) {
+      this.previousIndex.set(this.currentIndex());
       this.currentIndex.update((i) => i + 1);
       this.unlockScene(this.currentScene().id);
       this.sceneCompleted.set(false);
@@ -96,6 +98,7 @@ export class StoryService {
   jumpTo(sceneId: string, unlock: boolean = true) {
     const index = StoryService.SCENE_DEFINITIONS.findIndex((s) => s.id === sceneId);
     if (index > -1) {
+      this.previousIndex.set(this.currentIndex());
       this.currentIndex.set(index);
       if (unlock) this.unlockScene(sceneId);
       this.sceneCompleted.set(false);
@@ -163,4 +166,44 @@ export class StoryService {
     localStorage.removeItem('story.currentIndex');
     localStorage.removeItem('story.unlockedScenes');
   }
+
+  previousScene = computed(() =>
+    this.previousIndex() !== null
+      ? StoryService.SCENE_DEFINITIONS[this.previousIndex()!]
+      : null
+  );
+  
+  // list of transitions defined by which scenes are being moved between
+  // animationType is defined in story-player.scss and referenced in story-player.html
+  private static readonly TRANSITIONS: Record<string, TransitionConfig> = {
+    'nearby-factories->sunny-day': {
+      animationType: 'slide-left',
+      textDelay: 2500
+    },
+    'morning->vehicle-types': {
+      animationType: 'slide-down',
+      textDelay: 4000
+    }
+  };
+
+  transition = computed<TransitionConfig>(() => {
+    const prev = this.previousScene()?.id;
+    const curr = this.currentScene().id;
+
+    const key = `${prev}->${curr}`;
+
+    return ( // default transition is a 1-second fade with 0.2-second text delay
+      StoryService.TRANSITIONS[key] ?? {
+        animationType: 'fade',
+        textDelay: 1200
+      }
+    );
+  });
 }
+
+// animationType: all transitions are included here by name to be selected from above
+// textDelay: tell how long after the animation *starts* that the text should being showing
+type TransitionConfig = {
+  animationType: 'fade' | 'slide-left' | 'slide-down';
+  textDelay: number;
+};

@@ -3,6 +3,7 @@
   <app-narrative-text
     [text]="'SCENES.MORNING.TEXT_1' | translate"
     (completed)="story.setSceneCompleted(true)"
+    [startDelay]="story.transition().textDelay"
   />
   <img src="./images/scenes/morning/temp-sun.png" style="position: absolute; right: 0px; top: 0px; height: 40vh;">
 </div>
