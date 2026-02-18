@@ -3,13 +3,12 @@
     <button class="menu-button" routerLink="/">{{ 'NAVIGATION.HOME' | translate }}</button>
     <button class="menu-button" (click)="toggle()">{{ 'NAVIGATION.SCREENS' | translate }}</button>
     <button class="menu-button dev-reset" (click)="reset()">{{ 'NAVIGATION.RESET_STORY' | translate }}</button>
-
-    @if (open) {
-      <div class="menu-panel">
-        @for (scene of story.scenes(); track scene.id) {
-          <button class="item" (click)="navigate(scene)">{{ scene.i18n_title | translate }}</button>
-        }
-      </div>
-    }
   </div>
+  @if (open) {
+    <div class="menu-panel">
+      @for (scene of story.scenes(); track scene.id) {
+        <button class="item" (click)="navigate(scene)">{{ scene.i18n_title | translate }}</button>
+      }
+    </div>
+  }
 </nav>

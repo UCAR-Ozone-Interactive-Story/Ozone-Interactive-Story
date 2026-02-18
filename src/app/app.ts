@@ -1,9 +1,8 @@
 import { Component, signal, Inject, PLATFORM_ID, HostListener, HostBinding } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { StoryService } from '@core/story.service';
-import { NgIf } from '@angular/common';
+import { NgIf, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +19,7 @@ export class App {
   isPortrait = signal(false);
   isMobile = false;
 
-  // NEW: apply class to <app-root> when mobile landscape
+  // apply class to <app-root> when mobile landscape
   @HostBinding('class.mobile-landscape')
   get mobileLandscape() {
     return this.isMobile && !this.isPortrait();
@@ -32,17 +31,19 @@ export class App {
     private story: StoryService,
   ) {
     if (isPlatformBrowser(this.platformId)) {
+      // language setup
       const savedLang = localStorage.getItem('lang') || 'en';
       this.translate.setFallbackLang('en');
       this.translate.use(savedLang);
 
+      // restore story progress
       this.initStoryProgress();
 
-      // mobile detection + initial orientation check
+      // mobile detection + orientation
       this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       this.checkOrientation();
 
-      // iOS sometimes reports wrong size initially
+      // iOS sometimes reports incorrect dimensions initially
       setTimeout(() => this.checkOrientation(), 150);
     }
   }
