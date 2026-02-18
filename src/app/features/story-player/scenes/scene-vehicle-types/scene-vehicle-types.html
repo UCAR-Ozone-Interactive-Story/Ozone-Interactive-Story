@@ -1,6 +1,7 @@
 <div class="container">
   <app-narrative-text
     [text]="'SCENES.VEHICLE_TYPES.TEXT_1' | translate"
-    (completed)="story.nextScene()"
+    (completed)="story.setSceneCompleted(true)"
   />
+  <app-scene-navigation></app-scene-navigation>
 </div>

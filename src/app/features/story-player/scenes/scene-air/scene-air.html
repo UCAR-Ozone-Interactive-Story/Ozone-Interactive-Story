@@ -21,7 +21,6 @@
 
     <app-narrative-text
       [text]="'SCENES.AIR.NARRATIVE' | translate"
-      (completed)="story.nextScene()"
     />
     <app-multiple-choice
       [question]="'What gases are in Earth\'s atmosphere?'"
@@ -35,4 +34,5 @@
       (optionSelected)="onOptionSelected($event)"
     ></app-multiple-choice>
   </app-layer-wrapper>
+  <app-scene-navigation></app-scene-navigation>
 </div>
