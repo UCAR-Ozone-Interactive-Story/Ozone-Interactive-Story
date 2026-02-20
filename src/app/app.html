@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+@if (isPortrait()) {
+  <div class="rotate-warning">
+    <div class="rotate-content">
+      <h2>Please rotate your phone</h2>
+      <p>This experience is designed for landscape viewing.</p>
+    </div>
+  </div>
+} @else {
+  <router-outlet></router-outlet>
+}

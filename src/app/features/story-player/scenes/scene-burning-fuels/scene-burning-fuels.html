@@ -34,7 +34,7 @@
 
       <app-narrative-text
         [text]="'SCENES.BURNING_FUELS.TEXT_1' | translate"
-        (completed)="story.nextScene()"
+        (completed)="story.setSceneCompleted(true)"
       />
     </div>
   </app-layer-wrapper>

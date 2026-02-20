@@ -1,13 +1,13 @@
-import { Component, signal, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, signal, Inject, PLATFORM_ID, HostListener, HostBinding } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { StoryService } from '@core/story.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet], 
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   providers: [TranslateService],
@@ -15,18 +15,50 @@ import { StoryService } from '@core/story.service';
 export class App {
   protected readonly title = signal('Ozone Interactive Story');
 
+  // orientation + device signals
+  isPortrait = signal(false);
+  isMobile = false;
+
+  // apply class to <app-root> when mobile landscape
+  @HostBinding('class.mobile-landscape')
+  get mobileLandscape() {
+    return this.isMobile && !this.isPortrait();
+  }
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private translate: TranslateService,
     private story: StoryService,
   ) {
     if (isPlatformBrowser(this.platformId)) {
+      // language setup
       const savedLang = localStorage.getItem('lang') || 'en';
-      this.translate.setFallbackLang('en'); // default fallback
-      this.translate.use(savedLang); // use persisted or default
+      this.translate.setFallbackLang('en');
+      this.translate.use(savedLang);
 
+      // restore story progress
       this.initStoryProgress();
+
+      // mobile detection + orientation
+      this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      this.checkOrientation();
+
+      // iOS sometimes reports incorrect dimensions initially
+      setTimeout(() => this.checkOrientation(), 150);
     }
+  }
+
+  // watch rotation + resize
+  @HostListener('window:resize')
+  @HostListener('window:orientationchange')
+  checkOrientation() {
+    if (!this.isMobile) {
+      this.isPortrait.set(false);
+      return;
+    }
+
+    const portrait = window.innerHeight > window.innerWidth;
+    this.isPortrait.set(portrait);
   }
 
   private initStoryProgress() {
