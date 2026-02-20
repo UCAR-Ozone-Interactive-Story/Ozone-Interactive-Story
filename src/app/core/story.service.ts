@@ -9,6 +9,7 @@ import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-f
 import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
+import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -52,13 +53,18 @@ export class StoryService {
     },
     {
       id: 'ozone-ingredients',
-      i18n_title: 'SCENES.OZONE.TITLE',
+      i18n_title: 'SCENES.OZONE_INGREDIENTS.TITLE',
       component: SceneOzoneIngredients,
     },
     {
       id: 'gather-ingredients',
       i18n_title: 'SCENES.GATHER_INGREDIENTS.TITLE',
       component: SceneGatherIngredients,
+    },
+    {
+      id: 'end-scene',
+      i18n_title: 'SCENES.END.TITLE',
+      component: SceneEnd,
     },
   ];
 
