@@ -8,6 +8,7 @@ import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
 import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
+import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -50,6 +51,11 @@ export class StoryService {
       component: SceneBurningFuels,
     },
     {
+      id: 'ozone-ingredients',
+      i18n_title: 'SCENES.OZONE.TITLE',
+      component: SceneOzoneIngredients,
+    },
+    {
       id: 'gather-ingredients',
       i18n_title: 'SCENES.GATHER_INGREDIENTS.TITLE',
       component: SceneGatherIngredients,
@@ -67,9 +73,7 @@ export class StoryService {
     StoryService.SCENE_DEFINITIONS.filter((s) => this.unlockedScenes().has(s.id)),
   );
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.loadFromStorage();
     } else {
@@ -114,7 +118,7 @@ export class StoryService {
         const index = Number(savedIndex);
         if (!Number.isNaN(index)) {
           this.currentIndex.set(
-            Math.min(Math.max(index, 0), StoryService.SCENE_DEFINITIONS.length - 1)
+            Math.min(Math.max(index, 0), StoryService.SCENE_DEFINITIONS.length - 1),
           );
         }
       }
@@ -125,29 +129,22 @@ export class StoryService {
 
       this.unlockScene(this.currentScene().id);
       this.jumpTo(this.currentScene().id);
-
     } catch (err) {
       console.warn('Failed to restore story progress', err);
     }
   }
 
   private saveIndex() {
-    localStorage.setItem(
-      this.STORAGE_KEY_INDEX,
-      String(this.currentIndex())
-    );
+    localStorage.setItem(this.STORAGE_KEY_INDEX, String(this.currentIndex()));
   }
 
   private saveUnlocked() {
-    localStorage.setItem(
-      this.STORAGE_KEY_UNLOCKED,
-      JSON.stringify([...this.unlockedScenes()])
-    );
+    localStorage.setItem(this.STORAGE_KEY_UNLOCKED, JSON.stringify([...this.unlockedScenes()]));
   }
 
   resetProgress() {
     console.log('[StoryService] Resetting story progress');
-    
+
     // clear signals
     this.currentIndex.set(0);
     this.unlockedScenes.set(new Set());
