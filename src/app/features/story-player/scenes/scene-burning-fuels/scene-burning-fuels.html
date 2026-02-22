@@ -35,6 +35,7 @@
       <app-narrative-text
         [text]="'SCENES.BURNING_FUELS.TEXT_1' | translate"
         (completed)="story.setSceneCompleted(true)"
+        [startDelay]="story.transition().textDelay"
       />
     </div>
   </app-layer-wrapper>

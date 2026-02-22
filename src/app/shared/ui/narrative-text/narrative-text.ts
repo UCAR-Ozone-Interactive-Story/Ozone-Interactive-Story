@@ -15,11 +15,21 @@ export class NarrativeText implements OnDestroy {
   displayedText = signal('');
   isComplete = signal(false);
   private timer: any;
+  private startDelayTimer: any;
+  startDelay = input(0);
 
   constructor() {
     effect(() => {
       const fullText = this.text();
-      this.resetAndType(fullText);
+      const delay = this.startDelay();
+
+      if (this.startDelayTimer) {
+        clearTimeout(this.startDelayTimer);
+      }
+
+      this.startDelayTimer = setTimeout(() => {
+        this.resetAndType(fullText);
+      }, delay);
     });
   }
 
