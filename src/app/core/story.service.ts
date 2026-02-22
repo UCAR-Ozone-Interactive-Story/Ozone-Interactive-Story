@@ -171,7 +171,7 @@ export class StoryService {
       ? StoryService.SCENE_DEFINITIONS[this.previousIndex()!]
       : null
   );
-  
+
   // list of transitions defined by which scenes are being moved between
   // animationType is defined in story-player.scss and referenced in story-player.html
   private static readonly TRANSITIONS: Record<string, TransitionConfig> = {
@@ -202,7 +202,7 @@ export class StoryService {
 
 // animationType: all transitions are included here by name to be selected from above
 // textDelay: tell how long after the animation *starts* that the text should being showing
-type TransitionConfig = {
+interface TransitionConfig {
   animationType: 'fade' | 'slide-left' | 'slide-down';
   textDelay: number;
 };
