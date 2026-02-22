@@ -47,6 +47,11 @@
         "TITLE": "Gathering Ingredients",
         "TEXT_1": "Create ozone by dragging VOC and NO₂ molecules to the smog cloud.",
         "INGREDIENTS_GATHERED_BUBBLE": "Great! Now that you have gathered the ingredients you can procced" 
+    },
+    "END": {
+        "TITLE": "End",
+        "TEXT_1": "This is here for testing purposes"
     }
+
   }
 }
