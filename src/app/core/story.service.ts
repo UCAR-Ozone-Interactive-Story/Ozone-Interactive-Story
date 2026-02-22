@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { computed, Injectable, signal, Inject, PLATFORM_ID } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
 import { Scene } from './scene';
@@ -95,7 +94,7 @@ export class StoryService {
   }
 
   // jump to specific scene by scene id
-  jumpTo(sceneId: string, unlock: boolean = true) {
+  jumpTo(sceneId: string, unlock = true) {
     const index = StoryService.SCENE_DEFINITIONS.findIndex((s) => s.id === sceneId);
     if (index > -1) {
       this.previousIndex.set(this.currentIndex());
@@ -172,7 +171,7 @@ export class StoryService {
       ? StoryService.SCENE_DEFINITIONS[this.previousIndex()!]
       : null
   );
-  
+
   // list of transitions defined by which scenes are being moved between
   // animationType is defined in story-player.scss and referenced in story-player.html
   private static readonly TRANSITIONS: Record<string, TransitionConfig> = {
@@ -203,7 +202,7 @@ export class StoryService {
 
 // animationType: all transitions are included here by name to be selected from above
 // textDelay: tell how long after the animation *starts* that the text should being showing
-type TransitionConfig = {
+interface TransitionConfig {
   animationType: 'fade' | 'slide-left' | 'slide-down';
   textDelay: number;
 };
