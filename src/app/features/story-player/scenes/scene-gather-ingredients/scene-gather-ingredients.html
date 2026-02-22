@@ -1,8 +1,11 @@
 <div class="container">
-  <app-narrative-text
-    [text]="'SCENES.GATHER_INGREDIENTS.TEXT_1' | translate"
-  />
-
+    @if (story.isSceneCompleted()) {
+        <app-narrative-text [text]="'SCENES.GATHER_INGREDIENTS.INGREDIENTS_GATHERED_BUBBLE' | translate" />
+    } @else {
+        <app-narrative-text
+            [text]="'SCENES.GATHER_INGREDIENTS.TEXT_1' | translate"
+        />
+    }
 
 <div id="factory" role="img" class="image" aria-label="factory">
     @for (item of factoryContents; track item){
@@ -43,7 +46,5 @@
     id="ozone-cloud"
   >
   </div>
-    <!-- <div class="bubble-container">
-        <app-narrative-text [text]="'SCENES.GATHER_INGREDIENTS.OZONE_BUBBLE' | translate" />
-    </div> -->
 </div>
+
