@@ -1,7 +1,6 @@
 <div class="container">
   <app-narrative-text
     [text]="'SCENES.GATHER_INGREDIENTS.TEXT_1' | translate"
-    (completed)="story.nextScene()"
   />
 
 
@@ -9,7 +8,7 @@
     @for (item of factoryContents; track item){
         <div class="molecule-circle" 
         cdkDrag
-        cdkDragData="notInOzoneCloud"
+        inOzoneCloud="false"
         (cdkDragEnded)="handleDragEnd($event)"
         >
             <span class="molecule-label">{{item}}</span>
@@ -19,8 +18,8 @@
 <div id="car" role="img" class="image" aria-label="car">
     @for (item of carContents; track item){
         <div class="molecule-circle" 
+        inOzoneCloud="false"
         cdkDrag
-        cdkDragData="notInOzoneCloud"
         (cdkDragEnded)="handleDragEnd($event)"
         >
             <span class="molecule-label">{{item}}</span>
@@ -31,7 +30,7 @@
     @for (item of paintCanContents; track item){
         <div class="molecule-circle" 
         cdkDrag
-        cdkDragData="notInOzoneCloud"
+        inOzoneCloud="false"
         (cdkDragEnded)="handleDragEnd($event)"
         >
             <span class="molecule-label">{{item}}</span>

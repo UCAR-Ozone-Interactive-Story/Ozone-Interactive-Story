@@ -2,7 +2,7 @@ import { Component, inject, output, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { CdkDrag, CdkDragDrop, transferArrayItem, CdkDragEnd, Point } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragEnd, Point } from '@angular/cdk/drag-drop';
 const sceneName = 'scene-gather-ingredients';
 @Component({
   selector: 'app-' + sceneName,
@@ -16,14 +16,15 @@ export class SceneGatherIngredients {
   paintCanContents = ['VOC', 'VOC', 'VOC'];
   carContents = ['VOC', 'NO₂'];
   factoryContents = ['NO₂', 'NO₂'];
-  isComplete = signal(false);
-
-  completed = output<void>();
 
   ozoneCloudHas(moleculeToFind: string) {
-    const molecules = document.getElementsByClassName('molecule-label');
+    const molecules = document.getElementsByClassName('molecule-circle');
     for (let i = 0; i < molecules.length; i++) {
-      if (molecules[i].innerHTML == moleculeToFind) {
+      const moleculeLabel = molecules[i].childNodes[0] as Element;
+      if (
+        moleculeLabel.innerHTML === moleculeToFind &&
+        molecules[i].getAttribute('inOzoneCloud') === 'true'
+      ) {
         return true;
       }
     }
@@ -39,19 +40,16 @@ export class SceneGatherIngredients {
   handleDragEnd(event: CdkDragEnd) {
     const position = event.dropPoint;
     const ozoneCloud = document.getElementById('ozone-cloud');
-
     const elementUnderItem = this.getElementUnder(event.source.getRootElement(), position);
 
     if (elementUnderItem === ozoneCloud) {
-      event.source.data = 'inOzoneCloud';
+      event.source.getRootElement().setAttribute('inOzoneCloud', 'true');
       if (this.ozoneCloudHas('VOC') && this.ozoneCloudHas('NO₂')) {
-        if (!this.isComplete()) {
-          this.isComplete.set(true);
-          this.completed.emit();
-        }
+        console.log('ozone cloud has ingredients');
+        this.story.setSceneCompleted(true);
       }
     } else {
-      event.source.data = 'notInOzoneCloud';
+      event.source.getRootElement().setAttribute('inOzoneCloud', 'false');
       // move back to previous drop container
       event.source.reset();
     }
