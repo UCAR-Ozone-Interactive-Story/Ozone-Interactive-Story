@@ -8,6 +8,7 @@
     <app-narrative-text
       [text]="'SCENES.SUNNY_DAY.TEXT_1' | translate"
       (completed)="story.setSceneCompleted(true)"
+      [startDelay]="story.transition().textDelay"
     />
   </app-layer-wrapper>
 </div>

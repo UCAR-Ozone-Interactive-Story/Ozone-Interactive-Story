@@ -3,6 +3,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { inject } from '@angular/core/primitives/di';
 
 @Component({
   selector: 'app-language-dropdown',
@@ -17,16 +18,13 @@ import { MatSelectModule } from '@angular/material/select';
   templateUrl: './language-dropdown.html'
 })
 export class LanguageDropdownComponent implements OnInit {
+  private translate = inject(TranslateService);
   languages = [
     { code: 'en', label: 'English' },
     { code: 'es', label: 'Español' }
   ];
 
   selectedLang = 'en'; // default
-
-  constructor(
-    private translate: TranslateService,
-  ) {}
 
   ngOnInit() {
     const storedLang = localStorage.getItem('lang');

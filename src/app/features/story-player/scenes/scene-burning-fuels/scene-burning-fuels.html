@@ -3,7 +3,7 @@
     <app-sky-grass bg-layer></app-sky-grass>
 
     <div class="content">
-      <div class="interactive-object factory" (click)="activateFactory()" [class.active]="isFactoryActive()">
+      <div class="interactive-object factory" (click)="activateFactory()" (keydown.space)="activateFactory()" [class.active]="isFactoryActive()" tabindex="0">
         <img src="images/scenes/burning-fuels/factory.png" width="240" alt="Factory" />
 
         @if (isFactoryActive()) {
@@ -18,7 +18,7 @@
         }
       </div>
 
-      <div class="interactive-object car" (click)="activateCar()" [class.active]="isCarActive()">
+      <div class="interactive-object car" (click)="activateCar()" (keydown.space)="activateCar()" [class.active]="isCarActive()" tabindex="0">
         <img src="images/scenes/burning-fuels/car.png" width="220" alt="Car" />
 
         @if (isCarActive()) {
@@ -35,6 +35,7 @@
       <app-narrative-text
         [text]="'SCENES.BURNING_FUELS.TEXT_1' | translate"
         (completed)="story.setSceneCompleted(true)"
+        [startDelay]="story.transition().textDelay"
       />
     </div>
   </app-layer-wrapper>

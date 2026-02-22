@@ -1,15 +1,17 @@
-<button
-  class="nav-button left-arrow"
-  (click)="goToPrevious()"
-  *ngIf="canGoPrevious()"
->
-  ←
-</button>
+@if (canGoPrevious()) {
+  <button
+    class="nav-button left-arrow"
+    (click)="goToPrevious()"
+  >
+    ←
+  </button>
+}
 
-<button
-  class="nav-button right-arrow"
-  (click)="goToNext()"
-  *ngIf="canGoNext()"
->
-  →
-</button>
+@if (canGoNext()) {
+  <button
+    class="nav-button right-arrow"
+    (click)="goToNext()"
+  >
+    →
+  </button>
+}
