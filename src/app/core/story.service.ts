@@ -7,6 +7,7 @@ import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/sce
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
 import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
+import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecule/scene-ozone-molecule';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -47,6 +48,11 @@ export class StoryService {
       id: 'burning-fuels',
       i18n_title: 'SCENES.BURNING_FUELS.TITLE',
       component: SceneBurningFuels,
+    },
+    {
+      id: 'ozone-molecule',
+      i18n_title: 'SCENES.OZONE_MOLECULE.TITLE',
+      component: OzoneMolecule,
     },
   ];
 

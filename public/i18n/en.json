@@ -38,6 +38,10 @@
       "TEXT_1": "Burning fossil fuels releases invisible gases into the air — carbon dioxide [CO2], nitrogen dioxide [NO2], volatile organic compounds (VOCs) [VOC], and other gases, too. Factories and vehicles [Factory + Car] also release solid particles of dust, carbon soot [C], and smoke that are so tiny they can float in the air for a long time.",
       "FACTORY_BUBBLE": "We burn fossil fuels to create energy for the city!",
       "CAR_BUBBLE": "Engines burn gasoline to make cars move!"
+    },
+    "OZONE_MOLECULE": {
+      "TITLE": "Burning Molecule",
+      "TEXT_1": "Burning fossil fuels releases invisible gases into the air — carbon dioxide, nitrogen dioxide, and other pollutants..."
     }
   }
 }
