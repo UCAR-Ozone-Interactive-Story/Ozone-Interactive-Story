@@ -1,37 +1,51 @@
-.cloud-layer {
+:host {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  overflow: hidden;
+}
+
+/* container fills screen */
+.clouds-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .cloud {
-    height: 180px; /* control the size */
-    aspect-ratio: 1.8;
-    --g: radial-gradient(50% 50%, #000 98%, #0000) no-repeat;
-    mask: var(--g) 100% 100%/30% 60%,var(--g) 70% 0/50% 100%,var(--g) 0 100%/36% 68%,var(--g) 27% 18%/26% 40%,linear-gradient(#000 0 0) bottom/67% 58% no-repeat;
-    background: white;
+  position: absolute;
+  height: auto;
+
+  filter: drop-shadow(-10px 10px 5px rgba(0,0,0,0.7));
+
+  animation-name: cloud-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
-#cloud-1 {
-  position: absolute;
+.cloud-1 {
   top: 12%;
   left: 8%;
-  transform: scale(1.0);
-  opacity: 0.95;
+  width: 25rem;
+  animation-duration: 30s;
 }
 
-#cloud-2 {
-  position: absolute;
-  top: 22%;
-  left: 42%;
-  transform: scale(1.25);
-  opacity: 0.85;
+.cloud-2 {
+  transform: scaleX(-1);
+  top: 20%;
+  right: 10%;
+  width: 22rem;
+  animation-duration: 20s;
 }
 
-#cloud-3 {
-  position: absolute;
-  top: 10%;
-  left: 70%;
-  transform: scale(0.9);
-  opacity: 0.9;
+/* drifting animation */
+@keyframes cloud-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120px);
+  }
 }
