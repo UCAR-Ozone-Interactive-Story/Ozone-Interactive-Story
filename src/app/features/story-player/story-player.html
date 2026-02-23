@@ -1,3 +1,14 @@
 <app-navbar></app-navbar>
+<app-scene-navigation></app-scene-navigation>
 
-<ng-container [ngComponentOutlet]=service.currentScene().component></ng-container>
+<div class="scene-container">
+  @for (scene of [service.currentScene()]; track scene.id) {
+    <div
+      class="scene"
+      [animate.enter]="enterAnimation"
+      [animate.leave]="leaveAnimation"
+    >
+      <ng-container [ngComponentOutlet]="scene.component"></ng-container>
+    </div>
+  }
+</div>

@@ -27,6 +27,12 @@ export class SceneAir {
       this.selectedMolecules.update(molecules => new Set([...molecules, option.id]));
     }
 
+    // Check if all correct molecules are selected
+    const correctIds = ['n2', 'o2', 'other'];
+    const allSelected = correctIds.every(id => this.selectedMolecules().has(id));
+    if (allSelected) {
+      this.story.setSceneCompleted(true);
+    }
   }
 
   isMoleculeVisible(moleculeId: string): boolean {

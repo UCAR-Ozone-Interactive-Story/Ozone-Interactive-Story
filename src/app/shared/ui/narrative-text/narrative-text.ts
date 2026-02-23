@@ -14,12 +14,22 @@ export class NarrativeText implements OnDestroy {
 
   displayedText = signal('');
   isComplete = signal(false);
-  private timer: any;
+  private timer = 0;
+  private startDelayTimer = 0;
+  startDelay = input(0);
 
   constructor() {
     effect(() => {
       const fullText = this.text();
-      this.resetAndType(fullText);
+      const delay = this.startDelay();
+
+      if (this.startDelayTimer) {
+        clearTimeout(this.startDelayTimer);
+      }
+
+      this.startDelayTimer = window.setTimeout(() => {
+        this.resetAndType(fullText);
+      }, delay);
     });
   }
 
@@ -29,7 +39,7 @@ export class NarrativeText implements OnDestroy {
     this.isComplete.set(false);
 
     let i = 0;
-    this.timer = setInterval(() => {
+    this.timer = window.setInterval(() => {
       if (i < fullText.length) {
         this.displayedText.update(current => current + fullText.charAt(i));
         i++;
@@ -51,6 +61,7 @@ export class NarrativeText implements OnDestroy {
     this.clearTimer();
     this.displayedText.set(this.text());
     this.isComplete.set(true);
+    this.completed.emit();
   }
 
   private clearTimer() {

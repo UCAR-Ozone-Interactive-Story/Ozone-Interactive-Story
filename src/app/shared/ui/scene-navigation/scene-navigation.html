@@ -1,0 +1,17 @@
+@if (canGoPrevious()) {
+  <button
+    class="nav-button left-arrow"
+    (click)="goToPrevious()"
+  >
+    ←
+  </button>
+}
+
+@if (canGoNext()) {
+  <button
+    class="nav-button right-arrow"
+    (click)="goToNext()"
+  >
+    →
+  </button>
+}

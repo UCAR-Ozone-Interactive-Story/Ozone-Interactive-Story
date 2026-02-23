@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { computed, Injectable, signal, Inject, PLATFORM_ID } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
 import { Scene } from './scene';
@@ -51,7 +50,9 @@ export class StoryService {
   ];
 
   private currentIndex = signal(0);
+  private previousIndex = signal<number | null>(null);
   private unlockedScenes = signal(new Set<string>());
+  private sceneCompleted = signal(false);
 
   private readonly STORAGE_KEY_INDEX = 'story.currentIndex';
   private readonly STORAGE_KEY_UNLOCKED = 'story.unlockedScenes';
@@ -60,6 +61,9 @@ export class StoryService {
   scenes = computed(() =>
     StoryService.SCENE_DEFINITIONS.filter((s) => this.unlockedScenes().has(s.id)),
   );
+  isSceneCompleted = computed(() => this.sceneCompleted());
+  currentIndexValue = computed(() => this.currentIndex());
+  totalScenes = StoryService.SCENE_DEFINITIONS.length;
 
   constructor() {
     this.loadFromStorage();
@@ -68,18 +72,35 @@ export class StoryService {
   // move to next scene
   nextScene() {
     if (this.currentIndex() < StoryService.SCENE_DEFINITIONS.length - 1) {
+      this.previousIndex.set(this.currentIndex());
       this.currentIndex.update((i) => i + 1);
       this.unlockScene(this.currentScene().id);
+      this.sceneCompleted.set(false);
       this.saveIndex();
     }
   }
 
+  // move to previous scene
+  prevScene() {
+    if (this.currentIndex() > 0) {
+      this.currentIndex.update((i) => i - 1);
+      this.sceneCompleted.set(false);
+      this.saveIndex();
+    }
+  }
+
+  setSceneCompleted(completed: boolean) {
+    this.sceneCompleted.set(completed);
+  }
+
   // jump to specific scene by scene id
-  jumpTo(sceneId: string, unlock: boolean = true) {
+  jumpTo(sceneId: string, unlock = true) {
     const index = StoryService.SCENE_DEFINITIONS.findIndex((s) => s.id === sceneId);
     if (index > -1) {
+      this.previousIndex.set(this.currentIndex());
       this.currentIndex.set(index);
       if (unlock) this.unlockScene(sceneId);
+      this.sceneCompleted.set(false);
       this.saveIndex();
     }
   }
@@ -144,4 +165,44 @@ export class StoryService {
     localStorage.removeItem('story.currentIndex');
     localStorage.removeItem('story.unlockedScenes');
   }
+
+  previousScene = computed(() =>
+    this.previousIndex() !== null
+      ? StoryService.SCENE_DEFINITIONS[this.previousIndex()!]
+      : null
+  );
+
+  // list of transitions defined by which scenes are being moved between
+  // animationType is defined in story-player.scss and referenced in story-player.html
+  private static readonly TRANSITIONS: Record<string, TransitionConfig> = {
+    'nearby-factories->sunny-day': {
+      animationType: 'slide-left',
+      textDelay: 2500
+    },
+    'morning->vehicle-types': {
+      animationType: 'slide-down',
+      textDelay: 4000
+    }
+  };
+
+  transition = computed<TransitionConfig>(() => {
+    const prev = this.previousScene()?.id;
+    const curr = this.currentScene().id;
+
+    const key = `${prev}->${curr}`;
+
+    return ( // default transition is a 1-second fade with 0.2-second text delay
+      StoryService.TRANSITIONS[key] ?? {
+        animationType: 'fade',
+        textDelay: 1200
+      }
+    );
+  });
 }
+
+// animationType: all transitions are included here by name to be selected from above
+// textDelay: tell how long after the animation *starts* that the text should being showing
+interface TransitionConfig {
+  animationType: 'fade' | 'slide-left' | 'slide-down';
+  textDelay: number;
+};
