@@ -6,6 +6,9 @@ import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/sce
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
 import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
+import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
+import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
+import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -35,17 +38,32 @@ export class StoryService {
     {
       id: 'sunny-day',
       i18n_title: 'SCENES.SUNNY_DAY.TITLE',
-      component: SceneSunnyDay
+      component: SceneSunnyDay,
     },
     {
       id: 'air',
       i18n_title: 'SCENES.AIR.TITLE',
-      component: SceneAir
+      component: SceneAir,
     },
     {
       id: 'burning-fuels',
       i18n_title: 'SCENES.BURNING_FUELS.TITLE',
       component: SceneBurningFuels,
+    },
+    {
+      id: 'ozone-ingredients',
+      i18n_title: 'SCENES.OZONE_INGREDIENTS.TITLE',
+      component: SceneOzoneIngredients,
+    },
+    {
+      id: 'gather-ingredients',
+      i18n_title: 'SCENES.GATHER_INGREDIENTS.TITLE',
+      component: SceneGatherIngredients,
+    },
+    {
+      id: 'end-scene',
+      i18n_title: 'SCENES.END.TITLE',
+      component: SceneEnd,
     },
   ];
 
@@ -123,7 +141,7 @@ export class StoryService {
         const index = Number(savedIndex);
         if (!Number.isNaN(index)) {
           this.currentIndex.set(
-            Math.min(Math.max(index, 0), StoryService.SCENE_DEFINITIONS.length - 1)
+            Math.min(Math.max(index, 0), StoryService.SCENE_DEFINITIONS.length - 1),
           );
         }
       }
@@ -134,24 +152,17 @@ export class StoryService {
 
       this.unlockScene(this.currentScene().id);
       this.jumpTo(this.currentScene().id);
-
     } catch (err) {
       console.warn('Failed to restore story progress', err);
     }
   }
 
   private saveIndex() {
-    localStorage.setItem(
-      this.STORAGE_KEY_INDEX,
-      String(this.currentIndex())
-    );
+    localStorage.setItem(this.STORAGE_KEY_INDEX, String(this.currentIndex()));
   }
 
   private saveUnlocked() {
-    localStorage.setItem(
-      this.STORAGE_KEY_UNLOCKED,
-      JSON.stringify([...this.unlockedScenes()])
-    );
+    localStorage.setItem(this.STORAGE_KEY_UNLOCKED, JSON.stringify([...this.unlockedScenes()]));
   }
 
   resetProgress() {
