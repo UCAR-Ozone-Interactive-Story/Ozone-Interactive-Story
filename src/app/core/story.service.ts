@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { computed, Injectable, signal, Inject, PLATFORM_ID } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
 import { Scene } from './scene';
@@ -8,6 +7,9 @@ import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
 import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
 import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecule/scene-ozone-molecule';
+import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
+import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
+import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -37,12 +39,12 @@ export class StoryService {
     {
       id: 'sunny-day',
       i18n_title: 'SCENES.SUNNY_DAY.TITLE',
-      component: SceneSunnyDay
+      component: SceneSunnyDay,
     },
     {
       id: 'air',
       i18n_title: 'SCENES.AIR.TITLE',
-      component: SceneAir
+      component: SceneAir,
     },
     {
       id: 'burning-fuels',
@@ -50,13 +52,29 @@ export class StoryService {
       component: SceneBurningFuels,
     },
     {
+      id: 'ozone-ingredients',
+      i18n_title: 'SCENES.OZONE_INGREDIENTS.TITLE',
+      component: SceneOzoneIngredients,
+    },
+    {
+      id: 'gather-ingredients',
+      i18n_title: 'SCENES.GATHER_INGREDIENTS.TITLE',
+      component: SceneGatherIngredients,
+    },
+    {
       id: 'ozone-molecule',
       i18n_title: 'SCENES.OZONE_MOLECULE.TITLE',
       component: OzoneMolecule,
     },
+    {
+      id: 'end-scene',
+      i18n_title: 'SCENES.END.TITLE',
+      component: SceneEnd,
+    },
   ];
 
   private currentIndex = signal(0);
+  private previousIndex = signal<number | null>(null);
   private unlockedScenes = signal(new Set<string>());
   private sceneCompleted = signal(false);
 
@@ -78,6 +96,7 @@ export class StoryService {
   // move to next scene
   nextScene() {
     if (this.currentIndex() < StoryService.SCENE_DEFINITIONS.length - 1) {
+      this.previousIndex.set(this.currentIndex());
       this.currentIndex.update((i) => i + 1);
       this.unlockScene(this.currentScene().id);
       this.sceneCompleted.set(false);
@@ -99,9 +118,10 @@ export class StoryService {
   }
 
   // jump to specific scene by scene id
-  jumpTo(sceneId: string, unlock: boolean = true) {
+  jumpTo(sceneId: string, unlock = true) {
     const index = StoryService.SCENE_DEFINITIONS.findIndex((s) => s.id === sceneId);
     if (index > -1) {
+      this.previousIndex.set(this.currentIndex());
       this.currentIndex.set(index);
       if (unlock) this.unlockScene(sceneId);
       this.sceneCompleted.set(false);
@@ -127,7 +147,7 @@ export class StoryService {
         const index = Number(savedIndex);
         if (!Number.isNaN(index)) {
           this.currentIndex.set(
-            Math.min(Math.max(index, 0), StoryService.SCENE_DEFINITIONS.length - 1)
+            Math.min(Math.max(index, 0), StoryService.SCENE_DEFINITIONS.length - 1),
           );
         }
       }
@@ -138,24 +158,17 @@ export class StoryService {
 
       this.unlockScene(this.currentScene().id);
       this.jumpTo(this.currentScene().id);
-
     } catch (err) {
       console.warn('Failed to restore story progress', err);
     }
   }
 
   private saveIndex() {
-    localStorage.setItem(
-      this.STORAGE_KEY_INDEX,
-      String(this.currentIndex())
-    );
+    localStorage.setItem(this.STORAGE_KEY_INDEX, String(this.currentIndex()));
   }
 
   private saveUnlocked() {
-    localStorage.setItem(
-      this.STORAGE_KEY_UNLOCKED,
-      JSON.stringify([...this.unlockedScenes()])
-    );
+    localStorage.setItem(this.STORAGE_KEY_UNLOCKED, JSON.stringify([...this.unlockedScenes()]));
   }
 
   resetProgress() {
@@ -169,4 +182,44 @@ export class StoryService {
     localStorage.removeItem('story.currentIndex');
     localStorage.removeItem('story.unlockedScenes');
   }
+
+  previousScene = computed(() =>
+    this.previousIndex() !== null
+      ? StoryService.SCENE_DEFINITIONS[this.previousIndex()!]
+      : null
+  );
+
+  // list of transitions defined by which scenes are being moved between
+  // animationType is defined in story-player.scss and referenced in story-player.html
+  private static readonly TRANSITIONS: Record<string, TransitionConfig> = {
+    'nearby-factories->sunny-day': {
+      animationType: 'slide-left',
+      textDelay: 2500
+    },
+    'morning->vehicle-types': {
+      animationType: 'slide-down',
+      textDelay: 4000
+    }
+  };
+
+  transition = computed<TransitionConfig>(() => {
+    const prev = this.previousScene()?.id;
+    const curr = this.currentScene().id;
+
+    const key = `${prev}->${curr}`;
+
+    return ( // default transition is a 1-second fade with 0.2-second text delay
+      StoryService.TRANSITIONS[key] ?? {
+        animationType: 'fade',
+        textDelay: 1200
+      }
+    );
+  });
 }
+
+// animationType: all transitions are included here by name to be selected from above
+// textDelay: tell how long after the animation *starts* that the text should being showing
+interface TransitionConfig {
+  animationType: 'fade' | 'slide-left' | 'slide-down';
+  textDelay: number;
+};

@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LanguageDropdownComponent } from './language-dropdown.component';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
+import { LanguageDropdownComponent } from './language-dropdown';
 
 describe('LanguageDropdownComponent', () => {
   let component: LanguageDropdownComponent;
@@ -38,8 +38,7 @@ describe('LanguageDropdownComponent', () => {
       if (key === 'lang') return 'es';
       return null;
     });
-    spyOn(localStorage, 'setItem').and.callFake(() => {});
-    
+
     fixture.detectChanges();
   });
 

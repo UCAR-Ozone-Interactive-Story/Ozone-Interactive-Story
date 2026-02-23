@@ -6,11 +6,10 @@ import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper
 import { SkyGrassComponent } from '@features/story-player/backgrounds/sky-grass/sky-grass.component';
 import { Clouds } from '@features/story-player/foregrounds/clouds/clouds';
 import { MultipleChoice, SelectorOption } from '@shared/ui/multiple-choice/multiple-choice';
-import { SceneNavigation } from '@shared/ui/scene-navigation/scene-navigation';
 
 @Component({
   selector: 'app-scene-air',
-  imports: [NarrativeText, TranslateModule, LayerWrapper, SkyGrassComponent, Clouds, MultipleChoice, SceneNavigation],
+  imports: [NarrativeText, TranslateModule, LayerWrapper, SkyGrassComponent, Clouds, MultipleChoice],
   templateUrl: './scene-air.html',
   styleUrl: './scene-air.scss',
 })

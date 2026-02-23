@@ -1,23 +1,26 @@
 <div class="multiple-choice-container">
   <h3>{{ question() }}</h3>
   <div class="choice-grid">
-    <div
-      *ngFor="let option of options()"
-      class="choice-item"
-      [class.selected]="isSelected(option.id)"
-      [class.incorrect]="isSelected(option.id) && !option.isCorrect"
-      [class.disabled]="disabled()"
-      (click)="selectOption(option.id)"
-      tabindex="0"
-      role="checkbox"
-      [attr.aria-checked]="isSelected(option.id)"
-      [attr.aria-disabled]="disabled()"
-      (keydown)="onKeydown($event, option.id)"
-    >
-      <span class="choice-label">{{ option.label }}</span>
-      <span class="result-icon" *ngIf="isSelected(option.id)">
-        {{ option.isCorrect ? '✓' : '✗' }}
-      </span>
-    </div>
+    @for (option of options(); track option.id) {
+      <div
+        class="choice-item"
+        [class.selected]="isSelected(option.id)"
+        [class.incorrect]="isSelected(option.id) && !option.isCorrect"
+        [class.disabled]="disabled()"
+        (click)="selectOption(option.id)"
+        tabindex="0"
+        role="checkbox"
+        [attr.aria-checked]="isSelected(option.id)"
+        [attr.aria-disabled]="disabled()"
+        (keydown)="onKeydown($event, option.id)"
+      >
+        <span class="choice-label">{{ option.label }}</span>
+        @if (isSelected(option.id)) {
+          <span class="result-icon">
+            {{ option.isCorrect ? '✓' : '✗' }}
+          </span>
+        }
+      </div>
+    }
   </div>
 </div>

@@ -4,11 +4,10 @@ import { SkyGrassComponent } from '@features/story-player/backgrounds/sky-grass/
 import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { SceneNavigation } from '@shared/ui/scene-navigation/scene-navigation';
 
 @Component({
   selector: 'app-scene-burning-fuels',
-  imports: [NarrativeText, TranslateModule, SkyGrassComponent, LayerWrapper, SceneNavigation],
+  imports: [NarrativeText, TranslateModule, SkyGrassComponent, LayerWrapper],
   templateUrl: './scene-burning-fuels.html',
   styleUrl: './scene-burning-fuels.scss',
 })

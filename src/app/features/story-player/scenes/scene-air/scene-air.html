@@ -21,6 +21,7 @@
 
     <app-narrative-text
       [text]="'SCENES.AIR.NARRATIVE' | translate"
+      [startDelay]="story.transition().textDelay"
     />
     <app-multiple-choice
       [question]="'What gases are in Earth\'s atmosphere?'"

@@ -2,13 +2,13 @@ import { Component, inject } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-
+const sceneName = 'scene-ozone-ingredients';
 @Component({
-  selector: 'app-scene-morning',
+  selector: 'app-' + sceneName,
   imports: [NarrativeText, TranslateModule],
-  templateUrl: './scene-morning.html',
-  styleUrl: './scene-morning.scss',
+  templateUrl: './' + sceneName + '.html',
+  styleUrl: './' + sceneName + '.scss',
 })
-export class SceneMorning {
+export class SceneOzoneIngredients {
   story = inject(StoryService);
 }
