@@ -1,15 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, output, signal } from '@angular/core';
+import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { StoryService } from '@core/story.service';
-import { SceneNavigation } from '@shared/ui/scene-navigation/scene-navigation';
-
+const sceneName = 'scene-ozone-molecule';
 
 @Component({
-  selector: 'app-ozone-molecule',
-  imports: [NarrativeText, TranslateModule, SceneNavigation],
-  templateUrl: './scene-ozone-molecule.html',
-  styleUrl: './scene-ozone-molecule.scss',
+  selector: 'app-' + sceneName,
+  imports: [NarrativeText, TranslateModule],
+  templateUrl: './' + sceneName + '.html',
+  styleUrl: './' + sceneName + '.scss',
 })
 export class OzoneMolecule {
   story = inject(StoryService);
