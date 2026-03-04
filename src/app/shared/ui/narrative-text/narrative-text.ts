@@ -1,4 +1,4 @@
-import { Component, input, output, signal, effect, OnDestroy } from '@angular/core';
+import { Component, input, output, signal, effect, OnDestroy, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-narrative-text',
@@ -47,6 +47,24 @@ export class NarrativeText implements OnDestroy {
         this.finish();
       }
     }, 30); // 30ms per character
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    // this stops space/enter from not working on other keyboard accessible elements
+    // previously this would override space/enter on buttons
+    const target = event.target as HTMLElement;
+    const isInteractiveElement = 
+      target instanceof HTMLButtonElement ||
+      target instanceof HTMLInputElement ||
+      target instanceof HTMLSelectElement ||
+      target instanceof HTMLTextAreaElement ||
+      target?.getAttribute('role') === 'button';
+    
+    if (!isInteractiveElement && (event.code === 'Space' || event.code === 'Enter')) {
+      event.preventDefault();
+      this.advance();
+    }
   }
 
   advance() {
