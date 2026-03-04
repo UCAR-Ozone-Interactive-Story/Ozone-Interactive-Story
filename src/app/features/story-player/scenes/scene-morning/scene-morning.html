@@ -1,7 +1,7 @@
 <div class="container">
   <img src="./images/scenes/morning/temp-cityscape.png" style="width:100%; height:100%; position: absolute;" alt="placeholder cityscape">
   <app-narrative-text
-    [text]="'SCENES.MORNING.TEXT_1' | translate"
+    textKey="SCENES.MORNING.TEXT_1"
     (completed)="story.setSceneCompleted(true)"
     [startDelay]="story.transition().textDelay"
   />

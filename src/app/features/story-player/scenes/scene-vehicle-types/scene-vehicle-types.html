@@ -1,6 +1,6 @@
 <div class="container">
   <app-narrative-text
-    [text]="'SCENES.VEHICLE_TYPES.TEXT_1' | translate"
+    textKey="SCENES.VEHICLE_TYPES.TEXT_1"
     (completed)="story.setSceneCompleted(true)"
     [startDelay]="story.transition().textDelay"
   />

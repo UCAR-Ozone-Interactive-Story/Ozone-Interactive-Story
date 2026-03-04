@@ -4,7 +4,7 @@
     <div class="sun"></div>
     <app-clouds></app-clouds>
     <app-narrative-text
-      [text]="'SCENES.SUNNY_DAY.TEXT_1' | translate"
+      textKey="SCENES.SUNNY_DAY.TEXT_1"
       (completed)="story.setSceneCompleted(true)"
       [startDelay]="story.transition().textDelay"
     />

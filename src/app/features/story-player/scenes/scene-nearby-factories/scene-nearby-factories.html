@@ -1,6 +1,6 @@
 <div class="container">
   <app-narrative-text
-    [text]="'SCENES.NEARBY_FACTORIES.TEXT_1' | translate"
+    textKey="SCENES.NEARBY_FACTORIES.TEXT_1"
     (completed)="story.setSceneCompleted(true)"
     [startDelay]="story.transition().textDelay"
   />

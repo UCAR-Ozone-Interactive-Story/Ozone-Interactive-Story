@@ -1,14 +1,13 @@
 import { Component, inject, output, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
-import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 import { CdkDrag, CdkDragEnd, Point } from '@angular/cdk/drag-drop';
-const sceneName = 'scene-gather-ingredients';
+// const sceneName = 'scene-gather-ingredients';
 @Component({
-  selector: 'app-' + sceneName,
-  imports: [NarrativeText, TranslateModule, CdkDrag],
-  templateUrl: './' + sceneName + '.html',
-  styleUrl: './' + sceneName + '.scss',
+  selector: 'app-scene-gather-ingredients',
+  imports: [NarrativeText, CdkDrag],
+  templateUrl: './scene-gather-ingredients.html',
+  styleUrl: './scene-gather-ingredients.scss',
 })
 export class SceneGatherIngredients {
   story = inject(StoryService);

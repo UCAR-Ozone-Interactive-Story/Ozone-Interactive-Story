@@ -1,4 +1,5 @@
-import { Component, input, output, signal, effect, OnDestroy } from '@angular/core';
+import { Component, input, output, signal, effect, OnDestroy, inject } from '@angular/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-narrative-text',
@@ -7,7 +8,7 @@ import { Component, input, output, signal, effect, OnDestroy } from '@angular/co
   styleUrl: './narrative-text.scss'
 })
 export class NarrativeText implements OnDestroy {
-  text = input.required<string>();
+  textKey = input.required<string>();
   character = input<string>();
 
   completed = output<void>(); // emits when clicked after text is fully visible
@@ -18,9 +19,11 @@ export class NarrativeText implements OnDestroy {
   private startDelayTimer = 0;
   startDelay = input(0);
 
+  private translate = inject(TranslateService);
+
   constructor() {
     effect(() => {
-      const fullText = this.text();
+      const key = this.textKey();
       const delay = this.startDelay();
 
       if (this.startDelayTimer) {
@@ -28,7 +31,8 @@ export class NarrativeText implements OnDestroy {
       }
 
       this.startDelayTimer = window.setTimeout(() => {
-        this.resetAndType(fullText);
+        const translated = this.translate.instant(key);
+        this.resetAndType(translated);
       }, delay);
     });
   }
@@ -59,7 +63,7 @@ export class NarrativeText implements OnDestroy {
 
   private finish() {
     this.clearTimer();
-    this.displayedText.set(this.text());
+    this.displayedText.set(this.translate.instant(this.textKey()));
     this.isComplete.set(true);
     this.completed.emit();
   }
