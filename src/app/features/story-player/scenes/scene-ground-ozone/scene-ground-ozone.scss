@@ -12,23 +12,9 @@
   width: 100%;
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
-  animation: fadeIn 0.5s ease-in-out forwards;
 
   &.fade-out {
     opacity: 0;
-  }
-
-  &.disabled {
-    pointer-events: none;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 
@@ -51,6 +37,7 @@
     background-color: white;
     text-align: center;
     pointer-events: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   }
 
   img {
@@ -60,14 +47,37 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%);
-    transition: filter 0.5s ease;
+    @media (hover: hover) {
+      filter: grayscale(100%);
+    }
+    transition: filter 0.5s ease, transform 0.5s ease;
   }
 
-  &:hover {
+  @mixin highlight-state {
+    outline: 16px solid #ff6b6b;
+    outline-offset: -16px;
+    z-index: 10;
+
+    h1 {
+      transform: scale(1.1) translateY(-10px);
+      background-color: #fff4f4;
+      color: #d00000;
+    }
+
     img {
       filter: grayscale(0%);
+      transform: scale(1.1);
     }
+  }
+
+  @media (hover: hover) { // we only want non-touchscreens to have hover effects
+    &:hover {
+      @include highlight-state;
+    }
+  }
+
+  &:focus-visible {
+    @include highlight-state;
   }
 
   .overlay {
@@ -83,12 +93,12 @@
   }
 
   &.correct .overlay {
-    background-color: rgba(76, 175, 80, 0.5); /* Pleasant Green */
+    background-color: rgba(76, 175, 80, 0.5); // green
     opacity: 1;
   }
 
   &.incorrect .overlay {
-    background-color: rgba(244, 67, 54, 0.5); /* Pleasant Red */
+    background-color: rgba(244, 67, 54, 0.5); // red
     opacity: 1;
   }
 }

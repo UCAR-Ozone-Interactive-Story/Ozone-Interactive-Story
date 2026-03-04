@@ -1,28 +1,29 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, DestroyRef, effect, inject, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 export type GroundOzonePhase = 'area' | 'season' | 'density' | 'done';
 
 @Component({
   selector: 'app-scene-ground-ozone',
-  imports: [NarrativeText, TranslateModule, CommonModule],
+  imports: [NarrativeText, TranslateModule, NgClass],
   templateUrl: './scene-ground-ozone.html',
   styleUrl: './scene-ground-ozone.scss',
 })
 export class SceneGroundOzone {
+  private destroyRef = inject(DestroyRef);
   story = inject(StoryService);
   translate = inject(TranslateService);
-  
+
   // current choice to be made
   currentChoice = signal<GroundOzonePhase>('area');
   feedbackKey = signal<string | null>(null);
   fadeState = signal<'in' | 'out'>('in');
   // choice state i.e. which was clicked, or none yet
   choiceStatus = signal<{ option: string, isCorrect: boolean } | null>(null);
-  
+
   isTextComplete = signal(false);
   textDelay = signal(this.story.transition().textDelay);
 
@@ -70,18 +71,22 @@ export class SceneGroundOzone {
 
     if (isCorrect) {
       this.choiceStatus.set({ option, isCorrect: true });
-      
-      setTimeout(() => {
+
+      const t1 = setTimeout(() => {
         this.fadeState.set('out');
-        
-        setTimeout(() => {
+
+        const t2 = setTimeout(() => {
           this.feedbackKey.set(correctFeedback);
           this.currentChoice.set(nextPhase);
           this.choiceStatus.set(null);
           this.fadeState.set('in');
           this.isTextComplete.set(false);
         }, 500);
+
+        this.destroyRef.onDestroy(() => clearTimeout(t2));
       }, 500);
+
+      this.destroyRef.onDestroy(() => clearTimeout(t1));
     } else {
       this.choiceStatus.set({ option, isCorrect: false });
       this.feedbackKey.set(incorrectFeedback);
@@ -124,10 +129,6 @@ export class SceneGroundOzone {
     if (this.currentChoice() === 'done') {
       this.story.setSceneCompleted(true);
     }
-  }
-
-  isFadingOut() {
-    return this.fadeState() === 'out';
   }
 
   getOptionStatus(option: string) {
