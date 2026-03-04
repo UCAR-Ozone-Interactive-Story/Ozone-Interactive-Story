@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="choice-container" [class.fade-out]="fadeState() === 'out'" [class.disabled]="!narrative?.isComplete()">
+    @if (currentChoice() === 'area') {
+      <div class="choice-option"
+           [class.correct]="choiceStatus()?.option === 'rural' && choiceStatus()?.isCorrect"
+           [class.incorrect]="choiceStatus()?.option === 'rural' && !choiceStatus()?.isCorrect"
+           (click)="selectArea('rural')">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.AREA.CHOICE_RURAL' | translate}}</h1>
+        <img src="images/backgrounds/sky-grass-background.webp" />
+      </div>
+      <div class="choice-option"
+           [class.correct]="choiceStatus()?.option === 'urban' && choiceStatus()?.isCorrect"
+           [class.incorrect]="choiceStatus()?.option === 'urban' && !choiceStatus()?.isCorrect"
+           (click)="selectArea('urban')">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.AREA.CHOICE_URBAN' | translate}}</h1>
+        <img src="images/backgrounds/cityscape-placeholder.jpg" />
+      </div>
+    }
+
+    @if (currentChoice() === 'season') {
+      <div class="choice-option"
+           [class.correct]="choiceStatus()?.option === 'warm' && choiceStatus()?.isCorrect"
+           [class.incorrect]="choiceStatus()?.option === 'warm' && !choiceStatus()?.isCorrect"
+           (click)="selectSeason('warm')">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.SEASON.CHOICE_WARM' | translate}}</h1>
+        <img src="images/scenes/morning/temp-sun.png" style="object-fit: contain; background-color: #87CEEB;" />
+      </div>
+      <div class="choice-option"
+           [class.correct]="choiceStatus()?.option === 'cool' && choiceStatus()?.isCorrect"
+           [class.incorrect]="choiceStatus()?.option === 'cool' && !choiceStatus()?.isCorrect"
+           (click)="selectSeason('cool')">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.SEASON.CHOICE_COOL' | translate}}</h1>
+        <img src="images/clouds/cloud-1.webp" style="object-fit: contain; background-color: #708090;" />
+      </div>
+    }
+
+    @if (currentChoice() === 'density') {
+      <div class="choice-option"
+           [class.correct]="choiceStatus()?.option === 'lots' && choiceStatus()?.isCorrect"
+           [class.incorrect]="choiceStatus()?.option === 'lots' && !choiceStatus()?.isCorrect"
+           (click)="selectDensity('lots')">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.CARS_FACTORIES.CHOICE_LOTS' | translate}}</h1>
+        <img src="images/backgrounds/cityscape-placeholder.jpg" />
+      </div>
+      <div class="choice-option"
+           [class.correct]="choiceStatus()?.option === 'few' && choiceStatus()?.isCorrect"
+           [class.incorrect]="choiceStatus()?.option === 'few' && !choiceStatus()?.isCorrect"
+           (click)="selectDensity('few')">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.CARS_FACTORIES.CHOICE_FEW' | translate}}</h1>
+        <img src="images/backgrounds/sky-grass-background.webp" />
+      </div>
+    }
+
+    @if (currentChoice() === 'done') {
+      <div class="choice-option" style="cursor: default">
+        <img src="images/backgrounds/cityscape-placeholder.jpg" style="filter: grayscale(0%);" />
+      </div>
+    }
+  </div>
+
+  <app-narrative-text
+    #narrative
+    [text]="text()"
+    (completed)="onNarrativeCompleted()"
+    [startDelay]="textDelay()"
+  />
+</div>

@@ -9,6 +9,7 @@ import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
 import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
+import { SceneGroundOzone } from '@features/story-player/scenes/scene-ground-ozone/scene-ground-ozone';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -59,6 +60,11 @@ export class StoryService {
       id: 'gather-ingredients',
       i18n_title: 'SCENES.GATHER_INGREDIENTS.TITLE',
       component: SceneGatherIngredients,
+    },
+    {
+      id: 'ground-ozone',
+      i18n_title: 'SCENES.GROUND_OZONE.TITLE',
+      component: SceneGroundOzone,
     },
     {
       id: 'end-scene',
