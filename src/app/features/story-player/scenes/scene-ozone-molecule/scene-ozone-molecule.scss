@@ -8,8 +8,6 @@
   align-items: center;
 }
 
-/* stage centers everything */
-
 .stage {
   width: 100%;
   display: flex;
@@ -17,8 +15,6 @@
   align-items: flex-start;
   overflow: hidden;
 }
-
-/* fixed design canvas */
 
 .diagram {
   position: relative;
@@ -28,8 +24,6 @@
 
   transform-origin: top center;
 }
-
-/* scale based on SCREEN HEIGHT instead of width */
 
 @media (max-height: 800px) {
   .diagram {
@@ -43,8 +37,6 @@
   }
 }
 
-/* SUN */
-
 .sun {
   position: absolute;
   top: 0px;
@@ -52,8 +44,6 @@
   width: 210px;
   z-index: 3;
 }
-
-/* UV */
 
 .uv-ray {
   position: absolute;
@@ -68,8 +58,6 @@
 .uv-ray.active {
   opacity: 1;
 }
-
-/* molecules */
 
 .molecule {
   position: absolute;
@@ -88,14 +76,10 @@
   border: 2px solid black;
 }
 
-/* NO2 */
-
 .left {
   bottom: 230px;
   left: 200px;
 }
-
-/* reaction arrow */
 
 .travel-arrow {
   position: absolute;
@@ -103,8 +87,6 @@
   left: 360px;
   width: 400px;
 }
-
-/* oxygen */
 
 .free-oxygen {
   position: absolute;
@@ -127,8 +109,6 @@
   opacity: 0;
 }
 
-/* O2 */
-
 .right {
   bottom: 230px;
   right: 260px;
@@ -138,8 +118,6 @@
   opacity: 0;
 }
 
-/* ozone */
-
 .result {
   opacity: 0;
   transition: opacity .6s ease;
@@ -148,8 +126,6 @@
 .result.show {
   opacity: 1;
 }
-
-/* NO arrow */
 
 .no-arrow {
   position: absolute;
@@ -163,8 +139,6 @@
 .no-arrow.show {
   opacity: 1;
 }
-
-/* NO molecule */
 
 .no-leaving {
   position: absolute;

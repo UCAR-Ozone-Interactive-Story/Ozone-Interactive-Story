@@ -10,47 +10,40 @@
   <div class="stage">
     <div class="diagram">
 
-      <!-- SUN -->
       <img
         src="/images/scenes/ozone-interaction/sun.png"
         class="sun"
         (click)="nextStep()"
       />
 
-      <!-- UV RAYS -->
       <img
         src="/images/scenes/ozone-interaction/UVRays.png"
         class="uv-ray"
         [class.active]="rayActive()"
       />
 
-      <!-- NO2 -->
       <div class="molecule left">
         <img src="/images/scenes/ozone-interaction/NO2Molecule.png" />
         <div class="label">NO₂ Molecule</div>
       </div>
 
-      <!-- NO arrow -->
       <img
         src="/images/scenes/ozone-interaction/LongArrow.png"
         class="no-arrow"
         [class.show]="noLeaving()"
       />
 
-      <!-- NO leaving -->
       <div class="no-leaving"
            [class.move]="noLeaving()">
         <img src="/images/scenes/ozone-interaction/NOMolecule.png" />
         <div class="label">NO Molecule</div>
       </div>
 
-      <!-- reaction arrow -->
       <img
         src="/images/scenes/ozone-interaction/LongArrow.png"
         class="travel-arrow"
       />
 
-      <!-- oxygen -->
       @if (oxygenReleased()) {
         <div class="free-oxygen"
              [class.move]="oxygenMoving()"
@@ -60,14 +53,12 @@
         </div>
       }
 
-      <!-- O2 -->
       <div class="molecule right"
            [class.hide]="hideO2()">
         <img src="/images/scenes/ozone-interaction/O2Molecule.png" />
         <div class="label">O₂ Molecule</div>
       </div>
 
-      <!-- O3 -->
       <div class="molecule right result"
            [class.show]="ozoneFormed()">
         <img src="/images/scenes/ozone-interaction/OzoneMolecule.png" />
