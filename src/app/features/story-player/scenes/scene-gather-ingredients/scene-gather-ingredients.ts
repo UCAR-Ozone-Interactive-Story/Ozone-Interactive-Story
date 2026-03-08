@@ -1,8 +1,8 @@
-import { Component, inject, output, signal } from '@angular/core';
+import { Component, inject, Renderer2 } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { CdkDrag, CdkDragEnd, Point } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragEnd, Point, transferArrayItem } from '@angular/cdk/drag-drop';
 const sceneName = 'scene-gather-ingredients';
 @Component({
   selector: 'app-' + sceneName,
@@ -12,11 +12,26 @@ const sceneName = 'scene-gather-ingredients';
 })
 export class SceneGatherIngredients {
   story = inject(StoryService);
+  constructor(private renderer: Renderer2) {}
 
-  paintCanContents = ['VOC', 'VOC', 'VOC'];
-  carContents = ['VOC', 'NO₂'];
-  factoryContents = ['NO₂', 'NO₂'];
+  molecules = [
+    { label: 'VOC', id: 0, location: 'paint' },
+    { label: 'VOC', id: 1, location: 'paint' },
+    { label: 'VOC', id: 2, location: 'paint' },
+    { label: 'VOC', id: 3, location: 'car' },
+    { label: 'NO₂', id: 4, location: 'car' },
+    { label: 'NO₂', id: 5, location: 'factory' },
+    { label: 'NO₂', id: 6, location: 'factory' },
+  ];
+  // if moved by mouse it is more of a freeform drag and drop
+  // with the drop location contstrained to the ozone cloud
+  ozoneMoleculesMovedByKeyboard = [];
 
+  assertIsDefined<T>(val: T): asserts val is NonNullable<T> {
+    if (val === undefined || val === null) {
+      throw new Error(`Expected value to be defined, but received ${val}`);
+    }
+  }
   ozoneCloudHas(moleculeToFind: string) {
     const molecules = document.getElementsByClassName('molecule-circle');
     for (let i = 0; i < molecules.length; i++) {
@@ -37,6 +52,23 @@ export class SceneGatherIngredients {
     element.style.visibility = '';
     return elementUnderItem;
   }
+  handleKeyPressedToMoveMolecule(event: Event) {
+    event.preventDefault();
+    const molecule = event.target as HTMLElement;
+    molecule.setAttribute('inOzoneCloud', 'true');
+
+    const idString = molecule.getAttribute('id');
+    this.assertIsDefined(idString);
+    const id = parseInt(idString.substring(8));
+    this.molecules[id].location = 'ozoneCloud';
+    this.checkIfSceneComplete();
+  }
+  checkIfSceneComplete() {
+    if (this.ozoneCloudHas('VOC') && this.ozoneCloudHas('NO₂')) {
+      console.log('ozone cloud has ingredients');
+      this.story.setSceneCompleted(true);
+    }
+  }
   handleDragEnd(event: CdkDragEnd) {
     const position = event.dropPoint;
     const ozoneCloud = document.getElementById('ozone-cloud');
@@ -44,10 +76,7 @@ export class SceneGatherIngredients {
 
     if (elementUnderItem === ozoneCloud) {
       event.source.getRootElement().setAttribute('inOzoneCloud', 'true');
-      if (this.ozoneCloudHas('VOC') && this.ozoneCloudHas('NO₂')) {
-        console.log('ozone cloud has ingredients');
-        this.story.setSceneCompleted(true);
-      }
+      this.checkIfSceneComplete();
     } else {
       event.source.getRootElement().setAttribute('inOzoneCloud', 'false');
       // move back to previous drop container
