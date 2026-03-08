@@ -33,6 +33,14 @@ export class OzoneMolecule {
 
   explanationKey = signal('SCENES.OZONE_MOLECULE.TEXT_1');
 
+  moleculeLabels = {
+    NO2: 'SCENES.OZONE_MOLECULE.LABEL_NO2',
+    NO: 'SCENES.OZONE_MOLECULE.LABEL_NO',
+    O: 'SCENES.OZONE_MOLECULE.LABEL_O',
+    O2: 'SCENES.OZONE_MOLECULE.LABEL_O2',
+    O3: 'SCENES.OZONE_MOLECULE.LABEL_O3',
+  };
+
   nextStep() {
     const current = this.step();
 
