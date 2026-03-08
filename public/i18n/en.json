@@ -48,10 +48,13 @@
         "TEXT_1": "Create ozone by dragging VOC and NO₂ molecules to the smog cloud.",
         "INGREDIENTS_GATHERED_BUBBLE": "Great! Now that you have gathered the ingredients you can procced" 
     },
+    "UPPER_OZONE": {
+        "TITLE": "Upper Atmosphere Ozone",
+        "TEXT_1": "Now way up high in the atmosphere, ozone is naturally there in the ozone layer. Ozone up in the stratosphere is actually really helpful. It helps block UV rays from the Sun that can cause sunburn."
+    },
     "END": {
         "TITLE": "End",
         "TEXT_1": "This is here for testing purposes"
     }
-
   }
 }
