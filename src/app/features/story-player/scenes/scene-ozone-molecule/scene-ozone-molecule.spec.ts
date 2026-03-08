@@ -2,15 +2,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OzoneMolecule } from './scene-ozone-molecule';
 
-describe('OzoneMolecule', () => {
+describe('SceneBurningFuels', () => {
   let component: OzoneMolecule;
   let fixture: ComponentFixture<OzoneMolecule>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OzoneMolecule]
-    })
-    .compileComponents();
+      imports: [OzoneMolecule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(OzoneMolecule);
     component = fixture.componentInstance;

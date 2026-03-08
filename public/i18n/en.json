@@ -49,8 +49,13 @@
         "INGREDIENTS_GATHERED_BUBBLE": "Great! Now that you have gathered the ingredients you can procced" 
     },
     "OZONE_MOLECULE": {
-      "TITLE": "Burning Molecule",
-      "TEXT_1": "Burning fossil fuels releases invisible gases into the air — carbon dioxide, nitrogen dioxide, and other pollutants..."
+        "TITLE": "How Ozone Forms",
+        "TEXT_1": "Tap the sun to release ultraviolet (UV) light.",
+        "TEXT_2": "Ultraviolet light strikes a nitrogen dioxide (NO₂) molecule.",
+        "TEXT_3": "The NO₂ molecule absorbs energy and splits, releasing a free oxygen atom.",
+        "TEXT_4": "The free oxygen atom moves toward an oxygen molecule (O₂).",
+        "TEXT_5": "The oxygen atom combines with O₂ to form ozone (O₃).",
+        "TEXT_6": "Tap the sun again to watch the reaction repeat."
     },
     "END": {
         "TITLE": "End",
