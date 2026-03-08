@@ -33,13 +33,8 @@ export class SceneGatherIngredients {
     }
   }
   ozoneCloudHas(moleculeToFind: string) {
-    const molecules = document.getElementsByClassName('molecule-circle');
-    for (let i = 0; i < molecules.length; i++) {
-      const moleculeLabel = molecules[i].childNodes[0] as Element;
-      if (
-        moleculeLabel.innerHTML === moleculeToFind &&
-        molecules[i].getAttribute('inOzoneCloud') === 'true'
-      ) {
+    for (let molecule of this.molecules) {
+      if (molecule.label === moleculeToFind && molecule.location === 'ozoneCloud') {
         return true;
       }
     }
@@ -52,14 +47,19 @@ export class SceneGatherIngredients {
     element.style.visibility = '';
     return elementUnderItem;
   }
+  getMoleculeId(element: HTMLElement) {
+    const idString = element.getAttribute('id');
+    this.assertIsDefined(idString);
+    return parseInt(idString.substring(8));
+  }
+  getMoleculeData(element: HTMLElement) {
+    return this.molecules[this.getMoleculeId(element)];
+  }
   handleKeyPressedToMoveMolecule(event: Event) {
     event.preventDefault();
     const molecule = event.target as HTMLElement;
     molecule.setAttribute('inOzoneCloud', 'true');
-
-    const idString = molecule.getAttribute('id');
-    this.assertIsDefined(idString);
-    const id = parseInt(idString.substring(8));
+    const id = this.getMoleculeId(molecule);
     this.molecules[id].location = 'ozoneCloud';
     this.checkIfSceneComplete();
   }
@@ -72,13 +72,13 @@ export class SceneGatherIngredients {
   handleDragEnd(event: CdkDragEnd) {
     const position = event.dropPoint;
     const ozoneCloud = document.getElementById('ozone-cloud');
-    const elementUnderItem = this.getElementUnder(event.source.getRootElement(), position);
+    const moleculeElm = event.source.getRootElement();
+    const elementUnderItem = this.getElementUnder(moleculeElm, position);
 
     if (elementUnderItem === ozoneCloud) {
-      event.source.getRootElement().setAttribute('inOzoneCloud', 'true');
+      this.getMoleculeData(moleculeElm).location = 'ozoneCloud';
       this.checkIfSceneComplete();
     } else {
-      event.source.getRootElement().setAttribute('inOzoneCloud', 'false');
       // move back to previous drop container
       event.source.reset();
     }
