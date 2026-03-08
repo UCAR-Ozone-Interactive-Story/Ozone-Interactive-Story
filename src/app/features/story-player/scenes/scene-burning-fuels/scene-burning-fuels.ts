@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, effect } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { SkyGrassComponent } from '@features/story-player/backgrounds/sky-grass/sky-grass.component';
 import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
@@ -16,6 +16,14 @@ export class SceneBurningFuels {
 
   isFactoryActive = signal(false);
   isCarActive = signal(false);
+
+  constructor() {
+    effect(() => {
+      if (this.isFactoryActive() && this.isCarActive()) {
+        this.story.setSceneCompleted(true);
+      }
+    });
+  }
 
   activateFactory() {
     this.isFactoryActive.set(true);

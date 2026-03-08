@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="choice-container" [class.fade-out]="fadeState() === 'out'">
+    @if (currentChoice() === 'area') {
+      <div class="choice-option"
+           role="button"
+           tabindex="0"
+           [ngClass]="getOptionStatus('rural')"
+           (click)="selectArea('rural')"
+           (keydown.enter)="selectArea('rural')"
+           (keydown.space)="selectArea('rural'); $event.preventDefault()">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.AREA.CHOICE_RURAL' | translate}}</h1>
+        <img src="images/backgrounds/sky-grass-background.webp" alt="" />
+      </div>
+      <div class="choice-option"
+           role="button"
+           tabindex="0"
+           [ngClass]="getOptionStatus('urban')"
+           (click)="selectArea('urban')"
+           (keydown.enter)="selectArea('urban')"
+           (keydown.space)="selectArea('urban'); $event.preventDefault()">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.AREA.CHOICE_URBAN' | translate}}</h1>
+        <img src="images/backgrounds/cityscape-placeholder.jpg" alt="" />
+      </div>
+    }
+
+    @if (currentChoice() === 'season') {
+      <div class="choice-option"
+           role="button"
+           tabindex="0"
+           [ngClass]="getOptionStatus('warm')"
+           (click)="selectSeason('warm')"
+           (keydown.enter)="selectSeason('warm')"
+           (keydown.space)="selectSeason('warm'); $event.preventDefault()">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.SEASON.CHOICE_WARM' | translate}}</h1>
+        <img src="images/scenes/morning/temp-sun.png" style="object-fit: contain; background-color: #87CEEB;" alt="" />
+      </div>
+      <div class="choice-option"
+           role="button"
+           tabindex="0"
+           [ngClass]="getOptionStatus('cool')"
+           (click)="selectSeason('cool')"
+           (keydown.enter)="selectSeason('cool')"
+           (keydown.space)="selectSeason('cool'); $event.preventDefault()">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.SEASON.CHOICE_COOL' | translate}}</h1>
+        <img src="images/clouds/cloud-1.webp" style="object-fit: contain; background-color: #708090;" alt="" />
+      </div>
+    }
+
+    @if (currentChoice() === 'density') {
+      <div class="choice-option"
+           role="button"
+           tabindex="0"
+           [ngClass]="getOptionStatus('lots')"
+           (click)="selectDensity('lots')"
+           (keydown.enter)="selectDensity('lots')"
+           (keydown.space)="selectDensity('lots'); $event.preventDefault()">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.CARS_FACTORIES.CHOICE_LOTS' | translate}}</h1>
+        <img src="images/backgrounds/cityscape-placeholder.jpg" alt="" />
+      </div>
+      <div class="choice-option"
+           role="button"
+           tabindex="0"
+           [ngClass]="getOptionStatus('few')"
+           (click)="selectDensity('few')"
+           (keydown.enter)="selectDensity('few')"
+           (keydown.space)="selectDensity('few'); $event.preventDefault()">
+        <div class="overlay"></div>
+        <h1>{{'SCENES.GROUND_OZONE.CARS_FACTORIES.CHOICE_FEW' | translate}}</h1>
+        <img src="images/backgrounds/sky-grass-background.webp" alt="" />
+      </div>
+    }
+
+    @if (currentChoice() === 'done') {
+      <div style="width: 100%; height: 100%; background: url('images/backgrounds/cityscape-placeholder.jpg') center/cover no-repeat;"></div>
+    }
+  </div>
+
+  <app-narrative-text
+    [text]="text()"
+    (completed)="onNarrativeCompleted()"
+    [startDelay]="textDelay()"
+  />
+</div>
