@@ -72,6 +72,15 @@
         "INCORRECT": "Actually, no! Cars and factories produce the ingredients for ozone, so pollution is worse where there are more of them!"
       }
     },
+    "OZONE_MOLECULE": {
+        "TITLE": "How Ozone Forms",
+        "TEXT_1": "Tap the sun to release ultraviolet (UV) light.",
+        "TEXT_2": "Ultraviolet light strikes a nitrogen dioxide (NO₂) molecule.",
+        "TEXT_3": "The NO₂ molecule absorbs energy and splits, releasing a free oxygen atom.",
+        "TEXT_4": "The free oxygen atom moves toward an oxygen molecule (O₂).",
+        "TEXT_5": "The oxygen atom combines with O₂ to form ozone (O₃).",
+        "TEXT_6": "Tap the sun again to watch the reaction repeat."
+    },
     "END": {
       "TITLE": "End",
       "TEXT_1": "This is here for testing purposes"
