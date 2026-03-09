@@ -13,6 +13,7 @@ import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
 import { SceneAirPollution } from '@features/story-player/scenes/scene-air-pollution/scene-air-pollution';
 import { SceneHealthImpacts } from '@features/story-player/scenes/scene-health-impacts/scene-health-impacts';
 import { SceneGroundOzone } from '@features/story-player/scenes/scene-ground-ozone/scene-ground-ozone';
+import { SceneSolutions } from '@features/story-player/scenes/scene-solutions/scene-solutions';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -83,6 +84,11 @@ export class StoryService {
       id: 'ground-ozone',
       i18n_title: 'SCENES.GROUND_OZONE.TITLE',
       component: SceneGroundOzone,
+    },
+    {
+      id: 'scene-solutions',
+      i18n_title: 'SCENES.SOLUTIONS.TITLE',
+      component: SceneSolutions,
     },
     {
       id: 'end-scene',
