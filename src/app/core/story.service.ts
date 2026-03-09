@@ -6,11 +6,13 @@ import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/sce
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
 import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
+import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecule/scene-ozone-molecule';
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
 import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
 import { SceneAirPollution } from '@features/story-player/scenes/scene-air-pollution/scene-air-pollution';
 import { SceneHealthImpacts } from '@features/story-player/scenes/scene-health-impacts/scene-health-impacts';
+import { SceneGroundOzone } from '@features/story-player/scenes/scene-ground-ozone/scene-ground-ozone';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -71,6 +73,16 @@ export class StoryService {
       id: 'gather-ingredients',
       i18n_title: 'SCENES.GATHER_INGREDIENTS.TITLE',
       component: SceneGatherIngredients,
+    },
+    {
+      id: 'ozone-molecule',
+      i18n_title: 'SCENES.OZONE_MOLECULE.TITLE',
+      component: OzoneMolecule,
+    },
+    {
+      id: 'ground-ozone',
+      i18n_title: 'SCENES.GROUND_OZONE.TITLE',
+      component: SceneGroundOzone,
     },
     {
       id: 'end-scene',

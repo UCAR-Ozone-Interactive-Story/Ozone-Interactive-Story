@@ -39,12 +39,12 @@
       "TEXT_1": "But on a warm sunny day when certain types of air pollution are already in the atmosphere, something else can form."
     },
     "AIR": {
-        "TITLE": "Air",
-        "NARRATIVE": "What's in the air around us?"
+      "TITLE": "Air",
+      "NARRATIVE": "What's in the air around us?"
     },
     "NEARBY_FACTORIES": {
       "TITLE": "Nearby Factories",
-      "TEXT_1": "Nearby factories also burn fossil fuels to make electricity that we use in our homes, schools, and workplaces."
+      "TEXT_1": "Nearby factories also burn fossil fuels to make electricity that we use in our homes, schools, and workplaces. Click on the fossil fuels to see the electricity being produced!"
     },
     "BURNING_FUELS": {
       "TITLE": "Burning Fuel",
@@ -52,19 +52,51 @@
       "FACTORY_BUBBLE": "We burn fossil fuels to create energy for the city!",
       "CAR_BUBBLE": "Engines burn gasoline to make cars move!"
     },
-    "OZONE_INGREDIENTS":{
-        "TITLE": "Ozone Ingredients",
-        "TEXT_1": "Let’s gather the atmospheric “ingredients” needed to make this particular type of air pollution. We need: VOCs, which can come from car exhaust pipes, or from chemicals in paint or other industrial products; we also need nitrogen oxides like NO₂, which also come from car exhaust pipes and from factory emissions."
+    "OZONE_INGREDIENTS": {
+      "TITLE": "Ozone Ingredients",
+      "TEXT_1": "Let’s gather the atmospheric “ingredients” needed to make this particular type of air pollution. We need: VOCs, which can come from car exhaust pipes, or from chemicals in paint or other industrial products; we also need nitrogen oxides like NO₂, which also come from car exhaust pipes and from factory emissions."
     },
     "GATHER_INGREDIENTS": {
-        "TITLE": "Gathering Ingredients",
-        "TEXT_1": "Create ozone by dragging VOC and NO₂ molecules to the smog cloud.",
-        "INGREDIENTS_GATHERED_BUBBLE": "Great! Now that you have gathered the ingredients you can procced" 
+      "TITLE": "Gathering Ingredients",
+      "TEXT_1": "Create ozone by dragging VOC and NO₂ molecules to the smog cloud.",
+      "INGREDIENTS_GATHERED_BUBBLE": "Great! Now that you have gathered the ingredients you can procced"
+    },
+    "GROUND_OZONE": {
+      "TITLE": "Ground Ozone",
+      "AREA": {
+        "PROMPT": "Ozone pollution is worse in certain areas. Can you guess where this happens?",
+        "CHOICE_RURAL": "Rural areas!",
+        "CHOICE_URBAN": "Urban areas!",
+        "CORRECT": "Correct! Ozone pollution is worse in urban areas!",
+        "INCORRECT": "Actually, no! There is less ozone pollution in rural areas!"
+      },
+      "SEASON": {
+        "PROMPT": "Another factor that influences ozone pollution is time of year. When might pollution be worse?",
+        "CHOICE_WARM": "Hot and sunny months!",
+        "CHOICE_COOL": "Cool and dark months!",
+        "CORRECT": "Correct! Ozone pollution is worse in the hot and sunny months!",
+        "INCORRECT": "Actually, no! Cool and dark months will have less ozone pollution!"
+      },
+      "CARS_FACTORIES": {
+        "PROMPT": "Density of cars and factories also makes an impact since these emit the ingredients of ozone. Knowing this, where might pollution be worse?",
+        "CHOICE_LOTS": "Areas with lots of cars and factories!",
+        "CHOICE_FEW": "Areas with fewer cars or factories!",
+        "CORRECT": "Correct! Ozone pollution is worse where there are many cars and/or factories!",
+        "INCORRECT": "Actually, no! Cars and factories produce the ingredients for ozone, so pollution is worse where there are more of them!"
+      }
+    },
+    "OZONE_MOLECULE": {
+        "TITLE": "How Ozone Forms",
+        "TEXT_1": "Tap the sun to release ultraviolet (UV) light.",
+        "TEXT_2": "Ultraviolet light strikes a nitrogen dioxide (NO₂) molecule.",
+        "TEXT_3": "The NO₂ molecule absorbs energy and splits, releasing a free oxygen atom.",
+        "TEXT_4": "The free oxygen atom moves toward an oxygen molecule (O₂).",
+        "TEXT_5": "The oxygen atom combines with O₂ to form ozone (O₃).",
+        "TEXT_6": "Tap the sun again to watch the reaction repeat."
     },
     "END": {
-        "TITLE": "End",
-        "TEXT_1": "This is here for testing purposes"
+      "TITLE": "End",
+      "TEXT_1": "This is here for testing purposes"
     }
-
   }
 }
