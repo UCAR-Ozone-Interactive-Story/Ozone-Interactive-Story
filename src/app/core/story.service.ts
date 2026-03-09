@@ -10,6 +10,8 @@ import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecul
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
 import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
+import { SceneAirPollution } from '@features/story-player/scenes/scene-air-pollution/scene-air-pollution';
+import { SceneHealthImpacts } from '@features/story-player/scenes/scene-health-impacts/scene-health-impacts';
 import { SceneGroundOzone } from '@features/story-player/scenes/scene-ground-ozone/scene-ground-ozone';
 
 /**
@@ -36,6 +38,16 @@ export class StoryService {
       id: 'nearby-factories',
       i18n_title: 'SCENES.NEARBY_FACTORIES.TITLE',
       component: SceneNearbyFactories,
+    },
+    {
+      id: 'air-pollution',
+      i18n_title: "SCENES.AIR_POLLUTION.TITLE",
+      component: SceneAirPollution,
+    },
+    {
+      id: 'health-impacts',
+      i18n_title: "SCENES.HEALTH_IMPACTS.TITLE",
+      component: SceneHealthImpacts,
     },
     {
       id: 'sunny-day',

@@ -1,0 +1,47 @@
+<div class="container">
+  <app-layer-wrapper>
+
+    <app-sky-grass bg-layer></app-sky-grass>
+
+    <div class="pollution-overlay"></div>
+
+    <div class="content">
+
+      <div class="scene-object factory">
+        <img src="images/foregrounds/factory.webp" alt="Factory emitting pollution" />
+
+        <div class="particle-emitter factory-smoke">
+          <div class="gas-cloud cloud-1"></div>
+          <div class="gas-cloud cloud-2"></div>
+          <div class="gas-cloud cloud-3"></div>
+        </div>
+      </div>
+
+      <div class="scene-object car">
+        <img src="images/scenes/burning-fuels/car.png" alt="Car emitting exhaust fumes" />
+
+        <div class="particle-emitter exhaust">
+          <div class="gas-cloud cloud-1"></div>
+          <div class="gas-cloud cloud-2"></div>
+        </div>
+      </div>
+
+      <app-narrative-text
+        [text]="'SCENES.AIR_POLLUTION.TEXT_1' | translate"
+        (completed)="showNextText()"
+        [startDelay]="story.transition().textDelay"
+      />
+
+      @if (showSecondText) {
+        <div class="bottom-text">
+          <app-narrative-text
+            [text]="'SCENES.AIR_POLLUTION.TEXT_2' | translate"
+            (completed)="story.setSceneCompleted(true)"
+            [startDelay]="200"
+          />
+        </div>
+      }
+
+    </div>
+  </app-layer-wrapper>
+</div>
