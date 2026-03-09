@@ -2,6 +2,7 @@
   <app-narrative-text
     [text]="'SCENES.NEARBY_FACTORIES.TEXT_1' | translate"
     [startDelay]="story.transition().textDelay"
+    (completed)="story.setSceneCompleted(true)"
   />
 
   <!-- factory image in the middle -->
