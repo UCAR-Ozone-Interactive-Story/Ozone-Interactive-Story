@@ -1,0 +1,73 @@
+<div class="container">
+  @if (!isDone()) {
+    <app-narrative-text
+      [text]="'SCENES.SOLUTIONS.PROMPT' | translate"
+    />
+  }
+
+  <div class="options-grid" [style.pointer-events]="isDone() ? 'none' : 'auto'">
+    @for (option of options; track option.id) {
+      <div class="option-card"
+           role="button"
+           tabindex="0"
+           [class.selected]="selectedOptions().has(option.id) && !isDone()"
+           [class.correct]="isDone() && selectedOptions().has(option.id) && option.isCorrect"
+           [class.incorrect]="isDone() && selectedOptions().has(option.id) && !option.isCorrect"
+           [style.opacity]="isDone() && !selectedOptions().has(option.id) ? 0.4 : 1"
+           [style.filter]="isDone() && !selectedOptions().has(option.id) ? 'grayscale(0.8)' : 'none'"
+           (click)="toggleOption(option.id)"
+           (keydown.enter)="toggleOption(option.id)"
+           (keydown.space)="toggleOption(option.id); $event.preventDefault()">
+        
+        <img [src]="option.image" class="card-bg-image" alt="" />
+        <div class="overlay"></div>
+        
+        <div class="card-content">
+          <div class="text-container">
+            <h3>{{ 'SCENES.SOLUTIONS.OPTIONS.' + option.id + '.TITLE' | translate }}</h3>
+            <p>{{ 'SCENES.SOLUTIONS.OPTIONS.' + option.id + '.DESC' | translate }}</p>
+          </div>
+        </div>
+
+        @if (selectedOptions().has(option.id)) {
+          <div class="selection-indicator">
+            @if (isDone() && !option.isCorrect) {
+              <span class="crossmark">❌</span>
+            } @else {
+              <span class="checkmark">✅</span>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  @if (!isDone()) {
+    <div class="actions">
+      <button class="primary-btn done-button"
+              [disabled]="selectedCount() === 0"
+              (click)="finishSelection()">
+        {{ 'SCENES.SOLUTIONS.DONE_BUTTON' | translate }}
+      </button>
+    </div>
+  }
+
+  @if (isDone()) {
+    @if (incorrectSelectedCount() === 0) {
+      <app-narrative-text
+        [text]="'SCENES.SOLUTIONS.CONCLUSION_PERFECT' | translate:{ correctCount: correctSelectedCount() }"
+        (completed)="onFinalNarrativeCompleted()"
+      />
+    } @else if (correctSelectedCount() === 0) {
+      <app-narrative-text
+        [text]="'SCENES.SOLUTIONS.CONCLUSION_ALL_INCORRECT' | translate"
+        (completed)="onFinalNarrativeCompleted()"
+      />
+    } @else {
+      <app-narrative-text
+        [text]="'SCENES.SOLUTIONS.CONCLUSION_MIXED' | translate:{ correctCount: correctSelectedCount(), incorrectCount: incorrectSelectedCount() }"
+        (completed)="onFinalNarrativeCompleted()"
+      />
+    }
+  }
+</div>
