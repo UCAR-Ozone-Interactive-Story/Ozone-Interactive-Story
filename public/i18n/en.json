@@ -19,7 +19,7 @@
     },
     "VEHICLE_TYPES": {
       "TITLE": "Vehicle Types",
-      "TEXT_1": "People use many different types of vehicles to get to where they are going. What kind of vehicles might people use? Cars, buses, motorcycles, scooters, and bicycles... Most of these vehicles [Factory + Car] burn gasoline or natural gas, called fossil fuels, to make them go."
+      "TEXT_1": "People use many different types of vehicles to get to where they are going. What kind of vehicles might people use? Cars, buses, motorcycles, scooters, and bicycles... Most of these vehicles burn gasoline or natural gas, called fossil fuels, to make them go."
     },
     "AIR_POLLUTION": {
       "TITLE": "Air Pollution",
@@ -48,7 +48,7 @@
     },
     "BURNING_FUELS": {
       "TITLE": "Burning Fuel",
-      "TEXT_1": "Burning fossil fuels releases invisible gases into the air — carbon dioxide [CO2], nitrogen dioxide [NO2], volatile organic compounds (VOCs) [VOC], and other gases, too. Factories and vehicles [Factory + Car] also release solid particles of dust, carbon soot [C], and smoke that are so tiny they can float in the air for a long time.",
+      "TEXT_1": "Burning fossil fuels releases invisible gases into the air — carbon dioxide, nitrogen dioxide, volatile organic compounds (VOCs), and other gases, too. Factories and vehicles also release solid particles of dust, carbon soot, and smoke that are so tiny they can float in the air for a long time.",
       "FACTORY_BUBBLE": "We burn fossil fuels to create energy for the city!",
       "CAR_BUBBLE": "Engines burn gasoline to make cars move!"
     },
