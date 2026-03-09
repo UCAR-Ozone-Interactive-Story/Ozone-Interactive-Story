@@ -24,7 +24,7 @@
 
       <div class="molecule left">
         <img src="/images/scenes/ozone-interaction/NO2Molecule.png" />
-        <div class="label">NO₂ Molecule</div>
+        <div class="label">{{ moleculeLabels.NO2 | translate }}</div>
       </div>
 
       <img
@@ -36,7 +36,7 @@
       <div class="no-leaving"
            [class.move]="noLeaving()">
         <img src="/images/scenes/ozone-interaction/NOMolecule.png" />
-        <div class="label">NO Molecule</div>
+        <div class="label">{{ moleculeLabels.NO | translate }}</div>
       </div>
 
       <img
@@ -49,20 +49,20 @@
              [class.move]="oxygenMoving()"
              [class.hide]="hideFreeO()">
           <img src="/images/scenes/ozone-interaction/OMolecule.png" />
-          <div class="label">Free Oxygen Atom</div>
+          <div class="label">{{ moleculeLabels.O | translate }}</div>
         </div>
       }
 
       <div class="molecule right"
            [class.hide]="hideO2()">
         <img src="/images/scenes/ozone-interaction/O2Molecule.png" />
-        <div class="label">O₂ Molecule</div>
+        <div class="label">{{ moleculeLabels.O2 | translate }}</div>
       </div>
 
       <div class="molecule right result"
            [class.show]="ozoneFormed()">
         <img src="/images/scenes/ozone-interaction/OzoneMolecule.png" />
-        <div class="label">Ozone Molecule</div>
+        <div class="label">{{ moleculeLabels.O3 | translate }}</div>
       </div>
 
     </div>
