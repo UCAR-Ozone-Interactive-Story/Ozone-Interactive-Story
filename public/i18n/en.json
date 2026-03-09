@@ -21,6 +21,19 @@
       "TITLE": "Vehicle Types",
       "TEXT_1": "People use many different types of vehicles to get to where they are going. What kind of vehicles might people use? Cars, buses, motorcycles, scooters, and bicycles... Most of these vehicles [Factory + Car] burn gasoline or natural gas, called fossil fuels, to make them go."
     },
+    "AIR_POLLUTION": {
+      "TITLE": "Air Pollution",
+      "TEXT_1": "Most of the gases we’re adding to the air, from things like burning fossil fuels or using industrial chemicals, are considered air pollution.",
+      "TEXT_2": "These gases make the air less clean, which is bad for our health."
+    },
+    "HEALTH_IMPACTS": {
+      "TITLE": "Health Impacts",
+      "TEXT_1": "Air pollution can damage our lungs, and harm plants and animals, too.",
+      "LUNGS_BEFORE": "Healthy lungs have wide open pathways.",
+      "LUNGS_AFTER": "With high ground ozone levels, muscles contract, pathways for air are narrowed, and breathing is difficult.",
+      "PLANTS_BEFORE": "Text here",
+      "PLANTS_AFTER": "Text here"
+    },
     "SUNNY_DAY": {
       "TITLE": "Sunny Day",
       "TEXT_1": "But on a warm sunny day when certain types of air pollution are already in the atmosphere, something else can form."

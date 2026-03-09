@@ -1,0 +1,93 @@
+<div class="container">
+  <app-layer-wrapper>
+    <app-sky-grass bg-layer></app-sky-grass>
+    <div class="scene-wrapper">
+
+      <div
+        class="pollution-overlay"
+        [class.stage-1]="stage() === 1"
+      ></div>
+
+      <div class="lungs-block">
+        <div class="lungs-container">
+          <div class="scene-object lungs">
+            <img src="images/scenes/health-impacts/lungs.webp" alt="Human lungs">
+          </div>
+
+          <div class="scene-object airway-container" [class.stage-1]="stage() === 1">
+            <img
+              [src]="stage() === 0
+                ? 'images/scenes/health-impacts/healthy-airways.webp'
+                : 'images/scenes/health-impacts/unhealthy-airways.webp'"
+              alt="Airway"
+              class="airway-image"
+            />
+
+            <div class="airway-particles">
+              <div class="particle p1"></div>
+              <div class="particle p2"></div>
+              <div class="particle p3"></div>
+              <div class="particle p4"></div>
+              <div class="particle p5"></div>
+
+              <div class="particle-2 p6"></div>
+              <div class="particle-2 p7"></div>
+              <div class="particle-2 p8"></div>
+              <div class="particle-2 p9"></div>
+              <div class="particle-2 p10"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bubble-container">
+          <app-narrative-text
+            [text]="stage() === 0
+              ? ('SCENES.HEALTH_IMPACTS.LUNGS_BEFORE' | translate)
+              : ('SCENES.HEALTH_IMPACTS.LUNGS_AFTER' | translate)"
+            (completed)="stage() === 0 ? story.setSceneCompleted(false) : story.setSceneCompleted(true)"
+          />
+        </div>
+      </div>
+
+      <div class="clock-container">
+        <div
+          class="clock"
+          [class.stage-1]="stage() === 1"
+          (click)="advanceTime()"
+          tabindex="0"
+          role="button"
+          aria-label="Advance time"
+        >
+          <img class="clock-face" src="images/scenes/health-impacts/clock-face.webp" alt="">
+          <img class="clock-hand" src="images/scenes/health-impacts/clock-hands.webp" alt="">
+        </div>
+      </div>
+
+      <div class="plants-block">
+        <div class="plants-container">
+          <img
+            [src]="stage() === 0
+              ? 'images/scenes/health-impacts/healthy-plant.jpg'
+              : 'images/scenes/health-impacts/unhealthy-plant.jpeg'"
+            alt="Plants affected by pollution"
+            class="plants-image"
+          />
+        </div>
+
+        <div class="bubble-container">
+          <app-narrative-text
+            [text]="stage() === 0
+              ? ('SCENES.HEALTH_IMPACTS.PLANTS_BEFORE' | translate)
+              : ('SCENES.HEALTH_IMPACTS.PLANTS_AFTER' | translate)"
+          />
+        </div>
+      </div>
+    </div>
+
+    <app-narrative-text
+      [text]="'SCENES.HEALTH_IMPACTS.TEXT_1' | translate"
+      [startDelay]="story.transition().textDelay"
+    />
+
+  </app-layer-wrapper>
+</div>
