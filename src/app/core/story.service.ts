@@ -10,7 +10,10 @@ import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecul
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
 import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
+import { SceneAirPollution } from '@features/story-player/scenes/scene-air-pollution/scene-air-pollution';
+import { SceneHealthImpacts } from '@features/story-player/scenes/scene-health-impacts/scene-health-impacts';
 import { SceneGroundOzone } from '@features/story-player/scenes/scene-ground-ozone/scene-ground-ozone';
+import { SceneSolutions } from '@features/story-player/scenes/scene-solutions/scene-solutions';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -36,6 +39,16 @@ export class StoryService {
       id: 'nearby-factories',
       i18n_title: 'SCENES.NEARBY_FACTORIES.TITLE',
       component: SceneNearbyFactories,
+    },
+    {
+      id: 'air-pollution',
+      i18n_title: "SCENES.AIR_POLLUTION.TITLE",
+      component: SceneAirPollution,
+    },
+    {
+      id: 'health-impacts',
+      i18n_title: "SCENES.HEALTH_IMPACTS.TITLE",
+      component: SceneHealthImpacts,
     },
     {
       id: 'sunny-day',
@@ -71,6 +84,11 @@ export class StoryService {
       id: 'ground-ozone',
       i18n_title: 'SCENES.GROUND_OZONE.TITLE',
       component: SceneGroundOzone,
+    },
+    {
+      id: 'scene-solutions',
+      i18n_title: 'SCENES.SOLUTIONS.TITLE',
+      component: SceneSolutions,
     },
     {
       id: 'end-scene',

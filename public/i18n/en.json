@@ -19,7 +19,20 @@
     },
     "VEHICLE_TYPES": {
       "TITLE": "Vehicle Types",
-      "TEXT_1": "People use many different types of vehicles to get to where they are going. What kind of vehicles might people use? Cars, buses, motorcycles, scooters, and bicycles... Most of these vehicles [Factory + Car] burn gasoline or natural gas, called fossil fuels, to make them go."
+      "TEXT_1": "People use many different types of vehicles to get to where they are going. What kind of vehicles might people use? Cars, buses, motorcycles, scooters, and bicycles... Most of these vehicles burn gasoline or natural gas, called fossil fuels, to make them go."
+    },
+    "AIR_POLLUTION": {
+      "TITLE": "Air Pollution",
+      "TEXT_1": "Most of the gases we’re adding to the air, from things like burning fossil fuels or using industrial chemicals, are considered air pollution.",
+      "TEXT_2": "These gases make the air less clean, which is bad for our health."
+    },
+    "HEALTH_IMPACTS": {
+      "TITLE": "Health Impacts",
+      "TEXT_1": "Air pollution can damage our lungs, and harm plants and animals, too.",
+      "LUNGS_BEFORE": "Healthy lungs have wide open pathways.",
+      "LUNGS_AFTER": "With high ground ozone levels, muscles contract, pathways for air are narrowed, and breathing is difficult.",
+      "PLANTS_BEFORE": "Text here",
+      "PLANTS_AFTER": "Text here"
     },
     "SUNNY_DAY": {
       "TITLE": "Sunny Day",
@@ -35,7 +48,7 @@
     },
     "BURNING_FUELS": {
       "TITLE": "Burning Fuel",
-      "TEXT_1": "Burning fossil fuels releases invisible gases into the air — carbon dioxide [CO2], nitrogen dioxide [NO2], volatile organic compounds (VOCs) [VOC], and other gases, too. Factories and vehicles [Factory + Car] also release solid particles of dust, carbon soot [C], and smoke that are so tiny they can float in the air for a long time.",
+      "TEXT_1": "Burning fossil fuels releases invisible gases into the air — carbon dioxide, nitrogen dioxide, volatile organic compounds (VOCs), and other gases, too. Factories and vehicles also release solid particles of dust, carbon soot, and smoke that are so tiny they can float in the air for a long time.",
       "FACTORY_BUBBLE": "We burn fossil fuels to create energy for the city!",
       "CAR_BUBBLE": "Engines burn gasoline to make cars move!"
     },
@@ -71,6 +84,65 @@
         "CORRECT": "Correct! Ozone pollution is worse where there are many cars and/or factories!",
         "INCORRECT": "Actually, no! Cars and factories produce the ingredients for ozone, so pollution is worse where there are more of them!"
       }
+    },
+    "SOLUTIONS": {
+      "TITLE": "Solutions",
+      "PROMPT": "There are many things we can do to reduce ozone pollution. Select the actions you would like to take to help out!",
+      "OPTIONS": {
+        "RENEWABLE_ENERGY": {
+          "TITLE": "Choose renewable energy.",
+          "DESC": "Wind, solar, and other renewables make electricity without air pollution."
+        },
+        "LOW_POLLUTION_VEHICLE": {
+          "TITLE": "Choose a low-pollution vehicle.",
+          "DESC": "Fuel efficient cars and electric cars help keep air quality good."
+        },
+        "IDLE_ENGINE": {
+          "TITLE": "Leave the engine running.",
+          "DESC": "Keep your car running while waiting to keep the engine warm."
+        },
+        "LOW_VOC_PRODUCTS": {
+          "TITLE": "Choose low VOC products.",
+          "DESC": "Choose paints, adhesives, household cleaners, and other products that have low or no VOCs."
+        },
+        "LESS_ENERGY": {
+          "TITLE": "Use less energy.",
+          "DESC": "This will reduce air pollution if your energy comes from gas or coal and save money."
+        },
+        "BURN_TRASH": {
+          "TITLE": "Burn your trash.",
+          "DESC": "Get rid of waste quickly by burning it in your backyard."
+        },
+        "WALK_BIKE_BUS": {
+          "TITLE": "Walk, bike, or take the bus.",
+          "DESC": "These are low-cost ways to get from place to place and combine errands for efficiency."
+        },
+        "FORGO_FIRE": {
+          "TITLE": "Forgo the fire.",
+          "DESC": "On days when air quality is poor, avoid using your wood fireplace or wood stove if you can."
+        },
+        "MOW_MORNING": {
+          "TITLE": "Mow in the morning.",
+          "DESC": "Mow your lawn early in the day when it's cool outside."
+        },
+        "COMPOST_YARD_WASTE": {
+          "TITLE": "Compost yard waste.",
+          "DESC": "Avoid burning leaves, branches, and other plant trimmings by composting them."
+        },
+        "MOW_EVENING": {
+          "TITLE": "Mow in the evening.",
+          "DESC": "This helps prevent ozone formation. Or use an electric or manual mower."
+        },
+        "REFUEL_EVENING": {
+          "TITLE": "Refuel in the evening.",
+          "DESC": "At gas stations, gasoline vapors get into the air, which help make ozone on hot, sunny days."
+        }
+      },
+      "DONE_BUTTON": "I'm done choosing!",
+      "CONCLUSION": "Nice work! You've chosen {{count}} actions to take to help reduce ozone pollution.",
+      "CONCLUSION_PERFECT": "Fantastic! You chose {{correctCount}} helpful actions and didn't fall for any tricks!",
+      "CONCLUSION_MIXED": "Good job finding {{correctCount}} helpful actions! However, {{incorrectCount}} of your choices would actually make pollution worse.",
+      "CONCLUSION_ALL_INCORRECT": "Oh no! Those choices would actually create more ozone pollution. Let's be careful!"
     },
     "OZONE_MOLECULE": {
         "TITLE": "How Ozone Forms",
