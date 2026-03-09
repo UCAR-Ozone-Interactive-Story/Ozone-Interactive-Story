@@ -143,6 +143,7 @@
       "CONCLUSION_PERFECT": "Fantastic! You chose {{correctCount}} helpful actions and didn't fall for any tricks!",
       "CONCLUSION_MIXED": "Good job finding {{correctCount}} helpful actions! However, {{incorrectCount}} of your choices would actually make pollution worse.",
       "CONCLUSION_ALL_INCORRECT": "Oh no! Those choices would actually create more ozone pollution. Let's be careful!"
+    },
     "OZONE_MOLECULE": {
         "TITLE": "How Ozone Forms",
         "TEXT_1": "Tap the sun to release ultraviolet (UV) light.",
