@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 
 @Component({
-  selector: 'app-scene-burning-fuels',
+  selector: 'app-scene-burning-fuels', 
   imports: [NarrativeText, TranslateModule, SkyGrassComponent, LayerWrapper],
   templateUrl: './scene-burning-fuels.html',
   styleUrl: './scene-burning-fuels.scss',

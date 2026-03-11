@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SceneNearbyFactories } from './scene-nearby-factories';
+import { SceneFuelSources } from './scene-fuel-sources';
 
-describe('SceneNearbyFactory', () => {
-  let component: SceneNearbyFactories;
-  let fixture: ComponentFixture<SceneNearbyFactories>;
+describe('SceneFuelSources', () => {
+  let component: SceneFuelSources;
+  let fixture: ComponentFixture<SceneFuelSources>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SceneNearbyFactories],
+      imports: [SceneFuelSources],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SceneNearbyFactories);
+    fixture = TestBed.createComponent(SceneFuelSources);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
