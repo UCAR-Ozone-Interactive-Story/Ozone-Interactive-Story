@@ -2,69 +2,87 @@
 
   <app-narrative-text
     [text]="explanationKey() | translate"
-    (click)="nextStep()"
-    (keydown.space)="nextStep()"
-    (keydown.enter)="nextStep()"
   />
 
   <div class="stage">
-    <div class="diagram">
+    <div class="diagram-wrapper">
+      <div class="diagram">
 
-      <img
-        src="/images/scenes/ozone-interaction/sun.png"
-        class="sun"
-        (click)="nextStep()"
-      />
+        <!-- SUN -->
+        <img
+          src="/images/scenes/ozone-interaction/sun.png"
+          class="sun"
+          [class.clickable]="step() === 0"
+          [class.pulse]="step() === 0"
+          (click)="clickSun()"
+        />
 
-      <img
-        src="/images/scenes/ozone-interaction/UVRays.png"
-        class="uv-ray"
-        [class.active]="rayActive()"
-      />
+        <!-- UV RAYS -->
+        <img
+          src="/images/scenes/ozone-interaction/UVRays.png"
+          class="uv-ray"
+          [class.active]="rayActive()"
+        />
 
-      <div class="molecule left">
-        <img src="/images/scenes/ozone-interaction/NO2Molecule.png" />
-        <div class="label">{{ moleculeLabels.NO2 | translate }}</div>
-      </div>
-
-      <img
-        src="/images/scenes/ozone-interaction/LongArrow.png"
-        class="no-arrow"
-        [class.show]="noLeaving()"
-      />
-
-      <div class="no-leaving"
-           [class.move]="noLeaving()">
-        <img src="/images/scenes/ozone-interaction/NOMolecule.png" />
-        <div class="label">{{ moleculeLabels.NO | translate }}</div>
-      </div>
-
-      <img
-        src="/images/scenes/ozone-interaction/LongArrow.png"
-        class="travel-arrow"
-      />
-
-      @if (oxygenReleased()) {
-        <div class="free-oxygen"
-             [class.move]="oxygenMoving()"
-             [class.hide]="hideFreeO()">
-          <img src="/images/scenes/ozone-interaction/OMolecule.png" />
-          <div class="label">{{ moleculeLabels.O | translate }}</div>
+        <!-- NO2 -->
+        <div
+          class="molecule left"
+          [class.hide]="showNO()"
+          [class.clickable]="step() === 1"
+          [class.pulse]="step() === 1"
+          (click)="clickNO2()"
+        >
+          <img src="/images/scenes/ozone-interaction/NO2Molecule.png" />
+          <div class="label">{{ moleculeLabels.NO2 | translate }}</div>
         </div>
-      }
 
-      <div class="molecule right"
-           [class.hide]="hideO2()">
-        <img src="/images/scenes/ozone-interaction/O2Molecule.png" />
-        <div class="label">{{ moleculeLabels.O2 | translate }}</div>
+        <!-- NO -->
+        <div class="molecule left no" [class.show]="showNO()">
+          <img src="/images/scenes/ozone-interaction/NOMolecule.png" />
+          <div class="label">{{ moleculeLabels.NO | translate }}</div>
+        </div>
+
+        <!-- ARROW -->
+        <img
+          src="/images/scenes/ozone-interaction/LongArrow.png"
+          class="travel-arrow"
+        />
+
+        <!-- FREE OXYGEN -->
+        @if (oxygenReleased()) {
+          <div
+            class="free-oxygen"
+            [class.mid]="oxygenMid()"
+            [class.end]="oxygenEnd()"
+            [class.hide]="hideFreeO()"
+            [class.clickable]="step() === 2 || step() === 3"
+            [class.pulse]="step() === 2 || step() === 3"
+            (click)="clickOxygen()"
+          >
+            <img src="/images/scenes/ozone-interaction/OMolecule.png" />
+            <div class="label">{{ moleculeLabels.O | translate }}</div>
+          </div>
+        }
+
+        <!-- O2 -->
+        <div class="molecule right" [class.hide]="hideO2()">
+          <img src="/images/scenes/ozone-interaction/O2Molecule.png" />
+          <div class="label">{{ moleculeLabels.O2 | translate }}</div>
+        </div>
+
+        <!-- O3 -->
+        <div
+          class="molecule right result"
+          [class.show]="ozoneFormed()"
+          [class.clickable]="step() === 4"
+          [class.pulse]="step() === 4"
+          (click)="reset()"
+        >
+          <img src="/images/scenes/ozone-interaction/OzoneMolecule.png" />
+          <div class="label">{{ moleculeLabels.O3 | translate }}</div>
+        </div>
+
       </div>
-
-      <div class="molecule right result"
-           [class.show]="ozoneFormed()">
-        <img src="/images/scenes/ozone-interaction/OzoneMolecule.png" />
-        <div class="label">{{ moleculeLabels.O3 | translate }}</div>
-      </div>
-
     </div>
   </div>
 </div>
