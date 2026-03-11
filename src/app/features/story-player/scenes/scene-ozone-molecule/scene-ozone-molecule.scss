@@ -1,4 +1,3 @@
-/* PAGE CONTAINER */
 .container {
   background-color: #b9cbe3;
   min-height: 100vh;
@@ -9,7 +8,6 @@
   align-items: center;
 }
 
-/* DIAGRAM AREA */
 .stage {
   width: 100%;
   flex: 1;
@@ -21,10 +19,9 @@
   overflow: hidden;
 }
 
-/* SCALING WRAPPER — OPTION A */
 .diagram-wrapper {
-  --base-width: 1000;   /* SHRUNK from 1200 */
-  --base-height: 550;   /* SHRUNK from 700 */
+  --base-width: 1000;    
+  --base-height: 550;    
 
   --scale: min(
     calc(100vw / var(--base-width)),
@@ -41,14 +38,12 @@
   position: relative;
 }
 
-/* BASE DIAGRAM CANVAS */
 .diagram {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* SUN */
 .sun {
   position: absolute;
   top: -30px;
@@ -57,7 +52,6 @@
   z-index: 3;
 }
 
-/* UV RAYS */
 .uv-ray {
   position: absolute;
   top: 30px;
@@ -72,7 +66,6 @@
   opacity: 1;
 }
 
-/* MOLECULE CONTAINER */
 .molecule {
   position: absolute;
   display: flex;
@@ -81,47 +74,42 @@
   text-align: center;
 }
 
-/* MOLECULE IMAGE */
 .molecule img {
-  width: 140px; /* slightly smaller for balance */
+  width: 140px;  
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
-  border-radius: 12px; /* optional, soft edges */
+  border-radius: 12px;  
 }
 
-/* INTERACTIVE HOVER EFFECT */
 .molecule:hover img {
   transform: scale(1.08);
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-/* LABELS AS SPACIOUS BUBBLES */
 .label {
   margin-top: 12px;
   background: linear-gradient(145deg, #f0f4f8, #d9e2ec);
   color: #1a1a1a;
   font-weight: 500;
   font-size: calc(16px * var(--scale));
-  padding: calc(12px * var(--scale)) calc(24px * var(--scale)); /* more horizontal padding */
-  border-radius: 999px; /* fully rounded bubble */
+  padding: calc(12px * var(--scale)) calc(24px * var(--scale));  
+  border-radius: 999px;  
   border: 1px solid rgba(0,0,0,0.2);
   box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-  min-width: 120px; /* ensures bubble isn’t too small */
-  max-width: 280px; /* allows some expansion for longer text */
+  min-width: 120px;  
+  max-width: 280px;  
   word-wrap: break-word;
   line-height: 1.4;
   text-align: center;
-  pointer-events: none; /* clicks pass through to molecule */
+  pointer-events: none;  
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* HOVER FLOAT EFFECT */
 .molecule:hover .label {
   transform: translateY(-4px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* ADAPTIVE FOR SMALL SCREENS */
 @media (max-width: 768px) {
   .molecule img {
     width: 100px;
@@ -134,7 +122,6 @@
   }
 }
 
-/* NO2 */
 .left {
   top: 180px;
   left: 160px;
@@ -145,7 +132,6 @@
   opacity: 0;
 }
 
-/* NO */
 .no {
   top: 180px;
   left: 180px;
@@ -161,7 +147,6 @@
   width: 110px;
 }
 
-/* ARROW */
 .travel-arrow {
   position: absolute;
   top: 200px;
@@ -169,7 +154,6 @@
   width: 400px;
 }
 
-/* FREE OXYGEN */
 .free-oxygen {
   position: absolute;
   top: 200px;
@@ -193,7 +177,6 @@
   opacity: 0;
 }
 
-/* O2 */
 .right {
   top: 190px;
   left: 700px;
@@ -203,7 +186,6 @@
   opacity: 0;
 }
 
-/* OZONE RESULT */
 .result {
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -213,7 +195,6 @@
   opacity: 1;
 }
 
-/* CLICK CONTROL */
 .sun,
 .molecule,
 .free-oxygen,
@@ -226,7 +207,6 @@
   cursor: pointer;
 }
 
-/* PULSE GUIDE */
 @keyframes pulseGuide {
   0% { filter: drop-shadow(0 0 0px rgba(255,255,0,0.6)); }
   50% { filter: drop-shadow(0 0 18px rgba(255,255,0,0.9)); }
