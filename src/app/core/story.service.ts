@@ -1,11 +1,11 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
+import { SceneFuelSources } from '@features/story-player/scenes/scene-fuel-sources/scene-fuel-sources';
 import { Scene } from './scene';
 import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/scene-sunny-day';
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
-import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
 import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecule/scene-ozone-molecule';
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
@@ -36,9 +36,9 @@ export class StoryService {
       component: SceneVehicleTypes,
     },
     {
-      id: 'nearby-factories',
-      i18n_title: 'SCENES.NEARBY_FACTORIES.TITLE',
-      component: SceneNearbyFactories,
+      id: 'fuel-sources',
+      i18n_title: 'SCENES.FUEL_SOURCES.TITLE',
+      component: SceneFuelSources,
     },
     {
       id: 'air-pollution',
@@ -216,10 +216,6 @@ export class StoryService {
   // list of transitions defined by which scenes are being moved between
   // animationType is defined in story-player.scss and referenced in story-player.html
   private static readonly TRANSITIONS: Record<string, TransitionConfig> = {
-    'nearby-factories->sunny-day': {
-      animationType: 'slide-left',
-      textDelay: 2500
-    },
     'morning->vehicle-types': {
       animationType: 'slide-down',
       textDelay: 4000

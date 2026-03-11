@@ -46,6 +46,12 @@
       "TITLE": "Nearby Factories",
       "TEXT_1": "Nearby factories also burn fossil fuels to make electricity that we use in our homes, schools, and workplaces. Click on the fossil fuels to see the electricity being produced!"
     },
+    "FUEL_SOURCES": {
+      "TITLE": "Fuel Sources",
+      "TEXT_1": "[PLACEHOLDER TEXT] Click the fossil fuel source to learn more about where they are found!",
+      "OIL_BUBBLE": "[PLACEHOLDER] Oil is extracted from underground reservoirs",
+      "COAL_BUBBLE": "[PLACEHOLDER] Coal is found in deposits within sedimentary rock layers"
+    },
     "BURNING_FUELS": {
       "TITLE": "Burning Fuel",
       "TEXT_1": "Burning fossil fuels releases invisible gases into the air — carbon dioxide, nitrogen dioxide, volatile organic compounds (VOCs), and other gases, too. Factories and vehicles also release solid particles of dust, carbon soot, and smoke that are so tiny they can float in the air for a long time.",
