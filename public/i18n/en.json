@@ -164,6 +164,10 @@
         "LABEL_O2": "O₂ Molecule",
         "LABEL_O3": "Ozone Molecule"
     },
+    "UPPER_OZONE": {
+        "TITLE": "Upper Atmosphere Ozone",
+        "TEXT_1": "Now way up high in the atmosphere, ozone is naturally there in the ozone layer. Ozone up in the stratosphere is actually really helpful. It helps block UV rays from the Sun that can cause sunburn."
+    },
     "END": {
       "TITLE": "End",
       "TEXT_1": "This is here for testing purposes"
