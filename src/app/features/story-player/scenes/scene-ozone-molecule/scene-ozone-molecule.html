@@ -1,0 +1,70 @@
+<div class="container">
+
+  <app-narrative-text
+    [text]="explanationKey() | translate"
+    (click)="nextStep()"
+    (keydown.space)="nextStep()"
+    (keydown.enter)="nextStep()"
+  />
+
+  <div class="stage">
+    <div class="diagram">
+
+      <img
+        src="/images/scenes/ozone-interaction/sun.png"
+        class="sun"
+        (click)="nextStep()"
+      />
+
+      <img
+        src="/images/scenes/ozone-interaction/UVRays.png"
+        class="uv-ray"
+        [class.active]="rayActive()"
+      />
+
+      <div class="molecule left">
+        <img src="/images/scenes/ozone-interaction/NO2Molecule.png" />
+        <div class="label">{{ moleculeLabels.NO2 | translate }}</div>
+      </div>
+
+      <img
+        src="/images/scenes/ozone-interaction/LongArrow.png"
+        class="no-arrow"
+        [class.show]="noLeaving()"
+      />
+
+      <div class="no-leaving"
+           [class.move]="noLeaving()">
+        <img src="/images/scenes/ozone-interaction/NOMolecule.png" />
+        <div class="label">{{ moleculeLabels.NO | translate }}</div>
+      </div>
+
+      <img
+        src="/images/scenes/ozone-interaction/LongArrow.png"
+        class="travel-arrow"
+      />
+
+      @if (oxygenReleased()) {
+        <div class="free-oxygen"
+             [class.move]="oxygenMoving()"
+             [class.hide]="hideFreeO()">
+          <img src="/images/scenes/ozone-interaction/OMolecule.png" />
+          <div class="label">{{ moleculeLabels.O | translate }}</div>
+        </div>
+      }
+
+      <div class="molecule right"
+           [class.hide]="hideO2()">
+        <img src="/images/scenes/ozone-interaction/O2Molecule.png" />
+        <div class="label">{{ moleculeLabels.O2 | translate }}</div>
+      </div>
+
+      <div class="molecule right result"
+           [class.show]="ozoneFormed()">
+        <img src="/images/scenes/ozone-interaction/OzoneMolecule.png" />
+        <div class="label">{{ moleculeLabels.O3 | translate }}</div>
+      </div>
+
+    </div>
+  </div>
+</div>

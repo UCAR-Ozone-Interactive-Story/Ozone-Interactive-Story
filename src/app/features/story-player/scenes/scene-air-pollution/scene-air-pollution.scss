@@ -1,0 +1,117 @@
+.bottom-text {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  z-index: 10;
+}
+
+.pollution-overlay {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    to top,
+    rgba(60, 60, 60, 0.2),
+    rgba(110, 100, 80, 0.45),
+    rgba(140, 120, 90, 0.8)
+  );
+
+  opacity: 0;
+
+  animation: pollution-build 4s ease-in forwards;
+
+  backdrop-filter: blur(2px);
+}
+
+@keyframes pollution-build {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.scene-object {
+  position: absolute;
+
+  img {
+    display: block;
+    height: auto;
+  }
+}
+
+.factory {
+  right: 12%;
+  bottom: 25%;
+
+  img {
+    width: 30vw;
+  }
+}
+
+.car {
+  left: 20%;
+  bottom: 20%;
+
+  img {
+    width: 15vw;
+  }
+}
+
+.particle-emitter {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.exhaust {
+  bottom: 20%;
+  right: -10px;
+}
+
+.factory-smoke {
+  top: -30px;
+  left: 65%;
+}
+
+.gas-cloud {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: rgba(100, 100, 100, 0.6);
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0;
+  animation: drift 3s infinite ease-out;
+
+  &.cloud-1 { animation-delay: 0s; }
+  &.cloud-2 { animation-delay: 1s; left: 15px; }
+  &.cloud-3 { animation-delay: 2s; left: -15px; }
+}
+
+@keyframes drift {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(-40px, -200px) scale(3);
+    opacity: 0;
+  }
+}

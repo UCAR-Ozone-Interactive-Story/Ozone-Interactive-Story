@@ -1,0 +1,34 @@
+<div class="container">
+  <app-layer-wrapper>
+    <app-underground bg-layer></app-underground>
+
+    <div class="content">
+      <div class="interactive-object oil" (click)="activateOil()" (keydown.space)="activateOil()" [class.active]="isOilActive()" tabindex="0">
+        <img src="images/scenes/fuel-sources/oil.png" width="240" alt="Oil" />
+
+        @if (isOilActive()) {
+          <div class="glow"></div>
+          <div class="bubble-container">
+            <app-narrative-text [text]="'SCENES.FUEL_SOURCES.OIL_BUBBLE' | translate" />
+          </div>
+        }
+      </div>
+
+      <div class="interactive-object coal" (click)="activateCoal()" (keydown.space)="activateCoal()" [class.active]="isCoalActive()" tabindex="0">
+        <img src="images/scenes/fuel-sources/coal.png" width="220" alt="Coal" />
+
+        @if (isCoalActive()) {
+          <div class="glow"></div>
+          <div class="bubble-container">
+            <app-narrative-text [text]="'SCENES.FUEL_SOURCES.COAL_BUBBLE' | translate" />
+          </div>
+        }
+      </div>
+
+      <app-narrative-text
+        [text]="'SCENES.FUEL_SOURCES.TEXT_1' | translate"
+        [startDelay]="story.transition().textDelay"
+      />
+    </div>
+  </app-layer-wrapper>
+</div>

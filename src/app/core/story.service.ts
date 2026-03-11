@@ -1,15 +1,20 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
+import { SceneFuelSources } from '@features/story-player/scenes/scene-fuel-sources/scene-fuel-sources';
 import { Scene } from './scene';
 import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/scene-sunny-day';
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
-import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
+import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecule/scene-ozone-molecule';
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
 import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
 import { SceneUpperOzone } from '@features/story-player/scenes/scene-upper-ozone/scene-upper-ozone';
+import { SceneAirPollution } from '@features/story-player/scenes/scene-air-pollution/scene-air-pollution';
+import { SceneHealthImpacts } from '@features/story-player/scenes/scene-health-impacts/scene-health-impacts';
+import { SceneGroundOzone } from '@features/story-player/scenes/scene-ground-ozone/scene-ground-ozone';
+import { SceneSolutions } from '@features/story-player/scenes/scene-solutions/scene-solutions';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -32,9 +37,19 @@ export class StoryService {
       component: SceneVehicleTypes,
     },
     {
-      id: 'nearby-factories',
-      i18n_title: 'SCENES.NEARBY_FACTORIES.TITLE',
-      component: SceneNearbyFactories,
+      id: 'fuel-sources',
+      i18n_title: 'SCENES.FUEL_SOURCES.TITLE',
+      component: SceneFuelSources,
+    },
+    {
+      id: 'air-pollution',
+      i18n_title: "SCENES.AIR_POLLUTION.TITLE",
+      component: SceneAirPollution,
+    },
+    {
+      id: 'health-impacts',
+      i18n_title: "SCENES.HEALTH_IMPACTS.TITLE",
+      component: SceneHealthImpacts,
     },
     {
       id: 'sunny-day',
@@ -65,6 +80,21 @@ export class StoryService {
       id: 'upper-ozone',
       i18n_title: 'SCENES.UPPER_OZONE.TITLE',
       component: SceneUpperOzone,
+    },
+    {
+      id: 'ozone-molecule',
+      i18n_title: 'SCENES.OZONE_MOLECULE.TITLE',
+      component: OzoneMolecule,
+    },
+    {
+      id: 'ground-ozone',
+      i18n_title: 'SCENES.GROUND_OZONE.TITLE',
+      component: SceneGroundOzone,
+    },
+    {
+      id: 'scene-solutions',
+      i18n_title: 'SCENES.SOLUTIONS.TITLE',
+      component: SceneSolutions,
     },
     {
       id: 'end-scene',
@@ -192,10 +222,6 @@ export class StoryService {
   // list of transitions defined by which scenes are being moved between
   // animationType is defined in story-player.scss and referenced in story-player.html
   private static readonly TRANSITIONS: Record<string, TransitionConfig> = {
-    'nearby-factories->sunny-day': {
-      animationType: 'slide-left',
-      textDelay: 2500
-    },
     'morning->vehicle-types': {
       animationType: 'slide-down',
       textDelay: 4000

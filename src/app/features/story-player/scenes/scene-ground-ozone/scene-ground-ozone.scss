@@ -1,0 +1,104 @@
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #000; /* Dark background to hide sharp cuts during fade */
+}
+
+.choice-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+
+  &.fade-out {
+    opacity: 0;
+  }
+}
+
+.choice-option {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  h1 {
+    position: absolute;
+    bottom: 10%;
+    z-index: 5;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    pointer-events: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @media (hover: hover) {
+      filter: grayscale(100%);
+    }
+    transition: filter 0.5s ease, transform 0.5s ease;
+  }
+
+  @mixin highlight-state {
+    outline: 16px solid #ff6b6b;
+    outline-offset: -16px;
+    z-index: 10;
+
+    h1 {
+      transform: scale(1.1) translateY(-10px);
+      background-color: #fff4f4;
+      color: #d00000;
+    }
+
+    img {
+      filter: grayscale(0%);
+      transform: scale(1.1);
+    }
+  }
+
+  @media (hover: hover) { // we only want non-touchscreens to have hover effects
+    &:hover {
+      @include highlight-state;
+    }
+  }
+
+  &:focus-visible {
+    @include highlight-state;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 3;
+  }
+
+  &.correct .overlay {
+    background-color: rgba(76, 175, 80, 0.5); // green
+    opacity: 1;
+  }
+
+  &.incorrect .overlay {
+    background-color: rgba(244, 67, 54, 0.5); // red
+    opacity: 1;
+  }
+}

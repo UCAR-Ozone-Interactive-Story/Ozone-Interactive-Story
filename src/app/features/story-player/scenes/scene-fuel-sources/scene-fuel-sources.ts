@@ -1,0 +1,35 @@
+import { Component, inject, signal, effect } from '@angular/core';
+import { StoryService } from '@core/story.service';
+import { UndergroundComponent } from '@features/story-player/backgrounds/underground/underground.component';
+import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
+
+@Component({
+  selector: 'app-scene-fuel-sources',
+  imports: [NarrativeText, TranslateModule, UndergroundComponent, LayerWrapper],
+  templateUrl: './scene-fuel-sources.html',
+  styleUrl: './scene-fuel-sources.scss',
+})
+export class SceneFuelSources {
+  story = inject(StoryService);
+
+  isOilActive = signal(false);
+  isCoalActive = signal(false);
+
+  constructor() {
+    effect(() => {
+      if (this.isOilActive() && this.isCoalActive()) {
+        this.story.setSceneCompleted(true);
+      }
+    });
+  }
+
+  activateOil() {
+    this.isOilActive.set(true);
+  }
+
+  activateCoal() {
+    this.isCoalActive.set(true);
+  }
+}
