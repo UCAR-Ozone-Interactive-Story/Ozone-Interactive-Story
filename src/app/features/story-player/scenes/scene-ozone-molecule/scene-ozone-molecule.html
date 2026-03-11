@@ -6,7 +6,6 @@
     <div class="diagram-wrapper">
       <div class="diagram">
 
-        <!-- SUN -->
         <img
           src="/images/scenes/ozone-interaction/sun.png"
           class="sun"
@@ -18,14 +17,12 @@
           (keydown.space)="clickSun()"
         />
 
-        <!-- UV RAYS -->
         <img
           src="/images/scenes/ozone-interaction/UVRays.png"
           class="uv-ray"
           [class.active]="rayActive()"
         />
 
-        <!-- NO2 -->
         <div
           class="molecule left"
           [class.hide]="showNO()"
@@ -40,16 +37,13 @@
           <div class="label">{{ moleculeLabels.NO2 | translate }}</div>
         </div>
 
-        <!-- NO -->
         <div class="molecule left no" [class.show]="showNO()">
           <img src="/images/scenes/ozone-interaction/NOMolecule.png" />
           <div class="label">{{ moleculeLabels.NO | translate }}</div>
         </div>
 
-        <!-- ARROW -->
         <img src="/images/scenes/ozone-interaction/LongArrow.png" class="travel-arrow" />
 
-        <!-- FREE OXYGEN -->
         @if (oxygenReleased()) {
           <div
             class="free-oxygen"
@@ -68,13 +62,11 @@
           </div>
         }
 
-        <!-- O2 -->
         <div class="molecule right" [class.hide]="hideO2()">
           <img src="/images/scenes/ozone-interaction/O2Molecule.png" />
           <div class="label">{{ moleculeLabels.O2 | translate }}</div>
         </div>
 
-        <!-- O3 -->
         <div
           class="molecule right result"
           [class.show]="ozoneFormed()"
