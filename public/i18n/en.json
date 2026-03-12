@@ -32,7 +32,10 @@
       "LUNGS_BEFORE": "Healthy lungs have wide open pathways.",
       "LUNGS_AFTER": "With high ground ozone levels, muscles contract, pathways for air are narrowed, and breathing is difficult.",
       "PLANTS_BEFORE": "Text here",
-      "PLANTS_AFTER": "Text here"
+      "PLANTS_AFTER": "Text here",
+      "CHOOSE_LEVEL": "Choose an air pollution level!",
+      "LOW": "Low",
+      "HIGH": "High"
     },
     "SUNNY_DAY": {
       "TITLE": "Sunny Day",

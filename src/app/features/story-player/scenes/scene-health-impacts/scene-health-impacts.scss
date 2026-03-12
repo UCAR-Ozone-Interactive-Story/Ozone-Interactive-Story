@@ -19,7 +19,7 @@
 // pollution overlay in stage 1
 .pollution-overlay {
   position: absolute;
-  inset: 0; /* covers entire content area */
+  inset: 0;
   pointer-events: none;
   background: linear-gradient(
     to top,
@@ -31,10 +31,11 @@
   z-index: 0;
   backdrop-filter: blur(1px);
   transition: opacity 2s ease-in-out;
+  pointer-events: none;
 }
 
 .pollution-overlay.stage-1 {
-  opacity: 1; /* fade in when stage 1 */
+  opacity: 1;
 }
 
 // lungs
@@ -172,6 +173,59 @@
 .p9 { bottom: 32%; left: 25%; animation-delay: 1.5s; }
 .p10 { bottom: 28%; left: 30%; animation-delay: 2s; }
 
+.button-group-container {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 16px;
+  padding: 1rem;
+  gap: 1rem;
+  border: 4px solid black;
+  width: 20vw;
+
+  .label {
+    font-size: 1.5rem;
+  }
+}
+
+.button-group {
+  display: flex;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.button-group button {
+  padding: 0.8rem 2rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.button-group button:hover {
+  background: #f2f2f2;
+}
+
+.button-group button.selected {
+  background: #4a4a4a;
+  color: white;
+}
+
+.button-group button:focus-visible {
+  outline: 3px solid #6fa8ff;
+  outline-offset: -2px;
+}
 
 // airflow animation
 @keyframes airway-flow {
@@ -206,67 +260,6 @@
   100% {
     transform: translate(15px,-120px) scale(1.1);
     opacity: 0;
-  }
-
-}
-
-// clock
-.clock-container {
-  position: absolute;
-  bottom: 8%;
-  left: 50%;              /* center horizontally */
-  transform: translateX(-50%);
-}
-
-.clock {
-  width: 10vw;
-  cursor: pointer;
-  animation: clock-pulse 1.8s ease-in-out infinite;
-}
-
-.clock:hover {
-  transform: scale(1.12);
-}
-
-.clock.stage-1 {
-  animation: none;
-}
-
-.clock-face {
-  width: 100%;
-  display: block;
-}
-
-.clock-hand {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-
-  width: 100%;
-
-  transform-origin: 50% 50%;
-
-  transform: translateX(-50%) rotate(0deg);
-
-  transition: transform 0.6s ease;
-}
-
-.clock.stage-1 .clock-hand {
-  transform: translateX(-50%) rotate(180deg);
-}
-
-@keyframes clock-pulse {
-
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.08);
-  }
-
-  100% {
-    transform: scale(1);
   }
 
 }
