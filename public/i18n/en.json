@@ -65,7 +65,7 @@
     "GATHER_INGREDIENTS": {
       "TITLE": "Gathering Ingredients",
       "TEXT_1": "Create ozone by dragging VOC and NO₂ molecules to the smog cloud.",
-      "INGREDIENTS_GATHERED_BUBBLE": "Great! Now that you have gathered the ingredients you can procced"
+      "INGREDIENTS_GATHERED_BUBBLE": "Great! Now that you have gathered the molecules, click on the sun to gather the final ingredient: ultraviolet light"
     },
     "GROUND_OZONE": {
       "TITLE": "Ground Ozone",

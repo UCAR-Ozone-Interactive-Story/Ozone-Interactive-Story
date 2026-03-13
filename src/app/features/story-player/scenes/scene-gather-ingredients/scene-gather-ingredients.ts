@@ -1,8 +1,14 @@
-import { Component, inject, Renderer2 } from '@angular/core';
+import { Component, inject, Renderer2, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { CdkDrag, CdkDragEnd, Point, transferArrayItem } from '@angular/cdk/drag-drop';
+import {
+  CdkDrag,
+  CdkDragEnd,
+  CdkDragEnter,
+  Point,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 const sceneName = 'scene-gather-ingredients';
 @Component({
   selector: 'app-' + sceneName,
@@ -13,6 +19,7 @@ const sceneName = 'scene-gather-ingredients';
 export class SceneGatherIngredients {
   story = inject(StoryService);
   constructor(private renderer: Renderer2) {}
+  moleculesGathered = signal(false);
 
   molecules = [
     { label: 'VOC', id: 0, location: 'paint' },
@@ -61,12 +68,13 @@ export class SceneGatherIngredients {
     molecule.setAttribute('inOzoneCloud', 'true');
     const id = this.getMoleculeId(molecule);
     this.molecules[id].location = 'ozoneCloud';
-    this.checkIfSceneComplete();
+    this.checkIfMoleculesAreGathered();
   }
-  checkIfSceneComplete() {
+  checkIfMoleculesAreGathered() {
     if (this.ozoneCloudHas('VOC') && this.ozoneCloudHas('NO₂')) {
       console.log('ozone cloud has ingredients');
-      this.story.setSceneCompleted(true);
+      this.moleculesGathered.set(true);
+      //   this.story.setSceneCompleted(true);
     }
   }
   handleDragEnd(event: CdkDragEnd) {
@@ -77,10 +85,9 @@ export class SceneGatherIngredients {
 
     if (elementUnderItem === ozoneCloud) {
       this.getMoleculeData(moleculeElm).location = 'ozoneCloud';
-      this.checkIfSceneComplete();
-    } else {
+      this.checkIfMoleculesAreGathered();
+    } else
       // move back to previous drop container
       event.source.reset();
-    }
   }
 }
