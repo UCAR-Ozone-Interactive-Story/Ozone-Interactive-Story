@@ -1,14 +1,8 @@
-import { Component, inject, Renderer2, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import {
-  CdkDrag,
-  CdkDragEnd,
-  CdkDragEnter,
-  Point,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragEnd, Point } from '@angular/cdk/drag-drop';
 const sceneName = 'scene-gather-ingredients';
 @Component({
   selector: 'app-' + sceneName,
@@ -18,8 +12,8 @@ const sceneName = 'scene-gather-ingredients';
 })
 export class SceneGatherIngredients {
   story = inject(StoryService);
-  constructor(private renderer: Renderer2) {}
   moleculesGathered = signal(false);
+  ingredientsExplained = signal(false);
 
   molecules = [
     { label: 'VOC', id: 0, location: 'paint' },
@@ -74,7 +68,6 @@ export class SceneGatherIngredients {
     if (this.ozoneCloudHas('VOC') && this.ozoneCloudHas('NO₂')) {
       console.log('ozone cloud has ingredients');
       this.moleculesGathered.set(true);
-      //   this.story.setSceneCompleted(true);
     }
   }
   handleDragEnd(event: CdkDragEnd) {
@@ -89,5 +82,8 @@ export class SceneGatherIngredients {
     } else
       // move back to previous drop container
       event.source.reset();
+  }
+  setIngredientsExplained() {
+    this.ingredientsExplained.set(true);
   }
 }
