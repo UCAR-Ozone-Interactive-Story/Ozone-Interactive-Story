@@ -1,5 +1,29 @@
 .container {
   height: 100%;
   width: 100%;
-  background-color: #808000;
+  background-color: #bdbd90;
+}
+
+.vehicle {
+  position: relative;
+  // bottom: 1vh;
+  // object-position: 50% 50%;
+}
+
+.aspectwrapper {
+  display: inline-block; /* shrink to fit */
+  width: 100%;         /* whatever width you like */
+  position: relative;
+  top: 55vh;  /* so .content can use position: absolute */
+}
+.aspectwrapper::after {
+  padding-top: 56.25%; /* percentage of containing block _width_ */
+  display: block;
+  content: '';
+}
+.content {
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;  /* follow the parent's edges */
+  // outline: thin dashed blue;            /* just so you can see the box */
+  display: inline flow-root;
 }
