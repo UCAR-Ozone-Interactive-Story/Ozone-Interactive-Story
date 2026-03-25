@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  signal
-} from '@angular/core';
-
+import { Component, inject, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
@@ -24,9 +19,12 @@ export class OzoneMolecule {
   step = signal(0);
 
   rayActive = signal(false);
-  noLeaving = signal(false);
+  showNO = signal(false);
   oxygenReleased = signal(false);
-  oxygenMoving = signal(false);
+
+  oxygenMid = signal(false);
+  oxygenEnd = signal(false);
+
   ozoneFormed = signal(false);
   hideO2 = signal(false);
   hideFreeO = signal(false);
@@ -41,50 +39,72 @@ export class OzoneMolecule {
     O3: 'SCENES.OZONE_MOLECULE.LABEL_O3',
   };
 
-  nextStep() {
-    const current = this.step();
+  clickSun() {
+    if (this.step() !== 0) return;
 
-    if (current === 0) {
-      this.rayActive.set(true);
-      this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_2');
-    }
+    this.rayActive.set(true);
+    this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_2');
+    this.step.set(1);
+  }
 
-    else if (current === 1) {
-      this.noLeaving.set(true);
-      this.oxygenReleased.set(true);
-      this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_3');
-    }
+  clickNO2() {
+    if (this.step() !== 1) return;
 
-    else if (current === 2) {
-      this.oxygenMoving.set(true);
+    this.showNO.set(true);
+    this.oxygenReleased.set(true);
+
+    this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_3');
+    this.step.set(2);
+  }
+
+  clickOxygen() {
+
+    if (this.step() === 2) {
+
+      this.oxygenMid.set(true);
       this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_4');
-    }
+      this.step.set(3);
 
-    else if (current === 3) {
-      this.ozoneFormed.set(true);
-      this.hideO2.set(true);
-      this.hideFreeO.set(true);
-      this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_5');
-      this.story.setSceneCompleted(true);
-    }
-
-    else if (current === 4) {
-      this.reset();
       return;
     }
 
-    this.step.update(v => v + 1);
+    if (this.step() === 3) {
+
+      this.oxygenEnd.set(true);
+
+      setTimeout(() => {
+
+        this.ozoneFormed.set(true);
+        this.hideO2.set(true);
+        this.hideFreeO.set(true);
+
+        this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_5');
+        this.story.setSceneCompleted(true);
+
+        this.step.set(4);
+
+      }, 500);
+    }
   }
 
   reset() {
+
+    if (this.step() !== 4) return;
+
     this.step.set(0);
+
     this.rayActive.set(false);
-    this.noLeaving.set(false);
+    this.showNO.set(false);
     this.oxygenReleased.set(false);
-    this.oxygenMoving.set(false);
+
+    this.oxygenMid.set(false);
+    this.oxygenEnd.set(false);
+
     this.ozoneFormed.set(false);
     this.hideO2.set(false);
     this.hideFreeO.set(false);
+
     this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_1');
   }
+
 }

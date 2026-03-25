@@ -1,7 +1,7 @@
 .container {
   background-color: #b9cbe3;
   min-height: 100vh;
-  padding: 20px;
+  padding: 4px 12px;
 
   display: flex;
   flex-direction: column;
@@ -10,49 +10,56 @@
 
 .stage {
   width: 100%;
+  flex: 1;
+
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+
   overflow: hidden;
+}
+
+.diagram-wrapper {
+  --base-width: 1000;    
+  --base-height: 550;    
+
+  --scale: min(
+    calc(100vw / var(--base-width)),
+    calc((100vh - 60px) / var(--base-height))
+  );
+
+  --max-scale: 1;
+
+  transform: scale(min(var(--scale), var(--max-scale)));
+  transform-origin: top center;
+
+  width: calc(var(--base-width) * 1px);
+  height: calc(var(--base-height) * 1px);
+  position: relative;
 }
 
 .diagram {
   position: relative;
-
-  width: 1200px;
-  height: 700px;
-
-  transform-origin: top center;
-}
-
-@media (max-height: 800px) {
-  .diagram {
-    transform: scale(calc(90vh / 700));
-  }
-}
-
-@media (max-height: 600px) {
-  .diagram {
-    transform: scale(calc(85vh / 700));
-  }
+  width: 100%;
+  height: 100%;
 }
 
 .sun {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 210px;
+  top: -30px;
+  left: -30px;
+  width: 200px;
   z-index: 3;
 }
 
 .uv-ray {
   position: absolute;
-  top: 60px;
-  left: 60px;
-  width: 240px;
+  top: 30px;
+  left: 30px;
+  width: 200px;
+
   opacity: 0;
-  z-index: 2;
-  transition: opacity .4s ease;
+  transition: opacity 0.4s ease;
 }
 
 .uv-ray.active {
@@ -61,48 +68,109 @@
 
 .molecule {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .molecule img {
-  width: 160px;
+  width: 140px;  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  border-radius: 12px;  
+}
+
+.molecule:hover img {
+  transform: scale(1.08);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .label {
-  margin-top: 6px;
-  background: #e0e0e0;
-  padding: 6px 10px;
-  border-radius: 12px;
-  border: 2px solid black;
+  margin-top: 12px;
+  background: linear-gradient(145deg, #f0f4f8, #d9e2ec);
+  color: #1a1a1a;
+  font-weight: 500;
+  font-size: calc(16px * var(--scale));
+  padding: calc(12px * var(--scale)) calc(24px * var(--scale));  
+  border-radius: 999px;  
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  min-width: 120px;  
+  max-width: 280px;  
+  word-wrap: break-word;
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.molecule:hover .label {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  .molecule img {
+    width: 100px;
+  }
+  .label {
+    font-size: calc(14px * var(--scale));
+    padding: calc(10px * var(--scale)) calc(18px * var(--scale));
+    max-width: 220px;
+    min-width: 100px;
+  }
 }
 
 .left {
-  bottom: 230px;
-  left: 200px;
+  top: 180px;
+  left: 160px;
+  transition: opacity 0.4s ease;
+}
+
+.left.hide {
+  opacity: 0;
+}
+
+.no {
+  top: 180px;
+  left: 180px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.no.show {
+  opacity: 1;
+}
+
+.no img {
+  width: 110px;
 }
 
 .travel-arrow {
   position: absolute;
-  bottom: 310px;
-  left: 360px;
+  top: 200px;
+  left: 310px;
   width: 400px;
 }
 
 .free-oxygen {
   position: absolute;
-  bottom: 250px;
-  left: 220px;
-  opacity: 0;
-  transition: transform 1.1s ease, opacity .4s ease;
+  top: 200px;
+  left: 300px;
+  transition: transform 0.9s ease;
 }
 
 .free-oxygen img {
   width: 110px;
 }
 
-.free-oxygen.move {
-  opacity: 1;
-  transform: translateX(300px);
+.free-oxygen.mid {
+  transform: translateX(180px);
+}
+
+.free-oxygen.end {
+  transform: translateX(360px);
 }
 
 .free-oxygen.hide {
@@ -110,8 +178,8 @@
 }
 
 .right {
-  bottom: 230px;
-  right: 260px;
+  top: 190px;
+  left: 700px;
 }
 
 .right.hide {
@@ -120,39 +188,31 @@
 
 .result {
   opacity: 0;
-  transition: opacity .6s ease;
+  transition: opacity 0.5s ease;
 }
 
 .result.show {
   opacity: 1;
 }
 
-.no-arrow {
-  position: absolute;
-  bottom: 230px;
-  left: 340px;
-  width: 260px;
-  transform: rotate(25deg);
-  opacity: 0;
+.sun,
+.molecule,
+.free-oxygen,
+.result {
+  pointer-events: none;
 }
 
-.no-arrow.show {
-  opacity: 1;
+.clickable {
+  pointer-events: auto;
+  cursor: pointer;
 }
 
-.no-leaving {
-  position: absolute;
-  bottom: 180px;
-  left: 330px;
-  opacity: 0;
-  transition: transform 1.1s ease, opacity .4s ease;
+@keyframes pulseGuide {
+  0% { filter: drop-shadow(0 0 0px rgba(255,255,0,0.6)); }
+  50% { filter: drop-shadow(0 0 18px rgba(255,255,0,0.9)); }
+  100% { filter: drop-shadow(0 0 0px rgba(255,255,0,0.6)); }
 }
 
-.no-leaving img {
-  width: 120px;
-}
-
-.no-leaving.move {
-  opacity: 1;
-  transform: translate(240px, 160px);
+.pulse {
+  animation: pulseGuide 1.3s infinite;
 }
