@@ -1,29 +1,39 @@
 <div class="container">
   <app-layer-wrapper>
     <app-sky-grass bg-layer></app-sky-grass>
-    <div class="scene-wrapper">
 
+    <div class="scene-wrapper">
       <div
         class="pollution-overlay"
         [class.stage-1]="stage() === 1"
+        aria-hidden="true"
       ></div>
 
       <div class="lungs-block">
         <div class="lungs-container">
           <div class="scene-object lungs">
-            <img src="images/scenes/health-impacts/lungs.webp" alt="Human lungs">
+            <img
+              src="images/scenes/health-impacts/lungs.webp"
+              alt="Human lungs"
+            />
           </div>
 
-          <div class="scene-object airway-container" [class.stage-1]="stage() === 1">
+          <div
+            class="scene-object airway-container"
+            [class.stage-1]="stage() === 1"
+            aria-live="polite"
+          >
             <img
               [src]="stage() === 0
                 ? 'images/scenes/health-impacts/healthy-airways.webp'
                 : 'images/scenes/health-impacts/unhealthy-airways.webp'"
-              alt="Airway"
+              [alt]="stage() === 0
+                ? 'Healthy airways with clean airflow'
+                : 'Unhealthy airways affected by pollution'"
               class="airway-image"
             />
 
-            <div class="airway-particles">
+            <div class="airway-particles" aria-hidden="true">
               <div class="particle p1"></div>
               <div class="particle p2"></div>
               <div class="particle p3"></div>
@@ -44,22 +54,10 @@
             [text]="stage() === 0
               ? ('SCENES.HEALTH_IMPACTS.LUNGS_BEFORE' | translate)
               : ('SCENES.HEALTH_IMPACTS.LUNGS_AFTER' | translate)"
-            (completed)="stage() === 0 ? story.setSceneCompleted(false) : story.setSceneCompleted(true)"
+            (completed)="stage() === 0
+              ? story.setSceneCompleted(false)
+              : story.setSceneCompleted(true)"
           />
-        </div>
-      </div>
-
-      <div class="clock-container">
-        <div
-          class="clock"
-          [class.stage-1]="stage() === 1"
-          (click)="advanceTime()"
-          tabindex="0"
-          role="button"
-          aria-label="Advance time"
-        >
-          <img class="clock-face" src="images/scenes/health-impacts/clock-face.webp" alt="">
-          <img class="clock-hand" src="images/scenes/health-impacts/clock-hands.webp" alt="">
         </div>
       </div>
 
@@ -69,7 +67,9 @@
             [src]="stage() === 0
               ? 'images/scenes/health-impacts/healthy-plant.jpg'
               : 'images/scenes/health-impacts/unhealthy-plant.jpeg'"
-            alt="Plants affected by pollution"
+            [alt]="stage() === 0
+              ? 'Healthy plants growing in clean air'
+              : 'Plants damaged by polluted air'"
             class="plants-image"
           />
         </div>
@@ -84,10 +84,39 @@
       </div>
     </div>
 
+    <div class="button-group-container" tabindex="0">
+      <mat-label
+        id="pollution-label"
+        class="label"
+        [translate]="'SCENES.HEALTH_IMPACTS.CHOOSE_LEVEL'"
+      ></mat-label>
+
+      <div class="button-group" role="group" aria-labelledby="pollution-label">
+        <button
+          id="low-button"
+          value="low"
+          [class.selected]="stage() === 0"
+          [attr.aria-pressed]="stage() === 0"
+          (click)="changeAirPollution($event)"
+        >
+          {{ 'SCENES.HEALTH_IMPACTS.LOW' | translate }}
+        </button>
+
+        <button
+          id="high-button"
+          value="high"
+          [class.selected]="stage() === 1"
+          [attr.aria-pressed]="stage() === 1"
+          (click)="changeAirPollution($event)"
+        >
+          {{ 'SCENES.HEALTH_IMPACTS.HIGH' | translate }}
+        </button>
+      </div>
+    </div>
+
     <app-narrative-text
       [text]="'SCENES.HEALTH_IMPACTS.TEXT_1' | translate"
       [startDelay]="story.transition().textDelay"
     />
-
   </app-layer-wrapper>
 </div>
