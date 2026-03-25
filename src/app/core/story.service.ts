@@ -8,7 +8,6 @@ import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
 import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecule/scene-ozone-molecule';
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
-import { SceneOzoneIngredients } from '@features/story-player/scenes/scene-ozone-ingredients/scene-ozone-ingredients';
 import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
 import { SceneUpperOzone } from '@features/story-player/scenes/scene-upper-ozone/scene-upper-ozone';
 import { SceneAirPollution } from '@features/story-player/scenes/scene-air-pollution/scene-air-pollution';
@@ -43,12 +42,12 @@ export class StoryService {
     },
     {
       id: 'air-pollution',
-      i18n_title: "SCENES.AIR_POLLUTION.TITLE",
+      i18n_title: 'SCENES.AIR_POLLUTION.TITLE',
       component: SceneAirPollution,
     },
     {
       id: 'health-impacts',
-      i18n_title: "SCENES.HEALTH_IMPACTS.TITLE",
+      i18n_title: 'SCENES.HEALTH_IMPACTS.TITLE',
       component: SceneHealthImpacts,
     },
     {
@@ -65,11 +64,6 @@ export class StoryService {
       id: 'burning-fuels',
       i18n_title: 'SCENES.BURNING_FUELS.TITLE',
       component: SceneBurningFuels,
-    },
-    {
-      id: 'ozone-ingredients',
-      i18n_title: 'SCENES.OZONE_INGREDIENTS.TITLE',
-      component: SceneOzoneIngredients,
     },
     {
       id: 'gather-ingredients',
@@ -214,9 +208,7 @@ export class StoryService {
   }
 
   previousScene = computed(() =>
-    this.previousIndex() !== null
-      ? StoryService.SCENE_DEFINITIONS[this.previousIndex()!]
-      : null
+    this.previousIndex() !== null ? StoryService.SCENE_DEFINITIONS[this.previousIndex()!] : null,
   );
 
   // list of transitions defined by which scenes are being moved between
@@ -224,8 +216,8 @@ export class StoryService {
   private static readonly TRANSITIONS: Record<string, TransitionConfig> = {
     'morning->vehicle-types': {
       animationType: 'slide-down',
-      textDelay: 4000
-    }
+      textDelay: 4000,
+    },
   };
 
   transition = computed<TransitionConfig>(() => {
@@ -234,10 +226,11 @@ export class StoryService {
 
     const key = `${prev}->${curr}`;
 
-    return ( // default transition is a 1-second fade with 0.2-second text delay
+    return (
+      // default transition is a 1-second fade with 0.2-second text delay
       StoryService.TRANSITIONS[key] ?? {
         animationType: 'fade',
-        textDelay: 1200
+        textDelay: 1200,
       }
     );
   });
@@ -248,4 +241,4 @@ export class StoryService {
 interface TransitionConfig {
   animationType: 'fade' | 'slide-left' | 'slide-down';
   textDelay: number;
-};
+}
