@@ -1,5 +1,4 @@
 <app-navbar></app-navbar>
-<app-scene-navigation></app-scene-navigation>
 
 <div class="scene-container">
   @for (scene of [service.currentScene()]; track scene.id) {
@@ -11,4 +10,5 @@
       <ng-container [ngComponentOutlet]="scene.component"></ng-container>
     </div>
   }
+<app-scene-navigation></app-scene-navigation>
 </div>
