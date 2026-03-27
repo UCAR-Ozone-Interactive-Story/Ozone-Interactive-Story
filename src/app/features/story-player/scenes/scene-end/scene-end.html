@@ -1,6 +1,16 @@
 <div class="container">
-  <app-narrative-text
-    [text]="'SCENES.END.TEXT_1' | translate"
-    (completed)="story.setSceneCompleted(true)"
-  />
+  <app-layer-wrapper>
+    <app-sky-grass bg-layer></app-sky-grass>
+    <div class="sun"></div>
+    <app-clouds></app-clouds>
+
+    <div class="content">
+      <h1>
+        {{ 'SCENES.END.TEXT_1' | translate }}
+      </h1>
+      <button (click)="story.resetProgress()">
+        {{ 'SCENES.END.START_OVER' | translate }}
+      </button>
+    </div>
+  </app-layer-wrapper>
 </div>

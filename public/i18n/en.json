@@ -68,6 +68,23 @@
       "INSTRUCTIONS_2": "Great! Now that you have gathered the molecules, click on the sun to gather the final ingredient: ultraviolet light",
       "DONE": "Click the right arrow to continue."
     },
+    "OZONE_MOLECULE": {
+      "TITLE": "How Ozone Forms",
+      "TEXT_1": "Tap the Sun to release ultraviolet (UV) light.",
+      "TEXT_2": "Ultraviolet light strikes a nitrogen dioxide molecule. Tap the NO₂ molecule.",
+      "TEXT_3": "The NO₂ molecule absorbs the energy and splits, forming nitric oxide (NO) and releasing a free oxygen atom.",
+      "TEXT_4": "Tap the free oxygen atom to move it toward the oxygen molecule (O₂).",
+      "TEXT_5": "The oxygen atom joins the O₂ molecule to form ozone (O₃). Tap the ozone molecule to restart the reaction.",
+      "LABEL_NO2": "NO₂ Molecule",
+      "LABEL_NO": "NO Molecule",
+      "LABEL_O": "Free Oxygen Atom",
+      "LABEL_O2": "O₂ Molecule",
+      "LABEL_O3": "Ozone Molecule"
+    },
+    "UPPER_OZONE": {
+      "TITLE": "Upper Atmosphere Ozone",
+      "TEXT_1": "Now way up high in the atmosphere, ozone is naturally there in the ozone layer. Ozone up in the stratosphere is actually really helpful. It helps block UV rays from the Sun that can cause sunburn."
+    },
     "GROUND_OZONE": {
       "TITLE": "Ground Ozone",
       "AREA": {
@@ -94,83 +111,151 @@
     },
     "SOLUTIONS": {
       "TITLE": "Solutions",
-      "PROMPT": "There are many things we can do to reduce ozone pollution. Select the actions you would like to take to help out!",
-      "OPTIONS": {
-        "RENEWABLE_ENERGY": {
-          "TITLE": "Choose renewable energy.",
-          "DESC": "Wind, solar, and other renewables make electricity without air pollution."
-        },
-        "LOW_POLLUTION_VEHICLE": {
-          "TITLE": "Choose a low-pollution vehicle.",
-          "DESC": "Fuel efficient cars and electric cars help keep air quality good."
-        },
-        "IDLE_ENGINE": {
-          "TITLE": "Leave the engine running.",
-          "DESC": "Keep your car running while waiting to keep the engine warm."
-        },
-        "LOW_VOC_PRODUCTS": {
-          "TITLE": "Choose low VOC products.",
-          "DESC": "Choose paints, adhesives, household cleaners, and other products that have low or no VOCs."
-        },
-        "LESS_ENERGY": {
-          "TITLE": "Use less energy.",
-          "DESC": "This will reduce air pollution if your energy comes from gas or coal and save money."
-        },
-        "BURN_TRASH": {
-          "TITLE": "Burn your trash.",
-          "DESC": "Get rid of waste quickly by burning it in your backyard."
-        },
-        "WALK_BIKE_BUS": {
-          "TITLE": "Walk, bike, or take the bus.",
-          "DESC": "These are low-cost ways to get from place to place and combine errands for efficiency."
-        },
-        "FORGO_FIRE": {
-          "TITLE": "Forgo the fire.",
-          "DESC": "On days when air quality is poor, avoid using your wood fireplace or wood stove if you can."
-        },
-        "MOW_MORNING": {
-          "TITLE": "Mow in the morning.",
-          "DESC": "Mow your lawn early in the day when it's cool outside."
-        },
-        "COMPOST_YARD_WASTE": {
-          "TITLE": "Compost yard waste.",
-          "DESC": "Avoid burning leaves, branches, and other plant trimmings by composting them."
-        },
-        "MOW_EVENING": {
-          "TITLE": "Mow in the evening.",
-          "DESC": "This helps prevent ozone formation. Or use an electric or manual mower."
-        },
-        "REFUEL_EVENING": {
-          "TITLE": "Refuel in the evening.",
-          "DESC": "At gas stations, gasoline vapors get into the air, which help make ozone on hot, sunny days."
-        }
-      },
+      "PROMPT": "There are many things we can do to reduce ozone pollution. Tap each scenario and choose what you think will reduce pollution.",
       "DONE_BUTTON": "I'm done choosing!",
       "CONCLUSION": "Nice work! You've chosen {{count}} actions to take to help reduce ozone pollution.",
       "CONCLUSION_PERFECT": "Fantastic! You chose {{correctCount}} helpful actions and didn't fall for any tricks!",
       "CONCLUSION_MIXED": "Good job finding {{correctCount}} helpful actions! However, {{incorrectCount}} of your choices would actually make pollution worse.",
-      "CONCLUSION_ALL_INCORRECT": "Oh no! Those choices would actually create more ozone pollution. Let's be careful!"
-    },
-    "OZONE_MOLECULE": {
-        "TITLE": "How Ozone Forms",
-        "TEXT_1": "Tap the Sun to release ultraviolet (UV) light.",
-        "TEXT_2": "Ultraviolet light strikes a nitrogen dioxide molecule. Tap the NO₂ molecule.",
-        "TEXT_3": "The NO₂ molecule absorbs the energy and splits, forming nitric oxide (NO) and releasing a free oxygen atom.",
-        "TEXT_4": "Tap the free oxygen atom to move it toward the oxygen molecule (O₂).",
-        "TEXT_5": "The oxygen atom joins the O₂ molecule to form ozone (O₃). Tap the ozone molecule to restart the reaction.",
-        "LABEL_NO2": "NO₂ Molecule",
-        "LABEL_NO": "NO Molecule",
-        "LABEL_O": "Free Oxygen Atom",
-        "LABEL_O2": "O₂ Molecule",
-        "LABEL_O3": "Ozone Molecule"
-    },
-    "UPPER_OZONE": {
-        "TITLE": "Upper Atmosphere Ozone",
-        "TEXT_1": "Now way up high in the atmosphere, ozone is naturally there in the ozone layer. Ozone up in the stratosphere is actually really helpful. It helps block UV rays from the Sun that can cause sunburn."
+      "CONCLUSION_ALL_INCORRECT": "Oh no! Those choices would actually create more ozone pollution. Let's be careful!",
+      "SITUATIONS": {
+        "SITUATION_VEHICLE": {
+          "OPTIONS": {
+            "LOW_POLLUTION_VEHICLE": {
+              "TITLE": "Choose a low-pollution vehicle.",
+              "DESC": "Fuel efficient cars and electric cars help keep air quality good.",
+              "FEEDBACK": "Fuel-efficient and electric vehicles release far fewer ozone-forming chemicals into the air than older, less efficient vehicles."
+            },
+            "DRIVE_EVERYWHERE": {
+              "TITLE": "Drive everywhere.",
+              "DESC": "Take your personal car for every trip, even short errands.",
+              "FEEDBACK": "Every car trip adds volatile organic compounds and nitrogen oxides to the air, which cook together to form ground-level ozone."
+            }
+          }
+        },
+        "SITUATION_ENERGY": {
+          "OPTIONS": {
+            "RENEWABLE_ENERGY": {
+              "TITLE": "Choose renewable energy.",
+              "DESC": "Wind, solar, and other renewables make electricity without air pollution.",
+              "FEEDBACK": "Solar and wind power generate electricity without burning fossil fuels, meaning zero ozone ingredients are emitted from power plants."
+            },
+            "FOSSIL_FUELS": {
+              "TITLE": "Stick with fossil fuels.",
+              "DESC": "Rely on coal and gas power plants since they are already built.",
+              "FEEDBACK": "Coal and gas power plants are major sources of nitrogen oxides, a key ingredient in ground-level ozone formation."
+            }
+          }
+        },
+        "SITUATION_PRODUCTS": {
+          "OPTIONS": {
+            "LOW_VOC_PRODUCTS": {
+              "TITLE": "Choose low VOC products.",
+              "DESC": "Choose paints, adhesives, household cleaners, and other products that have low or no VOCs.",
+              "FEEDBACK": "Low-VOC paints and cleaners release fewer chemicals into the air as they dry, depriving the atmosphere of the 'V' in the ozone recipe."
+            },
+            "HIGH_VOC_PRODUCTS": {
+              "TITLE": "Use standard products.",
+              "DESC": "Don't worry about the chemicals in your everyday paints and household cleaners.",
+              "FEEDBACK": "Standard household chemicals and paints evaporate volatile organic compounds (VOCs) right into the air around your home."
+            }
+          }
+        },
+        "SITUATION_USAGE": {
+          "OPTIONS": {
+            "LESS_ENERGY": {
+              "TITLE": "Use less energy.",
+              "DESC": "This will reduce air pollution if your energy comes from gas or coal and save money.",
+              "FEEDBACK": "Using less electricity means power plants don't have to burn as much fuel, cutting down the pollution at the source."
+            },
+            "LEAVE_LIGHTS_ON": {
+              "TITLE": "Leave lights on.",
+              "DESC": "Keep all your lights and appliances running all day to save time.",
+              "FEEDBACK": "Wasting electricity forces power plants to run harder and burn more fossil fuels, pumping more pollution into our skies."
+            }
+          }
+        },
+        "SITUATION_FIRE": {
+          "OPTIONS": {
+            "FORGO_FIRE": {
+              "TITLE": "Forgo the fire.",
+              "DESC": "On days when air quality is poor, avoid using your wood fireplace or wood stove if you can.",
+              "FEEDBACK": "Choosing not to burn wood keeps particulate matter and volatile organic compounds out of the atmosphere."
+            },
+            "BURN_WOOD": {
+              "TITLE": "Have a wood fire.",
+              "DESC": "Burn wood in your fireplace or fire pit even on poor air quality days.",
+              "FEEDBACK": "Wood smoke is full of harmful particulates and chemicals that worsen air quality and contribute to smog."
+            }
+          }
+        },
+        "SITUATION_YARD": {
+          "OPTIONS": {
+            "COMPOST_YARD_WASTE": {
+              "TITLE": "Compost yard waste.",
+              "DESC": "Avoid burning leaves, branches, and other plant trimmings by composting them.",
+              "FEEDBACK": "Composting breaks down leaves and branches naturally and safely, returning nutrients to the soil instead of pollution to the air."
+            },
+            "BURN_TRASH": {
+              "TITLE": "Burn your trash.",
+              "DESC": "Get rid of waste quickly by burning it in your backyard.",
+              "FEEDBACK": "Burning trash and leaves releases a massive, concentrated plume of toxic chemicals and ozone precursors directly into your neighborhood."
+            }
+          }
+        },
+        "SITUATION_MOWING": {
+          "OPTIONS": {
+            "MOW_EVENING": {
+              "TITLE": "Mow in the evening.",
+              "DESC": "This helps prevent ozone formation. Or use an electric or manual mower.",
+              "FEEDBACK": "Mowing when it's cooler means the engine emissions don't have the intense sunlight needed to bake into ozone."
+            },
+            "MOW_MORNING": {
+              "TITLE": "Mow in the morning.",
+              "DESC": "Mow your lawn early in the day when it's cool outside.",
+              "FEEDBACK": "Gas-powered mowers lack pollution controls. Running them in the morning provides a fresh batch of chemicals right as the sun starts baking the air."
+            }
+          }
+        },
+        "SITUATION_REFUEL": {
+          "OPTIONS": {
+            "REFUEL_EVENING": {
+              "TITLE": "Refuel in the evening.",
+              "DESC": "At gas stations, gasoline vapors get into the air, which help make ozone on hot, sunny days.",
+              "FEEDBACK": "Pumping gas in the evening means those escaped gasoline fumes won't have hot sunlight to react with right away."
+            },
+            "REFUEL_DAY": {
+              "TITLE": "Refuel during the day.",
+              "DESC": "Fill up your gas tank during the hottest part of the sunny afternoon.",
+              "FEEDBACK": "When you pump gas in the heat of the day, gasoline vapors escape and immediately start cooking in the sun to form ozone."
+            }
+          }
+        },
+        "SITUATION_TRANSPORT": {
+          "OPTIONS": {
+            "WALK_BIKE_BUS": {
+              "TITLE": "Walk, bike, or take the bus.",
+              "DESC": "These are low-cost ways to get from place to place and combine errands for efficiency.",
+              "FEEDBACK": "Sharing a ride or using human power removes a tailpipe from the road entirely, making a huge difference in local air quality."
+            },
+            "IDLE_ENGINE": {
+              "TITLE": "Leave the engine running.",
+              "DESC": "Keep your car running while waiting to keep the engine warm.",
+              "FEEDBACK": "An idling engine gets zero miles per gallon while continuously spewing out pollution directly into the air."
+            }
+          }
+        }
+      },
+      "FEEDBACK_CORRECT": "Reduced pollution!",
+      "FEEDBACK_INCORRECT": "Not quite...",
+      "BUTTON_SELECT": "Select",
+      "BUTTON_CHANGE": "Change Choice",
+      "BUTTON_CLOSE": "Close",
+      "PROMPT_CHOICE": "Make a Choice!"
     },
     "END": {
       "TITLE": "End",
-      "TEXT_1": "This is here for testing purposes"
+      "TEXT_1": "Congratulations! You completed the story!",
+      "START_OVER": "Start Over"
     }
   }
 }
