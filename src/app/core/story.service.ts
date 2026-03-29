@@ -117,10 +117,18 @@ export class StoryService {
     this.loadFromStorage();
   }
   focusOnDialog() {
-    const dialog_box = document.getElementsByClassName('dialog-box').item(0);
-    if (dialog_box instanceof HTMLElement) {
-      dialog_box.focus();
-    }
+    setTimeout(() => {
+      const dialog_boxes = document.getElementsByClassName('dialog-box');
+      let dialog_box = dialog_boxes.item(0);
+      if (dialog_box instanceof HTMLElement) {
+        dialog_box.focus();
+        if (this.transition().textDelay > 0) {
+          setTimeout(() => {
+            dialog_box.focus();
+          }, this.transition().textDelay);
+        }
+      }
+    });
   }
 
   // move to next scene
