@@ -42,3 +42,28 @@
   color: #333;
   margin: 0;
 }
+
+@media screen and (max-width: 900px) and (orientation: landscape), screen and (max-width: 700px) {
+  .dialog-box {
+    top: 10px;
+    left: 7%;
+    right: 7%;
+    border-width: 3px;
+    border-radius: 12px;
+    padding: 12px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+
+  .name-tag {
+    font-size: 0.9rem;
+    left: 10px;
+    top: -18px;
+  }
+
+  .text-content {
+    font-size: 1rem;
+    line-height: 1.45;
+    text-align: center;
+  }
+}
