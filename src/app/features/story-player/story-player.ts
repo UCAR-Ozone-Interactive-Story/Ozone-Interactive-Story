@@ -14,16 +14,10 @@ export class StoryPlayer implements OnInit {
   service = inject(StoryService);
 
   ngOnInit(): void {
-    console.log(
-      '[StoryPlayer] Loaded. Current scene ->',
-      this.service.currentScene().id
-    );
+    console.log('[StoryPlayer] Loaded. Current scene ->', this.service.currentScene().id);
   }
 
-  private animationMap: Record<
-    string,
-    { enter: string; leave: string }
-  > = {
+  private animationMap: Record<string, { enter: string; leave: string }> = {
     'slide-left': {
       enter: 'slide-in-left',
       leave: 'slide-out-left',
@@ -32,7 +26,7 @@ export class StoryPlayer implements OnInit {
       enter: 'slide-in-down',
       leave: 'slide-out-down',
     },
-    'fade': {
+    fade: {
       enter: 'fade-in',
       leave: 'fade-out',
     },

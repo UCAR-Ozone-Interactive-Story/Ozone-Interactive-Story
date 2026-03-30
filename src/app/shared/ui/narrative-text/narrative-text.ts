@@ -1,16 +1,25 @@
 import { Component, input, output, signal, effect, OnDestroy, HostListener } from '@angular/core';
+import { setTabIndexOne } from './setTabIndexOne';
 
 @Component({
   selector: 'app-narrative-text',
   standalone: true,
   templateUrl: './narrative-text.html',
-  styleUrl: './narrative-text.scss'
+  styleUrl: './narrative-text.scss',
+  imports: [setTabIndexOne],
 })
 export class NarrativeText implements OnDestroy {
   text = input.required<string>();
   character = input<string>();
 
   completed = output<void>(); // emits when clicked after text is fully visible
+  private _dialogTabIndex = 0;
+  set dialogTabIndex(value: number) {
+    this._dialogTabIndex = value;
+  }
+  get dialogTabIndex() {
+    return this._dialogTabIndex;
+  }
 
   displayedText = signal('');
   isComplete = signal(false);
@@ -26,7 +35,6 @@ export class NarrativeText implements OnDestroy {
       if (this.startDelayTimer) {
         clearTimeout(this.startDelayTimer);
       }
-
       this.startDelayTimer = window.setTimeout(() => {
         this.resetAndType(fullText);
       }, delay);
@@ -41,7 +49,7 @@ export class NarrativeText implements OnDestroy {
     let i = 0;
     this.timer = window.setInterval(() => {
       if (i < fullText.length) {
-        this.displayedText.update(current => current + fullText.charAt(i));
+        this.displayedText.update((current) => current + fullText.charAt(i));
         i++;
       } else {
         this.finish();
@@ -54,13 +62,13 @@ export class NarrativeText implements OnDestroy {
     // this stops space/enter from not working on other keyboard accessible elements
     // previously this would override space/enter on buttons
     const target = event.target as HTMLElement;
-    const isInteractiveElement = 
+    const isInteractiveElement =
       target instanceof HTMLButtonElement ||
       target instanceof HTMLInputElement ||
       target instanceof HTMLSelectElement ||
       target instanceof HTMLTextAreaElement ||
       target?.getAttribute('role') === 'button';
-    
+
     if (!isInteractiveElement && (event.code === 'Space' || event.code === 'Enter')) {
       event.preventDefault();
       this.advance();

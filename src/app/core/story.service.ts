@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal, WritableSignal } from '@angular/core';
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
 import { SceneFuelSources } from '@features/story-player/scenes/scene-fuel-sources/scene-fuel-sources';
@@ -116,6 +116,20 @@ export class StoryService {
   constructor() {
     this.loadFromStorage();
   }
+  focusOnDialog() {
+    setTimeout(() => {
+      const dialog_boxes = document.getElementsByClassName('dialog-box');
+      let dialog_box = dialog_boxes.item(0);
+      if (dialog_box instanceof HTMLElement) {
+        dialog_box.focus();
+        if (this.transition().textDelay > 0) {
+          setTimeout(() => {
+            dialog_box.focus();
+          }, this.transition().textDelay);
+        }
+      }
+    });
+  }
 
   // move to next scene
   nextScene() {
@@ -125,6 +139,7 @@ export class StoryService {
       this.unlockScene(this.currentScene().id);
       this.sceneCompleted.set(false);
       this.saveIndex();
+      this.focusOnDialog();
     }
   }
 
@@ -134,6 +149,7 @@ export class StoryService {
       this.currentIndex.update((i) => i - 1);
       this.sceneCompleted.set(false);
       this.saveIndex();
+      this.focusOnDialog();
     }
   }
 
@@ -150,6 +166,7 @@ export class StoryService {
       if (unlock) this.unlockScene(sceneId);
       this.sceneCompleted.set(false);
       this.saveIndex();
+      this.focusOnDialog();
     }
   }
 

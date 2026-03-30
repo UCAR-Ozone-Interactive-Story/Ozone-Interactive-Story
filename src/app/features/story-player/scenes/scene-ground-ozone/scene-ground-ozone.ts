@@ -3,12 +3,13 @@ import { StoryService } from '@core/story.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 import { NgClass } from '@angular/common';
+import { setTabIndexOne } from '@shared/ui/narrative-text/setTabIndexOne';
 
 export type GroundOzonePhase = 'area' | 'season' | 'density' | 'done';
 
 @Component({
   selector: 'app-scene-ground-ozone',
-  imports: [NarrativeText, TranslateModule, NgClass],
+  imports: [NarrativeText, TranslateModule, NgClass, setTabIndexOne],
   templateUrl: './scene-ground-ozone.html',
   styleUrl: './scene-ground-ozone.scss',
 })
@@ -22,7 +23,7 @@ export class SceneGroundOzone {
   feedbackKey = signal<string | null>(null);
   fadeState = signal<'in' | 'out'>('in');
   // choice state i.e. which was clicked, or none yet
-  choiceStatus = signal<{ option: string, isCorrect: boolean } | null>(null);
+  choiceStatus = signal<{ option: string; isCorrect: boolean } | null>(null);
 
   isTextComplete = signal(false);
   textDelay = signal(this.story.transition().textDelay);
@@ -48,7 +49,7 @@ export class SceneGroundOzone {
       }
 
       const keys = feedback ? [feedback, promptKey] : [promptKey];
-      const sub = this.translate.stream(keys).subscribe(res => {
+      const sub = this.translate.stream(keys).subscribe((res) => {
         const feedbackText = feedback ? res[feedback] + ' ' : '';
         const promptText = promptKey ? res[promptKey] : '';
         this.text.set((feedbackText + promptText).trim());
@@ -63,9 +64,10 @@ export class SceneGroundOzone {
     isCorrect: boolean,
     nextPhase: GroundOzonePhase,
     correctFeedback: string,
-    incorrectFeedback: string
+    incorrectFeedback: string,
   ) {
-    if (!this.isTextComplete() || this.fadeState() === 'out' || this.choiceStatus()?.isCorrect) return;
+    if (!this.isTextComplete() || this.fadeState() === 'out' || this.choiceStatus()?.isCorrect)
+      return;
 
     this.textDelay.set(0);
 
@@ -100,7 +102,7 @@ export class SceneGroundOzone {
       area === 'urban',
       'season',
       'SCENES.GROUND_OZONE.AREA.CORRECT',
-      'SCENES.GROUND_OZONE.AREA.INCORRECT'
+      'SCENES.GROUND_OZONE.AREA.INCORRECT',
     );
   }
 
@@ -110,7 +112,7 @@ export class SceneGroundOzone {
       season === 'warm',
       'density',
       'SCENES.GROUND_OZONE.SEASON.CORRECT',
-      'SCENES.GROUND_OZONE.SEASON.INCORRECT'
+      'SCENES.GROUND_OZONE.SEASON.INCORRECT',
     );
   }
 
@@ -120,7 +122,7 @@ export class SceneGroundOzone {
       density === 'lots',
       'done',
       'SCENES.GROUND_OZONE.CARS_FACTORIES.CORRECT',
-      'SCENES.GROUND_OZONE.CARS_FACTORIES.INCORRECT'
+      'SCENES.GROUND_OZONE.CARS_FACTORIES.INCORRECT',
     );
   }
 
