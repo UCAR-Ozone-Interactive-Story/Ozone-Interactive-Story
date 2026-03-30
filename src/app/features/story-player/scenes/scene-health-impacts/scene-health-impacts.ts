@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
-import { SkyGrassComponent } from '@features/story-player/backgrounds/sky-grass/sky-grass.component';
+import { StreetComponent } from '@features/story-player/backgrounds/street/street.component';
 import { MatButtonToggleModule, MatButtonToggleChange } from '@angular/material/button-toggle';
 import { setTabIndexOne } from '@shared/ui/narrative-text/setTabIndexOne';
 
@@ -14,7 +14,7 @@ import { setTabIndexOne } from '@shared/ui/narrative-text/setTabIndexOne';
     NarrativeText,
     TranslateModule,
     LayerWrapper,
-    SkyGrassComponent,
+    StreetComponent,
     CommonModule,
     MatButtonToggleModule,
     setTabIndexOne,

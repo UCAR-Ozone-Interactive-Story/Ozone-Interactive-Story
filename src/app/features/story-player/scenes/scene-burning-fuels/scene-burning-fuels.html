@@ -1,6 +1,6 @@
 <div class="container">
   <app-layer-wrapper>
-    <app-sky-grass bg-layer></app-sky-grass>
+    <app-street bg-layer></app-street>
 
       <app-narrative-text
         [text]="'SCENES.BURNING_FUELS.TEXT_1' | translate"
@@ -8,7 +8,7 @@
       />
     <div class="content">
       <div class="interactive-object car" (click)="activateCar()" (keydown.space)="activateCar()" [class.active]="isCarActive()" tabindex="0">
-        <img src="images/scenes/burning-fuels/car.png" width="220" alt="Car" />
+        <img src="images/scenes/vehicles/vehicle_car.png" alt="Car" />
 
         @if (isCarActive()) {
           <div class="particle-emitter exhaust">
@@ -21,7 +21,7 @@
         }
       </div>
       <div class="interactive-object factory" (click)="activateFactory()" (keydown.space)="activateFactory()" [class.active]="isFactoryActive()" tabindex="0">
-        <img src="images/scenes/burning-fuels/factory.png" width="240" alt="Factory" />
+        <img src="images/foregrounds/factory.webp" alt="Factory" />
 
         @if (isFactoryActive()) {
           <div class="particle-emitter">
