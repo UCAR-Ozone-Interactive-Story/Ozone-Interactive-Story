@@ -46,11 +46,23 @@
 .car {
   left: 20%;
   bottom: 20%;
+
+  img {
+    width: 22vw;
+    min-width: 140px;
+    max-width: 320px;
+  }
 }
 
 .factory {
   right: 15%;
   bottom: 15%;
+
+  img {
+    width: 28vw;
+    min-width: 180px;
+    max-width: 400px;
+  }
 }
 
 .bubble-container {

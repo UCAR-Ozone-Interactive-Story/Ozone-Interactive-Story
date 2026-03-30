@@ -65,7 +65,7 @@
   bottom: 20%;
 
   img {
-    width: 15vw;
+    width: 25vw;
   }
 }
 
@@ -77,7 +77,7 @@
 
 .exhaust {
   bottom: 20%;
-  right: -10px;
+  left: -20px;
 }
 
 .factory-smoke {
@@ -89,7 +89,7 @@
   position: absolute;
   width: 30px;
   height: 30px;
-  background: rgba(100, 100, 100, 0.6);
+  background: rgba(100, 100, 100, 0.9);
   border-radius: 50%;
   filter: blur(8px);
   opacity: 0;
@@ -107,7 +107,7 @@
   }
 
   20% {
-    opacity: 0.8;
+    opacity: 1;
   }
 
   100% {

@@ -41,6 +41,16 @@ export class StoryService {
       component: SceneFuelSources,
     },
     {
+      id: 'air',
+      i18n_title: 'SCENES.AIR.TITLE',
+      component: SceneAir,
+    },
+    {
+      id: 'burning-fuels',
+      i18n_title: 'SCENES.BURNING_FUELS.TITLE',
+      component: SceneBurningFuels,
+    },
+    {
       id: 'air-pollution',
       i18n_title: 'SCENES.AIR_POLLUTION.TITLE',
       component: SceneAirPollution,
@@ -56,29 +66,19 @@ export class StoryService {
       component: SceneSunnyDay,
     },
     {
-      id: 'air',
-      i18n_title: 'SCENES.AIR.TITLE',
-      component: SceneAir,
-    },
-    {
-      id: 'burning-fuels',
-      i18n_title: 'SCENES.BURNING_FUELS.TITLE',
-      component: SceneBurningFuels,
-    },
-    {
       id: 'gather-ingredients',
       i18n_title: 'SCENES.GATHER_INGREDIENTS.TITLE',
       component: SceneGatherIngredients,
     },
     {
-      id: 'upper-ozone',
-      i18n_title: 'SCENES.UPPER_OZONE.TITLE',
-      component: SceneUpperOzone,
-    },
-    {
       id: 'ozone-molecule',
       i18n_title: 'SCENES.OZONE_MOLECULE.TITLE',
       component: OzoneMolecule,
+    },
+    {
+      id: 'upper-ozone',
+      i18n_title: 'SCENES.UPPER_OZONE.TITLE',
+      component: SceneUpperOzone,
     },
     {
       id: 'ground-ozone',
