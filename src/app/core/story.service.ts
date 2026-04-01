@@ -1,7 +1,6 @@
 import { computed, Injectable, signal, WritableSignal } from '@angular/core';
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
-import { SceneFuelSources } from '@features/story-player/scenes/scene-fuel-sources/scene-fuel-sources';
 import { Scene } from './scene';
 import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/scene-sunny-day';
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
@@ -34,11 +33,6 @@ export class StoryService {
       id: 'vehicle-types',
       i18n_title: 'SCENES.VEHICLE_TYPES.TITLE',
       component: SceneVehicleTypes,
-    },
-    {
-      id: 'fuel-sources',
-      i18n_title: 'SCENES.FUEL_SOURCES.TITLE',
-      component: SceneFuelSources,
     },
     {
       id: 'air',

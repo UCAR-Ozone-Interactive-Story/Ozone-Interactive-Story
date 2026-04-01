@@ -19,20 +19,24 @@
       </div>
     </div>
 
-    <app-narrative-text
-      [text]="'SCENES.AIR.NARRATIVE' | translate"
-      [startDelay]="story.transition().textDelay"
-    />
-    <app-multiple-choice
-      [question]="'What gases are in Earth\'s atmosphere?'"
-      [options]="[
+    @if (!showSecondText) {
+    <app-narrative-text [text]="'SCENES.AIR.NARRATIVE' | translate" 
+    [startDelay]="story.transition().textDelay" />
+    }
+
+    @if (showSecondText) {
+    <div class="bottom-text">
+      <app-narrative-text [text]="'SCENES.AIR.POST_CHOICE_TEXT' | translate" 
+      [startDelay]="200" />
+    </div>
+    }
+
+    <app-multiple-choice [question]="'What gases are in Earth\'s atmosphere?'" [options]="[
         { id: 'n2', label: 'N₂', isCorrect: true },
         { id: 'o2', label: 'O₂', isCorrect: true },
         { id: 'f2', label: 'F₂', isCorrect: false },
         { id: 'c2', label: 'C₂', isCorrect: false },
         { id: 'other', label: 'Small Amounts of Other Gases', isCorrect: true }
-      ]"
-      (optionSelected)="onOptionSelected($event)"
-    ></app-multiple-choice>
+      ]" (optionSelected)="onOptionSelected($event)"></app-multiple-choice>
   </app-layer-wrapper>
 </div>
