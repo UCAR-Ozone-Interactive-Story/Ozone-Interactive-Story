@@ -1,0 +1,13 @@
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+app-narrative-text {
+  position: absolute;
+  bottom: 2rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}

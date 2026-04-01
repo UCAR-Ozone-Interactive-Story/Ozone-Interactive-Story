@@ -48,7 +48,7 @@
     },
     "NEARBY_FACTORIES": {
       "TITLE": "Nearby Factories",
-      "TEXT_1": "Nearby factories also burn fossil fuels to make electricity that we use in our homes, schools, and workplaces. Click on the fossil fuels to see the electricity being produced!"
+      "TEXT_1": "Nearby factories also burn fossil fuels to make electricity that we use in our homes, schools,\nand workplaces.\nFactories and vehicles also release solid particles of dust, carbon soot, and smoke that are so tiny they can float in the air for a long time."
     },
     "FUEL_SOURCES": {
       "TITLE": "Fuel Sources",

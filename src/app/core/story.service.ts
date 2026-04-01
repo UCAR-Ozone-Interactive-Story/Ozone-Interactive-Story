@@ -5,6 +5,7 @@ import { Scene } from './scene';
 import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/scene-sunny-day';
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
+import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
 import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecule/scene-ozone-molecule';
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
@@ -35,6 +36,11 @@ export class StoryService {
       component: SceneVehicleTypes,
     },
     {
+      id: 'nearby-factories',
+      i18n_title: 'SCENES.NEARBY_FACTORIES.TITLE',
+      component: SceneNearbyFactories,
+    },
+    {
       id: 'air',
       i18n_title: 'SCENES.AIR.TITLE',
       component: SceneAir,
@@ -44,6 +50,7 @@ export class StoryService {
       i18n_title: 'SCENES.BURNING_FUELS.TITLE',
       component: SceneBurningFuels,
     },
+
     {
       id: 'air-pollution',
       i18n_title: 'SCENES.AIR_POLLUTION.TITLE',
