@@ -15,6 +15,7 @@ import { MultipleChoice, SelectorOption } from '@shared/ui/multiple-choice/multi
 })
 export class SceneAir {
   story = inject(StoryService);
+  showSecondText = false;
 
   // keep track of which molecules have been selected
   selectedMolecules = signal<Set<string>>(new Set());
@@ -31,6 +32,7 @@ export class SceneAir {
     const correctIds = ['n2', 'o2', 'other'];
     const allSelected = correctIds.every(id => this.selectedMolecules().has(id));
     if (allSelected) {
+      this.showSecondText = true;
       this.story.setSceneCompleted(true);
     }
   }
