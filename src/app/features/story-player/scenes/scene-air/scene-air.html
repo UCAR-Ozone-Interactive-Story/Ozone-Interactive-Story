@@ -1,6 +1,6 @@
 <div class="container">
   <app-layer-wrapper>
-    <app-sky-grass bg-layer></app-sky-grass>
+    <app-sky-grass bg-layer style="z-index: -10;"></app-sky-grass>
     <div class="sun-container">
       <div class="sun"></div>
     </div>
@@ -9,13 +9,15 @@
     <!-- Molecules show up when selected -->
     <div class="molecule-display">
       <div class="molecule-circle" [class.visible]="isMoleculeVisible('n2')">
-        <span class="molecule-label">N₂</span>
+        <!-- <span class="molecule-label">N₂</span> -->
+        <img alt="N2 Molecule" class="molecule-2" src="images/molecules/N2.png"/>
       </div>
       <div class="molecule-circle" [class.visible]="isMoleculeVisible('o2')">
-        <span class="molecule-label">O₂</span>
+        <img alt="O2 Molecule" class="molecule-2" src="images/molecules/O2.png"/>
       </div>
       <div class="molecule-circle" [class.visible]="isMoleculeVisible('other')">
-        <span class="molecule-label">Other</span>
+        <img alt="Various Small Molecules" class="molecule-2" src="images/molecules/Various.png"/>
+        <!-- <span class="molecule-label">Other</span> -->
       </div>
     </div>
 
