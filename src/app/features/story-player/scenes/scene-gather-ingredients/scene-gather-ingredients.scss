@@ -1,81 +1,221 @@
 .container {
   height: 100%;
   width: 100%;
-  background-color: #a8a8a8;
+  position: relative;
+  overflow: hidden;
 }
 
-.ozone-cloud{
-    width: 30vh;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: rgba(87, 59, 15, 0.9);
-    border: 0.5vh solid #000000;
-    position: absolute;
-    display: flex;
-    bottom: 40vh;
-    right: 25vw;
-    align-items: center;
+// top bar
+#narrative-area {
+  position: absolute;
+  top: 2vh;
+  left: 18vw;
+  right: 18vw;
+  z-index: 10;
 }
+
 .sun {
   position: absolute;
-  top: -25vh;
-  left: 17vw;
-  height: 40vh;
+  top: 4vh;
+  left: 14vw;
+  height: 25vw;
   aspect-ratio: 1;
-  border-radius: 50%;
   z-index: 6;
-  background-color: #ffc200;
+  background-image: url("/images/scenes/upper-ozone/space-sun.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+
+  &.pulsing {
+    animation: pulse-glow 1.5s ease-in-out infinite;
+  }
 }
 
-.image{
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 5;
+.sun::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160%;
+  height: 160%;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+
+  background: repeating-conic-gradient(
+    rgba(255, 220, 80, 0.8) 0deg 10deg,
+    rgba(255, 220, 80, 0) 10deg 25deg
+  );
+
+  border-radius: 50%;
+  filter: blur(4px);
+  pointer-events: none;
 }
+
+/* Trigger animation */
+.sun.sun-active::after {
+  animation: sun-rays 0.6s ease-out;
+}
+
+#ozone-cloud {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  width: 30vw;
+  height: 20vw;
+  z-index: 6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8vh;
+  padding: 2vh;
+}
+
+.smog-cloud {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 30% 40%, rgba(165, 140, 60, 0.45), transparent 60%),
+              radial-gradient(circle at 70% 50%, rgba(180, 150, 70, 0.4), transparent 65%),
+              radial-gradient(circle at 50% 70%, rgba(140, 120, 50, 0.35), transparent 70%);
+  filter: blur(25px);
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.smog-cloud {
+  animation: drift 6s ease-in-out infinite;
+}
+
+#ozone-cloud .molecule-circle {
+  position: static;
+}
+
+// bottom row
 #polition-sources {
-    display:flex;
-    gap: 2vw;
-    margin-top: 40vh;
-    margin-bottom: 5vh;
-    margin-left: 5vw;
+  position: absolute;
+  bottom: 10vh;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  padding: 0 4vw;
 }
 
-#paint-cans{
-    position: relative;
-    flex: 0, 0;
-    aspect-ratio: 3 / 2;
-    height: 25vh;
-
-    background-image: url("/images/paintCans.png");
-}
-#car{
-    background-image: url("/images/scenes/burning-fuels/car.png");
-    position: relative;
-    // left: 30rem;
-    // top: 5rem;
-    aspect-ratio: 3 / 2;
-    height: 25vh;
+.source-card {
+  position: relative;
+  border: 0.4vh solid #333;
+  border-radius: 1vh;
+  background: rgba(255, 255, 255, 0.85);
+  overflow: visible;
 }
 
-#factory{
-    background-image: url("/images/scenes/burning-fuels/factory.png");
-    position: relative;
-    aspect-ratio: 1;
-    height: 35vh;
+#factory {
+  background-image: url("/images/scenes/burning-fuels/factory.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  width: 22vw;
+  height: 22vh;
 }
 
+#paint-cans {
+  background-image: url("/images/scenes/ingredient-gathering/paint.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  width: 22vw;
+  height: 22vh;
+}
 
+#car {
+  background-image: url("/images/scenes/vehicles/vehicle_car.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  width: 22vw;
+  height: 22vh;
+}
+
+// molecules
 .molecule-circle {
-  width: 7.5vh;
+  position: absolute;
+  width: 7vw;
+  max-width: 7vh;
   aspect-ratio: 1;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.9);
-  border: 0.5vh solid #007bff;
+  border: 0.4vh solid #007bff;
   display: flex;
-  flex: 0, 0;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-  ;
+  box-shadow: 0 0.5vh 1.5vh rgba(0, 123, 255, 0.3);
+  cursor: pointer;
+  touch-action: none;
+
+  &.pulsing {
+    animation: molecule-glow 1.2s ease-in-out infinite;
+  }
 }
+
+.molecule-circle:active {
+  cursor: grabbing;
+}
+
+.molecule-label {
+  user-select: none;
+  font-size: 1.8vw;
+}
+
+.image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+
+@keyframes drift {
+  0%   { transform: translateX(0) scale(1); }
+  50%  { transform: translateX(10px) scale(1.05); }
+  100% { transform: translateX(0) scale(1); }
+}
+
+@keyframes sun-rays {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 1vh rgba(255, 200, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 8vh rgba(255, 200, 0, 0.9));
+  }
+}
+
+@keyframes molecule-glow {
+  0%, 100% {
+    box-shadow: 0 0 1vh 0.5vh rgba(0, 123, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 2.5vh 1.5vh rgba(0, 123, 255, 0.6);
+  }
+}
+
