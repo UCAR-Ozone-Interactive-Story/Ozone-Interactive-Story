@@ -1,11 +1,20 @@
-.container {
-  background-color: #b9cbe3;
-  min-height: 100vh;
-  padding: 4px 12px;
+// .container {
+//   // background-color: #b9cbe3;
+//   // background-image: url("public/images/backgrounds/formation-background.png");
+//   min-height: 100vh;
+//   padding: 4px 12px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+.container {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, #87ceeb 0%, #e0f6ff 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .stage {
