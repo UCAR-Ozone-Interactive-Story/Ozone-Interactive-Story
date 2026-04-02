@@ -33,12 +33,12 @@
           (keydown.enter)="clickNO2()"
           (keydown.space)="clickNO2()"
         >
-          <img src="/images/scenes/ozone-interaction/NO2Molecule.png" />
+          <img src="/images/molecules/NO2.png" />
           <div class="label">{{ moleculeLabels.NO2 | translate }}</div>
         </div>
 
         <div class="molecule left no" [class.show]="showNO()">
-          <img src="/images/scenes/ozone-interaction/NOMolecule.png" />
+          <img src="/images/molecules/NO.png" />
           <div class="label">{{ moleculeLabels.NO | translate }}</div>
         </div>
 
@@ -57,13 +57,13 @@
             (keydown.enter)="clickOxygen()"
             (keydown.space)="clickOxygen()"
           >
-            <img src="/images/scenes/ozone-interaction/OMolecule.png" />
+            <img src="/images/molecules/O.png" />
             <div class="label">{{ moleculeLabels.O | translate }}</div>
           </div>
         }
 
         <div class="molecule right" [class.hide]="hideO2()">
-          <img src="/images/scenes/ozone-interaction/O2Molecule.png" />
+          <img src="/images/molecules/O2.png"/>
           <div class="label">{{ moleculeLabels.O2 | translate }}</div>
         </div>
 
@@ -77,7 +77,7 @@
           (keydown.enter)="reset()"
           (keydown.space)="reset()"
         >
-          <img src="/images/scenes/ozone-interaction/OzoneMolecule.png" />
+          <img src="/images/molecules/O3.png"/>
           <div class="label">{{ moleculeLabels.O3 | translate }}</div>
         </div>
 
