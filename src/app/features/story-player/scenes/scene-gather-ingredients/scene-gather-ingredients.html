@@ -19,7 +19,7 @@
             <div class="molecule-circle"
               [style.top]="item.top"
               [style.left]="item.left"
-              
+              [class.pulsing]="!moleculesGathered()"
               tabindex="0"
               cdkDrag
               id="molecule{{item.id}}"
