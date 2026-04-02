@@ -1,13 +1,13 @@
 import { Component, inject, signal, effect } from '@angular/core';
 import { StoryService } from '@core/story.service';
-import { StreetComponent } from '@features/story-player/backgrounds/street/street.component';
 import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
+import { BurningFuelsComponent } from "@features/story-player/backgrounds/burning-fuels/burning-fuels.component";
 
 @Component({
   selector: 'app-scene-burning-fuels', 
-  imports: [NarrativeText, TranslateModule, StreetComponent, LayerWrapper],
+  imports: [NarrativeText, TranslateModule, LayerWrapper, BurningFuelsComponent],
   templateUrl: './scene-burning-fuels.html',
   styleUrl: './scene-burning-fuels.scss',
 })

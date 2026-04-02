@@ -52,11 +52,14 @@
 }
 
 .factory {
-  right: 12%;
-  bottom: 25%;
+  right: 5%;
+  bottom: 45%;
 
   img {
-    width: 30vw;
+    width: 40vw;
+    min-width: 360px;
+    max-width: 800px;
+    filter: drop-shadow(7px 7px 4px)
   }
 }
 
@@ -65,7 +68,9 @@
   bottom: 20%;
 
   img {
-    width: 25vw;
+    width: 23vw;
+    min-width: 150px;
+    max-width: 330px;
   }
 }
 
