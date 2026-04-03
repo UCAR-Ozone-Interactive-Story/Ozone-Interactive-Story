@@ -1,9 +1,9 @@
 .container {
   // background-color: #b9cbe3;
-  background-image: url("/images/backgrounds/formation_background.png");
+  background-image: url("/images/backgrounds/formation-background.png");
   background-size: cover;
   min-height: 100vh;
-  // padding: 4px 12px;
+  padding: 4px 12px;
   width: 100%;
 
   display: flex;
@@ -21,6 +21,8 @@
 //   flex-direction: column;
 // }
 
+::host .app-
+
 .stage {
   width: 100%;
   flex: 1;
@@ -30,6 +32,7 @@
   align-items: center;
 
   overflow: hidden;
+  top: 300vh;
 }
 
 .diagram-wrapper {
