@@ -1,117 +1,108 @@
-<div class="container">
-    @if (!ingredientsExplained()){
-        <app-narrative-text
-            [text]="'SCENES.GATHER_INGREDIENTS.INGREDIENT_EXPLAINATION' | translate"
-            (click)="setIngredientsExplained()"  
-            (keydown.space)="setIngredientsExplained()"
-            (keydown.enter)="setIngredientsExplained()"
-            id="explaination-dialog-box"
-        />
-    }
-    @else if (!moleculesGathered()) {
+ <div class="container">
+  <app-layer-wrapper>
+    <app-city-sun bg-layer></app-city-sun>
+    <div id="narrative-area">
+      @if (!moleculesGathered()) {
+        <app-narrative-text [text]="('SCENES.GATHER_INGREDIENTS.INGREDIENT_EXPLAINATION' | translate)" />
+      } @else if (!story.isSceneCompleted()) {
         <app-narrative-text [text]="'SCENES.GATHER_INGREDIENTS.INSTRUCTIONS_1' | translate" />
-    }
-    @else if (!story.isSceneCompleted()) {
-        <app-narrative-text [text]="'SCENES.GATHER_INGREDIENTS.INSTRUCTIONS_2' | translate" />
-    }
-    @else {
+      } @else {
         <app-narrative-text [text]="'SCENES.GATHER_INGREDIENTS.DONE' | translate" />
-    }
-<div id="polition-sources">
-    <div id="factory" role="img" class="image" aria-label="factory">
-        @for (item of molecules; track item.id){
-            @if (item.location == "factory") {
-            <div class="molecule-circle" 
-            tabindex="0"
-            cdkDrag
-            id="molecule{{item.id}}"
-            (cdkDragEnded)="handleDragEnd($event)"
-            (keydown.space)="handleKeyPressedToMoveMolecule($event)"
-            (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
-            >
-                <span class="molecule-label">{{item.label}}</span>
-            </div>
-            }
-        }
+      }
     </div>
-    <div id="paint-cans" role="img" class="image" aria-label="3 paint cans of various colors">
-        @for (item of molecules; track item.id){
-            @if (item.location == "paint"){
-            <div class="molecule-circle" 
-            tabindex="0"
-            (keydown.space)="handleKeyPressedToMoveMolecule($event)"
-            (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
-            cdkDrag
-            id="molecule{{item.id}}"
-            inOzoneCloud="false"
-            (cdkDragEnded)="handleDragEnd($event)"
-            >
-                <span class="molecule-label">{{item.label}}</span>
-            </div>
-            } 
-        }
-    </div>
-    <div id="car" role="img" class="image" aria-label="car">
-        @for (item of molecules; track item.id){
-            @if (item.location == "car"){
-            <div class="molecule-circle" 
-            tabindex="0"
-            inOzoneCloud="false"
-            cdkDrag
-            id="molecule{{item.id}}"
-            (cdkDragEnded)="handleDragEnd($event)"
-            (keydown.space)="handleKeyPressedToMoveMolecule($event)"
-            (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
-            >
-                <span class="molecule-label">{{item.label}}</span>
-            </div>
 
+    <div id="polition-sources">
+
+      <div id="factory" role="img" class="image source-card" aria-label="factory">
+        @for (item of molecules; track item.id) {
+          @if (item.location == "factory") {
+            <div class="molecule-circle"
+              [style.top]="item.top"
+              [style.left]="item.left"
+              [class.pulsing]="!moleculesGathered()"
+              tabindex="0"
+              cdkDrag
+              id="molecule{{item.id}}"
+              (cdkDragEnded)="handleDragEnd($event)"
+              (keydown.space)="handleKeyPressedToMoveMolecule($event)"
+              (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
+            >
+              <span class="molecule-label">{{item.label}}</span>
+            </div>
+          }
+        }
+      </div>
+
+      <div id="paint-cans" role="img" class="image source-card" aria-label="3 paint cans of various colors">
+        @for (item of molecules; track item.id) {
+          @if (item.location == "paint") {
+            <div class="molecule-circle"
+              [style.top]="item.top"
+              [style.left]="item.left"
+              [class.pulsing]="!moleculesGathered()"
+              tabindex="0"
+              cdkDrag
+              id="molecule{{item.id}}"
+              (cdkDragEnded)="handleDragEnd($event)"
+              (keydown.space)="handleKeyPressedToMoveMolecule($event)"
+              (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
+            >
+              <span class="molecule-label">{{item.label}}</span>
+            </div>
+          }
+        }
+      </div>
+
+      <div id="car" role="img" class="image source-card" aria-label="car">
+        @for (item of molecules; track item.id) {
+          @if (item.location == "car") {
+            <div class="molecule-circle"
+              [style.top]="item.top"
+              [style.left]="item.left"
+              [class.pulsing]="!moleculesGathered()"
+              tabindex="0"
+              cdkDrag
+              id="molecule{{item.id}}"
+              (cdkDragEnded)="handleDragEnd($event)"
+              (keydown.space)="handleKeyPressedToMoveMolecule($event)"
+              (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
+            >
+              <span class="molecule-label">{{item.label}}</span>
+            </div>
+          }
+        }
+      </div>
+    </div>
+
+    <button
+    class="button image sun"
+    [class.pulsing]="moleculesGathered()"
+    [class.sun-active]="sunClicked"
+    aria-label="sun"
+    [disabled]="!moleculesGathered()"
+    (click)="onSunClicked()"
+    >
+    </button>
+
+    <div id="ozone-cloud" title="creating ozone">
+        <div class="smog-cloud"></div>
+
+        @for (item of molecules; track item.id) {
+            @if (item.location == "ozoneCloud") {
+                <div class="molecule-circle"
+                    [style.top]="item.top"
+                    [style.left]="item.left"
+                    tabindex="0"
+                    cdkDrag
+                    id="molecule{{item.id}}"
+                    (cdkDragEnded)="handleDragEnd($event)"
+                    (keydown.space)="handleKeyPressedToMoveMolecule($event)"
+                    (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
+                >
+                    <span class="molecule-label">{{item.label}}</span>
+                </div>
             }
         }
     </div>
+  </app-layer-wrapper>
 </div>
-
-  <div
-    class="smog ozone-cloud"
-    title="creating ozone"
-    id="ozone-cloud"
-  >
-    @for (item of molecules; track item.id){
-        @if (item.location == "ozoneCloud") {
-            @if (item.label=="light") {
-            <div class="light-beam" 
-            tabindex="0"
-            (keydown.space)="handleKeyPressedToMoveMolecule($event)"
-            (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
-            cdkDrag
-            id="molecule{{item.id}}"
-            (cdkDragEnded)="handleDragEnd($event)"
-            >
-                <span class="molecule-label">{{item.label}}</span>
-            </div>
-            }
-            @else {
-            <div class="molecule-circle" 
-            tabindex="0"
-            (keydown.space)="handleKeyPressedToMoveMolecule($event)"
-            (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
-            cdkDrag
-            id="molecule{{item.id}}"
-            (cdkDragEnded)="handleDragEnd($event)"
-            >
-                <span class="molecule-label">{{item.label}}</span>
-            </div>
-            }
-
-        }
-    }
-            <button
-            class="button image sun"
-            aria-label="sun"
-            [disabled]="!moleculesGathered()"
-            (click)="story.setSceneCompleted(true)"
-            >
-            </button>
-  </div>
-</div>
-

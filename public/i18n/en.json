@@ -64,9 +64,8 @@
     },
     "GATHER_INGREDIENTS": {
       "TITLE": "Gathering Ingredients",
-      "INGREDIENT_EXPLAINATION": "Let’s gather the atmospheric “ingredients” needed to make this particular type of air pollution. We need: VOCs, which can come from car exhaust pipes, or from chemicals in paint or other industrial products; we also need nitrogen oxides like NO₂, which also come from car exhaust pipes and from factory emissions.",
-      "INSTRUCTIONS_1": "Create ozone by dragging VOC and NO₂ molecules to the smog cloud.",
-      "INSTRUCTIONS_2": "Great! Now that you have gathered the molecules, click on the sun to gather the final ingredient: ultraviolet light",
+      "INGREDIENT_EXPLAINATION": "Let’s gather the atmospheric “ingredients” needed to make this particular type of air pollution. We need: VOCs, which can come from car exhaust pipes, or from chemicals in paint or other industrial products; we also need nitrogen oxides like NO₂, which also come from car exhaust pipes and from factory emissions. Create ozone by dragging VOC and NO₂ molecules to the smog cloud.",
+      "INSTRUCTIONS_1": "Great! Now that you have gathered the molecules, click on the sun to gather the final ingredient: ultraviolet light",
       "DONE": "Click the right arrow to continue."
     },
     "OZONE_MOLECULE": {
