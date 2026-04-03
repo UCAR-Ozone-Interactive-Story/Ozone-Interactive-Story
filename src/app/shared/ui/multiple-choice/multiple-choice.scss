@@ -99,6 +99,47 @@
   animation: popIn 0.3s ease-out;
 }
 
+// responsive adjustments for smaller screens
+@media screen and (max-width: 1000px) and (orientation: landscape), screen and (max-width: 700px) {
+  .multiple-choice-container {
+    position: fixed;
+    top: 20%;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    width: 40%;
+    max-height: 50vh;
+    transform: none;
+    margin-right: 0;
+    padding: 0.5rem;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .multiple-choice-container h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .choice-grid {
+    max-width: none;
+    gap: 0rem;
+  }
+
+  .choice-item {
+    padding: 0rem;
+    min-height: 40px;
+  }
+
+  .choice-label {
+    font-size: 0.9rem;
+  }
+
+  .result-icon {
+    font-size: 1rem;
+  }
+}
+
 @keyframes popIn {
   0% {
     transform: scale(0);
