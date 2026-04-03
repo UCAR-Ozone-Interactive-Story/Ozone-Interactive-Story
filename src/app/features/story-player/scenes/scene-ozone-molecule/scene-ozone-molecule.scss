@@ -1,21 +1,25 @@
-// .container {
-//   // background-color: #b9cbe3;
-//   // background-image: url("public/images/backgrounds/formation-background.png");
-//   min-height: 100vh;
-//   padding: 4px 12px;
-
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
-
 .container {
-  height: 100%;
+  // background-color: #b9cbe3;
+  background-image: url("/images/backgrounds/formation_background.png");
+  background-size: cover;
+  min-height: 100vh;
+  // padding: 4px 12px;
   width: 100%;
-  background: linear-gradient(to bottom, #87ceeb 0%, #e0f6ff 100%);
-  position: relative;
-  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0;
 }
+
+// .container {
+//   background: linear-gradient(to bottom, #87ceeb 0%, #e0f6ff 100%);
+
+  
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+// }
 
 .stage {
   width: 100%;
@@ -84,7 +88,7 @@
 }
 
 .molecule img {
-  width: 140px;  
+  width: 140px; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
   border-radius: 12px;  
