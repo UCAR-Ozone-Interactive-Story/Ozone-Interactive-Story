@@ -1,5 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
+import { OzoneFormationComponent } from '@features/story-player/backgrounds/ozone-formation/ozone-formation.component';
+import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 
@@ -8,7 +10,7 @@ const sceneName = 'scene-ozone-molecule';
 @Component({
   selector: 'app-' + sceneName,
   standalone: true,
-  imports: [NarrativeText, TranslateModule],
+  imports: [NarrativeText, TranslateModule, OzoneFormationComponent, LayerWrapper],
   templateUrl: './' + sceneName + '.html',
   styleUrl: './' + sceneName + '.scss',
 })
