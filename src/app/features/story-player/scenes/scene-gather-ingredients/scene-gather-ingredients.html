@@ -27,6 +27,7 @@
               (keydown.space)="handleKeyPressedToMoveMolecule($event)"
               (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
             >
+              <img class="molecule-image" [alt]="item.alt" [src]="item.src"/>
               <span class="molecule-label">{{item.label}}</span>
             </div>
           }
@@ -47,6 +48,7 @@
               (keydown.space)="handleKeyPressedToMoveMolecule($event)"
               (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
             >
+              <img class="molecule-image" [src]="item.src"/>
               <span class="molecule-label">{{item.label}}</span>
             </div>
           }
@@ -67,8 +69,9 @@
               (keydown.space)="handleKeyPressedToMoveMolecule($event)"
               (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
             >
-              <span class="molecule-label">{{item.label}}</span>
-            </div>
+            <img class="molecule-image" [src]="item.src"/>
+            <span class="molecule-label">{{item.label}}</span>
+          </div>
           }
         }
       </div>
@@ -99,7 +102,8 @@
                     (keydown.space)="handleKeyPressedToMoveMolecule($event)"
                     (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
                 >
-                    <span class="molecule-label">{{item.label}}</span>
+                  <img class="molecule-image" [src]="item.src"/>
+                  <span class="molecule-label">{{item.label}}</span>
                 </div>
             }
         }
