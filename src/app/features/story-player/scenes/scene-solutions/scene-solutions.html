@@ -1,7 +1,7 @@
 <div class="container">
   <app-layer-wrapper>
 
-    <app-sky-grass bg-layer></app-sky-grass>
+    <app-grass-road bg-layer></app-grass-road>
 
     <div class="pollution-overlay" [style.opacity]="smogOpacity()"></div>
 
@@ -16,6 +16,8 @@
         [text]="currentNarrativeKey() | translate:currentNarrativeParams()"
         (completed)="onFinalNarrativeCompleted()"
       />
+
+      <img src="images/scenes/solutions/house.png" alt="house with chimney" height="40%" style="position: relative; left: 70%; top: 16%">
 
       <div class="scene-items" [style.pointer-events]="allSituationsAnswered() ? 'none' : 'auto'">
         @for (situation of situations; track situation.id) {
@@ -46,7 +48,7 @@
              (click)="$event.stopPropagation()"
              (keydown)="$event.stopPropagation()"
              tabindex="0">
-          
+
           @if (!selections().has(activeSituation()!.id)) {
             <h3>{{ 'SCENES.SOLUTIONS.PROMPT_CHOICE' | translate }}</h3>
             <div class="options-container">
@@ -70,7 +72,7 @@
               } @else {
                 <h3 class="solved-text incorrect" style="margin-top: 0; font-size: 1.25rem;">{{ 'SCENES.SOLUTIONS.FEEDBACK_INCORRECT' | translate }}</h3>
               }
-              
+
               <p>
                 @if (selections().get(activeSituation()!.id) === activeSituation()!.options[0].id) {
                   {{ 'SCENES.SOLUTIONS.SITUATIONS.' + activeSituation()!.id + '.OPTIONS.' + activeSituation()!.options[0].id + '.FEEDBACK' | translate }}
