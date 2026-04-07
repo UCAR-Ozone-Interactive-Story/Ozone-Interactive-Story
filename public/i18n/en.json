@@ -30,9 +30,9 @@
       "TITLE": "Health Impacts",
       "TEXT_1": "Air pollution can damage our lungs, and harm plants and animals, too.",
       "LUNGS_BEFORE": "Healthy lungs have wide open pathways.",
-      "LUNGS_AFTER": "With high ground ozone levels, muscles contract, pathways for air are narrowed, and breathing is difficult.",
-      "PLANTS_BEFORE": "Text here",
-      "PLANTS_AFTER": "Text here",
+      "LUNGS_AFTER": "Ozone pollution narrows airways and makes it difficult to breathe.",
+      "PLANTS_BEFORE": "Healthy plants exchange gases with the environment through tiny openings in their leaves.",
+      "PLANTS_AFTER": "Ozone pollution damages leaves and reduces growth of plants and crops.",
       "CHOOSE_LEVEL": "Choose an air pollution level!",
       "LOW": "Low",
       "HIGH": "High"
