@@ -50,8 +50,8 @@
               [class.mid]="oxygenMid()"
               [class.end]="oxygenEnd()"
               [class.hide]="hideFreeO()"
-              [class.clickable]="step() === 2 || step() === 3"
-              [class.pulse]="step() === 2 || step() === 3"
+              [class.clickable]="step() === 2"
+              [class.pulse]="step() === 2"
               (click)="clickOxygen()"
               tabindex="0"
               (keydown.enter)="clickOxygen()"
@@ -62,7 +62,7 @@
             </div>
           }
 
-          <div class="molecule right" [class.hide]="hideO2()">
+          <div class="molecule right O2" [class.hide]="hideO2()">
             <img src="/images/molecules/O2.png" alt="O2 Molecule"/>
             <div class="label">{{ moleculeLabels.O2 | translate }}</div>
           </div>
@@ -70,8 +70,8 @@
           <div
             class="molecule right result"
             [class.show]="ozoneFormed()"
-            [class.clickable]="step() === 4"
-            [class.pulse]="step() === 4"
+            [class.clickable]="step() === 3"
+            [class.pulse]="step() === 3"
             (click)="reset()"
             tabindex="0"
             (keydown.enter)="reset()"
