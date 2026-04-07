@@ -3,7 +3,7 @@ import { StoryService } from '@core/story.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
-import { SkyGrassComponent } from '@features/story-player/backgrounds/sky-grass/sky-grass.component';
+import { GrassRoadComponent } from '@features/story-player/backgrounds/grass-road/grass-road.component';
 
 export interface SolutionOption {
   id: string;
@@ -20,7 +20,7 @@ export interface Situation {
 
 @Component({
   selector: 'app-scene-solutions',
-  imports: [NarrativeText, TranslateModule, LayerWrapper, SkyGrassComponent],
+  imports: [NarrativeText, TranslateModule, LayerWrapper, GrassRoadComponent],
   templateUrl: './scene-solutions.html',
   styleUrl: './scene-solutions.scss',
 })
@@ -147,10 +147,10 @@ export class SceneSolutions {
     const totalSituations = this.situations.length;
     const reduction = this.correctSelectedCount() / totalSituations;
     const penalty = this.incorrectSelectedCount() * (1 / totalSituations);
-    
+
     // Start at 1.0 (heavy smog), go down for correct, back up for incorrect
     const opacity = 1 - reduction + penalty;
-    
+
     // Keep it bound between 0 (clear sky) and 1 (heavy smog)
     return Math.max(0, Math.min(1, opacity));
   });
