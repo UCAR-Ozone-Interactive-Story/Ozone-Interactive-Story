@@ -21,7 +21,7 @@
 
 .molecule-display {
   position: absolute;
-  left: 2rem;
+  left: 6rem;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -32,17 +32,17 @@
 
 .molecule-circle {
   width: 80px;
-  height: 80px;
+  height: 24vh;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  border: 3px solid #007bff;
+  // background: rgba(255, 255, 255, 0.9);
+  // border: 3px solid #007bff;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transform: scale(0.5);
   transition: all 0.5s ease;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  // box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
 .molecule-circle.visible {
@@ -55,6 +55,13 @@
   font-weight: bold;
   color: #007bff;
   text-align: center;
+}
+
+.molecule-2 {
+  height: 20vh;
+  z-index: 11;
+  filter: drop-shadow(7px 7px 0px rgba(0, 0, 0, 0.6));
+  position: relative;
 }
 
 .molecule-circle:nth-child(1).visible {
