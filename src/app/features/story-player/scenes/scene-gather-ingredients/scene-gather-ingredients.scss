@@ -81,12 +81,12 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(circle at 30% 40%, rgba(165, 140, 60, 0.45), transparent 60%),
-              radial-gradient(circle at 70% 50%, rgba(180, 150, 70, 0.4), transparent 65%),
-              radial-gradient(circle at 50% 70%, rgba(140, 120, 50, 0.35), transparent 70%);
+  background: radial-gradient(circle at 30% 40%, rgba(165, 140, 60, 0.8), transparent 100%),
+              radial-gradient(circle at 70% 50%, rgba(180, 150, 70, 0.6), transparent 100%),
+              radial-gradient(circle at 50% 70%, rgba(140, 120, 50, 0.55), transparent 100%);
   filter: blur(25px);
   border-radius: 50%;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .smog-cloud {
