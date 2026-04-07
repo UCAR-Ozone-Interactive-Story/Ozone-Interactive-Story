@@ -19,11 +19,11 @@ export class SceneGatherIngredients {
   sunClicked = false;
 
   molecules = [
-    { label: 'VOC',  id: 0, location: 'paint',   top: '8%',  left: '8%'  },
-    { label: 'VOC',  id: 1, location: 'paint',   top: '45%', left: '55%' },
-    { label: 'VOC',  id: 2, location: 'paint',   top: '20%', left: '65%' },
-    { label: 'VOC',  id: 3, location: 'car',     top: '10%', left: '10%' },
-    { label: 'NO₂', id: 4, location: 'car',     top: '42%', left: '52%' },
+    { label: 'VOC', id: 0, location: 'paint', top: '8%', left: '8%' },
+    { label: 'VOC', id: 1, location: 'paint', top: '45%', left: '55%' },
+    { label: 'VOC', id: 2, location: 'paint', top: '20%', left: '65%' },
+    { label: 'VOC', id: 3, location: 'car', top: '10%', left: '10%' },
+    { label: 'NO₂', id: 4, location: 'car', top: '42%', left: '52%' },
     { label: 'NO₂', id: 5, location: 'factory', top: '12%', left: '15%' },
     { label: 'NO₂', id: 6, location: 'factory', top: '48%', left: '55%' },
   ];
@@ -32,6 +32,14 @@ export class SceneGatherIngredients {
   // with the drop location contstrained to the ozone cloud
   ozoneMoleculesMovedByKeyboard = [];
 
+  explanation1Read() {
+    return false;
+    return document.getElementById('explanation1') != undefined;
+  }
+  explanation2Read() {
+    return false;
+    return document.getElementById('explanation2') != undefined;
+  }
   onSunClicked() {
     if (!this.moleculesGathered()) return;
     this.sunClicked = true;

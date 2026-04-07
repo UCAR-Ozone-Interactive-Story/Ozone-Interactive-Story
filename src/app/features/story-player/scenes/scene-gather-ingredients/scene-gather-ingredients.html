@@ -3,12 +3,10 @@
     <app-city-sun bg-layer></app-city-sun>
     <div id="narrative-area">
       @if (!moleculesGathered()) {
-        <app-narrative-text [text]="('SCENES.GATHER_INGREDIENTS.INGREDIENT_EXPLAINATION' | translate)" />
+        <app-narrative-text [text]="'SCENES.GATHER_INGREDIENTS.INGREDIENT_EXPLAINATION' | translate" />
       } @else if (!story.isSceneCompleted()) {
         <app-narrative-text [text]="'SCENES.GATHER_INGREDIENTS.INSTRUCTIONS_1' | translate" />
-      } @else {
-        <app-narrative-text [text]="'SCENES.GATHER_INGREDIENTS.DONE' | translate" />
-      }
+      } 
     </div>
 
     <div id="polition-sources">
