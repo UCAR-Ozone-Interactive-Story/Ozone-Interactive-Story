@@ -89,25 +89,26 @@
       "TITLE": "Ground Ozone",
       "AREA": {
         "PROMPT": "Ozone pollution is worse in certain areas. Can you guess where this happens?",
-        "CHOICE_RURAL": "Rural areas!",
-        "CHOICE_URBAN": "Urban areas!",
-        "CORRECT": "Correct! Ozone pollution is worse in urban areas!",
-        "INCORRECT": "Actually, no! There is less ozone pollution in rural areas!"
+        "CHOICE_RURAL": "Rural areas",
+        "CHOICE_URBAN": "Urban areas",
+        "CORRECT": "Correct! Ozone pollution is worse in urban areas.",
+        "INCORRECT": "Not quite! There is less ozone pollution in rural areas. Try again."
       },
       "SEASON": {
-        "PROMPT": "Another factor that influences ozone pollution is time of year. When might pollution be worse?",
-        "CHOICE_WARM": "Hot and sunny months!",
-        "CHOICE_COOL": "Cool and dark months!",
-        "CORRECT": "Correct! Ozone pollution is worse in the hot and sunny months!",
-        "INCORRECT": "Actually, no! Cool and dark months will have less ozone pollution!"
+        "PROMPT": "Another factor that influences ozone pollution is time of year. When might ozone pollution be worse?",
+        "CHOICE_WARM": "Hot and sunny months",
+        "CHOICE_COOL": "Cool and darker months",
+        "CORRECT": "Correct! Ozone pollution is worse in the hot and sunny months.",
+        "INCORRECT": "Not quite! Cool and darker months will have less ozone pollution. Try again!"
       },
       "CARS_FACTORIES": {
-        "PROMPT": "Density of cars and factories also makes an impact since these emit the ingredients of ozone. Knowing this, where might pollution be worse?",
-        "CHOICE_LOTS": "Areas with lots of cars and factories!",
-        "CHOICE_FEW": "Areas with fewer cars or factories!",
-        "CORRECT": "Correct! Ozone pollution is worse where there are many cars and/or factories!",
-        "INCORRECT": "Actually, no! Cars and factories produce the ingredients for ozone, so pollution is worse where there are more of them!"
-      }
+        "PROMPT": "The amount of cars and factories in an area also influences ozone pollution because they burn fossil fuels. Knowing this, where might ozone pollution be worse?",
+        "CHOICE_LOTS": "Areas with lots of cars and factories",
+        "CHOICE_FEW": "Areas with fewer cars or factories",
+        "CORRECT": "Correct! Ozone pollution is worse when there are many cars and/or factories. As there are more and more cars and factories in our busy cities, there is a lot more ozone pollution, too. Especially in the summertime when there’s more sunlight, ozone levels can be dangerously high. Some people are experiencing health problems because of ozone. To stay safe, it’s best to limit outdoor activity on high ozone days.",
+        "INCORRECT": "Not quite. Cars and factories produce the ingredients of ozone, so ozone pollution is worse when there are more of them in one area. Try again!"
+      },
+      "CONTINUE": "Continue"
     },
     "SOLUTIONS": {
       "TITLE": "Solutions",

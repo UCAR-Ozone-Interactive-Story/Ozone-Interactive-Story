@@ -1,12 +1,10 @@
 import { Component, input, output, signal, effect, OnDestroy, HostListener } from '@angular/core';
-import { setTabIndexOne } from './setTabIndexOne';
 
 @Component({
   selector: 'app-narrative-text',
   standalone: true,
   templateUrl: './narrative-text.html',
   styleUrl: './narrative-text.scss',
-  imports: [setTabIndexOne],
 })
 export class NarrativeText implements OnDestroy {
   text = input.required<string>();
