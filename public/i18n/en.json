@@ -64,7 +64,7 @@
     },
     "GATHER_INGREDIENTS": {
       "TITLE": "Gathering Ingredients",
-      "INGREDIENT_EXPLAINATION": "Drag the “ingredients” needed to make ground level ozone to the smog cloud:\n VOCs from car exhaust pipes, paint, or other industrial products\n NO2 from car exhaust pipes and from factory emissions",
+      "INGREDIENT_EXPLAINATION": "Drag the “ingredients” needed to make ground level ozone to the smog cloud: \n • VOCs from car exhaust pipes, paint, or other industrial products \n • NO2 from car exhaust pipes and from factory emissions",
       "INSTRUCTIONS_1": "Great! Now click on the Sun to add the final ingredient: energy from the Sun."
     },
     "OZONE_MOLECULE": {
