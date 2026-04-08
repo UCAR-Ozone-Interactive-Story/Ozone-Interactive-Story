@@ -3,13 +3,13 @@ import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 import { CdkDrag, CdkDragEnd, Point } from '@angular/cdk/drag-drop';
-import { CitySunComponent } from '@features/story-player/backgrounds/city-sun/city-sun.component';
 import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
+import { SunlessCity } from '@features/story-player/backgrounds/sunless-city/sunless-city.component';
 
 const sceneName = 'scene-gather-ingredients';
 @Component({
   selector: 'app-' + sceneName,
-  imports: [NarrativeText, TranslateModule, CdkDrag, CitySunComponent, LayerWrapper],
+  imports: [NarrativeText, TranslateModule, CdkDrag, SunlessCity, LayerWrapper],
   templateUrl: './' + sceneName + '.html',
   styleUrl: './' + sceneName + '.scss',
 })

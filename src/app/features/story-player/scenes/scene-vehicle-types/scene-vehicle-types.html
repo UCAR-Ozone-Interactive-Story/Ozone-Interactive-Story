@@ -1,37 +1,45 @@
 <div class="container">
-  <img src="./images/scenes/vehicles/collage_vehicles_background.png" style="width:100%; height:100%; position: absolute; z-index: 0;" alt="city street">
-  <app-narrative-text
-    [text]="'SCENES.VEHICLE_TYPES.TEXT_1' | translate"
-    (completed)="story.setSceneCompleted(true)"
-    [startDelay]="story.transition().textDelay"
-  />
+  <!-- <img src="./images/scenes/vehicles/collage_vehicles_background.png" style="width:100%; height:100%; position: absolute; z-index: 0;" alt="city street"> -->
+  <app-layer-wrapper>
 
-  <div class="aspectwrapper">
-    <div class="content">
-      <img src="./images/scenes/vehicles/vehicle_bike.png" class="vehicle" alt="bicycle"
-      style="left:2vh; height:20vh;">
-      <div style="display: inline flow-root; outline: thick green;">
-        <img src="./images/scenes/vehicles/vehicle_motorcycle.png" class="vehicle" alt="motorcycle"
-        style="height:25vh;">
-        <img src="./images/scenes/vehicles/vehicle_bus.png" class="vehicle" alt="bus"
-        style="height:30vh;">
-        <img src="./images/scenes/vehicles/vehicle_scooter.png" class="vehicle" alt="scooter"
-        style="height:30vh;">
-        <img src="./images/scenes/vehicles/vehicle_car.png" class="vehicle" alt="car"
-        style="height:20vh;">
-      </div>
-      
-    </div>
-  </div>
-
-
-  <!-- <div style="position: relative; right:2vh; height: 90vh; width: 130vh; bottom:0vh; background-color: aliceblue; color: aliceblue;">
+    <app-street bg-layer></app-street>
     
-  </div> -->
-  
+    <app-narrative-text
+      [text]="'SCENES.VEHICLE_TYPES.TEXT_1' | translate"
+      (completed)="story.setSceneCompleted(true)"
+      [startDelay]="story.transition().textDelay"
+    />
 
-  <div style="border-color: aqua;" >
-    <img src="./images/scenes/vehicles/oil_and_coal.png" alt="a gas pump and a bucket of coal"
-    style="position: absolute; top: 10px; right: 0px; height: 50vh;">
-  </div>
+    <div style="position:absolute; left:10vh; height:25vh; bottom:30vh; display:inline-block; margin: 0 auto; padding:10px; text-align: justify;">
+      <img src="./images/scenes/vehicles/vehicle_bike.png" class="vehicle" alt="bicycle" style="height: 25vh; display: block; margin: 0 auto;">
+      <span class="bike-label">Human powered!</span>
+    </div>
+
+    <div class="vehicle-container">
+      <div class="vehicle-column">
+          <div class="vehicle-row">
+            <img src="./images/scenes/vehicles/vehicle_motorcycle.png" class="vehicle" alt="motorcycle"
+            style="height:25vh;">
+          </div>
+          <div class="vehicle-row">
+            <img src="./images/scenes/vehicles/vehicle_bus.png" class="vehicle" alt="bus"
+            style="height:30vh;">
+          </div>
+      </div>
+      <div class="vehicle-column">
+          <img src="./images/scenes/vehicles/oil.png" alt="gas pump"
+          style="height: 50vh;">
+      </div>
+      <div class="vehicle-column">
+          <div class="vehicle-row">
+            <img src="./images/scenes/vehicles/vehicle_scooter.png" class="vehicle" alt="scooter"
+            style="height:30vh;">
+          </div>
+          <div class="vehicle-row">
+            <img src="./images/scenes/vehicles/vehicle_car.png" class="vehicle" alt="car"
+            style="height:20vh;">
+          </div>
+      </div>
+    </div>
+  </app-layer-wrapper>
 </div>
