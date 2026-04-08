@@ -1,4 +1,15 @@
-import { Component, input, output, signal, effect, OnDestroy, HostListener } from '@angular/core';
+import {
+  Component,
+  input,
+  output,
+  signal,
+  effect,
+  OnDestroy,
+  HostListener,
+  ViewChild,
+  viewChild,
+  ElementRef,
+} from '@angular/core';
 import { setTabIndexOne } from './setTabIndexOne';
 
 @Component({
@@ -21,6 +32,7 @@ export class NarrativeText implements OnDestroy {
     return this._dialogTabIndex;
   }
 
+  paragraph = viewChild.required<ElementRef>('paragraph');
   displayedText = signal('');
   isComplete = signal(false);
   private timer = 0;
@@ -72,8 +84,7 @@ export class NarrativeText implements OnDestroy {
     this.clearTimer();
     this.isComplete.set(false);
 
-    const textElmenent = document.getElementsByClassName('text-content').item(0);
-    this.assertIsDefined(textElmenent);
+    const textElmenent = this.paragraph().nativeElement;
     if (!(textElmenent instanceof HTMLElement)) {
       throw new Error('textContent should be an HTMLElement');
     }
@@ -124,7 +135,10 @@ export class NarrativeText implements OnDestroy {
 
   private finish() {
     this.clearTimer();
-    this.displayedText.set(this.text());
+    const textElement = this.paragraph().nativeElement;
+    if (textElement instanceof HTMLElement) {
+      textElement.innerHTML = this.text().replaceAll('\n', '<br>');
+    }
     this.isComplete.set(true);
     this.completed.emit();
   }
