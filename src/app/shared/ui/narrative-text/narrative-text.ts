@@ -6,7 +6,6 @@ import { setTabIndexOne } from './setTabIndexOne';
   standalone: true,
   templateUrl: './narrative-text.html',
   styleUrl: './narrative-text.scss',
-  imports: [setTabIndexOne],
 })
 export class NarrativeText implements OnDestroy {
   text = input.required<string>();
