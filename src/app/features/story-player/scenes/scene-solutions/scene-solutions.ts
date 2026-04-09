@@ -36,7 +36,7 @@ export class SceneSolutions {
       top: '90%', left: '20%', height: '25vh',
       options: [
         { id: 'LOW_POLLUTION_VEHICLE', isCorrect: true },
-        { id: 'DRIVE_EVERYWHERE', isCorrect: false }
+        { id: 'HIGH_POLLUTION_VEHICLE', isCorrect: false }
       ]
     },
     {
@@ -107,7 +107,7 @@ export class SceneSolutions {
       image: 'vehicles/vehicle_bus.png',
       top: '100%', left: '50%', height: '30vh',
       options: [
-        { id: 'IDLE_ENGINE', isCorrect: false },
+        { id: 'DRIVE_EVERYWHERE', isCorrect: false },
         { id: 'WALK_BIKE_BUS', isCorrect: true }
       ]
     }
@@ -172,6 +172,8 @@ export class SceneSolutions {
 
     if (this.incorrectSelectedCount() === 0) {
       return 'SCENES.SOLUTIONS.CONCLUSION_PERFECT';
+    } else if (this.correctSelectedCount() === 0) {
+      return 'SCENES.SOLUTIONS.CONCLUSION.ALL_INCORRECT'
     } else {
       return 'SCENES.SOLUTIONS.CONCLUSION_MIXED';
     }
