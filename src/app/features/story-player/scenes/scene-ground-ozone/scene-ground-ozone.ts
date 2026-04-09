@@ -25,6 +25,9 @@ export class SceneGroundOzone {
   // choice state i.e. which was clicked, or none yet
   choiceStatus = signal<{ option: string; isCorrect: boolean } | null>(null);
 
+  showContinue = signal(false);
+  nextPhase = signal<GroundOzonePhase | null>(null);
+
   isTextComplete = signal(false);
   textDelay = signal(this.story.transition().textDelay);
 
@@ -50,9 +53,11 @@ export class SceneGroundOzone {
 
       const keys = feedback ? [feedback, promptKey] : [promptKey];
       const sub = this.translate.stream(keys).subscribe((res) => {
-        const feedbackText = feedback ? res[feedback] + ' ' : '';
-        const promptText = promptKey ? res[promptKey] : '';
-        this.text.set((feedbackText + promptText).trim());
+        if (feedback) {
+          this.text.set(res[feedback]);
+        } else if (promptKey) {
+          this.text.set(res[promptKey]);
+        }
       });
 
       onCleanup(() => sub.unsubscribe());
@@ -69,31 +74,41 @@ export class SceneGroundOzone {
     if (!this.isTextComplete() || this.fadeState() === 'out' || this.choiceStatus()?.isCorrect)
       return;
 
+    if (this.choiceStatus()?.option === option)
+      return;
+
     this.textDelay.set(0);
 
     if (isCorrect) {
       this.choiceStatus.set({ option, isCorrect: true });
-
-      const t1 = setTimeout(() => {
-        this.fadeState.set('out');
-
-        const t2 = setTimeout(() => {
-          this.feedbackKey.set(correctFeedback);
-          this.currentChoice.set(nextPhase);
-          this.choiceStatus.set(null);
-          this.fadeState.set('in');
-          this.isTextComplete.set(false);
-        }, 500);
-
-        this.destroyRef.onDestroy(() => clearTimeout(t2));
-      }, 500);
-
-      this.destroyRef.onDestroy(() => clearTimeout(t1));
+      this.feedbackKey.set(correctFeedback);
+      this.nextPhase.set(nextPhase);
+      
+      if (nextPhase !== 'done') {
+        this.showContinue.set(true);
+      }
+      this.isTextComplete.set(false);
     } else {
       this.choiceStatus.set({ option, isCorrect: false });
       this.feedbackKey.set(incorrectFeedback);
       this.isTextComplete.set(false);
     }
+  }
+
+  onContinue() {
+    this.fadeState.set('out');
+    this.isTextComplete.set(false);
+    
+    const t = setTimeout(() => {
+      this.showContinue.set(false);
+      this.feedbackKey.set(null);
+      this.currentChoice.set(this.nextPhase()!);
+      this.choiceStatus.set(null);
+      this.nextPhase.set(null);
+      this.fadeState.set('in');
+    }, 500);
+    
+    this.destroyRef.onDestroy(() => clearTimeout(t));
   }
 
   selectArea(area: 'urban' | 'rural') {
@@ -128,7 +143,7 @@ export class SceneGroundOzone {
 
   onNarrativeCompleted() {
     this.isTextComplete.set(true);
-    if (this.currentChoice() === 'done') {
+    if (this.currentChoice() === 'done' || this.nextPhase() === 'done') {
       this.story.setSceneCompleted(true);
     }
   }

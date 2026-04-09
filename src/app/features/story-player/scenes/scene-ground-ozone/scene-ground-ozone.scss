@@ -71,13 +71,18 @@
   }
 
   @media (hover: hover) { // we only want non-touchscreens to have hover effects
-    &:hover {
+    &:not(.answered):hover {
       @include highlight-state;
     }
   }
 
-  &:focus-visible {
+  &:not(.answered):focus-visible {
     @include highlight-state;
+  }
+
+  &.answered,
+  .choice-container.answered & {
+    pointer-events: none;
   }
 
   .overlay {
@@ -97,8 +102,40 @@
     opacity: 1;
   }
 
-  &.incorrect .overlay {
-    background-color: rgba(244, 67, 54, 0.5); // red
-    opacity: 1;
+  &.incorrect {
+    pointer-events: none;
+    
+    .overlay {
+      background-color: rgba(244, 67, 54, 0.5); // red
+      opacity: 1;
+    }
+  }
+}
+
+.continue-btn {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #4CAF50;
+  color: white;
+  border: 2px solid #388e3c;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #388e3c;
+  transition: all 0.2s;
+  
+  &:hover {
+    background-color: #45a049;
+    transform: translateX(-50%) translateY(2px);
+    box-shadow: 0 2px 0 #388e3c;
+  }
+  
+  &:active {
+    transform: translateX(-50%) translateY(4px);
+    box-shadow: none;
   }
 }
