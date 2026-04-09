@@ -59,37 +59,27 @@ export class OzoneMolecule {
 
   clickOxygen() {
 
-    if (this.step() === 2) {
+    if (this.step() !== 2) return;
 
-      this.oxygenMid.set(true);
+    this.oxygenEnd.set(true);
+
+    setTimeout(() => {
+
+      this.ozoneFormed.set(true);
+      this.hideO2.set(true);
+      this.hideFreeO.set(true);
+
       this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_4');
+      this.story.setSceneCompleted(true);
+
       this.step.set(3);
 
-      return;
-    }
-
-    if (this.step() === 3) {
-
-      this.oxygenEnd.set(true);
-
-      setTimeout(() => {
-
-        this.ozoneFormed.set(true);
-        this.hideO2.set(true);
-        this.hideFreeO.set(true);
-
-        this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_5');
-        this.story.setSceneCompleted(true);
-
-        this.step.set(4);
-
-      }, 500);
-    }
+    }, 500);
   }
 
   reset() {
 
-    if (this.step() !== 4) return;
+    if (this.step() !== 3) return;
 
     this.step.set(0);
 

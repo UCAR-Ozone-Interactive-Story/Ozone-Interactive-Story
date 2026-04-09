@@ -17,7 +17,7 @@
 .sun {
   position: absolute;
   top: 4vh;
-  left: 14vw;
+  left: 8vw;
   height: 25vw;
   aspect-ratio: 1;
   z-index: 6;
@@ -31,6 +31,7 @@
   cursor: pointer;
   border: none;
   background-color: transparent;
+  filter: drop-shadow(-8px 12px 0px rgba(0, 0, 0, 0.9)) drop-shadow(-16px 20px 4px rgba(0, 0, 0, 0.4));
 
   &.pulsing {
     animation: pulse-glow 1.5s ease-in-out infinite;
@@ -81,12 +82,16 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(circle at 30% 40%, rgba(165, 140, 60, 0.45), transparent 60%),
-              radial-gradient(circle at 70% 50%, rgba(180, 150, 70, 0.4), transparent 65%),
-              radial-gradient(circle at 50% 70%, rgba(140, 120, 50, 0.35), transparent 70%);
+  background: radial-gradient(circle at 30% 40%, rgba(203, 159, 0, 0.75), transparent 60%),
+              radial-gradient(circle at 70% 50%, rgba(205, 167, 0, 0.7), transparent 65%),
+              radial-gradient(circle at 50% 70%, rgba(182, 140, 0, 0.65), transparent 70%);
   filter: blur(25px);
   border-radius: 50%;
-  opacity: 0.9;
+  opacity: 1;
+
+  &.glowing {
+    animation: smog-glow 1.8s ease-in-out infinite;
+  }
 }
 
 .smog-cloud {
@@ -219,3 +224,11 @@
   }
 }
 
+@keyframes smog-glow {
+  0%, 100% {
+    filter: blur(25px) drop-shadow(0 0 10px rgba(255, 200, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 200, 0, 0.3));
+  }
+  50% {
+    filter: blur(25px) drop-shadow(0 0 30px rgb(182, 143, 0)) drop-shadow(0 0 60px rgba(187, 146, 0, 0.6));
+  }
+}

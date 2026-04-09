@@ -55,8 +55,24 @@
   cursor: pointer;
   transform: translate(-50%, -50%);
   z-index: 5;
+  transition: transform 0.2s ease;
 
-  &:hover { z-index: 10; }
+  &:hover {
+    z-index: 10;
+
+    .item-image img {
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)) drop-shadow(0 0 12px rgba(255, 235, 12, 0.9));
+      transform: scale(1.12);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .item-image:not(:has(img)) {
+      transform: scale(1.12);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+  }
+
   &.active { z-index: 15; }
 
   &.solved .item-image {
@@ -108,11 +124,11 @@
   }
 
   img {
-    width: 100% !important;
-    height: 100% !important;
+    height: auto;
     object-fit: contain !important;
     border-radius: 0 !important;
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    transition: transform 0.2s ease, filter 0.2s ease;
   }
 }
 
