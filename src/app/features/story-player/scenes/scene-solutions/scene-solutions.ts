@@ -15,6 +15,7 @@ export interface Situation {
   image: string;
   top: string;
   left: string;
+  height?: string;
   options: SolutionOption[];
 }
 
@@ -31,17 +32,17 @@ export class SceneSolutions {
   situations: Situation[] = [
     {
       id: 'SITUATION_VEHICLE',
-      image: 'crappy_car.jpg',
-      top: '100%', left: '20%',
+      image: 'solutions/electric-car.png',
+      top: '90%', left: '20%', height: '25vh',
       options: [
         { id: 'LOW_POLLUTION_VEHICLE', isCorrect: true },
-        { id: 'DRIVE_EVERYWHERE', isCorrect: false }
+        { id: 'HIGH_POLLUTION_VEHICLE', isCorrect: false }
       ]
     },
     {
       id: 'SITUATION_ENERGY',
-      image: 'wind_turbine.jpg',
-      top: '25%', left: '10%',
+      image: 'solutions/windmill.png',
+      top: '25%', left: '10%', height: '30vh',
       options: [
         { id: 'RENEWABLE_ENERGY', isCorrect: true },
         { id: 'FOSSIL_FUELS', isCorrect: false }
@@ -49,8 +50,8 @@ export class SceneSolutions {
     },
     {
       id: 'SITUATION_PRODUCTS',
-      image: '',
-      top: '30%', left: '30%',
+      image: 'ingredient-gathering/paint.webp',
+      top: '30%', left: '30%', height: '15vh',
       options: [
         { id: 'HIGH_VOC_PRODUCTS', isCorrect: false },
         { id: 'LOW_VOC_PRODUCTS', isCorrect: true }
@@ -58,8 +59,8 @@ export class SceneSolutions {
     },
     {
       id: 'SITUATION_USAGE',
-      image: '',
-      top: '45%', left: '70%',
+      image: 'solutions/power-outlet.png',
+      top: '45%', left: '70%', height: '15vh',
       options: [
         { id: 'LEAVE_LIGHTS_ON', isCorrect: false },
         { id: 'LESS_ENERGY', isCorrect: true }
@@ -67,8 +68,8 @@ export class SceneSolutions {
     },
     {
       id: 'SITUATION_FIRE',
-      image: 'wood_stove.jpg',
-      top: '20%', left: '85%',
+      image: 'solutions/wood-stove.png',
+      top: '15%', left: '75%', height: '20vh',
       options: [
         { id: 'FORGO_FIRE', isCorrect: true },
         { id: 'BURN_WOOD', isCorrect: false }
@@ -76,8 +77,8 @@ export class SceneSolutions {
     },
     {
       id: 'SITUATION_YARD',
-      image: 'compost.jpg',
-      top: '40%', left: '90%',
+      image: 'solutions/compost.png',
+      top: '20%', left: '90%', height: '20vh',
       options: [
         { id: 'COMPOST_YARD_WASTE', isCorrect: true },
         { id: 'BURN_TRASH', isCorrect: false }
@@ -85,8 +86,8 @@ export class SceneSolutions {
     },
     {
       id: 'SITUATION_MOWING',
-      image: 'push_mower.jpg',
-      top: '65%', left: '88%',
+      image: 'solutions/lawnmower.png',
+      top: '65%', left: '88%', height: '20vh',
       options: [
         { id: 'MOW_MORNING', isCorrect: false },
         { id: 'MOW_EVENING', isCorrect: true }
@@ -94,8 +95,8 @@ export class SceneSolutions {
     },
     {
       id: 'SITUATION_REFUEL',
-      image: 'gas_pump.jpg',
-      top: '100%', left: '80%',
+      image: 'vehicles/oil.png',
+      top: '100%', left: '70%', height: '25vh',
       options: [
         { id: 'REFUEL_EVENING', isCorrect: true },
         { id: 'REFUEL_DAY', isCorrect: false }
@@ -103,10 +104,10 @@ export class SceneSolutions {
     },
     {
       id: 'SITUATION_TRANSPORT',
-      image: 'bike_bus.jpg',
-      top: '100%', left: '50%',
+      image: 'vehicles/vehicle_bus.png',
+      top: '100%', left: '50%', height: '30vh',
       options: [
-        { id: 'IDLE_ENGINE', isCorrect: false },
+        { id: 'DRIVE_EVERYWHERE', isCorrect: false },
         { id: 'WALK_BIKE_BUS', isCorrect: true }
       ]
     }
@@ -171,6 +172,8 @@ export class SceneSolutions {
 
     if (this.incorrectSelectedCount() === 0) {
       return 'SCENES.SOLUTIONS.CONCLUSION_PERFECT';
+    } else if (this.correctSelectedCount() === 0) {
+      return 'SCENES.SOLUTIONS.CONCLUSION.ALL_INCORRECT'
     } else {
       return 'SCENES.SOLUTIONS.CONCLUSION_MIXED';
     }

@@ -83,7 +83,7 @@
     </button>
 
     <div id="ozone-cloud" title="creating ozone">
-        <div class="smog-cloud"></div>
+        <div class="smog-cloud" [class.glowing]="!moleculesGathered()"></div>
 
         @for (item of molecules; track item.id) {
             @if (item.location == "ozoneCloud") {

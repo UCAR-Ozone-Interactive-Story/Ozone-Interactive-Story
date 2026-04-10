@@ -35,7 +35,10 @@
 
             <div class="item-image">
               @if (situation.image) {
-                <img [src]="'images/scenes/solutions/' + situation.image" alt="" />
+                <img [src]="'images/scenes/' + situation.image" 
+                    alt="" 
+                    [style.height]="situation.height"
+                />
               }
             </div>
 

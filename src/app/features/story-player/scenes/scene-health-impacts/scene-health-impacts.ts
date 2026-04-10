@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
 import { StreetComponent } from '@features/story-player/backgrounds/street/street.component';
-import { MatButtonToggleModule, MatButtonToggleChange } from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { setTabIndexOne } from '@shared/ui/narrative-text/setTabIndexOne';
 
 @Component({

@@ -48,7 +48,7 @@
     },
     "NEARBY_FACTORIES": {
       "TITLE": "Nearby Factories",
-      "TEXT_1": "Nearby factories also burn fossil fuels to make electricity that we use in our homes, schools,\nand workplaces.\nFactories and vehicles also release solid particles of dust, carbon soot, and smoke that are so tiny they can float in the air for a long time."
+      "TEXT_1": "Nearby factories also burn fossil fuels such as coal to make electricity that we use in our homes, schools, and workplaces"
     },
     "FUEL_SOURCES": {
       "TITLE": "Fuel Sources",
@@ -87,30 +87,30 @@
       "TITLE": "Ground Ozone",
       "AREA": {
         "PROMPT": "Ozone pollution is worse in certain areas. Can you guess where this happens?",
-        "CHOICE_RURAL": "Rural areas!",
-        "CHOICE_URBAN": "Urban areas!",
-        "CORRECT": "Correct! Ozone pollution is worse in urban areas!",
-        "INCORRECT": "Actually, no! There is less ozone pollution in rural areas!"
+        "CHOICE_RURAL": "Rural areas",
+        "CHOICE_URBAN": "Urban areas",
+        "CORRECT": "Correct! Ozone pollution is worse in urban areas.",
+        "INCORRECT": "There is less ozone pollution in rural areas. Try again."
       },
       "SEASON": {
-        "PROMPT": "Another factor that influences ozone pollution is time of year. When might pollution be worse?",
-        "CHOICE_WARM": "Hot and sunny months!",
-        "CHOICE_COOL": "Cool and dark months!",
-        "CORRECT": "Correct! Ozone pollution is worse in the hot and sunny months!",
-        "INCORRECT": "Actually, no! Cool and dark months will have less ozone pollution!"
+        "PROMPT": "Another factor that influences ozone pollution is time of year. When might ozone pollution be worse?",
+        "CHOICE_WARM": "Hot and sunny months",
+        "CHOICE_COOL": "Cool and darker months",
+        "CORRECT": "Correct! Ozone pollution is worse in the hot and sunny months.",
+        "INCORRECT": "Cool and darker months will have less ozone pollution. Try again!"
       },
       "CARS_FACTORIES": {
-        "PROMPT": "Density of cars and factories also makes an impact since these emit the ingredients of ozone. Knowing this, where might pollution be worse?",
-        "CHOICE_LOTS": "Areas with lots of cars and factories!",
-        "CHOICE_FEW": "Areas with fewer cars or factories!",
-        "CORRECT": "Correct! Ozone pollution is worse where there are many cars and/or factories!",
-        "INCORRECT": "Actually, no! Cars and factories produce the ingredients for ozone, so pollution is worse where there are more of them!"
-      }
+        "PROMPT": "The amount of cars and factories in an area also influences ozone pollution because they burn fossil fuels. Knowing this, where might ozone pollution be worse?",
+        "CHOICE_LOTS": "Areas with lots of cars and factories",
+        "CHOICE_FEW": "Areas with fewer cars or factories",
+        "CORRECT": "Correct! Ozone pollution is worse when there are many cars and/or factories. As there are more and more cars and factories in our busy cities, there is a lot more ozone pollution, too. Especially in the summertime when there’s more sunlight, ozone levels can be dangerously high. Some people are experiencing health problems because of ozone. To stay safe, it’s best to limit outdoor activity on high ozone days.",
+        "INCORRECT": "Cars and factories produce the ingredients of ozone, so ozone pollution is worse when there are more of them in one area. Try again!"
+      },
+      "CONTINUE": "Continue"
     },
     "SOLUTIONS": {
       "TITLE": "Solutions",
-      "PROMPT": "There are many things we can do to reduce ozone pollution. Tap each scenario and choose what you think will reduce pollution.",
-      "DONE_BUTTON": "I'm done choosing!",
+      "PROMPT": "What can we do to help keep ozone pollution from forming? Fortunately, there are many solutions! Tap each picture and make choices to reduce ozone pollution.",
       "CONCLUSION": "Nice work! You've chosen {{count}} actions to take to help reduce ozone pollution.",
       "CONCLUSION_PERFECT": "Fantastic! You chose {{correctCount}} helpful actions and didn't fall for any tricks!",
       "CONCLUSION_MIXED": "Good job finding {{correctCount}} helpful actions! However, {{incorrectCount}} of your choices would actually make pollution worse.",
@@ -121,12 +121,12 @@
             "LOW_POLLUTION_VEHICLE": {
               "TITLE": "Choose a low-pollution vehicle.",
               "DESC": "Fuel efficient cars and electric cars help keep air quality good.",
-              "FEEDBACK": "Fuel-efficient and electric vehicles release far fewer ozone-forming chemicals into the air than older, less efficient vehicles."
+              "FEEDBACK": "Fuel-efficient and electric vehicles reduce the amount of ozone-forming chemicals that enter the air."
             },
-            "DRIVE_EVERYWHERE": {
-              "TITLE": "Drive everywhere.",
-              "DESC": "Take your personal car for every trip, even short errands.",
-              "FEEDBACK": "Every car trip adds volatile organic compounds and nitrogen oxides to the air, which cook together to form ground-level ozone."
+            "HIGH_POLLUTION_VEHICLE": {
+              "TITLE": "Keep driving gasoline powered vehicles.",
+              "DESC": "Save money by driving older cars and trucks.",
+              "FEEDBACK": "Vehicles that burn fossil fuels create emissions that cause ground-level ozone to form on warm, sunny days."
             }
           }
         },
@@ -134,12 +134,12 @@
           "OPTIONS": {
             "RENEWABLE_ENERGY": {
               "TITLE": "Choose renewable energy.",
-              "DESC": "Wind, solar, and other renewables make electricity without air pollution.",
-              "FEEDBACK": "Solar and wind power generate electricity without burning fossil fuels, meaning zero ozone ingredients are emitted from power plants."
+              "DESC": "Wind, solar, and other renewables make electricity without burning fossil fuels.",
+              "FEEDBACK": "Solar and wind power generate electricity without burning fossil fuels, which means no ozone ingredients are added to the atmosphere."
             },
             "FOSSIL_FUELS": {
               "TITLE": "Stick with fossil fuels.",
-              "DESC": "Rely on coal and gas power plants since they are already built.",
+              "DESC": "Rely on coal and gas power plants, since they are already built.",
               "FEEDBACK": "Coal and gas power plants are major sources of nitrogen oxides, a key ingredient in ground-level ozone formation."
             }
           }
@@ -149,12 +149,12 @@
             "LOW_VOC_PRODUCTS": {
               "TITLE": "Choose low VOC products.",
               "DESC": "Choose paints, adhesives, household cleaners, and other products that have low or no VOCs.",
-              "FEEDBACK": "Low-VOC paints and cleaners release fewer chemicals into the air as they dry, depriving the atmosphere of the 'V' in the ozone recipe."
+              "FEEDBACK": "Low-VOC paints and cleaners release fewer chemicals into the air as they dry, which means fewer ozone forming ingredients in the atmosphere."
             },
             "HIGH_VOC_PRODUCTS": {
               "TITLE": "Use standard products.",
               "DESC": "Don't worry about the chemicals in your everyday paints and household cleaners.",
-              "FEEDBACK": "Standard household chemicals and paints evaporate volatile organic compounds (VOCs) right into the air around your home."
+              "FEEDBACK": "Standard household chemicals and paints evaporate volatile organic compounds (VOCs) directly into the air around your home."
             }
           }
         },
@@ -162,8 +162,8 @@
           "OPTIONS": {
             "LESS_ENERGY": {
               "TITLE": "Use less energy.",
-              "DESC": "This will reduce air pollution if your energy comes from gas or coal and save money.",
-              "FEEDBACK": "Using less electricity means power plants don't have to burn as much fuel, cutting down the pollution at the source."
+              "DESC": "Turn the lights and appliances off when you aren't using them.",
+              "FEEDBACK": "This will reduce ozone pollution if your electricity comes from gas or coal, and also help save money."
             },
             "LEAVE_LIGHTS_ON": {
               "TITLE": "Leave lights on.",
@@ -177,12 +177,12 @@
             "FORGO_FIRE": {
               "TITLE": "Forgo the fire.",
               "DESC": "On days when air quality is poor, avoid using your wood fireplace or wood stove if you can.",
-              "FEEDBACK": "Choosing not to burn wood keeps particulate matter and volatile organic compounds out of the atmosphere."
+              "FEEDBACK": "Choosing not to burn wood keeps particulate matter and VOCs out of the atmosphere."
             },
             "BURN_WOOD": {
               "TITLE": "Have a wood fire.",
               "DESC": "Burn wood in your fireplace or fire pit even on poor air quality days.",
-              "FEEDBACK": "Wood smoke is full of harmful particulates and chemicals that worsen air quality and contribute to smog."
+              "FEEDBACK": "Wood smoke is full of harmful particulates and VOCs that worsen air quality and contribute to the formation of smog."
             }
           }
         },
@@ -191,12 +191,12 @@
             "COMPOST_YARD_WASTE": {
               "TITLE": "Compost yard waste.",
               "DESC": "Avoid burning leaves, branches, and other plant trimmings by composting them.",
-              "FEEDBACK": "Composting breaks down leaves and branches naturally and safely, returning nutrients to the soil instead of pollution to the air."
+              "FEEDBACK": "Composting breaks down leaves and branches naturally and safely, returning nutrients to the soil instead of adding pollution to the air."
             },
             "BURN_TRASH": {
               "TITLE": "Burn your trash.",
               "DESC": "Get rid of waste quickly by burning it in your backyard.",
-              "FEEDBACK": "Burning trash and leaves releases a massive, concentrated plume of toxic chemicals and ozone precursors directly into your neighborhood."
+              "FEEDBACK": "Burning trash and yard waste releases a cloud of toxic chemicals and ozone forming chemicals directly into the air."
             }
           }
         },
@@ -205,12 +205,12 @@
             "MOW_EVENING": {
               "TITLE": "Mow in the evening.",
               "DESC": "This helps prevent ozone formation. Or use an electric or manual mower.",
-              "FEEDBACK": "Mowing when it's cooler means the engine emissions don't have the intense sunlight needed to bake into ozone."
+              "FEEDBACK": "Mowing after the Sun has started to go down means less contact between the engine emissions and sunlight."
             },
             "MOW_MORNING": {
               "TITLE": "Mow in the morning.",
               "DESC": "Mow your lawn early in the day when it's cool outside.",
-              "FEEDBACK": "Gas-powered mowers lack pollution controls. Running them in the morning provides a fresh batch of chemicals right as the sun starts baking the air."
+              "FEEDBACK": "Gas-powered mowers lack pollution controls. Running them in the morning adds ozone-forming chemicals to the air right as the Sun starts heating up the day."
             }
           }
         },
@@ -218,13 +218,13 @@
           "OPTIONS": {
             "REFUEL_EVENING": {
               "TITLE": "Refuel in the evening.",
-              "DESC": "At gas stations, gasoline vapors get into the air, which help make ozone on hot, sunny days.",
-              "FEEDBACK": "Pumping gas in the evening means those escaped gasoline fumes won't have hot sunlight to react with right away."
+              "DESC": "Pump gas early or late in the day to keep VOCs from getting into the air when the Sun is at its peak.",
+              "FEEDBACK": "At gas stations, gasoline vapors get into the air, which help make harmful ozone on hot, sunny days."
             },
             "REFUEL_DAY": {
               "TITLE": "Refuel during the day.",
               "DESC": "Fill up your gas tank during the hottest part of the sunny afternoon.",
-              "FEEDBACK": "When you pump gas in the heat of the day, gasoline vapors escape and immediately start cooking in the sun to form ozone."
+              "FEEDBACK": "When you pump gas in the heat of the day, gasoline vapors escape into the air to form ground-level ozone."
             }
           }
         },
@@ -233,17 +233,17 @@
             "WALK_BIKE_BUS": {
               "TITLE": "Walk, bike, or take the bus.",
               "DESC": "These are low-cost ways to get from place to place and combine errands for efficiency.",
-              "FEEDBACK": "Sharing a ride or using human power removes a tailpipe from the road entirely, making a huge difference in local air quality."
+              "FEEDBACK": "Carpooling or using human power to get around means less tailpipe emissions are getting into the air, which improves local air quality."
             },
-            "IDLE_ENGINE": {
-              "TITLE": "Leave the engine running.",
-              "DESC": "Keep your car running while waiting to keep the engine warm.",
-              "FEEDBACK": "An idling engine gets zero miles per gallon while continuously spewing out pollution directly into the air."
+            "DRIVE_EVERYWHERE": {
+              "TITLE": "Drive everywhere.",
+              "DESC": "Take your personal car for every trip, even short errands.",
+              "FEEDBACK": "Every car trip adds ozone forming ingredients to the air."
             }
           }
         }
       },
-      "FEEDBACK_CORRECT": "Reduced pollution!",
+      "FEEDBACK_CORRECT": "Reduced ozone pollution!",
       "FEEDBACK_INCORRECT": "Not quite...",
       "BUTTON_SELECT": "Select",
       "BUTTON_CHANGE": "Change Choice",
@@ -252,7 +252,8 @@
     },
     "END": {
       "TITLE": "End",
-      "TEXT_1": "Congratulations! You completed the story!",
+      "HEADER": "Congratulations!",
+      "SUBTITLE": "You learned how ground-level ozone forms and what we can do to reduce ozone pollution.",
       "START_OVER": "Start Over"
     }
   }

@@ -86,4 +86,8 @@
     [startDelay]="textDelay()"
     setTabIndexOne
   />
+
+  @if (showContinue() && isTextComplete() && nextPhase() !== 'done') {
+    <button class="continue-btn" (click)="onContinue()">{{ 'SCENES.GROUND_OZONE.CONTINUE' | translate }}</button>
+  }
 </div>
