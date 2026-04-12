@@ -18,9 +18,19 @@
   z-index: 20;
 }
 
+.sunrays2 {
+  position: absolute;
+  bottom: -110%;
+  left: -130vh;
+  height: 350%;
+  animation: slow-spin 15s linear infinite;
+  transform-origin: center;
+  box-shadow: #87ceeb;
+}
+
 .rays {
   position: absolute;
-  bottom: -1200px;
+  bottom: -1250px;
   left: -1200px;
   animation: slow-spin 10s linear infinite;
   z-index: 0;
