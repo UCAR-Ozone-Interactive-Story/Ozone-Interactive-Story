@@ -1,4 +1,8 @@
 {
+  "ORIENTATION": {
+    "ROTATE": "Please rotate your device!",
+    "ROTATE_SUBTEXT": "This experience is designed for landscape viewing."
+  },
   "START_PAGE": {
     "START": "Start",
     "TITLE": "Ozone Interactive Story Testing"

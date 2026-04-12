@@ -55,3 +55,58 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mobile-landscape h2 {
   font-size: 0.9rem !important;
 }
+
+/* Global Button Styles */
+.action-btn {
+  background: #4caf50;
+  color: #fff;
+  border: 2px solid #388e3c;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 0 #388e3c;
+  
+  &:hover:not(:disabled) {
+    background: #45a049;
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #388e3c;
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow: none;
+  }
+
+  &.secondary {
+    background-color: #7f8c8d;
+    border-color: #636e72;
+    box-shadow: 0 4px 0 #636e72;
+
+    &:hover:not(:disabled) {
+      background-color: #95a5a6;
+      box-shadow: 0 2px 0 #636e72;
+    }
+  }
+
+  &:disabled {
+    background-color: #9e9e9e;
+    background: #9e9e9e;
+    border-color: #757575;
+    box-shadow: 0 4px 0 #757575;
+    cursor: not-allowed;
+  }
+  
+  &.done-button {
+    background: #ff6b6b;
+    border-color: #c0392b;
+    box-shadow: 0 6px 0 #c0392b, 0 10px 10px rgba(0,0,0,0.3);
+    
+    &:hover:not(:disabled) {
+      background: #ff8787;
+      box-shadow: 0 4px 0 #c0392b;
+    }
+  }
+}
