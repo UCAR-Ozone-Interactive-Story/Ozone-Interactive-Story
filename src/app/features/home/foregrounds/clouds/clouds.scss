@@ -1,0 +1,51 @@
+:host {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* container fills screen */
+.clouds-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cloud {
+  position: absolute;
+  height: auto;
+
+  filter: drop-shadow(-10px 10px 5px rgba(0,0,0,0.7));
+
+  animation-name: cloud-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.cloud-1 {
+  top: 12%;
+  left: 8%;
+  width: 25vw;
+  animation-duration: 30s;
+}
+
+.cloud-2 {
+  transform: scaleX(-1);
+  top: 20%;
+  right: 10%;
+  width: 22vw;
+  animation-duration: 20s;
+}
+
+/* drifting animation */
+@keyframes cloud-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120px);
+  }
+}

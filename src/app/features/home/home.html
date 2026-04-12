@@ -1,11 +1,17 @@
 <div class="container">
-  <div class="column">
-    <h1 class="title">{{ 'START_PAGE.TITLE' | translate }}</h1>
+  <app-layer-wrapper>
+    <app-sky-grass bg-layer></app-sky-grass>
+    <div class="sun"></div>
+    <app-clouds></app-clouds>
 
-    <app-language-dropdown></app-language-dropdown>
+    <div class="content">
+      <h1 class="title">{{ 'START_PAGE.TITLE' | translate }}</h1>
 
-    <button class="action-btn start-btn" routerLink="play">
-      {{ 'START_PAGE.START' | translate }}
-    </button>
-  </div>
+      <app-language-dropdown></app-language-dropdown>
+
+      <button class="action-btn start-btn" routerLink="play">
+        {{ 'START_PAGE.START' | translate }}
+      </button>
+    </div>
+  </app-layer-wrapper>
 </div>
