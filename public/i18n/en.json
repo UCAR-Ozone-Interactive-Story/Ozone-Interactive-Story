@@ -28,12 +28,12 @@
     },
     "HEALTH_IMPACTS": {
       "TITLE": "Health Impacts",
-      "TEXT_1": "Air pollution can damage our lungs, and harm plants and animals, too.",
+      "TEXT_1": "But down here, close to the ground, ozone is very harmful. Change the amount of ground level ozone to see how it hurts people and plants.",
       "LUNGS_BEFORE": "Healthy lungs have wide open pathways.",
       "LUNGS_AFTER": "Ozone pollution narrows airways and makes it difficult to breathe.",
       "PLANTS_BEFORE": "Healthy plants exchange gases with the environment through tiny openings in their leaves.",
       "PLANTS_AFTER": "Ozone pollution damages leaves and reduces growth of plants and crops.",
-      "CHOOSE_LEVEL": "Choose an air pollution level!",
+      "CHOOSE_LEVEL": "Choose an ozone pollution level!",
       "LOW": "Low",
       "HIGH": "High"
     },
@@ -59,8 +59,8 @@
     "BURNING_FUELS": {
       "TITLE": "Burning Fuel",
       "TEXT_1": "Burning fossil fuels releases invisible gases into the air — carbon dioxide, nitrogen dioxide, volatile organic compounds (VOCs), and other gases, too. Factories and vehicles also release solid particles of dust, carbon soot, and smoke that are so tiny they can float in the air for a long time.",
-      "FACTORY_BUBBLE": "We burn fossil fuels to create energy for the city!",
-      "CAR_BUBBLE": "Engines burn gasoline to make cars move!"
+      "FACTORY_BUBBLE": "We burn fossil fuels to create energy for the city.",
+      "CAR_BUBBLE": "Engines burn gasoline to make cars move."
     },
     "GATHER_INGREDIENTS": {
       "TITLE": "Gathering Ingredients",
@@ -82,7 +82,7 @@
     },
     "UPPER_OZONE": {
       "TITLE": "Upper Atmosphere Ozone",
-      "TEXT_1": "Now way up high in the atmosphere, ozone is naturally there in the ozone layer. Ozone up in the stratosphere is actually really helpful. It helps block UV rays from the Sun that can cause sunburn."
+      "TEXT_1": "Way up high in the atmosphere the ozone layer is full of naturally occurring ozone. Up here, ozone is really helpful. It helps block UV rays from the Sun that can cause sunburn."
     },
     "GROUND_OZONE": {
       "TITLE": "Ground Ozone",

@@ -41,25 +41,20 @@ export class StoryService {
       component: SceneNearbyFactories,
     },
     {
-      id: 'air',
-      i18n_title: 'SCENES.AIR.TITLE',
-      component: SceneAir,
-    },
-    {
       id: 'burning-fuels',
       i18n_title: 'SCENES.BURNING_FUELS.TITLE',
       component: SceneBurningFuels,
+    },
+    {
+      id: 'air',
+      i18n_title: 'SCENES.AIR.TITLE',
+      component: SceneAir,
     },
 
     {
       id: 'air-pollution',
       i18n_title: 'SCENES.AIR_POLLUTION.TITLE',
       component: SceneAirPollution,
-    },
-    {
-      id: 'health-impacts',
-      i18n_title: 'SCENES.HEALTH_IMPACTS.TITLE',
-      component: SceneHealthImpacts,
     },
     {
       id: 'sunny-day',
@@ -80,6 +75,11 @@ export class StoryService {
       id: 'upper-ozone',
       i18n_title: 'SCENES.UPPER_OZONE.TITLE',
       component: SceneUpperOzone,
+    },
+    {
+      id: 'health-impacts',
+      i18n_title: 'SCENES.HEALTH_IMPACTS.TITLE',
+      component: SceneHealthImpacts,
     },
     {
       id: 'ground-ozone',
