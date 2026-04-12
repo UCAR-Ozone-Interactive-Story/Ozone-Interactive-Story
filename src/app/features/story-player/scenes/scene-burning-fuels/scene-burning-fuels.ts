@@ -1,9 +1,9 @@
 import { Component, inject, signal, effect } from '@angular/core';
 import { StoryService } from '@core/story.service';
-import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
+import { LayerWrapper } from '@shared/ui/layer-wrapper/layer-wrapper.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { BurningFuelsComponent } from "@features/story-player/backgrounds/burning-fuels/burning-fuels.component";
+import { BurningFuelsComponent } from "@shared/ui/backgrounds/burning-fuels/burning-fuels.component";
 
 @Component({
   selector: 'app-scene-burning-fuels', 
