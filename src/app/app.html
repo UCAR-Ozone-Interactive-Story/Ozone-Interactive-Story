@@ -1,8 +1,8 @@
 @if (isPortrait()) {
   <div class="rotate-warning">
     <div class="rotate-content">
-      <h2>Please rotate your phone</h2>
-      <p>This experience is designed for landscape viewing.</p>
+      <h2>{{ 'ORIENTATION.ROTATE' | translate }}</h2>
+      <p>{{ 'ORIENTATION.ROTATE_SUBTEXT' | translate }}</p>
     </div>
   </div>
 } @else {

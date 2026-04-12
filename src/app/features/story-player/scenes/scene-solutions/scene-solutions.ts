@@ -156,14 +156,23 @@ export class SceneSolutions {
     return Math.max(0, Math.min(1, opacity));
   });
 
-  // The scene is done once every situation has a selected option
+  userFinished = signal(false);
+
+  // The scene is done once every situation has a selected option or if the user manually finished
   allSituationsAnswered = computed(() => {
-    return this.selections().size === this.situations.length;
+    return this.selections().size === this.situations.length || this.userFinished();
   });
 
   isDone = computed(() => {
     return this.allSituationsAnswered() && this.activeSituationId() === null;
   });
+
+  finishScene() {
+    if (this.selections().size > 0) {
+      this.userFinished.set(true);
+      this.activeSituationId.set(null);
+    }
+  }
 
   currentNarrativeKey = computed(() => {
     if (!this.isDone()) {
@@ -192,14 +201,6 @@ export class SceneSolutions {
     const situation = this.situations.find(s => s.id === situationId);
     const option = situation?.options.find(o => o.id === selectedOptionId);
     return !!option?.isCorrect;
-  }
-
-  isSituationIncorrect(situationId: string): boolean {
-    const selectedOptionId = this.selections().get(situationId);
-    if (!selectedOptionId) return false;
-    const situation = this.situations.find(s => s.id === situationId);
-    const option = situation?.options.find(o => o.id === selectedOptionId);
-    return option !== undefined && !option.isCorrect;
   }
 
   toggleSituation(situationId: string) {

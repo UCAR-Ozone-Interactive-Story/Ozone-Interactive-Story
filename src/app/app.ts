@@ -1,11 +1,11 @@
 import { Component, signal, HostListener, HostBinding, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, TranslateModule],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   providers: [TranslateService],

@@ -120,22 +120,12 @@
   z-index: 25;
   padding: 10px 20px;
   font-size: 1.2rem;
-  background-color: #4CAF50;
-  color: white;
-  border: 2px solid #388e3c;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 0 #388e3c;
-  transition: all 0.2s;
   
-  &:hover {
-    background-color: #45a049;
+  &:hover:not(:disabled) {
     transform: translateX(-50%) translateY(2px);
-    box-shadow: 0 2px 0 #388e3c;
   }
   
-  &:active {
+  &:active:not(:disabled) {
     transform: translateX(-50%) translateY(4px);
-    box-shadow: none;
   }
 }

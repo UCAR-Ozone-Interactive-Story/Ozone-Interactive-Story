@@ -17,6 +17,14 @@
         (completed)="onFinalNarrativeCompleted()"
       />
 
+      @if (!isDone() && selections().size > 0) {
+        <button class="action-btn done-button" 
+                style="position: absolute; bottom: 5%; right: 5%; z-index: 100;"
+                (click)="finishScene()">
+          {{ 'SCENES.SOLUTIONS.DONE_BUTTON' | translate }}
+        </button>
+      }
+
       <img src="images/scenes/solutions/house.png" alt="house with chimney" height="40%" style="position: relative; left: 70%; top: 16%">
 
       <div class="scene-items" [style.pointer-events]="allSituationsAnswered() ? 'none' : 'auto'">
@@ -26,7 +34,7 @@
                [style.left]="situation.left"
                [class.active]="activeSituationId() === situation.id"
                [class.solved]="isSituationCorrect(situation.id)"
-               [class.solved-incorrect]="isSituationIncorrect(situation.id)"
+               [class.solved-incorrect]="!isSituationCorrect(situation.id)"
                role="button"
                tabindex="0"
                (click)="toggleSituation(situation.id)"

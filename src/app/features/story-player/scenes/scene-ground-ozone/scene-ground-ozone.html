@@ -88,6 +88,6 @@
   />
 
   @if (showContinue() && isTextComplete() && nextPhase() !== 'done') {
-    <button class="continue-btn" (click)="onContinue()">{{ 'SCENES.GROUND_OZONE.CONTINUE' | translate }}</button>
+    <button class="action-btn continue-btn" (click)="onContinue()">{{ 'SCENES.GROUND_OZONE.CONTINUE' | translate }}</button>
   }
 </div>
