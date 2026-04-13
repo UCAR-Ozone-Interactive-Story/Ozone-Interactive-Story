@@ -22,13 +22,13 @@
     </div>
 
     @if (!showSecondText) {
-    <app-narrative-text [text]="'SCENES.AIR.NARRATIVE' | translate" 
+    <app-narrative-text textKey="SCENES.AIR.NARRATIVE" 
     [startDelay]="story.transition().textDelay" />
     }
 
     @if (showSecondText) {
     <div class="bottom-text">
-      <app-narrative-text [text]="'SCENES.AIR.POST_CHOICE_TEXT' | translate" 
+      <app-narrative-text textKey="SCENES.AIR.POST_CHOICE_TEXT" 
       [startDelay]="200" />
     </div>
     }

@@ -12,8 +12,14 @@
              (click)="activeSituationId.set(null); $event.stopPropagation()"></div>
       }
 
-      <app-narrative-text
+      <!-- <app-narrative-text
         [text]="currentNarrativeKey() | translate:currentNarrativeParams()"
+        (completed)="onFinalNarrativeCompleted()"
+      /> -->
+
+      <app-narrative-text
+        [textKey]="currentNarrativeKey()"
+        [textParams]="currentNarrativeParams()"
         (completed)="onFinalNarrativeCompleted()"
       />
 

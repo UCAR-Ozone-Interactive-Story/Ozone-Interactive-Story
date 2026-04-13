@@ -51,12 +51,8 @@
 
         <div class="bubble-container">
           <app-narrative-text
-            [text]="stage() === 0
-              ? ('SCENES.HEALTH_IMPACTS.LUNGS_BEFORE' | translate)
-              : ('SCENES.HEALTH_IMPACTS.LUNGS_AFTER' | translate)"
-            (completed)="stage() === 0
-              ? story.setSceneCompleted(false)
-              : story.setSceneCompleted(true)"
+            [textKey]="stage() === 0 ? 'SCENES.HEALTH_IMPACTS.LUNGS_BEFORE' : 'SCENES.HEALTH_IMPACTS.LUNGS_AFTER'"
+            (completed)="stage() === 0 ? story.setSceneCompleted(false) : story.setSceneCompleted(true)"
           />
         </div>
       </div>
@@ -76,9 +72,7 @@
 
         <div class="bubble-container">
           <app-narrative-text
-            [text]="stage() === 0
-              ? ('SCENES.HEALTH_IMPACTS.PLANTS_BEFORE' | translate)
-              : ('SCENES.HEALTH_IMPACTS.PLANTS_AFTER' | translate)"
+            [textKey]="stage() === 0 ? 'SCENES.HEALTH_IMPACTS.PLANTS_BEFORE' : 'SCENES.HEALTH_IMPACTS.PLANTS_AFTER'"
           />
         </div>
       </div>
@@ -115,7 +109,7 @@
     </div>
 
     <app-narrative-text
-      [text]="'SCENES.HEALTH_IMPACTS.TEXT_1' | translate"
+      textKey="SCENES.HEALTH_IMPACTS.TEXT_1"
       [startDelay]="story.transition().textDelay"
       setTabIndexOne
     />

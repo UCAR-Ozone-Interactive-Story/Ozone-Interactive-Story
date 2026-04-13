@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SceneMorning } from './scene-morning';
+import { SceneUpperOzone } from './scene-upper-ozone';
 
-describe('SceneMorning', () => {
-  let component: SceneMorning;
-  let fixture: ComponentFixture<SceneMorning>;
+describe('SceneUpperOzone', () => {
+  let component: SceneUpperOzone;
+  let fixture: ComponentFixture<SceneUpperOzone>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SceneMorning]
+      imports: [SceneUpperOzone]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SceneMorning);
+    fixture = TestBed.createComponent(SceneUpperOzone);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
