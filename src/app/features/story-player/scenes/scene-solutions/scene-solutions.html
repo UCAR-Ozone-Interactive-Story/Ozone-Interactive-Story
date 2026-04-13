@@ -23,8 +23,8 @@
         (completed)="onFinalNarrativeCompleted()"
       />
 
-      @if (!isDone() && selections().size > 0) {
-        <button class="action-btn done-button" 
+      @if (!isDone() && selections().size >= REQUIRED_CHOICES_TO_FINISH) {
+        <button class="action-btn done-button"
                 style="position: absolute; bottom: 5%; right: 5%; z-index: 100;"
                 (click)="finishScene()">
           {{ 'SCENES.SOLUTIONS.DONE_BUTTON' | translate }}
@@ -39,8 +39,8 @@
                [style.top]="situation.top"
                [style.left]="situation.left"
                [class.active]="activeSituationId() === situation.id"
-               [class.solved]="isSituationCorrect(situation.id)"
-               [class.solved-incorrect]="!isSituationCorrect(situation.id)"
+               [class.solved]="isAnswered(situation.id) && isAnsweredCorrectly(situation.id)"
+               [class.solved-incorrect]="isAnswered(situation.id) && !isAnsweredCorrectly(situation.id)"
                role="button"
                tabindex="0"
                (click)="toggleSituation(situation.id)"
@@ -49,8 +49,8 @@
 
             <div class="item-image">
               @if (situation.image) {
-                <img [src]="'images/scenes/' + situation.image" 
-                    alt="" 
+                <img [src]="'images/scenes/' + situation.image"
+                    alt=""
                     [style.height]="situation.height"
                 />
               }

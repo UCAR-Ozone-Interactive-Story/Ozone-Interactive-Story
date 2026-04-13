@@ -82,7 +82,7 @@
     &:has(img) {
       border-color: transparent;
       box-shadow: none;
-      
+
       img { filter: drop-shadow(0 0 15px #4caf50); }
     }
   }
@@ -94,7 +94,7 @@
     &:has(img) {
       border-color: transparent;
       box-shadow: none;
-      
+
       img { filter: drop-shadow(0 0 15px #f44336); }
     }
   }
@@ -228,7 +228,7 @@
   justify-content: center;
   gap: 0.5rem;
   margin-top: 0.5rem;
-  
+
   &.incorrect { color: #f44336; }
 }
 
