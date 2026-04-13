@@ -108,14 +108,15 @@
         "PROMPT": "The amount of cars and factories in an area also influences ozone pollution because they burn fossil fuels. Knowing this, where might ozone pollution be worse?",
         "CHOICE_LOTS": "Areas with lots of cars and factories",
         "CHOICE_FEW": "Areas with fewer cars or factories",
-        "CORRECT": "Correct! Ozone pollution is worse when there are many cars and/or factories. As there are more and more cars and factories in our busy cities, there is a lot more ozone pollution, too. Especially in the summertime when there’s more sunlight, ozone levels can be dangerously high. Some people are experiencing health problems because of ozone. To stay safe, it’s best to limit outdoor activity on high ozone days.",
+        "CORRECT": "Correct! Ozone pollution is worse when there are many cars and/or factories. As there are more and more cars and factories in our busy cities, there is a lot more ozone pollution, too.",
+        "CORRECT_BOTTOMTEXT": "Especially in the summertime when there’s more sunlight, ozone levels can be dangerously high. Some people are experiencing health problems because of ozone. To stay safe, it’s best to limit outdoor activity on high ozone days.",
         "INCORRECT": "Cars and factories produce the ingredients of ozone, so ozone pollution is worse when there are more of them in one area. Try again!"
       },
       "CONTINUE": "Continue"
     },
     "SOLUTIONS": {
       "TITLE": "Solutions",
-      "PROMPT": "What can we do to help keep ozone pollution from forming? Fortunately, there are many solutions! Tap each picture and make choices to reduce ozone pollution.",
+      "PROMPT": "What can we do to help keep ozone pollution from forming? Fortunately, there are many solutions! Tap the pictures and make choices to reduce ozone pollution.",
       "CONCLUSION": "Nice work! You've chosen {{count}} actions to take to help reduce ozone pollution.",
       "CONCLUSION_PERFECT": "Fantastic! You chose {{correctCount}} helpful actions and didn't fall for any tricks!",
       "CONCLUSION_MIXED": "Good job finding {{correctCount}} helpful actions! However, {{incorrectCount}} of your choices would actually make pollution worse.",
@@ -253,7 +254,8 @@
       "BUTTON_SELECT": "Select",
       "BUTTON_CHANGE": "Change Choice",
       "BUTTON_CLOSE": "Close",
-      "PROMPT_CHOICE": "Make a Choice!"
+      "PROMPT_CHOICE": "Make a Choice!",
+      "DONE_BUTTON": "I'm done!"
     },
     "END": {
       "TITLE": "End",

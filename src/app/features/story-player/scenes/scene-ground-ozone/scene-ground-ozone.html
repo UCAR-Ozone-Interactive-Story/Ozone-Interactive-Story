@@ -81,11 +81,16 @@
   </div>
 
   <app-narrative-text
-    [text]="text()"
+    [text]="text() | translate"
     (completed)="onNarrativeCompleted()"
     [startDelay]="textDelay()"
     setTabIndexOne
   />
+  @if (isTextComplete() && bottomText() !== '') {
+    <div class="bottom-text">
+      <app-narrative-text [text]="bottomText() | translate" />
+    </div>
+  }
 
   @if (showContinue() && isTextComplete() && nextPhase() !== 'done') {
     <button class="action-btn continue-btn" (click)="onContinue()">{{ 'SCENES.GROUND_OZONE.CONTINUE' | translate }}</button>

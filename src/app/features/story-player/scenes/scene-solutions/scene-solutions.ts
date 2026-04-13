@@ -28,6 +28,7 @@ export interface Situation {
 export class SceneSolutions {
   story = inject(StoryService);
   translate = inject(TranslateService);
+  REQUIRED_CHOICES_TO_FINISH = 4;
 
   situations: Situation[] = [
     {
@@ -174,6 +175,7 @@ export class SceneSolutions {
     }
   }
 
+  // controls what is displayed in the narrative text
   currentNarrativeKey = computed(() => {
     if (!this.isDone()) {
       return 'SCENES.SOLUTIONS.PROMPT';
@@ -188,19 +190,24 @@ export class SceneSolutions {
     }
   });
 
+  // to be passed into the translation at the end for how many correct/incorrect
   currentNarrativeParams = computed(() => {
     return {
       correctCount: this.correctSelectedCount(),
       incorrectCount: this.incorrectSelectedCount()
     };
   });
+  
+  isAnswered(situationId: string): boolean {
+    return this.selections().has(situationId);
+  }
 
-  isSituationCorrect(situationId: string): boolean {
+  isAnsweredCorrectly(situationId: string): boolean {
     const selectedOptionId = this.selections().get(situationId);
     if (!selectedOptionId) return false;
-    const situation = this.situations.find(s => s.id === situationId);
-    const option = situation?.options.find(o => o.id === selectedOptionId);
-    return !!option?.isCorrect;
+    const situation = this.situations.find(s => s.id === situationId)!;
+    const option = situation.options.find(o => o.id === selectedOptionId)!;
+    return option.isCorrect;
   }
 
   toggleSituation(situationId: string) {

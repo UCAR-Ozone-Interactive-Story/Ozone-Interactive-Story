@@ -32,11 +32,17 @@ export class SceneGroundOzone {
   textDelay = signal(this.story.transition().textDelay);
 
   text = signal('');
+  bottomText = signal('')
 
   constructor() {
-    effect((onCleanup) => {
+    effect(() => {
       const choice = this.currentChoice();
-      const feedback = this.feedbackKey();
+      const feedbackKey = this.feedbackKey();
+
+      if (feedbackKey) {
+        this.text.set(feedbackKey)
+        return;
+      }
 
       let promptKey = '';
       switch (choice) {
@@ -51,16 +57,7 @@ export class SceneGroundOzone {
           break;
       }
 
-      const keys = feedback ? [feedback, promptKey] : [promptKey];
-      const sub = this.translate.stream(keys).subscribe((res) => {
-        if (feedback) {
-          this.text.set(res[feedback]);
-        } else if (promptKey) {
-          this.text.set(res[promptKey]);
-        }
-      });
-
-      onCleanup(() => sub.unsubscribe());
+      this.text.set(promptKey)
     });
   }
 
@@ -83,9 +80,11 @@ export class SceneGroundOzone {
       this.choiceStatus.set({ option, isCorrect: true });
       this.feedbackKey.set(correctFeedback);
       this.nextPhase.set(nextPhase);
-      
+
       if (nextPhase !== 'done') {
         this.showContinue.set(true);
+      } else { // sorry for hard code
+        this.bottomText.set('SCENES.GROUND_OZONE.CARS_FACTORIES.CORRECT_BOTTOMTEXT')
       }
       this.isTextComplete.set(false);
     } else {
@@ -98,7 +97,7 @@ export class SceneGroundOzone {
   onContinue() {
     this.fadeState.set('out');
     this.isTextComplete.set(false);
-    
+
     const t = setTimeout(() => {
       this.showContinue.set(false);
       this.feedbackKey.set(null);
@@ -107,7 +106,7 @@ export class SceneGroundOzone {
       this.nextPhase.set(null);
       this.fadeState.set('in');
     }, 500);
-    
+
     this.destroyRef.onDestroy(() => clearTimeout(t));
   }
 
