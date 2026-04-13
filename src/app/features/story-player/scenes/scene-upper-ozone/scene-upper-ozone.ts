@@ -11,4 +11,10 @@ import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 })
 export class SceneUpperOzone {
   story = inject(StoryService);
+
+  showSecondText = false;
+
+  showNextText() {
+    this.showSecondText = true;
+  }
 }

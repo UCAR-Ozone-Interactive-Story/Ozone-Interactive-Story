@@ -2,7 +2,7 @@
   <img src="./images/scenes/upper-ozone/space-background.png" style="width:100%; height:100%; position: absolute;" alt="space">
   <app-narrative-text
     [text]="'SCENES.UPPER_OZONE.TEXT_1' | translate"
-    (completed)="story.setSceneCompleted(true)"
+    (completed)="showNextText()"
     [startDelay]="story.transition().textDelay"
     style="z-index: 50;"
   />
@@ -14,4 +14,15 @@
   <img class="sunrays2" alt="the sun emitting bright rays" src="./images/scenes/upper-ozone/rays_v2.png">
   <img class="earth" alt="the earth protected by a layer of ozone" id="earth" src="./images/scenes/upper-ozone/shielded-earth.png"
     alt="earth surrounded by the ozone layer">
+
+
+  @if (showSecondText) {
+        <div class="bottom-text">
+          <app-narrative-text
+            [text]="'SCENES.UPPER_OZONE.TEXT_2' | translate"
+            (completed)="story.setSceneCompleted(true)"
+            [startDelay]="200"
+          />
+        </div>
+      }
 </div>
