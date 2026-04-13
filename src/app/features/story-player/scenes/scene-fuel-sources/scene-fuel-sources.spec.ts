@@ -1,22 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { setupSceneTestBed } from '@testing/scene-test.helpers';
 import { SceneFuelSources } from './scene-fuel-sources';
 
 describe('SceneFuelSources', () => {
-  let component: SceneFuelSources;
-  let fixture: ComponentFixture<SceneFuelSources>;
-
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SceneFuelSources],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(SceneFuelSources);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await setupSceneTestBed(SceneFuelSources);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(SceneFuelSources);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

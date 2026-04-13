@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { setupSceneTestBed } from '@testing/scene-test.helpers';
-import { SceneUpperOzone } from './scene-upper-ozone';
+import { SceneSolutions } from './scene-solutions';
 
-describe('SceneUpperOzone', () => {
+describe('SceneSolutions', () => {
   beforeEach(async () => {
-    await setupSceneTestBed(SceneUpperOzone);
+    await setupSceneTestBed(SceneSolutions);
   });
 
   it('should create', () => {
-    const fixture = TestBed.createComponent(SceneUpperOzone);
+    const fixture = TestBed.createComponent(SceneSolutions);
     fixture.detectChanges();
     expect(fixture.componentInstance).toBeTruthy();
   });

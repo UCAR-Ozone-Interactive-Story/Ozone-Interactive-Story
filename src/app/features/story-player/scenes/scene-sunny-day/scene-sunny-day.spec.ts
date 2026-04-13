@@ -1,23 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { setupSceneTestBed } from '@testing/scene-test.helpers';
 import { SceneSunnyDay } from './scene-sunny-day';
 
-describe('SceneMorning', () => {
-  let component: SceneSunnyDay;
-  let fixture: ComponentFixture<SceneSunnyDay>;
-
+describe('SceneSunnyDay', () => {
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SceneSunnyDay]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(SceneSunnyDay);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await setupSceneTestBed(SceneSunnyDay);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(SceneSunnyDay);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

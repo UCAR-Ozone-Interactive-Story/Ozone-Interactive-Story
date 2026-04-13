@@ -1,22 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { setupSceneTestBed } from '@testing/scene-test.helpers';
 import { SceneEnd } from './scene-end';
 
 describe('SceneEnd', () => {
-  let component: SceneEnd;
-  let fixture: ComponentFixture<SceneEnd>;
-
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SceneEnd],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(SceneEnd);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await setupSceneTestBed(SceneEnd);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(SceneEnd);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

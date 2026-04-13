@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { setupSceneTestBed } from '@testing/scene-test.helpers';
-import { SceneUpperOzone } from './scene-upper-ozone';
+import { SceneAirPollution } from './scene-air-pollution';
 
-describe('SceneUpperOzone', () => {
+describe('SceneAirPollution', () => {
   beforeEach(async () => {
-    await setupSceneTestBed(SceneUpperOzone);
+    await setupSceneTestBed(SceneAirPollution);
   });
 
   it('should create', () => {
-    const fixture = TestBed.createComponent(SceneUpperOzone);
+    const fixture = TestBed.createComponent(SceneAirPollution);
     fixture.detectChanges();
     expect(fixture.componentInstance).toBeTruthy();
   });

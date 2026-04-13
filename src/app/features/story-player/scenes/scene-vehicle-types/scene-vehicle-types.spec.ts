@@ -1,23 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { setupSceneTestBed } from '@testing/scene-test.helpers';
 import { SceneVehicleTypes } from './scene-vehicle-types';
 
 describe('SceneVehicleTypes', () => {
-  let component: SceneVehicleTypes;
-  let fixture: ComponentFixture<SceneVehicleTypes>;
-
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SceneVehicleTypes]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(SceneVehicleTypes);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await setupSceneTestBed(SceneVehicleTypes);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(SceneVehicleTypes);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

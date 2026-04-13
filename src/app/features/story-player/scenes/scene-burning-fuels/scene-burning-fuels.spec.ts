@@ -1,22 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { setupSceneTestBed } from '@testing/scene-test.helpers';
 import { SceneBurningFuels } from './scene-burning-fuels';
 
 describe('SceneBurningFuels', () => {
-  let component: SceneBurningFuels;
-  let fixture: ComponentFixture<SceneBurningFuels>;
-
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SceneBurningFuels],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(SceneBurningFuels);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await setupSceneTestBed(SceneBurningFuels);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(SceneBurningFuels);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

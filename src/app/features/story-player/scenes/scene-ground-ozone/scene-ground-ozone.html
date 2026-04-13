@@ -88,7 +88,7 @@
   />
   @if (isTextComplete() && bottomText() !== '') {
     <div class="bottom-text">
-      <app-narrative-text [text]="bottomText() | translate" />
+      <app-narrative-text [textKey]="bottomText()" />
     </div>
   }
 

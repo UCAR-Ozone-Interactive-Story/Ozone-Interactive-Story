@@ -1,22 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { setupSceneTestBed } from '@testing/scene-test.helpers';
+import { SceneOzoneMolecule } from './scene-ozone-molecule';
 
-import { OzoneMolecule } from './scene-ozone-molecule';
-
-describe('SceneBurningFuels', () => {
-  let component: OzoneMolecule;
-  let fixture: ComponentFixture<OzoneMolecule>;
-
+describe('SceneGatherIngredients', () => {
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [OzoneMolecule],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(OzoneMolecule);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await setupSceneTestBed(SceneOzoneMolecule);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(SceneOzoneMolecule);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });
