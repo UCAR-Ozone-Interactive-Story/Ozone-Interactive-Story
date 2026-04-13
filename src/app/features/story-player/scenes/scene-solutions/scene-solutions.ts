@@ -2,8 +2,8 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
-import { GrassRoadComponent } from '@features/story-player/backgrounds/grass-road/grass-road.component';
+import { LayerWrapper } from '@shared/ui/layer-wrapper/layer-wrapper.component';
+import { GrassRoadComponent } from '@shared/ui/backgrounds/grass-road/grass-road.component';
 
 export interface SolutionOption {
   id: string;

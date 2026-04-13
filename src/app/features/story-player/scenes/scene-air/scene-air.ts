@@ -2,9 +2,9 @@ import { Component, inject, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
-import { SkyGrassComponent } from '@features/story-player/backgrounds/sky-grass/sky-grass.component';
-import { Clouds } from '@features/story-player/foregrounds/clouds/clouds';
+import { LayerWrapper } from '@shared/ui/layer-wrapper/layer-wrapper.component';
+import { SkyGrassComponent } from '@shared/ui/backgrounds/sky-grass/sky-grass.component';
+import { Clouds } from '@shared/ui/foregrounds/clouds/clouds';
 import { MultipleChoice, SelectorOption } from '@shared/ui/multiple-choice/multiple-choice';
 
 @Component({

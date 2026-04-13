@@ -3,8 +3,8 @@ import { StoryService } from '@core/story.service';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
-import { LayerWrapper } from '@features/story-player/layer-wrapper/layer-wrapper.component';
-import { StreetComponent } from '@features/story-player/backgrounds/street/street.component';
+import { LayerWrapper } from '@shared/ui/layer-wrapper/layer-wrapper.component';
+import { StreetComponent } from '@shared/ui/backgrounds/street/street.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { setTabIndexOne } from '@shared/ui/narrative-text/setTabIndexOne';
 
