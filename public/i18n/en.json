@@ -114,7 +114,7 @@
     },
     "SOLUTIONS": {
       "TITLE": "Solutions",
-      "PROMPT": "What can we do to help keep ozone pollution from forming? Fortunately, there are many solutions! Tap each picture and make choices to reduce ozone pollution.",
+      "PROMPT": "What can we do to help keep ozone pollution from forming? Fortunately, there are many solutions! Tap the pictures and make choices to reduce ozone pollution.",
       "CONCLUSION": "Nice work! You've chosen {{count}} actions to take to help reduce ozone pollution.",
       "CONCLUSION_PERFECT": "Fantastic! You chose {{correctCount}} helpful actions and didn't fall for any tricks!",
       "CONCLUSION_MIXED": "Good job finding {{correctCount}} helpful actions! However, {{incorrectCount}} of your choices would actually make pollution worse.",
@@ -252,7 +252,8 @@
       "BUTTON_SELECT": "Select",
       "BUTTON_CHANGE": "Change Choice",
       "BUTTON_CLOSE": "Close",
-      "PROMPT_CHOICE": "Make a Choice!"
+      "PROMPT_CHOICE": "Make a Choice!",
+      "DONE_BUTTON": "I'm done!"
     },
     "END": {
       "TITLE": "End",
