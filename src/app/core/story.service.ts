@@ -57,6 +57,11 @@ export class StoryService {
       component: SceneAirPollution,
     },
     {
+      id: 'health-impacts',
+      i18n_title: 'SCENES.HEALTH_IMPACTS.TITLE',
+      component: SceneHealthImpacts,
+    },
+    {
       id: 'sunny-day',
       i18n_title: 'SCENES.SUNNY_DAY.TITLE',
       component: SceneSunnyDay,
@@ -75,11 +80,6 @@ export class StoryService {
       id: 'upper-ozone',
       i18n_title: 'SCENES.UPPER_OZONE.TITLE',
       component: SceneUpperOzone,
-    },
-    {
-      id: 'health-impacts',
-      i18n_title: 'SCENES.HEALTH_IMPACTS.TITLE',
-      component: SceneHealthImpacts,
     },
     {
       id: 'ground-ozone',

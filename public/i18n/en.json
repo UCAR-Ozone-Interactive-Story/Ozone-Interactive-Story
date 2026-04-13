@@ -32,12 +32,12 @@
     },
     "HEALTH_IMPACTS": {
       "TITLE": "Health Impacts",
-      "TEXT_1": "But down here, close to the ground, ozone is very harmful. Change the amount of ground level ozone to see how it hurts people and plants.",
+      "TEXT_1": "Air pollution can damage our lungs, and harm plants and animals, too.",
       "LUNGS_BEFORE": "Healthy lungs have wide open pathways.",
       "LUNGS_AFTER": "Ozone pollution narrows airways and makes it difficult to breathe.",
       "PLANTS_BEFORE": "Healthy plants exchange gases with the environment through tiny openings in their leaves.",
       "PLANTS_AFTER": "Ozone pollution damages leaves and reduces growth of plants and crops.",
-      "CHOOSE_LEVEL": "Choose an ozone pollution level!",
+      "CHOOSE_LEVEL": "Choose an air pollution level!",
       "LOW": "Low",
       "HIGH": "High"
     },
@@ -85,7 +85,8 @@
     },
     "UPPER_OZONE": {
       "TITLE": "Upper Atmosphere Ozone",
-      "TEXT_1": "Way up high in the atmosphere the ozone layer is full of naturally occurring ozone. Up here, ozone is really helpful. It helps block UV rays from the Sun that can cause sunburn."
+      "TEXT_1": "Way up high in the atmosphere the ozone layer is full of naturally occurring ozone. Up here, ozone is really helpful. It helps block UV rays from the Sun that can cause sunburn.",
+      "TEXT_2": "But down here, close to the ground, ozone is harmful. It can damage our lungs and make it harder for plants to grow."
     },
     "GROUND_OZONE": {
       "TITLE": "Ground Ozone",

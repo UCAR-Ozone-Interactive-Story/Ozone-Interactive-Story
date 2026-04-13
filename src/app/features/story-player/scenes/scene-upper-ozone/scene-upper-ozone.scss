@@ -4,12 +4,22 @@
   background-color: #87ceeb;
 }
 
+.bottom-text {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  z-index: 10;
+}
+
+
 .earth {
   position: absolute;
   right: 100px;
   top: 100px;
   height: 80vh;
-  animation: slow-spin 40s linear infinite;
+  // animation: slow-spin 40s linear infinite;
   z-index: 10;
 }
 
@@ -23,7 +33,7 @@
   bottom: -110%;
   left: -130vh;
   height: 350%;
-  animation: slow-spin 15s linear infinite;
+  animation: slow-spin 40s linear infinite;
   transform-origin: center;
   box-shadow: #87ceeb;
 }
