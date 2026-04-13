@@ -107,7 +107,8 @@
         "PROMPT": "The amount of cars and factories in an area also influences ozone pollution because they burn fossil fuels. Knowing this, where might ozone pollution be worse?",
         "CHOICE_LOTS": "Areas with lots of cars and factories",
         "CHOICE_FEW": "Areas with fewer cars or factories",
-        "CORRECT": "Correct! Ozone pollution is worse when there are many cars and/or factories. As there are more and more cars and factories in our busy cities, there is a lot more ozone pollution, too. Especially in the summertime when there’s more sunlight, ozone levels can be dangerously high. Some people are experiencing health problems because of ozone. To stay safe, it’s best to limit outdoor activity on high ozone days.",
+        "CORRECT": "Correct! Ozone pollution is worse when there are many cars and/or factories. As there are more and more cars and factories in our busy cities, there is a lot more ozone pollution, too.",
+        "CORRECT_BOTTOMTEXT": "Especially in the summertime when there’s more sunlight, ozone levels can be dangerously high. Some people are experiencing health problems because of ozone. To stay safe, it’s best to limit outdoor activity on high ozone days.",
         "INCORRECT": "Cars and factories produce the ingredients of ozone, so ozone pollution is worse when there are more of them in one area. Try again!"
       },
       "CONTINUE": "Continue"
