@@ -1,7 +1,9 @@
 @if (canGoPrevious()) {
   <button
+    type="button"
     class="nav-button left-arrow"
     (click)="goToPrevious()"
+    aria-label="previous scene"
   >
     ←
   </button>
@@ -9,8 +11,10 @@
 
 @if (canGoNext()) {
   <button
+    type="button"
     class="nav-button right-arrow pulse"
     (click)="goToNext()"
+    aria-label="next scene"
   >
     →
   </button>
