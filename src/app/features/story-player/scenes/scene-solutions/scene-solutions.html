@@ -8,8 +8,11 @@
     <div class="content">
 
       @if (activeSituationId() !== null) {
+
         <div class="popup-backdrop"
-             (click)="activeSituationId.set(null); $event.stopPropagation()"></div>
+            (click)="activeSituationId.set(null);
+            $event.stopPropagation()">
+        </div>
       }
 
       <app-narrative-text
@@ -17,13 +20,6 @@
         (completed)="onFinalNarrativeCompleted()"
       />
 
-      @if (!isDone() && selections().size >= REQUIRED_CHOICES_TO_FINISH) {
-        <button class="action-btn"
-                style="position: absolute; bottom: 5%; right: 5%; z-index: 100;"
-                (click)="finishScene()">
-          {{ 'SCENES.SOLUTIONS.DONE_BUTTON' | translate }}
-        </button>
-      }
 
       <img src="images/scenes/solutions/house.png" alt="house with chimney" height="40%" style="position: relative; left: 70%; top: 16%">
 
@@ -56,9 +52,12 @@
 
       @if (activeSituation()) {
         <div class="info-popup"
-             (click)="$event.stopPropagation()"
-             (keydown)="$event.stopPropagation()"
-             tabindex="0">
+            (click)="$event.stopPropagation()"
+            (keydown)="$event.stopPropagation()"
+            tabindex="0"
+            cdkTrapFocus
+            cdkTrapFocusAutoCapture
+        >
 
           @if (!selections().has(activeSituation()!.id)) {
             <h3>{{ 'SCENES.SOLUTIONS.PROMPT_CHOICE' | translate }}</h3>
@@ -105,6 +104,14 @@
         </div>
       }
 
+      @if (!isDone() && selections().size >= REQUIRED_CHOICES_TO_FINISH) {
+        <button class="action-btn"
+                style="position: absolute; bottom: 5%; right: 5%; z-index: 100;"
+                (click)="finishScene()">
+          {{ 'SCENES.SOLUTIONS.DONE_BUTTON' | translate }}
+        </button>
+      }
     </div>
+
   </app-layer-wrapper>
 </div>
