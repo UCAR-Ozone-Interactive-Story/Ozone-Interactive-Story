@@ -8,8 +8,11 @@
     <div class="content">
 
       @if (activeSituationId() !== null) {
+
         <div class="popup-backdrop"
-             (click)="activeSituationId.set(null); $event.stopPropagation()"></div>
+            (click)="activeSituationId.set(null);
+            $event.stopPropagation()">
+        </div>
       }
 
       <app-narrative-text
@@ -56,9 +59,12 @@
 
       @if (activeSituation()) {
         <div class="info-popup"
-             (click)="$event.stopPropagation()"
-             (keydown)="$event.stopPropagation()"
-             tabindex="0">
+            (click)="$event.stopPropagation()"
+            (keydown)="$event.stopPropagation()"
+            tabindex="0"
+            cdkTrapFocus
+            cdkTrapFocusAutoCapture
+        >
 
           @if (!selections().has(activeSituation()!.id)) {
             <h3>{{ 'SCENES.SOLUTIONS.PROMPT_CHOICE' | translate }}</h3>

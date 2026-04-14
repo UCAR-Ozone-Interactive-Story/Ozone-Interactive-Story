@@ -1,4 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { StoryService } from '@core/story.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
@@ -21,7 +22,7 @@ export interface Situation {
 
 @Component({
   selector: 'app-scene-solutions',
-  imports: [NarrativeText, TranslateModule, LayerWrapper, GrassRoadComponent],
+  imports: [NarrativeText, TranslateModule, LayerWrapper, GrassRoadComponent, CdkTrapFocus],
   templateUrl: './scene-solutions.html',
   styleUrl: './scene-solutions.scss',
 })
