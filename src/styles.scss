@@ -98,15 +98,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     box-shadow: 0 4px 0 #757575;
     cursor: not-allowed;
   }
-  
-  &.done-button {
-    background: #ff6b6b;
-    border-color: #c0392b;
-    box-shadow: 0 6px 0 #c0392b, 0 10px 10px rgba(0,0,0,0.3);
-    
-    &:hover:not(:disabled) {
-      background: #ff8787;
-      box-shadow: 0 4px 0 #c0392b;
-    }
-  }
 }
