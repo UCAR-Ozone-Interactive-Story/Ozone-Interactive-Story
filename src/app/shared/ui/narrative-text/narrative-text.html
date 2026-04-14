@@ -1,3 +1,4 @@
 <div class="dialog-box" (click)="advance()" (keydown.space)="advance()" [tabindex]="dialogTabIndex">
-  <p #paragraph class="text-content"></p>
+  <p #paragraph class="text-content" aria-hidden="true"></p>
+  <p class="text-content cdk-visually-hidden">{{text()}}</p>
 </div>
