@@ -9,5 +9,11 @@
     },
     "SETTINGS": {
         "LANGUAGE": "Idioma"
+    },
+    "SCENES": {
+        "MORNING": {
+            "TITLE": "Mañana",
+            "TEXT_1": "En una cálida mañana de verano en la ciudad, la gente se despierta y se prepara para el día. El sol ya brilla con fuerza."
+        }
     }
 }

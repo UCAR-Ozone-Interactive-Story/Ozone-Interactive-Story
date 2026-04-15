@@ -16,7 +16,8 @@
       }
 
       <app-narrative-text
-        [text]="currentNarrativeKey() | translate:currentNarrativeParams()"
+        [textKey]="currentNarrativeKey()"
+        [textParams]="currentNarrativeParams()"
         (completed)="onFinalNarrativeCompleted()"
       />
 

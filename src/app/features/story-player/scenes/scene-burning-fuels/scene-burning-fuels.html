@@ -3,7 +3,7 @@
     <app-burning-fuels bg-layer></app-burning-fuels>
 
       <app-narrative-text
-        [text]="'SCENES.BURNING_FUELS.TEXT_1' | translate"
+        textKey="SCENES.BURNING_FUELS.TEXT_1"
         [startDelay]="story.transition().textDelay"/>
     <div class="content">
       <div class="interactive-object car" (click)="activateCar()" (keydown.space)="activateCar()" [class.active]="isCarActive()" tabindex="0">
@@ -15,7 +15,7 @@
             <div class="gas-cloud cloud-2"></div>
           </div>
           <div class="bubble-container" style="width: 40vw;">
-            <app-narrative-text [text]="'SCENES.BURNING_FUELS.CAR_BUBBLE' | translate"/>
+            <app-narrative-text textKey="SCENES.BURNING_FUELS.CAR_BUBBLE"/>
           </div>
         }
       </div>
@@ -29,7 +29,7 @@
             <div class="gas-cloud cloud-3"></div>
           </div>
           <div class="bubble-container" style="width: 40vw;">
-            <app-narrative-text [text]="'SCENES.BURNING_FUELS.FACTORY_BUBBLE' | translate" />
+            <app-narrative-text textKey="SCENES.BURNING_FUELS.FACTORY_BUBBLE" />
           </div>
         }
       </div>

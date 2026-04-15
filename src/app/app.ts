@@ -8,7 +8,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   imports: [RouterOutlet, TranslateModule],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
-  providers: [TranslateService],
 })
 export class App {
   protected readonly title = signal('Ozone Interactive Story');

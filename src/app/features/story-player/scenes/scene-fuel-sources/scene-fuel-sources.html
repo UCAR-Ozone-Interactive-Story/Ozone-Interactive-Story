@@ -4,7 +4,7 @@
 
     <div class="content">
       <app-narrative-text
-        [text]="'SCENES.FUEL_SOURCES.TEXT_1' | translate"
+        textKey="SCENES.FUEL_SOURCES.TEXT_1"
         [startDelay]="story.transition().textDelay"
         setTabIndexOne
       />
@@ -14,7 +14,7 @@
         @if (isCoalActive()) {
           <div class="glow"></div>
           <div class="bubble-container">
-            <app-narrative-text [text]="'SCENES.FUEL_SOURCES.COAL_BUBBLE' | translate" />
+            <app-narrative-text textKey="SCENES.FUEL_SOURCES.COAL_BUBBLE" />
           </div>
         }
       </div>
@@ -25,7 +25,7 @@
         @if (isOilActive()) {
           <div class="glow"></div>
           <div class="bubble-container">
-            <app-narrative-text [text]="'SCENES.FUEL_SOURCES.OIL_BUBBLE' | translate"/>
+            <app-narrative-text textKey="SCENES.FUEL_SOURCES.OIL_BUBBLE"/>
 
           </div>
         }
