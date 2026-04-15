@@ -105,6 +105,13 @@ export class SceneGroundOzone {
       this.choiceStatus.set(null);
       this.nextPhase.set(null);
       this.fadeState.set('in');
+      
+      setTimeout(() => {
+        const firstOption = document.querySelector('.choice-option') as HTMLElement;
+        if (firstOption) {
+          firstOption.focus();
+        }
+      }, 100);
     }, 500);
 
     this.destroyRef.onDestroy(() => clearTimeout(t));
