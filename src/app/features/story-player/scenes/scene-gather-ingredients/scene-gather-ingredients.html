@@ -19,14 +19,15 @@
               [style.left]="item.left"
               [class.pulsing]="!moleculesGathered()"
               tabindex="0"
-              cdkDrag
               id="molecule{{item.id}}"
+              cdkDrag
               (cdkDragEnded)="handleDragEnd($event)"
               (keydown.space)="handleKeyPressedToMoveMolecule($event)"
               (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
+              (click)="handleMoleculeClick($event)"
             >
               <img [alt]="item.alt" class="molecule-image" [src]="item.src">
-              <span class="molecule-label">{{item.label}}</span>
+              <span class="molecule-label" >{{item.label}}</span>
             </div>
           }
         }
@@ -45,9 +46,10 @@
               (cdkDragEnded)="handleDragEnd($event)"
               (keydown.space)="handleKeyPressedToMoveMolecule($event)"
               (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
+              (click)="handleMoleculeClick($event)"
             >
-              <img [alt]="item.alt" class="molecule-image" [src]="item.src">
-              <span class="molecule-label">{{item.label}}</span>
+              <img [alt]="item.alt" class="molecule-image" [src]="item.src" >
+              <span class="molecule-label" >{{item.label}}</span>
             </div>
           }
         }
@@ -66,6 +68,7 @@
               (cdkDragEnded)="handleDragEnd($event)"
               (keydown.space)="handleKeyPressedToMoveMolecule($event)"
               (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
+              (click)="handleMoleculeClick($event)"
             >
               <img [alt]="item.alt" class="molecule-image" [src]="item.src">
               <span class="molecule-label">{{item.label}}</span>
@@ -99,6 +102,7 @@
                     (cdkDragEnded)="handleDragEnd($event)"
                     (keydown.space)="handleKeyPressedToMoveMolecule($event)"
                     (keydown.enter)="handleKeyPressedToMoveMolecule($event)"
+                    (click)="handleMoleculeClick($event)"
                 >
                     <img [alt]="item.alt" class="molecule-image" [src]="item.src">
                     <span class="molecule-label">{{item.label}}</span>
