@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, TranslateModule, RouterModule],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
-  providers: [TranslateService],
 })
 export class Navbar {
   story = inject(StoryService);
