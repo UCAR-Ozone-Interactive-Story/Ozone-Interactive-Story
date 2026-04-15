@@ -17,13 +17,13 @@ export class SceneGatherIngredients {
   sunClicked = false;
 
   molecules = [
-    { label: 'VOC', id: 0, location: 'paint', top: '8%', left: '8%' },
-    { label: 'VOC', id: 1, location: 'paint', top: '45%', left: '55%' },
-    { label: 'VOC', id: 2, location: 'paint', top: '20%', left: '65%' },
-    { label: 'VOC', id: 3, location: 'car', top: '10%', left: '10%' },
-    { label: 'NO₂', id: 4, location: 'car', top: '42%', left: '52%' },
-    { label: 'NO₂', id: 5, location: 'factory', top: '12%', left: '15%' },
-    { label: 'NO₂', id: 6, location: 'factory', top: '48%', left: '55%' },
+    { alt: "V O C Molecule", src: "images/molecules/VOC.png", label: 'VOC', id: 0, location: 'paint', top: '8%', left: '8%' },
+    { alt: "V O C Molecule", src: "images/molecules/VOC.png", label: 'VOC', id: 1, location: 'paint', top: '45%', left: '55%' },
+    { alt: "V O C Molecule", src: "images/molecules/VOC.png", label: 'VOC', id: 2, location: 'paint', top: '20%', left: '65%' },
+    { alt: "V O C Molecule", src: "images/molecules/VOC.png", label: 'VOC', id: 3, location: 'car', top: '10%', left: '10%' },
+    { alt: "N O 2 Molecule", src: "images/molecules/NO2drop.png", label: 'NO₂', id: 4, location: 'car', top: '42%', left: '52%' },
+    { alt: "N O 2 Molecule", src: "images/molecules/NO2drop.png", label: 'NO₂', id: 5, location: 'factory', top: '12%', left: '15%' },
+    { alt: "N O 2 Molecule", src: "images/molecules/NO2drop.png", label: 'NO₂', id: 6, location: 'factory', top: '48%', left: '55%' },
   ];
 
   // if moved by mouse it is more of a freeform drag and drop

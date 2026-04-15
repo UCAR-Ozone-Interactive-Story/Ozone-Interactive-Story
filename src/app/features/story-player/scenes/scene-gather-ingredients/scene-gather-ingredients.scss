@@ -156,19 +156,20 @@
   max-width: 7vh;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  border: 0.4vh solid #007bff;
+  // background: rgba(255, 255, 255, 0.9);
+  // border: 0.4vh solid #007bff;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  box-shadow: 0 0.5vh 1.5vh rgba(0, 123, 255, 0.3);
+  // box-shadow: 0 0.5vh 1.5vh rgba(0, 123, 255, 0.3);
   cursor: pointer;
   touch-action: none;
 
-  &.pulsing {
-    animation: molecule-glow 1.2s ease-in-out infinite;
-  }
+  // &.pulsing {
+  //   animation: molecule-glow 1.2s ease-in-out infinite;
+  // }
 }
 
 .molecule-circle:active {
@@ -178,6 +179,15 @@
 .molecule-label {
   user-select: none;
   font-size: 1.8vw;
+  -webkit-text-stroke: 0.1vw black;
+  color: white;
+  font-weight: bold;
+}
+
+.molecule-image {
+  height: 8vh;
+  position: relative;
+  filter: drop-shadow(2px, 2px, 2px, rgb(0, 0, 0));
 }
 
 .image {
