@@ -27,7 +27,7 @@
       </div>
 
       <app-narrative-text
-        [text]="'SCENES.AIR_POLLUTION.TEXT_1' | translate"
+        textKey="SCENES.AIR_POLLUTION.TEXT_1"
         (completed)="showNextText()"
         [startDelay]="story.transition().textDelay"
       />
@@ -35,7 +35,7 @@
       @if (showSecondText) {
         <div class="bottom-text">
           <app-narrative-text
-            [text]="'SCENES.AIR_POLLUTION.TEXT_2' | translate"
+            textKey="SCENES.AIR_POLLUTION.TEXT_2"
             (completed)="story.setSceneCompleted(true)"
             [startDelay]="200"
           />

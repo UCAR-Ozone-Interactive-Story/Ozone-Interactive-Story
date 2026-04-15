@@ -1,18 +1,18 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { SceneSunnyDay } from './scene-sunny-day';
+import { SceneNearbyFactories } from './scene-nearby-factories';
 import { setupSceneTestBed, storyServiceMock } from '@testing/scene-test.helpers';
 import { By } from '@angular/platform-browser';
 import { StoryService } from '@core/story.service';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 
-describe('SceneSunnyDay', () => {
-  let component: SceneSunnyDay;
-  let fixture: ComponentFixture<SceneSunnyDay>;
+describe('SceneNearbyFactories', () => {
+  let component: SceneNearbyFactories;
+  let fixture: ComponentFixture<SceneNearbyFactories>;
   let storyService: StoryService;
 
   beforeEach(async () => {
-    await setupSceneTestBed(SceneSunnyDay);
-    fixture = TestBed.createComponent(SceneSunnyDay);
+    await setupSceneTestBed(SceneNearbyFactories);
+    fixture = TestBed.createComponent(SceneNearbyFactories);
     component = fixture.componentInstance;
     storyService = TestBed.inject(StoryService);
     fixture.detectChanges();
@@ -22,29 +22,26 @@ describe('SceneSunnyDay', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render the sun image and background components', () => {
-    const sunImg = fixture.debugElement.query(By.css('.sun'));
-    const cityBg = fixture.debugElement.query(By.css('app-sunless-city'));
-    const clouds = fixture.debugElement.query(By.css('app-clouds'));
-
-    expect(sunImg).toBeTruthy();
-    expect(sunImg.nativeElement.src).toContain('space-sun.png');
-    expect(cityBg).toBeTruthy();
-    expect(clouds).toBeTruthy();
+  it('should render the factory scene image with correct attributes', () => {
+    const img = fixture.debugElement.query(By.css('img'));
+    expect(img).toBeTruthy();
+    expect(img.nativeElement.src).toContain('images/scenes/nearby-factories/nearbyfactories.png');
+    expect(img.nativeElement.alt).toBe('Nearby factories');
   });
 
-  it('should pass correct translation key and transition delay to narrative text', () => {
+  it('should configure the narrative text with the specific factory key', () => {
     const narrativeEl = fixture.debugElement.query(By.directive(NarrativeText));
     const narrativeInstance = narrativeEl.componentInstance as NarrativeText;
 
-    expect(narrativeInstance.textKey()).toBe('SCENES.SUNNY_DAY.TEXT_1');
+    expect(narrativeInstance.textKey()).toBe('SCENES.NEARBY_FACTORIES.TEXT_1');
     expect(narrativeInstance.startDelay()).toBe(storyServiceMock.transition().textDelay);
   });
 
-  it('should signal story completion when narrative finishes', () => {
+  it('should signal the story is complete once the narrative finishes', () => {
     const spy = spyOn(storyService, 'setSceneCompleted');
     const narrativeEl = fixture.debugElement.query(By.directive(NarrativeText));
-
+    
+    // Simulate the @Output('completed') event
     narrativeEl.triggerEventHandler('completed', null);
 
     expect(spy).toHaveBeenCalledWith(true);

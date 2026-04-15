@@ -2,13 +2,12 @@ import { Component, inject, signal, effect } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { UndergroundComponent } from '@shared/ui/backgrounds/underground/underground.component';
 import { LayerWrapper } from '@shared/ui/layer-wrapper/layer-wrapper.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { setTabIndexOne } from '@shared/ui/narrative-text/setTabIndexOne';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 
 @Component({
   selector: 'app-scene-fuel-sources',
-  imports: [NarrativeText, TranslateModule, UndergroundComponent, LayerWrapper, setTabIndexOne],
+  imports: [NarrativeText, UndergroundComponent, LayerWrapper, setTabIndexOne],
   templateUrl: './scene-fuel-sources.html',
   styleUrl: './scene-fuel-sources.scss',
 })
