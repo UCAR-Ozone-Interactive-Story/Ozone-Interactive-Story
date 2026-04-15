@@ -1,6 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
-// import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 import { LayerWrapper } from '@shared/ui/layer-wrapper/layer-wrapper.component';
 import { SkyGrassComponent } from '@shared/ui/backgrounds/sky-grass/sky-grass.component';
