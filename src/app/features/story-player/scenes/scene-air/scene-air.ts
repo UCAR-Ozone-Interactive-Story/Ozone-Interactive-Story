@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
-import { TranslateModule } from '@ngx-translate/core';
+// import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 import { LayerWrapper } from '@shared/ui/layer-wrapper/layer-wrapper.component';
 import { SkyGrassComponent } from '@shared/ui/backgrounds/sky-grass/sky-grass.component';
@@ -9,7 +9,7 @@ import { MultipleChoice, SelectorOption } from '@shared/ui/multiple-choice/multi
 
 @Component({
   selector: 'app-scene-air',
-  imports: [NarrativeText, TranslateModule, LayerWrapper, SkyGrassComponent, Clouds, MultipleChoice],
+  imports: [NarrativeText, LayerWrapper, SkyGrassComponent, Clouds, MultipleChoice],
   templateUrl: './scene-air.html',
   styleUrl: './scene-air.scss',
 })
