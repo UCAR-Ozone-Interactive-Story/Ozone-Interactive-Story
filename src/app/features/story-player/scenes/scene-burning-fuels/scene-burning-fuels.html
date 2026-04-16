@@ -6,7 +6,13 @@
         [text]="'SCENES.BURNING_FUELS.TEXT_1' | translate"
         [startDelay]="story.transition().textDelay"/>
     <div class="content">
-      <div class="interactive-object car" (click)="activateCar()" (keydown.space)="activateCar()" [class.active]="isCarActive()" tabindex="0">
+      <div class="interactive-object car"
+        (click)="activateCar()"
+        (keydown.space)="activateCar()"
+        [class.active]="isCarActive()"
+        tabindex="0"
+        aria-label="Car"
+      >
         <img src="images/scenes/vehicles/vehicle_car.png" alt="Car" />
 
         @if (isCarActive()) {
@@ -19,7 +25,13 @@
           </div>
         }
       </div>
-      <div class="interactive-object factory" (click)="activateFactory()" (keydown.space)="activateFactory()" [class.active]="isFactoryActive()" tabindex="0">
+      <div class="interactive-object factory"
+        (click)="activateFactory()"
+        (keydown.space)="activateFactory()"
+        [class.active]="isFactoryActive()"
+        tabindex="0"
+        aria-label="Factory"
+      >
         <img src="images/foregrounds/factory.png" class="factory" alt="Factory"/>
 
         @if (isFactoryActive()) {
