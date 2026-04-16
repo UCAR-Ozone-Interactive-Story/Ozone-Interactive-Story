@@ -6,7 +6,7 @@ import { SceneSunnyDay } from '@features/story-player/scenes/scene-sunny-day/sce
 import { SceneAir } from '@features/story-player/scenes/scene-air/scene-air';
 import { SceneBurningFuels } from '@features/story-player/scenes/scene-burning-fuels/scene-burning-fuels';
 import { SceneNearbyFactories } from '@features/story-player/scenes/scene-nearby-factories/scene-nearby-factories';
-import { OzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecule/scene-ozone-molecule';
+import { SceneOzoneMolecule } from '@features/story-player/scenes/scene-ozone-molecule/scene-ozone-molecule';
 import { SceneGatherIngredients } from '@features/story-player/scenes/scene-gather-ingredients/scene-gather-ingredients';
 import { SceneEnd } from '@features/story-player/scenes/scene-end/scene-end';
 import { SceneUpperOzone } from '@features/story-player/scenes/scene-upper-ozone/scene-upper-ozone';
@@ -75,7 +75,7 @@ export class StoryService {
     {
       id: 'ozone-molecule',
       i18n_title: 'SCENES.OZONE_MOLECULE.TITLE',
-      component: OzoneMolecule,
+      component: SceneOzoneMolecule,
     },
     {
       id: 'upper-ozone',
@@ -266,7 +266,7 @@ export class StoryService {
 
 // animationType: all transitions are included here by name to be selected from above
 // textDelay: tell how long after the animation *starts* that the text should being showing
-interface TransitionConfig {
+export interface TransitionConfig {
   animationType: 'fade' | 'slide-left' | 'slide-down';
   textDelay: number;
 }

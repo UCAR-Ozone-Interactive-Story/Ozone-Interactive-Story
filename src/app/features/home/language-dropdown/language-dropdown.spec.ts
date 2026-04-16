@@ -33,11 +33,14 @@ describe('LanguageDropdownComponent', () => {
     // spy on translate.use
     spyOn(translateService, 'use').and.callThrough();
 
-    // spy on localStorage methods
+    // spy on getItem
     spyOn(localStorage, 'getItem').and.callFake((key: string) => {
       if (key === 'lang') return 'es';
       return null;
     });
+
+    // We use .and.stub() so it doesn't actually write to your real browser storage during tests
+    spyOn(localStorage, 'setItem').and.stub();
 
     fixture.detectChanges();
   });

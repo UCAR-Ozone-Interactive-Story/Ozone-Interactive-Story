@@ -68,13 +68,13 @@
     },
     "GATHER_INGREDIENTS": {
       "TITLE": "Gathering Ingredients",
-      "INGREDIENT_EXPLAINATION": "Drag the “ingredients” needed to make ground level ozone to the smog cloud:\n • VOCs from car exhaust pipes, paint, or other industrial products \n • NO2 from car exhaust pipes and from factory emissions",
+      "INGREDIENT_EXPLAINATION": "Drag the “ingredients” needed to make ground level ozone to the smog cloud:\n • VOCs (Volatile Organic Compounds) from car exhaust pipes, paint, or other industrial products \n • NO₂ from car exhaust pipes and from factory emissions",
       "INSTRUCTIONS_1": "Great! Now click on the Sun to add the final ingredient: energy from the Sun."
     },
     "OZONE_MOLECULE": {
       "TITLE": "How Ozone Forms",
       "TEXT_1": "Sunlight starts a chain of chemical reactions that causes ozone to form. Tap the Sun to start the reaction.",
-      "TEXT_2": "Energy from the Sun reaches a NO2 molecule. Tap the NO₂ molecule.",
+      "TEXT_2": "Energy from the Sun reaches a NO₂ molecule. Tap the NO₂ molecule.",
       "TEXT_3": "The sunlight causes an oxygen atom to break off from the NO₂ molecule. Tap the free oxygen atom.",
       "TEXT_4": "When that free oxygen atom bumps into an O₂ molecule it forms ozone (O₃). Tap the ozone molecule if you’d like to see the reaction again.",
       "LABEL_NO2": "NO₂ Molecule",

@@ -13,7 +13,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatSelectModule,
     TranslateModule
   ],
-  providers: [TranslateService],
   templateUrl: './language-dropdown.html'
 })
 export class LanguageDropdownComponent implements OnInit {
