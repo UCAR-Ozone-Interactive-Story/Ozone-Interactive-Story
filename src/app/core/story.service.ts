@@ -15,7 +15,7 @@ import { SceneHealthImpacts } from '@features/story-player/scenes/scene-health-i
 import { SceneGroundOzone } from '@features/story-player/scenes/scene-ground-ozone/scene-ground-ozone';
 import { SceneSolutions } from '@features/story-player/scenes/scene-solutions/scene-solutions';
 import { Title } from '@angular/platform-browser';
-
+import { TranslateService } from '@ngx-translate/core';
 /**
  * Provides data about story progress to any component that needs it
  * @example
@@ -136,6 +136,9 @@ export class StoryService {
     });
   }
 
+  //   setTitleToTranslation() {
+  //     this.titleService.setTitle(this.currentScene().i18n_title | translate);
+  //   }
   // move to next scene
   nextScene() {
     if (this.currentIndex() < StoryService.SCENE_DEFINITIONS.length - 1) {
@@ -144,7 +147,7 @@ export class StoryService {
       this.unlockScene(this.currentScene().id);
       this.sceneCompleted.set(false);
       this.saveIndex();
-      this.titleService.setTitle(this.currentScene().i18n_title);
+      //   this.setTitleToTranslation();
       this.focusOnDialog();
     }
   }
@@ -155,7 +158,7 @@ export class StoryService {
       this.currentIndex.update((i) => i - 1);
       this.sceneCompleted.set(false);
       this.saveIndex();
-      this.titleService.setTitle(this.currentScene().i18n_title);
+      //   this.setTitleToTranslation();
       this.focusOnDialog();
     }
   }
@@ -173,7 +176,7 @@ export class StoryService {
       if (unlock) this.unlockScene(sceneId);
       this.sceneCompleted.set(false);
       this.saveIndex();
-      this.titleService.setTitle(this.currentScene().i18n_title);
+      //   this.setTitleToTranslation();
       this.focusOnDialog();
     }
   }

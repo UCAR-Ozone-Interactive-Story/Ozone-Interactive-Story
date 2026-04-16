@@ -6,11 +6,9 @@ import {
   effect,
   OnDestroy,
   HostListener,
-  ViewChild,
   viewChild,
   ElementRef,
 } from '@angular/core';
-import { setTabIndexOne } from './setTabIndexOne';
 
 @Component({
   selector: 'app-narrative-text',
