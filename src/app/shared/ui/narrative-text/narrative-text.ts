@@ -36,6 +36,7 @@ export class NarrativeText implements OnDestroy {
   }
 
   paragraph = viewChild.required<ElementRef>('paragraph');
+  visuallyHidden = viewChild.required<ElementRef>('visuallyHidden');
   isComplete = signal(false);
   private timer = 0;
   private startDelayTimer = 0;
@@ -72,6 +73,8 @@ export class NarrativeText implements OnDestroy {
       throw new Error('textContent should be an HTMLElement');
     }
     textElement.innerHTML = '';
+    const hiddenText = this.visuallyHidden().nativeElement;
+    hiddenText.innerHTML = fullText;
 
     let i = 0;
     this.timer = window.setInterval(() => {
