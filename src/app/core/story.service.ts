@@ -1,4 +1,4 @@
-import { computed, Injectable, signal, WritableSignal } from '@angular/core';
+import { computed, inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
 import { Scene } from './scene';
@@ -14,6 +14,7 @@ import { SceneAirPollution } from '@features/story-player/scenes/scene-air-pollu
 import { SceneHealthImpacts } from '@features/story-player/scenes/scene-health-impacts/scene-health-impacts';
 import { SceneGroundOzone } from '@features/story-player/scenes/scene-ground-ozone/scene-ground-ozone';
 import { SceneSolutions } from '@features/story-player/scenes/scene-solutions/scene-solutions';
+import { Title } from '@angular/platform-browser';
 
 /**
  * Provides data about story progress to any component that needs it
@@ -98,6 +99,7 @@ export class StoryService {
     },
   ];
 
+  private titleService: Title = inject(Title);
   private currentIndex = signal(0);
   private previousIndex = signal<number | null>(null);
   private unlockedScenes = signal(new Set<string>());
@@ -119,14 +121,16 @@ export class StoryService {
   }
   focusOnDialog() {
     setTimeout(() => {
-      const dialog_boxes = document.getElementsByClassName('dialog-box');
-      let dialog_box = dialog_boxes.item(0);
-      if (dialog_box instanceof HTMLElement) {
-        dialog_box.focus();
+      const container = document.getElementsByClassName('scene-container').item(0);
+      console.log(`trying to focus`);
+      console.log(container);
+      if (container instanceof HTMLElement) {
         if (this.transition().textDelay > 0) {
           setTimeout(() => {
-            dialog_box.focus();
+            container.focus({ preventScroll: true });
           }, this.transition().textDelay);
+        } else {
+          container.focus({ preventScroll: true });
         }
       }
     });
@@ -140,6 +144,7 @@ export class StoryService {
       this.unlockScene(this.currentScene().id);
       this.sceneCompleted.set(false);
       this.saveIndex();
+      this.titleService.setTitle(this.currentScene().i18n_title);
       this.focusOnDialog();
     }
   }
@@ -150,6 +155,7 @@ export class StoryService {
       this.currentIndex.update((i) => i - 1);
       this.sceneCompleted.set(false);
       this.saveIndex();
+      this.titleService.setTitle(this.currentScene().i18n_title);
       this.focusOnDialog();
     }
   }
@@ -167,6 +173,7 @@ export class StoryService {
       if (unlock) this.unlockScene(sceneId);
       this.sceneCompleted.set(false);
       this.saveIndex();
+      this.titleService.setTitle(this.currentScene().i18n_title);
       this.focusOnDialog();
     }
   }
