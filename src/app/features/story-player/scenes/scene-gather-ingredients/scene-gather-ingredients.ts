@@ -91,10 +91,17 @@ export class SceneGatherIngredients {
   getMoleculeData(element: HTMLElement) {
     return this.molecules[this.getMoleculeId(element)];
   }
-  getNearbyMolecule(moleculeid: number) {
-    return [...this.molecules.filter((m) => m.location !== 'ozoneCloud')].sort((m) =>
-      Math.abs(moleculeid - m.id),
-    )[1];
+  getMoleculeElement(id: number) {
+    return document.getElementById(`molecule${id}`);
+  }
+  getNearbyMoleculeID(moleculeid: number) {
+    const moleculesNotInOzoneCloud = [...this.molecules].filter((m) => m.location !== 'ozoneCloud');
+    const sorted = moleculesNotInOzoneCloud.sort((m) => Math.abs(moleculeid - m.id));
+    if (sorted.length > 1) {
+      return sorted[2].id;
+    } else {
+      return undefined;
+    }
   }
   handleMoveMolecule(event: Event) {
     event.preventDefault();
@@ -102,16 +109,15 @@ export class SceneGatherIngredients {
     molecule.setAttribute('inOzoneCloud', 'true');
     const id = this.getMoleculeId(molecule);
     this.molecules[id].location = 'ozoneCloud';
-    const nearbyMolecule = this.getNearbyMolecule(id);
-    if (nearbyMolecule instanceof HTMLElement) {
-      nearbyMolecule.focus();
+    const nearbyMoleculeId = this.getNearbyMoleculeID(id);
+    if (nearbyMoleculeId) {
+      this.getMoleculeElement(nearbyMoleculeId)?.focus();
     }
     this.checkIfMoleculesAreGathered();
     this.anounceMoleculeMoved(molecule);
   }
   checkIfMoleculesAreGathered() {
     if (this.ozoneCloudHas('VOC') && this.ozoneCloudHas('NO₂')) {
-      console.log('ozone cloud has ingredients');
       this.moleculesGathered.set(true);
     }
   }
