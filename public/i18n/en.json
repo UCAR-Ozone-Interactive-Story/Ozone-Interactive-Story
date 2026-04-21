@@ -69,7 +69,8 @@
     "GATHER_INGREDIENTS": {
       "TITLE": "Gathering Ingredients",
       "INGREDIENT_EXPLAINATION": "Drag the “ingredients” needed to make ground level ozone to the smog cloud:\n • VOCs (Volatile Organic Compounds) from car exhaust pipes, paint, or other industrial products \n • NO₂ from car exhaust pipes and from factory emissions",
-      "INSTRUCTIONS_1": "Great! Now click on the Sun to add the final ingredient: energy from the Sun."
+      "INSTRUCTIONS_1": "Great! Now click on the Sun to add the final ingredient: energy from the Sun.",
+      "LABEL_VOC": "VOC"
     },
     "OZONE_MOLECULE": {
       "TITLE": "How Ozone Forms",

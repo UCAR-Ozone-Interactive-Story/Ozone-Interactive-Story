@@ -5,7 +5,7 @@
       @if (!moleculesGathered()) {
         <app-narrative-text textKey="SCENES.GATHER_INGREDIENTS.INGREDIENT_EXPLAINATION" />
       } @else if (!story.isSceneCompleted()) {
-        <app-narrative-text textKey="SCENES.GATHER_INGREDIENTS.INSTRUCTIONS_1" />
+        <app-narrative-text textKey="SCENES.GATHER_INGREDIENTS.INSTRUCTIONS_1"/>
       } 
     </div>
 
@@ -34,9 +34,10 @@
               (keydown.space)="handleMoveMolecule($event)"
               (keydown.enter)="handleMoveMolecule($event)"
               (click)="handleMoveMolecule($event)"
-              [aria-label]="item.label"
+              [attr.aria-labelledby]=`molecule${item.id}label`
             >
               <span class="molecule-label" aria-hidden="true">{{item.label}}</span>
+              <span [id]=`molecule${item.id}label` class="molecule-label cdk-visually-hidden">{{item.label_phonetic | translate}}</span>
             </div>
         }
       </div>
@@ -54,8 +55,11 @@
               (keydown.space)="handleMoveMolecule($event)"
               (keydown.enter)="handleMoveMolecule($event)"
               (click)="handleMoveMolecule($event)"
+              [attr.aria-labelledby]=`molecule${item.id}label`
+
             >
-              <span class="molecule-label">{{item.label}}</span>
+              <span class="molecule-label" aria-hidden="true">{{item.label}}</span>
+              <span [id]=`molecule${item.id}label` class="molecule-label cdk-visually-hidden">{{item.label_phonetic | translate}}</span>
             </div>
         }
       </div>
@@ -73,8 +77,10 @@
               (keydown.space)="handleMoveMolecule($event)"
               (keydown.enter)="handleMoveMolecule($event)"
               (click)="handleMoveMolecule($event)"
+              [attr.aria-labelledby]=`molecule${item.id}label`
             >
-              <span class="molecule-label">{{item.label}}</span>
+              <span class="molecule-label" aria-hidden="true">{{item.label}}</span>
+              <span [id]=`molecule${item.id}label` class="molecule-label cdk-visually-hidden">{{item.label_phonetic | translate}}</span>
             </div>
         }
       </div>
@@ -95,8 +101,10 @@
                     (keydown.space)="handleMoveMolecule($event)"
                     (keydown.enter)="handleMoveMolecule($event)"
                     (click)="handleMoveMolecule($event)"
+                    [attr.aria-labelledby]=`molecule${item.id}label`
                 >
-                    <span class="molecule-label">{{item.label}}</span>
+                <span class="molecule-label" aria-hidden="true">{{item.label}}</span>
+                <span [id]=`molecule${item.id}label` class="molecule-label cdk-visually-hidden">{{item.label_phonetic | translate}}</span>
                 </div>
         }
     </div>
