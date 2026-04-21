@@ -4,6 +4,7 @@ import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
 import { CdkDrag, CdkDragEnd, Point } from '@angular/cdk/drag-drop';
 import { LayerWrapper } from '@shared/ui/layer-wrapper/layer-wrapper.component';
 import { SunlessCity } from '@shared/ui/backgrounds/sunless-city/sunless-city.component';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-scene-gather-ingredients',
@@ -12,6 +13,7 @@ import { SunlessCity } from '@shared/ui/backgrounds/sunless-city/sunless-city.co
   styleUrl: './scene-gather-ingredients.scss',
 })
 export class SceneGatherIngredients {
+  announcer = inject(LiveAnnouncer);
   story = inject(StoryService);
   moleculesGathered = signal(false);
   sunClicked = false;
@@ -29,15 +31,27 @@ export class SceneGatherIngredients {
   // if moved by mouse it is more of a freeform drag and drop
   // with the drop location contstrained to the ozone cloud
   ozoneMoleculesMovedByKeyboard = [];
+  moleculesInFactory() {
+    return this.molecules.filter((m) => {
+      return m.location === 'factory';
+    });
+  }
+  moleculesInPaint() {
+    return this.molecules.filter((m) => {
+      return m.location === 'paint';
+    });
+  }
+  moleculesInCar() {
+    return this.molecules.filter((m) => {
+      return m.location === 'car';
+    });
+  }
+  moleculesInSmog() {
+    return this.molecules.filter((m) => {
+      return m.location === 'ozoneCloud';
+    });
+  }
 
-  explanation1Read() {
-    return false;
-    return document.getElementById('explanation1') != undefined;
-  }
-  explanation2Read() {
-    return false;
-    return document.getElementById('explanation2') != undefined;
-  }
   onSunClicked() {
     if (!this.moleculesGathered()) return;
     this.sunClicked = true;
@@ -52,7 +66,7 @@ export class SceneGatherIngredients {
     }
   }
   ozoneCloudHas(moleculeToFind: string) {
-    for (let molecule of this.molecules) {
+    for (const molecule of this.molecules) {
       if (molecule.label === moleculeToFind && molecule.location === 'ozoneCloud') {
         return true;
       }
@@ -66,6 +80,9 @@ export class SceneGatherIngredients {
     element.style.visibility = '';
     return elementUnderItem;
   }
+  anounceMoleculeMoved(molecule: HTMLElement) {
+    this.announcer.announce(molecule.innerText + ' has been moved to the smog cloud');
+  }
   getMoleculeId(element: HTMLElement) {
     const idString = element.getAttribute('id');
     this.assertIsDefined(idString);
@@ -74,13 +91,23 @@ export class SceneGatherIngredients {
   getMoleculeData(element: HTMLElement) {
     return this.molecules[this.getMoleculeId(element)];
   }
-  handleKeyPressedToMoveMolecule(event: Event) {
+  getNearbyMolecule(moleculeid: number) {
+    return [...this.molecules.filter((m) => m.location !== 'ozoneCloud')].sort((m) =>
+      Math.abs(moleculeid - m.id),
+    )[1];
+  }
+  handleMoveMolecule(event: Event) {
     event.preventDefault();
     const molecule = event.target as HTMLElement;
     molecule.setAttribute('inOzoneCloud', 'true');
     const id = this.getMoleculeId(molecule);
     this.molecules[id].location = 'ozoneCloud';
+    const nearbyMolecule = this.getNearbyMolecule(id);
+    if (nearbyMolecule instanceof HTMLElement) {
+      nearbyMolecule.focus();
+    }
     this.checkIfMoleculesAreGathered();
+    this.anounceMoleculeMoved(molecule);
   }
   checkIfMoleculesAreGathered() {
     if (this.ozoneCloudHas('VOC') && this.ozoneCloudHas('NO₂')) {
