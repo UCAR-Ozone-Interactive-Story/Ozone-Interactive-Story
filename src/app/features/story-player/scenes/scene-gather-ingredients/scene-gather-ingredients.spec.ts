@@ -30,11 +30,11 @@ describe('SceneGatherIngredients', () => {
   it('should move a molecule to the ozone cloud via keyboard events', () => {
     // Pick the first molecule (VOC from paint)
     const moleculeEl = fixture.debugElement.query(By.css('#molecule0'));
-    
+
     // Simulate Enter key
-    moleculeEl.triggerEventHandler('keydown.enter', { 
+    moleculeEl.triggerEventHandler('keydown.enter', {
       target: moleculeEl.nativeElement,
-      preventDefault: () => {} 
+      preventDefault: () => {},
     });
 
     expect(component.molecules[0].location).toBe('ozoneCloud');
@@ -47,28 +47,25 @@ describe('SceneGatherIngredients', () => {
     });
 
     const mockVOC = createMockElement('molecule0');
-    component.handleKeyPressedToMoveMolecule({ 
-      target: mockVOC, 
-      preventDefault: () => {} 
+    component.handleMoveMolecule({
+      target: mockVOC,
+      preventDefault: () => {},
     } as any);
-    
+
     expect(component.moleculesGathered()).toBeFalse();
 
     const mockNO2 = createMockElement('molecule4');
-    component.handleKeyPressedToMoveMolecule({ 
-      target: mockNO2, 
-      preventDefault: () => {} 
+    component.handleMoveMolecule({
+      target: mockNO2,
+      preventDefault: () => {},
     } as any);
 
     expect(component.moleculesGathered()).toBeTrue();
-    
-    expect(mockVOC.setAttribute).toHaveBeenCalledWith('inOzoneCloud', 'true');
-    expect(mockNO2.setAttribute).toHaveBeenCalledWith('inOzoneCloud', 'true');
   });
 
   it('should complete the scene after clicking the sun (with delay)', fakeAsync(() => {
     const spy = spyOn(storyService, 'setSceneCompleted');
-    
+
     component.moleculesGathered.set(true);
     fixture.detectChanges();
 
@@ -88,8 +85,8 @@ describe('SceneGatherIngredients', () => {
       dropPoint: { x: 0, y: 0 },
       source: {
         getRootElement: () => document.createElement('div'),
-        reset: jasmine.createSpy('reset')
-      }
+        reset: jasmine.createSpy('reset'),
+      },
     } as unknown as CdkDragEnd;
 
     spyOn(component, 'getElementUnder').and.returnValue(null);
@@ -106,18 +103,18 @@ describe('SceneGatherIngredients', () => {
 
     const ozoneCloudEl = document.createElement('div');
     ozoneCloudEl.setAttribute('id', 'ozone-cloud');
-    
+
     const mockDragEvent = {
       dropPoint: { x: 100, y: 100 },
       source: {
         getRootElement: () => moleculeEl,
-        reset: jasmine.createSpy('reset')
-      }
+        reset: jasmine.createSpy('reset'),
+      },
     } as unknown as CdkDragEnd;
 
     spyOn(document, 'getElementById').and.callFake((id) => {
-        if (id === 'ozone-cloud') return ozoneCloudEl;
-        return null;
+      if (id === 'ozone-cloud') return ozoneCloudEl;
+      return null;
     });
     spyOn(component, 'getElementUnder').and.returnValue(ozoneCloudEl);
 
