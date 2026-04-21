@@ -9,6 +9,16 @@
       } 
     </div>
 
+    <button
+    class="button image sun"
+    id="sun"
+    [class.pulsing]="moleculesGathered()"
+    [class.sun-active]="sunClicked"
+    aria-label="sun"
+    [disabled]="!moleculesGathered()"
+    (click)="onSunClicked()"
+    >
+    </button>
     <div id="polition-sources">
 
       <div id="factory" role="group" class="image source-card" aria-label="factory">
@@ -70,15 +80,6 @@
       </div>
     </div>
 
-    <button
-    class="button image sun"
-    [class.pulsing]="moleculesGathered()"
-    [class.sun-active]="sunClicked"
-    aria-label="sun"
-    [disabled]="!moleculesGathered()"
-    (click)="onSunClicked()"
-    >
-    </button>
 
     <div id="ozone-cloud" title="creating ozone">
         <div class="smog-cloud" [class.glowing]="!moleculesGathered()"></div>

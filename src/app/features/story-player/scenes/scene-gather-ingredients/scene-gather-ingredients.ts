@@ -54,10 +54,12 @@ export class SceneGatherIngredients {
 
   onSunClicked() {
     if (!this.moleculesGathered()) return;
-    this.sunClicked = true;
-    setTimeout(() => {
-      this.story.setSceneCompleted(true);
-    }, 600);
+    else {
+      this.sunClicked = true;
+      setTimeout(() => {
+        this.story.setSceneCompleted(true);
+      }, 600);
+    }
   }
 
   assertIsDefined<T>(val: T): asserts val is NonNullable<T> {
@@ -81,7 +83,7 @@ export class SceneGatherIngredients {
     return elementUnderItem;
   }
   anounceMoleculeMoved(molecule: HTMLElement) {
-    this.announcer.announce(molecule.innerText + ' has been moved to the smog cloud');
+    this.announcer.announce(molecule.innerText + ' has been moved to the smog cloud', 'polite');
   }
   getMoleculeId(element: HTMLElement) {
     const idString = element.getAttribute('id');
@@ -106,19 +108,20 @@ export class SceneGatherIngredients {
   handleMoveMolecule(event: Event) {
     event.preventDefault();
     const molecule = event.target as HTMLElement;
-    molecule.setAttribute('inOzoneCloud', 'true');
     const id = this.getMoleculeId(molecule);
     this.molecules[id].location = 'ozoneCloud';
     const nearbyMoleculeId = this.getNearbyMoleculeID(id);
     if (nearbyMoleculeId) {
       this.getMoleculeElement(nearbyMoleculeId)?.focus();
     }
-    this.checkIfMoleculesAreGathered();
     this.anounceMoleculeMoved(molecule);
+    this.checkIfMoleculesAreGathered();
   }
   checkIfMoleculesAreGathered() {
     if (this.ozoneCloudHas('VOC') && this.ozoneCloudHas('NO₂')) {
       this.moleculesGathered.set(true);
+      const dialog = document.getElementsByClassName('dialog-box')[0] as HTMLElement;
+      dialog.focus();
     }
   }
 
