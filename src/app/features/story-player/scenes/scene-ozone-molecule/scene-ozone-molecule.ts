@@ -2,16 +2,16 @@ import { Component, inject, signal } from '@angular/core';
 import { StoryService } from '@core/story.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NarrativeText } from '@shared/ui/narrative-text/narrative-text';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-scene-ozone-molecule',
   standalone: true,
-  imports: [NarrativeText, TranslateModule],
+  imports: [NarrativeText, TranslateModule, A11yModule],
   templateUrl: './scene-ozone-molecule.html',
   styleUrl: './scene-ozone-molecule.scss',
 })
 export class SceneOzoneMolecule {
-
   story = inject(StoryService);
 
   step = signal(0);
@@ -31,9 +31,11 @@ export class SceneOzoneMolecule {
 
   moleculeLabels = {
     NO2: 'SCENES.OZONE_MOLECULE.LABEL_NO2',
+    NO2_phonetic: 'SCENES.OZONE_MOLECULE.LABEL_NO2_PHONETIC',
     NO: 'SCENES.OZONE_MOLECULE.LABEL_NO',
     O: 'SCENES.OZONE_MOLECULE.LABEL_O',
     O2: 'SCENES.OZONE_MOLECULE.LABEL_O2',
+    O2_phonetic: 'SCENES.OZONE_MOLECULE.LABEL_O2_PHONETIC',
     O3: 'SCENES.OZONE_MOLECULE.LABEL_O3',
   };
 
@@ -56,13 +58,11 @@ export class SceneOzoneMolecule {
   }
 
   clickOxygen() {
-
     if (this.step() !== 2) return;
 
     this.oxygenEnd.set(true);
 
     setTimeout(() => {
-
       this.ozoneFormed.set(true);
       this.hideO2.set(true);
       this.hideFreeO.set(true);
@@ -71,12 +71,10 @@ export class SceneOzoneMolecule {
       this.story.setSceneCompleted(true);
 
       this.step.set(3);
-
     }, 500);
   }
 
   reset() {
-
     if (this.step() !== 3) return;
 
     this.step.set(0);
@@ -94,5 +92,4 @@ export class SceneOzoneMolecule {
 
     this.explanationKey.set('SCENES.OZONE_MOLECULE.TEXT_1');
   }
-
 }

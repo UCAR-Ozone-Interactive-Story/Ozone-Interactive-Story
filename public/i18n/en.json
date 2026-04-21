@@ -78,9 +78,11 @@
       "TEXT_3": "The sunlight causes an oxygen atom to break off from the NO₂ molecule. Tap the free oxygen atom.",
       "TEXT_4": "When that free oxygen atom bumps into an O₂ molecule it forms ozone (O₃). Tap the ozone molecule if you’d like to see the reaction again.",
       "LABEL_NO2": "NO₂ Molecule",
+      "LABEL_NO2_PHONETIC": "N O2 Molecule",
       "LABEL_NO": "NO Molecule",
       "LABEL_O": "Free Oxygen Atom",
       "LABEL_O2": "O₂ Molecule",
+      "LABEL_O2_PHONETIC": "O2 Molecule",
       "LABEL_O3": "Ozone Molecule"
     },
     "UPPER_OZONE": {
