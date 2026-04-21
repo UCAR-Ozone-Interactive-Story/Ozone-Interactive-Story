@@ -121,9 +121,15 @@ export class StoryService {
   }
   focusOnDialog() {
     setTimeout(() => {
+      const dialogBox = document.getElementsByClassName('dialog-box').item(0);
+      if (dialogBox instanceof HTMLElement) {
+        dialogBox.focus({ preventScroll: true });
+      }
+    }, 500);
+  }
+  focusOnSceneContainer() {
+    setTimeout(() => {
       const container = document.getElementsByClassName('scene-container').item(0);
-      console.log(`trying to focus`);
-      console.log(container);
       if (container instanceof HTMLElement) {
         if (this.transition().textDelay > 0) {
           setTimeout(() => {
@@ -148,7 +154,7 @@ export class StoryService {
       this.sceneCompleted.set(false);
       this.saveIndex();
       //   this.setTitleToTranslation();
-      this.focusOnDialog();
+      this.focusOnSceneContainer();
     }
   }
 
@@ -177,7 +183,7 @@ export class StoryService {
       this.sceneCompleted.set(false);
       this.saveIndex();
       //   this.setTitleToTranslation();
-      this.focusOnDialog();
+      this.focusOnSceneContainer();
     }
   }
 
