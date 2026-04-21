@@ -41,7 +41,7 @@
             <div class="item-image">
               @if (situation.image) {
                 <img [src]="'images/scenes/' + situation.image"
-                    alt=""
+                    [alt]=situation.alt
                     [style.height]="situation.height"
                 />
               }
@@ -58,6 +58,7 @@
             tabindex="0"
             cdkTrapFocus
             cdkTrapFocusAutoCapture
+            aria-live="polite"
         >
 
           @if (!selections().has(activeSituation()!.id)) {
@@ -65,10 +66,18 @@
             <div class="options-container">
               @for (option of activeSituation()!.options; track option.id) {
                 <div class="option-choice">
-                  <h4>{{ 'SCENES.SOLUTIONS.SITUATIONS.' + activeSituation()!.id + '.OPTIONS.' + option.id + '.TITLE' | translate }}</h4>
+                  <h4 >{{ 'SCENES.SOLUTIONS.SITUATIONS.' + activeSituation()!.id + '.OPTIONS.' + option.id + '.TITLE' | translate }}</h4>
                   <p>{{ 'SCENES.SOLUTIONS.SITUATIONS.' + activeSituation()!.id + '.OPTIONS.' + option.id + '.DESC' | translate }}</p>
-                  <button class="action-btn" (click)="takeAction(activeSituation()!.id, option.id)">
-                    {{ 'SCENES.SOLUTIONS.BUTTON_SELECT' | translate }}
+                  <div [id]="'option'+option.id" class="cdk-visually-hidden">
+                  {{('SCENES.SOLUTIONS.SITUATIONS.' + activeSituation()!.id + '.OPTIONS.' + option.id + '.TITLE' | translate )
+                  + ' ' + ('SCENES.SOLUTIONS.BUTTON_SELECT' | translate) }}
+                  </div>
+                  <button
+                    class="action-btn"
+                    (click)="takeAction(activeSituation()!.id, option.id)"
+                    [attr.aria-labelledby]="'option'+option.id"
+                    >
+                    {{ ('SCENES.SOLUTIONS.BUTTON_SELECT' | translate)}}
                   </button>
                 </div>
               }
