@@ -57,12 +57,14 @@
               [class.clickable]="step() === 2"
               [class.pulse]="step() === 2"
               (click)="clickOxygen()"
-              tabindex="0"
+              [attr.tabindex]="!hideFreeO() ? 0 : -1"
+              [attr.aria-hidden]="hideFreeO()"
               (keydown.enter)="clickOxygen()"
               (keydown.space)="clickOxygen()"
+              aria-labelledby="oxygenLabel"
             >
-              <img src="/images/molecules/O.png" alt="Oxegen Molecule"/>
-              <div class="label" aria-hidden="true">{{ moleculeLabels.O | translate }}</div>
+              <img src="/images/molecules/O.png" alt=""/>
+              <div id="oxygenLabel" class="label" >{{ moleculeLabels.O | translate }}</div>
             </div>
           }
 
