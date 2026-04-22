@@ -12,4 +12,10 @@ import { StreetComponent } from "@shared/ui/backgrounds/street/street.component"
 })
 export class SceneVehicleTypes {
   story = inject(StoryService);
+  
+  showSecondText = false;
+
+  showNextText() {
+    this.showSecondText = true;
+  }
 }
