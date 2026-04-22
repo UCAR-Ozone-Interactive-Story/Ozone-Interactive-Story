@@ -45,4 +45,8 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 
 `ng test` or `npm test`
 
+## Assets
+
+View the Project Style Guide and Project Asset Source docs under the public/docs directory to learn more about creating assets for the project.
+
 **Created by Logan Bird, Tyler Campbell, Matt Harper, Matthew Kind, Quinn Nicodemus, Linh Tran, and Charlie Wheeler in collaboration with UCAR Center for Science Education**
