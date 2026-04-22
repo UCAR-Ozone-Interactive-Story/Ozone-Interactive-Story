@@ -64,6 +64,10 @@ export class NarrativeText implements OnDestroy {
     });
   }
 
+  private pronounceMoleculeNames(str: string) {
+    return str.replaceAll('₂', '2').replaceAll('₃', '3').replaceAll('NO', 'N O');
+  }
+
   private resetAndType(fullText: string) {
     this.clearTimer();
     this.isComplete.set(false);
@@ -73,8 +77,11 @@ export class NarrativeText implements OnDestroy {
       throw new Error('textContent should be an HTMLElement');
     }
     textElement.innerHTML = '';
+
+    // create aria text. This is happening differently mostly because
+    // the animation would otherwise mess with screen readers
     const hiddenText = this.visuallyHidden().nativeElement;
-    hiddenText.innerHTML = fullText;
+    hiddenText.innerHTML = this.pronounceMoleculeNames(fullText);
 
     let i = 0;
     this.timer = window.setInterval(() => {
