@@ -1,4 +1,4 @@
-import { computed, Injectable, signal, WritableSignal } from '@angular/core';
+import { computed, inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { SceneMorning } from '@features/story-player/scenes/scene-morning/scene-morning';
 import { SceneVehicleTypes } from '@features/story-player/scenes/scene-vehicle-types/scene-vehicle-types';
 import { Scene } from './scene';
@@ -14,7 +14,8 @@ import { SceneAirPollution } from '@features/story-player/scenes/scene-air-pollu
 import { SceneHealthImpacts } from '@features/story-player/scenes/scene-health-impacts/scene-health-impacts';
 import { SceneGroundOzone } from '@features/story-player/scenes/scene-ground-ozone/scene-ground-ozone';
 import { SceneSolutions } from '@features/story-player/scenes/scene-solutions/scene-solutions';
-
+import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 /**
  * Provides data about story progress to any component that needs it
  * @example
@@ -98,10 +99,12 @@ export class StoryService {
     },
   ];
 
+  private titleService: Title = inject(Title);
   private currentIndex = signal(0);
   private previousIndex = signal<number | null>(null);
   private unlockedScenes = signal(new Set<string>());
   private sceneCompleted = signal(false);
+  private isTransitioningSignal = signal(false);
 
   private readonly STORAGE_KEY_INDEX = 'story.currentIndex';
   private readonly STORAGE_KEY_UNLOCKED = 'story.unlockedScenes';
@@ -112,6 +115,7 @@ export class StoryService {
   );
   isSceneCompleted = computed(() => this.sceneCompleted());
   currentIndexValue = computed(() => this.currentIndex());
+  isTransitioning = computed(() => this.isTransitioningSignal());
   totalScenes = StoryService.SCENE_DEFINITIONS.length;
 
   constructor() {
@@ -119,28 +123,41 @@ export class StoryService {
   }
   focusOnDialog() {
     setTimeout(() => {
-      const dialog_boxes = document.getElementsByClassName('dialog-box');
-      let dialog_box = dialog_boxes.item(0);
-      if (dialog_box instanceof HTMLElement) {
-        dialog_box.focus();
+      const dialogBox = document.getElementsByClassName('dialog-box').item(0);
+      if (dialogBox instanceof HTMLElement) {
+        dialogBox.focus({ preventScroll: true });
+      }
+    }, 500);
+  }
+  focusOnSceneContainer() {
+    setTimeout(() => {
+      const container = document.getElementsByClassName('scene-container').item(0);
+      if (container instanceof HTMLElement) {
         if (this.transition().textDelay > 0) {
           setTimeout(() => {
-            dialog_box.focus();
+            container.focus({ preventScroll: true });
           }, this.transition().textDelay);
+        } else {
+          container.focus({ preventScroll: true });
         }
       }
     });
   }
 
+  //   setTitleToTranslation() {
+  //     this.titleService.setTitle(this.currentScene().i18n_title | translate);
+  //   }
   // move to next scene
   nextScene() {
     if (this.currentIndex() < StoryService.SCENE_DEFINITIONS.length - 1) {
       this.previousIndex.set(this.currentIndex());
+      this.isTransitioningSignal.set(true);
       this.currentIndex.update((i) => i + 1);
       this.unlockScene(this.currentScene().id);
       this.sceneCompleted.set(false);
       this.saveIndex();
-      this.focusOnDialog();
+      //   this.setTitleToTranslation();
+      this.focusOnSceneContainer();
     }
   }
 
@@ -150,6 +167,7 @@ export class StoryService {
       this.currentIndex.update((i) => i - 1);
       this.sceneCompleted.set(false);
       this.saveIndex();
+      //   this.setTitleToTranslation();
       this.focusOnDialog();
     }
   }
@@ -163,11 +181,13 @@ export class StoryService {
     const index = StoryService.SCENE_DEFINITIONS.findIndex((s) => s.id === sceneId);
     if (index > -1) {
       this.previousIndex.set(this.currentIndex());
+      this.isTransitioningSignal.set(true);
       this.currentIndex.set(index);
       if (unlock) this.unlockScene(sceneId);
       this.sceneCompleted.set(false);
       this.saveIndex();
-      this.focusOnDialog();
+      //   this.setTitleToTranslation();
+      this.focusOnSceneContainer();
     }
   }
 
@@ -233,15 +253,50 @@ export class StoryService {
   // animationType is defined in story-player.scss and referenced in story-player.html
   private static readonly TRANSITIONS: Record<string, TransitionConfig> = {
     'morning->vehicle-types': {
+      animationType: 'slide-up',
+      textDelay: 3100,
+      duration: 3000,
+    },
+    'nearby-factories->burning-fuels': {
+      animationType: 'slide-left',
+      textDelay: 4010,
+      duration: 4000,
+    },
+    'burning-fuels->air': {
+      animationType: 'slide-left',
+      textDelay: 4010,
+      duration: 4000,
+    },
+    'air->air-pollution': {
+      animationType: 'slide-right',
+      textDelay: 4010,
+      duration: 4000,
+    },
+    'air-pollution->health-impacts': {
+      animationType: 'slide-right',
+      textDelay: 4010,
+      duration: 4000,
+    },
+    'health-impacts->sunny-day': {
       animationType: 'slide-down',
-      textDelay: 4000,
+      textDelay: 3010,
+      duration: 3000,
+    },
+    'gather-ingredients->ozone-molecule': {
+      animationType: 'slide-down',
+      textDelay: 3010,
+      duration: 3000,
+    },
+    'ozone-molecule->upper-ozone': {
+      animationType: 'slide-down',
+      textDelay: 3010,
+      duration: 3000,
     },
   };
 
   transition = computed<TransitionConfig>(() => {
     const prev = this.previousScene()?.id;
     const curr = this.currentScene().id;
-
     const key = `${prev}->${curr}`;
 
     return (
@@ -249,14 +304,31 @@ export class StoryService {
       StoryService.TRANSITIONS[key] ?? {
         animationType: 'fade',
         textDelay: 1200,
+        duration: 1000,
       }
     );
   });
+
+  finishTransition() {
+    this.previousIndex.set(null);
+    this.isTransitioningSignal.set(false);
+  }
+
+  // handle the fade from the starting home screen
+  startInitialTransition() {
+    this.previousIndex.set(null);
+    this.isTransitioningSignal.set(true);
+  }
 }
 
 // animationType: all transitions are included here by name to be selected from above
-// textDelay: tell how long after the animation *starts* that the text should being showing
-export interface TransitionConfig {
-  animationType: 'fade' | 'slide-left' | 'slide-down';
+// textDelay: tell how long after the animation *starts* that the text should begin showing
+// intermediate: optional, describe an image to be shown between two scenes during a slide
+//               note that this feature is unused; the trouble arises from creating an
+//               intermediate image that could account for different screen sizes
+interface TransitionConfig {
+  animationType: 'fade' | 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right';
   textDelay: number;
+  duration?: number;
+  intermediate?: string;
 }

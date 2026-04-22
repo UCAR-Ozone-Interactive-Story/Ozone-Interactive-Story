@@ -2,12 +2,14 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
 
+Node v24.15.0
+
 ## Development server
 
 To start a local development server, run:
 
 ```bash
-ng serve
+npm start
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
@@ -35,34 +37,16 @@ For a complete list of available schematics (such as `components`, `directives`,
 ng generate --help
 ```
 
-## Building
+## Unit Tests
 
-To build the project run:
+Unit tests were written for each scene component, story service, story player, and other important components. If more scenes are created, a spec file should be written and placed within the scene's directory.
 
-```bash
-ng build
-```
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use either of the following commands:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+`ng test` or `npm test`
 
-## Running unit tests
+## Assets
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+View the Project Style Guide and Project Asset Source docs under the public/docs directory to learn more about creating assets for the project.
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Created by Logan Bird, Tyler Campbell, Matt Harper, Matthew Kind, Quinn Nicodemus, Linh Tran, and Charlie Wheeler in collaboration with UCAR Center for Science Education**

@@ -32,7 +32,7 @@ export class SceneGroundOzone {
   textDelay = signal(this.story.transition().textDelay);
 
   text = signal('');
-  bottomText = signal('')
+  bottomText = signal('');
 
   constructor() {
     effect(() => {
@@ -40,7 +40,7 @@ export class SceneGroundOzone {
       const feedbackKey = this.feedbackKey();
 
       if (feedbackKey) {
-        this.text.set(feedbackKey)
+        this.text.set(feedbackKey);
         return;
       }
 
@@ -57,7 +57,7 @@ export class SceneGroundOzone {
           break;
       }
 
-      this.text.set(promptKey)
+      this.text.set(promptKey);
     });
   }
 
@@ -71,8 +71,7 @@ export class SceneGroundOzone {
     if (!this.isTextComplete() || this.fadeState() === 'out' || this.choiceStatus()?.isCorrect)
       return;
 
-    if (this.choiceStatus()?.option === option)
-      return;
+    if (this.choiceStatus()?.option === option) return;
 
     this.textDelay.set(0);
 
@@ -83,14 +82,22 @@ export class SceneGroundOzone {
 
       if (nextPhase !== 'done') {
         this.showContinue.set(true);
-      } else { // sorry for hard code
-        this.bottomText.set('SCENES.GROUND_OZONE.CARS_FACTORIES.CORRECT_BOTTOMTEXT')
+      } else {
+        // sorry for hard code
+        this.bottomText.set('SCENES.GROUND_OZONE.CARS_FACTORIES.CORRECT_BOTTOMTEXT');
       }
       this.isTextComplete.set(false);
     } else {
       this.choiceStatus.set({ option, isCorrect: false });
       this.feedbackKey.set(incorrectFeedback);
       this.isTextComplete.set(false);
+    }
+  }
+
+  focusOnDialog() {
+    const dialog_box = document.getElementsByClassName('dialog-box').item(0);
+    if (dialog_box instanceof HTMLElement) {
+      dialog_box.focus();
     }
   }
 
@@ -105,6 +112,7 @@ export class SceneGroundOzone {
       this.choiceStatus.set(null);
       this.nextPhase.set(null);
       this.fadeState.set('in');
+      this.focusOnDialog();
     }, 500);
 
     this.destroyRef.onDestroy(() => clearTimeout(t));

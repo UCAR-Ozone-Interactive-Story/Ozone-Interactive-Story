@@ -13,8 +13,9 @@
         [attr.aria-checked]="isSelected(option.id)"
         [attr.aria-disabled]="disabled()"
         (keydown)="onKeydown($event, option.id)"
+        name="option.label"
       >
-        <span class="choice-label">{{ option.label }}</span>
+        <span class="choice-label" for="options.label">{{ option.label }}</span>
         @if (isSelected(option.id)) {
           <span class="result-icon">
             {{ option.isCorrect ? '✓' : '✗' }}

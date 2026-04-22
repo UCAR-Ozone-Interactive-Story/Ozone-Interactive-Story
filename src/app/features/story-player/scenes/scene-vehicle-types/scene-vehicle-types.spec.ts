@@ -41,8 +41,21 @@ describe('SceneVehicleTypes', () => {
   });
 
   it('should display the human-powered label for the bicycle', () => {
-    const label = fixture.debugElement.query(By.css('.bike-label'));
-    expect(label.nativeElement.textContent).toContain('Human powered!');
+    // const label = fixture.debugElement.query(By.css('.bike-label'));
+    // expect(label.nativeElement.textContent).toContain('Human powered!');
+    
+    const firstNarrative = fixture.debugElement.query(By.directive(NarrativeText));
+    
+    // simulate first narrative finishing
+    firstNarrative.triggerEventHandler('completed', null);
+    fixture.detectChanges();
+  
+    const narratives = fixture.debugElement.queryAll(By.directive(NarrativeText));
+    
+    expect(component.showSecondText).toBeTrue();
+    expect(narratives.length).toBe(2);
+    expect(narratives[1].componentInstance.textKey()).toBe('SCENES.VEHICLE_TYPES.TEXT_2');
+    expect(narratives[1].componentInstance.startDelay()).toBe(200);
   });
 
   it('should configure narrative text and trigger scene completion', () => {
@@ -54,8 +67,27 @@ describe('SceneVehicleTypes', () => {
     expect(narrativeInstance.textKey()).toBe('SCENES.VEHICLE_TYPES.TEXT_1');
     expect(narrativeInstance.startDelay()).toBe(storyServiceMock.transition().textDelay);
 
+
+    //advance the first text
+    component.showNextText();
+    fixture.detectChanges();
+
+    //check that the scene hasn't been completed yet
+    expect(spy).not.toHaveBeenCalled;
+
+    //look for second narrative
+    const secondNarrative = fixture.debugElement.query(
+      By.css('.bubble-container app-narrative-text')
+    );
+
+    const narrativeInstanceTwo = secondNarrative.componentInstance as NarrativeText;
+
+    // verify configuration
+    expect(narrativeInstanceTwo.textKey()).toBe('SCENES.VEHICLE_TYPES.TEXT_2');
+    expect(narrativeInstanceTwo.startDelay()).toBe(200);
+
     // trigger completion
-    narrativeEl.triggerEventHandler('completed', null);
+    secondNarrative.triggerEventHandler('completed', null);
     expect(spy).toHaveBeenCalledWith(true);
   });
 

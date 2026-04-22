@@ -15,6 +15,7 @@
             tabindex="0"
             (keydown.enter)="clickSun()"
             (keydown.space)="clickSun()"
+            alt="sun"
           />
 
           <img
@@ -29,17 +30,20 @@
             [class.clickable]="step() === 1"
             [class.pulse]="step() === 1"
             (click)="clickNO2()"
-            tabindex="0"
+            [attr.tabindex]="!showNO() ? 0 : -1"
             (keydown.enter)="clickNO2()"
             (keydown.space)="clickNO2()"
+            [attr.aria-hidden]="showNO()"
           >
-            <img src="/images/molecules/NO2.png" alt="N O2 Molecule"/>
-            <div class="label">{{ moleculeLabels.NO2 | translate }}</div>
+            <img src="/images/molecules/NO2.png" alt="" aria-labelledby="NO2-aria-label" [attr.aria-hidden]="showNO()"/>
+            <div class="label" aria-hidden="true">{{moleculeLabels.NO2 | translate }}</div>
+            <div id="NO2-aria-label" class="label cdk-visually-hidden" [attr.aria-hidden]="(showNO())">
+                {{moleculeLabels.NO2_phonetic | translate }}</div>
           </div>
 
-          <div class="molecule left no" [class.show]="showNO()">
-            <img src="/images/molecules/NO.png" alt="N O Molecule"/>
-            <div class="label">{{ moleculeLabels.NO | translate }}</div>
+          <div class="molecule left no" [class.show]="showNO()" aria-labelledby="NO-label">
+            <img src="/images/molecules/NO.png" alt="" />
+            <div id="NO-label" class="label" [attr.aria-hidden]="!showNO()">{{ moleculeLabels.NO | translate }}</div>
           </div>
 
           <img src="/images/scenes/ozone-interaction/LongArrow.png" class="travel-arrow" />
@@ -58,27 +62,33 @@
               (keydown.space)="clickOxygen()"
             >
               <img src="/images/molecules/O.png" alt="Oxegen Molecule"/>
-              <div class="label">{{ moleculeLabels.O | translate }}</div>
+              <div class="label" aria-hidden="true">{{ moleculeLabels.O | translate }}</div>
             </div>
           }
 
+
           <div class="molecule right O2" [class.hide]="hideO2()">
             <img src="/images/molecules/O2.png" alt="O2 Molecule"/>
-            <div class="label">{{ moleculeLabels.O2 | translate }}</div>
+            <div class="label" aria-hidden="true">{{ moleculeLabels.O2 | translate }}</div>
           </div>
-
           <div
             class="molecule right result"
             [class.show]="ozoneFormed()"
             [class.clickable]="step() === 3"
             [class.pulse]="step() === 3"
             (click)="reset()"
+            [attr.tabindex]="ozoneFormed() ? 0 : -1"
             tabindex="0"
             (keydown.enter)="reset()"
             (keydown.space)="reset()"
           >
-            <img src="/images/molecules/O3.png" alt="Ozone Molecule"/>
-            <div class="label">{{ moleculeLabels.O3 | translate }}</div>
+            <img
+                src="/images/molecules/O3.png"
+                [class.hide]="!hideO2()"
+                alt="Ozone Molecule"
+                [attr.aria-hidden]="!hideO2()"
+            />
+            <div class="label" aria-hidden="true">{{ moleculeLabels.O3 | translate }}</div>
           </div>
 
         </div>

@@ -60,3 +60,16 @@
   font-weight: bold;
   font-size: 3vw;
 }
+
+.bubble-container {
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  pointer-events: none;
+}
+
+.main-text{
+  width: 100%;
+}
