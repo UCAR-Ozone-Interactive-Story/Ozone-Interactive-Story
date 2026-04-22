@@ -1,14 +1,36 @@
-
-<div class="scene-container">
-  @for (scene of [service.currentScene()]; track scene.id) {
-    <div
-      class="scene"
-      [animate.enter]="enterAnimation"
-      [animate.leave]="leaveAnimation"
-    >
-      <ng-container [ngComponentOutlet]="scene.component"></ng-container>
+<div
+  class="scene-container"
+  [class.transitioning]="isTransitioning"
+  [class.fade]="transitionClass === 'fade'"
+  [class.slide-up]="transitionClass === 'slide-up'"
+  [class.slide-down]="transitionClass === 'slide-down'"
+  [class.slide-left]="transitionClass === 'slide-left'"
+  [class.slide-right]="transitionClass === 'slide-right'"
+  [class.slide-down-two]="transitionClass === 'slide-down-two'"
+  [style.--duration.ms]="service.transition().duration ?? 1000"
+>
+  <!-- render the previous scene transitioning out -->
+  @if (service.previousScene()) {
+    <div class="scene previous">
+      <ng-container
+        [ngComponentOutlet]="service.previousScene()!.component"
+      ></ng-container>
     </div>
   }
+
+  <!-- render the intermediate transition image, if specified -->
+  @if (service.transition().intermediate) {
+    <div class="scene intermediate">
+      <img [src]="service.transition().intermediate!" />
+    </div>
+  }
+
+  <!-- render the current scene -->
+  <div class="scene current">
+    <ng-container
+      [ngComponentOutlet]="service.currentScene().component"
+    ></ng-container>
+  </div>
 </div>
 
 <app-navbar></app-navbar>

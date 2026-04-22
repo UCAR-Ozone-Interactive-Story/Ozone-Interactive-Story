@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [class.transitioning]="isTransitioning">
   <app-layer-wrapper>
     <app-sky-grass bg-layer></app-sky-grass>
     <img class="sun" src="images/scenes/upper-ozone/space-sun.png">
@@ -9,7 +9,7 @@
 
       <app-language-dropdown></app-language-dropdown>
 
-      <button class="action-btn start-btn" routerLink="play">
+      <button class="action-btn start-btn" (click)="start()">
         {{ 'START_PAGE.START' | translate }}
       </button>
     </div>
