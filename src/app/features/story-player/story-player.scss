@@ -9,97 +9,155 @@
   inset: 0;
 }
 
+.previous { z-index: 1; }
+.intermediate { z-index: 2; pointer-events: none; }
+.current { z-index: 3; }
+
 // fade scene transition definition
 // applies to: all unless overridden (default)
+.scene-container.fade.transitioning {
+  .current {
+    animation: fadeIn var(--duration) ease forwards;
+  }
 
-.fade-in {
-  animation: fadeIn 1s ease forwards;
-}
-
-.fade-out {
-  animation: fadeOut 1s ease forwards;
+  .previous {
+    animation: fadeOut var(--duration) ease forwards;
+  }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeOut {
-  from {
-    opacity: 1;
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+// slide up scene transition definition
+// applies to: morning->vehicle-types
+.scene-container.slide-up.transitioning {
+  .previous {
+    animation: slideOutUp var(--duration) ease forwards;
   }
-  to {
-    opacity: 0;
+
+  .current {
+    animation: slideInUp var(--duration) ease forwards;
+  }
+
+  .intermediate {
+    animation: slideThroughUp var(--duration) ease forwards;
   }
 }
 
-// slide left scene transition definition
-// applies to: nearby-factories->sunny-day
-
-.slide-in-left {
-  animation: slideInLeft 2s ease forwards;
+@keyframes slideInUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 
-.slide-out-left {
-  animation: slideOutLeft 2s ease forwards;
+@keyframes slideOutUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
 }
 
-@keyframes slideInLeft {
-  from {
-    transform: translateX(100%);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(0%);
-    opacity: 1;
-  }
-}
-
-@keyframes slideOutLeft {
-  from {
-    transform: translateX(0%);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100%);
-    opacity: 1;
-  }
+@keyframes slideThroughUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(-100%); }
 }
 
 // slide down scene transition definition
-// applies to: morning->vehicle-types
+// applies to: health-impacts->sunny-day,
+//             gather-ingredients->ozone-molecule
+.scene-container.slide-down.transitioning {
+  .previous {
+    animation: slideOutDown var(--duration) ease forwards;
+  }
 
-.slide-in-down {
-  animation: slideInDown 3s ease forwards;
-}
+  .current {
+    animation: slideInDown var(--duration) ease forwards;
+  }
 
-.slide-out-down {
-  animation: slideOutDown 3s ease forwards;
+  .intermediate {
+    animation: slideThroughDown var(--duration) ease forwards;
+  }
 }
 
 @keyframes slideInDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(0%);
-    opacity: 1;
-  }
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
 }
 
 @keyframes slideOutDown {
-  from {
-    transform: translateY(0%);
-    opacity: 1;
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes slideThroughDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+// slide left scene transition definition
+// applies to: nearby-factories->burning-fuels,
+//             burning-fuels->air
+.scene-container.slide-left.transitioning {
+  .previous {
+    animation: slideOutLeft var(--duration) ease forwards;
   }
-  to {
-    transform: translateY(100%);
-    opacity: 1;
+
+  .current {
+    animation: slideInLeft var(--duration) ease forwards;
   }
+
+  .intermediate {
+    animation: slideThroughLeft var(--duration) ease forwards;
+  }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideOutLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+@keyframes slideThroughLeft {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(-100%); }
+}
+
+// slide right scene transition definition
+// applies to: air->air-pollution,
+//             air-pollution->health-impacts
+.scene-container.slide-right.transitioning {
+  .previous {
+    animation: slideOutRight var(--duration) ease forwards;
+  }
+
+  .current {
+    animation: slideInRight var(--duration) ease forwards;
+  }
+
+  .intermediate {
+    animation: slideThroughRight var(--duration) ease forwards;
+  }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100%); }
+}
+
+@keyframes slideThroughRight {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
 }

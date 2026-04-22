@@ -15,30 +15,26 @@ export class StoryPlayer implements OnInit {
 
   ngOnInit(): void {
     console.log('[StoryPlayer] Loaded. Current scene ->', this.service.currentScene().id);
+    this.service.startInitialTransition();
   }
 
-  private animationMap: Record<string, { enter: string; leave: string }> = {
-    'slide-left': {
-      enter: 'slide-in-left',
-      leave: 'slide-out-left',
-    },
-    'slide-down': {
-      enter: 'slide-in-down',
-      leave: 'slide-out-down',
-    },
-    fade: {
-      enter: 'fade-in',
-      leave: 'fade-out',
-    },
-  };
-
-  get enterAnimation(): string {
-    const type = this.service.transition().animationType;
-    return this.animationMap[type]?.enter ?? 'fade-in';
+  get transitionClass(): string {
+    return this.service.transition().animationType;
   }
 
-  get leaveAnimation(): string {
-    const type = this.service.transition().animationType;
-    return this.animationMap[type]?.leave ?? 'fade-out';
+  get isTransitioning(): boolean {
+    return this.service.isTransitioning();
+  }
+
+  private transitionTimeout: any;
+  ngAfterViewChecked() {
+    if (this.service.isTransitioning() && !this.transitionTimeout) {
+      const duration = this.service.transition().duration ?? 1000;
+
+      this.transitionTimeout = setTimeout(() => {
+        this.service.finishTransition();
+        this.transitionTimeout = null;
+      }, duration);
+    }
   }
 }
