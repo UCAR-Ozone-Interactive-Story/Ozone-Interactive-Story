@@ -14,6 +14,7 @@ export interface SolutionOption {
 export interface Situation {
   id: string;
   image: string;
+  alt: string;
   top: string;
   left: string;
   height?: string;
@@ -35,6 +36,7 @@ export class SceneSolutions {
     {
       id: 'SITUATION_ENERGY',
       image: 'solutions/windmill.png',
+      alt: 'windmill',
       top: '25%',
       left: '10%',
       height: '30vh',
@@ -46,6 +48,7 @@ export class SceneSolutions {
     {
       id: 'SITUATION_PRODUCTS',
       image: 'ingredient-gathering/paint.webp',
+      alt: 'paint buckets',
       top: '30%',
       left: '30%',
       height: '15vh',
@@ -57,6 +60,7 @@ export class SceneSolutions {
     {
       id: 'SITUATION_FIRE',
       image: 'solutions/wood-stove.png',
+      alt: 'wood stove',
       top: '15%',
       left: '75%',
       height: '20vh',
@@ -68,6 +72,7 @@ export class SceneSolutions {
     {
       id: 'SITUATION_YARD',
       image: 'solutions/compost.png',
+      alt: 'compost',
       top: '20%',
       left: '90%',
       height: '20vh',
@@ -79,6 +84,7 @@ export class SceneSolutions {
     {
       id: 'SITUATION_USAGE',
       image: 'solutions/power-outlet.png',
+      alt: 'power outlets',
       top: '45%',
       left: '70%',
       height: '15vh',
@@ -90,6 +96,7 @@ export class SceneSolutions {
     {
       id: 'SITUATION_MOWING',
       image: 'solutions/lawnmower.png',
+      alt: 'lawnmower',
       top: '65%',
       left: '88%',
       height: '20vh',
@@ -101,6 +108,7 @@ export class SceneSolutions {
     {
       id: 'SITUATION_VEHICLE',
       image: 'solutions/electric-car.png',
+      alt: 'car',
       top: '90%',
       left: '20%',
       height: '25vh',
@@ -112,6 +120,7 @@ export class SceneSolutions {
     {
       id: 'SITUATION_TRANSPORT',
       image: 'vehicles/vehicle_bus.png',
+      alt: 'bus',
       top: '100%',
       left: '50%',
       height: '30vh',
@@ -123,6 +132,7 @@ export class SceneSolutions {
     {
       id: 'SITUATION_REFUEL',
       image: 'vehicles/oil.png',
+      alt: 'oil',
       top: '100%',
       left: '70%',
       height: '25vh',

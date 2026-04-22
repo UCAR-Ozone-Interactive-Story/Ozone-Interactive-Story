@@ -1,17 +1,26 @@
 @if (canGoPrevious()) {
   <button
+    type="button"
     class="nav-button left-arrow"
+    aria-label="previous scene"
     (click)="goToPrevious()"
+    (keydown.enter)="goToPrevious(); $event.preventDefault()"
+    (keydown.space)="goToPrevious(); $event.preventDefault()"
   >
-    ←
+    <!--since we have an aria-label we dont want a screen reader to announce  ← -->
+    <span aria-hidden="true">←</span>
   </button>
 }
 
 @if (canGoNext()) {
   <button
+    type="button"
     class="nav-button right-arrow pulse"
+    aria-label="next scene"
     (click)="goToNext()"
+    (keydown.enter)="goToNext(); $event.preventDefault()"
+    (keydown.space)="goToNext(); $event.preventDefault()"
   >
-    →
+    <span aria-hidden="true">→</span>
   </button>
 }

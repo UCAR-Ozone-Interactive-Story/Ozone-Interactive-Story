@@ -28,10 +28,15 @@ export class NarrativeText implements OnDestroy {
 
   completed = output<void>();
   private _dialogTabIndex = 0;
-  set dialogTabIndex(value: number) { this._dialogTabIndex = value; }
-  get dialogTabIndex() { return this._dialogTabIndex; }
+  set dialogTabIndex(value: number) {
+    this._dialogTabIndex = value;
+  }
+  get dialogTabIndex() {
+    return this._dialogTabIndex;
+  }
 
   paragraph = viewChild.required<ElementRef>('paragraph');
+  visuallyHidden = viewChild.required<ElementRef>('visuallyHidden');
   isComplete = signal(false);
   private timer = 0;
   private startDelayTimer = 0;
@@ -52,7 +57,7 @@ export class NarrativeText implements OnDestroy {
       if (this.startDelayTimer) clearTimeout(this.startDelayTimer);
 
       this.startDelayTimer = window.setTimeout(() => {
-        this.translate.get(key, params).subscribe(translated => {
+        this.translate.get(key, params).subscribe((translated) => {
           this.resetAndType(translated);
         });
       }, delay);
@@ -68,6 +73,8 @@ export class NarrativeText implements OnDestroy {
       throw new Error('textContent should be an HTMLElement');
     }
     textElement.innerHTML = '';
+    const hiddenText = this.visuallyHidden().nativeElement;
+    hiddenText.innerHTML = fullText;
 
     let i = 0;
     this.timer = window.setInterval(() => {
@@ -105,7 +112,7 @@ export class NarrativeText implements OnDestroy {
     if (this.isComplete()) {
       this.completed.emit();
     } else {
-      this.translate.get(this.textKey(), this.textParams()).subscribe(translated => {
+      this.translate.get(this.textKey(), this.textParams()).subscribe((translated) => {
         this.finish(translated);
       });
     }
