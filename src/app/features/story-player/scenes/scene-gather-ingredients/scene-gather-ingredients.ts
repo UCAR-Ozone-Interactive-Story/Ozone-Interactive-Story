@@ -22,116 +22,74 @@ export class SceneGatherIngredients {
   VOC_label = 'SCENES.GATHER_INGREDIENTS.LABEL_VOC';
   molecules = [
     {
-     
       alt: 'V O C Molecule',
       src: 'images/molecules/VOC.png',
       label: 'VOC',
       label_phonetic: this.VOC_label,
-     
       id: 0,
-     
       location: 'paint',
-     
       top: '8%',
-     
       left: '8%',
-   ,
     },
     {
-     
       alt: 'V O C Molecule',
       src: 'images/molecules/VOC.png',
       label: 'VOC',
       label_phonetic: this.VOC_label,
-     
       id: 1,
-     
       location: 'paint',
-     
       top: '45%',
-     
       left: '55%',
-   ,
     },
     {
-     
       alt: 'V O C Molecule',
       src: 'images/molecules/VOC.png',
       label: 'VOC',
       label_phonetic: this.VOC_label,
-     
       id: 2,
-     
       location: 'paint',
-     
       top: '20%',
-     
       left: '65%',
-   ,
     },
     {
-     
       alt: 'V O C Molecule',
       src: 'images/molecules/VOC.png',
       label: 'VOC',
       label_phonetic: this.VOC_label,
-     
       id: 3,
-     
       location: 'car',
-     
       top: '10%',
-     
       left: '10%',
-   ,
     },
     {
-     
       alt: 'N O 2 Molecule',
       src: 'images/molecules/NO2drop.png',
       label: 'NO₂',
       label_phonetic: this.NO2_phonetic,
-     
       id: 4,
-     
       location: 'car',
-     
       top: '42%',
-     
       left: '52%',
-   ,
     },
     {
-     
       alt: 'N O 2 Molecule',
       src: 'images/molecules/NO2drop.png',
       label: 'NO₂',
       label_phonetic: this.NO2_phonetic,
-     
       id: 5,
-     
       location: 'factory',
-     
       top: '12%',
-     
       left: '15%',
-   ,
     },
     {
-     
       alt: 'N O 2 Molecule',
       src: 'images/molecules/NO2drop.png',
       label: 'NO₂',
       label_phonetic: this.NO2_phonetic,
-     
       id: 6,
-     
       location: 'factory',
-     
       top: '48%',
-     
       left: '55%',
-   ,
     },
   ];
 
@@ -232,13 +190,6 @@ export class SceneGatherIngredients {
       const dialog = document.getElementsByClassName('dialog-box')[0] as HTMLElement;
       dialog.focus();
     }
-  }
-  handleMoleculeClick(event: Event) {
-    let molecule = event.currentTarget as HTMLElement;
-    if (!molecule.classList.contains('molecule-circle') && molecule.parentElement) {
-      molecule = molecule.parentElement;
-    }
-    molecule.focus();
   }
   handleMoleculeClick(event: Event) {
     let molecule = event.currentTarget as HTMLElement;
