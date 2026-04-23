@@ -213,7 +213,7 @@ export class SceneSolutions {
     if (this.incorrectSelectedCount() === 0) {
       return 'SCENES.SOLUTIONS.CONCLUSION_PERFECT';
     } else if (this.correctSelectedCount() === 0) {
-      return 'SCENES.SOLUTIONS.CONCLUSION.ALL_INCORRECT';
+      return 'SCENES.SOLUTIONS.CONCLUSION_ALL_INCORRECT';
     } else {
       return 'SCENES.SOLUTIONS.CONCLUSION_MIXED';
     }
@@ -221,6 +221,9 @@ export class SceneSolutions {
 
   // to be passed into the translation at the end for how many correct/incorrect
   currentNarrativeParams = computed(() => {
+    if (!this.isDone()) {
+      return {};
+    }
     return {
       correctCount: this.correctSelectedCount(),
       incorrectCount: this.incorrectSelectedCount(),

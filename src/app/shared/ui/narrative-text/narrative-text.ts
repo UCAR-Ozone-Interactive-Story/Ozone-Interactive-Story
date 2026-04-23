@@ -40,6 +40,7 @@ export class NarrativeText implements OnDestroy {
   isComplete = signal(false);
   private timer = 0;
   private startDelayTimer = 0;
+  private lastText = '';
   startDelay = input(0);
 
   assertIsDefined<T>(val: T): asserts val is NonNullable<T> {
@@ -58,7 +59,10 @@ export class NarrativeText implements OnDestroy {
 
       this.startDelayTimer = window.setTimeout(() => {
         this.translate.get(key, params).subscribe((translated) => {
-          this.resetAndType(translated);
+          if (translated !== this.lastText) {
+            this.lastText = translated;
+            this.resetAndType(translated);
+          }
         });
       }, delay);
     });
