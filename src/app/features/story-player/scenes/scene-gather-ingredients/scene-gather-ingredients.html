@@ -28,15 +28,15 @@
               [style.left]="item.left"
               [class.pulsing]="!moleculesGathered()"
               tabindex="0"
-              cdkDrag
               id="molecule{{item.id}}"
+              cdkDrag
               (cdkDragEnded)="handleDragEnd($event)"
               (keydown.space)="handleMoveMolecule($event)"
               (keydown.enter)="handleMoveMolecule($event)"
               (click)="handleMoveMolecule($event)"
               [attr.aria-labelledby]=`molecule${item.id}label`
             >
-              <span class="molecule-label" aria-hidden="true">{{item.label}}</span>
+              <img [alt]="" class="molecule-image" aria-hidden="true" [src]="item.src">
               <span [id]=`molecule${item.id}label` class="molecule-label cdk-visually-hidden">{{item.label_phonetic | translate}}</span>
             </div>
         }
@@ -56,9 +56,8 @@
               (keydown.enter)="handleMoveMolecule($event)"
               (click)="handleMoveMolecule($event)"
               [attr.aria-labelledby]=`molecule${item.id}label`
-
             >
-              <span class="molecule-label" aria-hidden="true">{{item.label}}</span>
+              <img [alt]="" class="molecule-image" aria-hidden="true" [src]="item.src" >
               <span [id]=`molecule${item.id}label` class="molecule-label cdk-visually-hidden">{{item.label_phonetic | translate}}</span>
             </div>
         }
@@ -79,7 +78,7 @@
               (click)="handleMoveMolecule($event)"
               [attr.aria-labelledby]=`molecule${item.id}label`
             >
-              <span class="molecule-label" aria-hidden="true">{{item.label}}</span>
+              <img [alt]="" class="molecule-image" aria-hidden=true  [src]="item.src">
               <span [id]=`molecule${item.id}label` class="molecule-label cdk-visually-hidden">{{item.label_phonetic | translate}}</span>
             </div>
         }
@@ -103,8 +102,8 @@
                     (click)="handleMoveMolecule($event)"
                     [attr.aria-labelledby]=`molecule${item.id}label`
                 >
-                <span class="molecule-label" aria-hidden="true">{{item.label}}</span>
-                <span [id]=`molecule${item.id}label` class="molecule-label cdk-visually-hidden">{{item.label_phonetic | translate}}</span>
+                    <img alt="" class="molecule-image" aria-hidden="true" [src]="item.src">
+                    <span [id]=`molecule${item.id}label` class="molecule-label cdk-visually-hidden">{{item.label_phonetic | translate}}</span>
                 </div>
         }
     </div>

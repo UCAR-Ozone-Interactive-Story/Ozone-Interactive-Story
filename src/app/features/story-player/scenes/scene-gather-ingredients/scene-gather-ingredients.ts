@@ -22,6 +22,8 @@ export class SceneGatherIngredients {
   VOC_label = 'SCENES.GATHER_INGREDIENTS.LABEL_VOC';
   molecules = [
     {
+      alt: 'V O C Molecule',
+      src: 'images/molecules/VOC.png',
       label: 'VOC',
       label_phonetic: this.VOC_label,
       id: 0,
@@ -30,6 +32,8 @@ export class SceneGatherIngredients {
       left: '8%',
     },
     {
+      alt: 'V O C Molecule',
+      src: 'images/molecules/VOC.png',
       label: 'VOC',
       label_phonetic: this.VOC_label,
       id: 1,
@@ -38,6 +42,8 @@ export class SceneGatherIngredients {
       left: '55%',
     },
     {
+      alt: 'V O C Molecule',
+      src: 'images/molecules/VOC.png',
       label: 'VOC',
       label_phonetic: this.VOC_label,
       id: 2,
@@ -46,6 +52,8 @@ export class SceneGatherIngredients {
       left: '65%',
     },
     {
+      alt: 'V O C Molecule',
+      src: 'images/molecules/VOC.png',
       label: 'VOC',
       label_phonetic: this.VOC_label,
       id: 3,
@@ -54,6 +62,8 @@ export class SceneGatherIngredients {
       left: '10%',
     },
     {
+      alt: 'N O 2 Molecule',
+      src: 'images/molecules/NO2drop.png',
       label: 'NO₂',
       label_phonetic: this.NO2_phonetic,
       id: 4,
@@ -62,6 +72,8 @@ export class SceneGatherIngredients {
       left: '52%',
     },
     {
+      alt: 'N O 2 Molecule',
+      src: 'images/molecules/NO2drop.png',
       label: 'NO₂',
       label_phonetic: this.NO2_phonetic,
       id: 5,
@@ -70,6 +82,8 @@ export class SceneGatherIngredients {
       left: '15%',
     },
     {
+      alt: 'N O 2 Molecule',
+      src: 'images/molecules/NO2drop.png',
       label: 'NO₂',
       label_phonetic: this.NO2_phonetic,
       id: 6,
@@ -176,6 +190,13 @@ export class SceneGatherIngredients {
       const dialog = document.getElementsByClassName('dialog-box')[0] as HTMLElement;
       dialog.focus();
     }
+  }
+  handleMoleculeClick(event: Event) {
+    let molecule = event.currentTarget as HTMLElement;
+    if (!molecule.classList.contains('molecule-circle') && molecule.parentElement) {
+      molecule = molecule.parentElement;
+    }
+    molecule.focus();
   }
 
   handleDragEnd(event: CdkDragEnd) {
