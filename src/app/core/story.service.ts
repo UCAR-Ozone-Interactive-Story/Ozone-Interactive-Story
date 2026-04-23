@@ -268,12 +268,12 @@ export class StoryService {
       duration: 4000,
     },
     'air->air-pollution': {
-      animationType: 'slide-right',
+      animationType: 'slide-left',
       textDelay: 4010,
       duration: 4000,
     },
     'air-pollution->health-impacts': {
-      animationType: 'slide-right',
+      animationType: 'slide-left',
       textDelay: 4010,
       duration: 4000,
     },
